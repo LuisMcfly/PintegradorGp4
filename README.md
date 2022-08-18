@@ -33,6 +33,8 @@
     ◉ siddharthamusical = EL DISEÑO DE ESTE SITIO NOS RESULTO
     AGRADABLE POR LO CUAL DECIDIMOS INCLUIRLO EN ESTA LISTA.
     URL = https://www.siddharthamusical.com/
+   ------------------------------------------------------------- 
+    Wireframe =  
    -------------------------------------------------------------
     INTEGRANTES DEL EQUIPO
     ◉ LUIS MATEO PAYARES RUIZ
