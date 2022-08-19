@@ -1,16 +1,16 @@
  PRODUCTOS BRINDADOS POR NUESTRA WEB
-  ◉ MONITORES
-  ◉ PERIFÉRICOS
-  ◉ TECLADOS
-  ◉ MOUSES
-  ◉ TARJETAS GRÁFICAS
-  ◉ TORRES GAMERS
+  ◉ Monitores
+  ◉ Periféricos
+  ◉ Teclados
+  ◉ Mouse
+  ◉ Tarjetas Gráficas
+  ◉ Torres Gamers
   ------------------------------------------------------------
 TIPO DE PUBLICO AL CUAL ESTAMOS ENFOCADOS
-  ◉ DESARROLLADORES
-  ◉ GAMERS
-  ◉ INSTITUCIONES EDUCATIVAS 
-  ◉ ENTUSIASTAS DE LA TECNOLOGÍA
+  ◉ Desarrolladores
+  ◉ Gamers
+  ◉ Instituciones Educativas
+  ◉ Entusiastas de la Tecnología
   ------------------------------------------------------------
 SITIOS QUE HACEN PARTE DE LA INSPIRACION
   ◉ AMAZON = El rey de las ventas mundialmente, funcionalidad 
