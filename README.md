@@ -1,44 +1,32 @@
-    PROYECTO INTEGRADOR GRUPO 4
-   ------------------------------------------------------------
-    PEGASUS TECHNOLOGY
-   ------------------------------------------------------------
-    PRODUCTOS BRINDADOS POR NUESTRA WEB
-    ◉ MONITORES
-    ◉ PERIFERICOS
-    ◉ TECLADOS
-    ◉ MOUSES
-    ◉ TARJETAS GRAFICAS
-    ◉ TORRES GAMERS
-   ------------------------------------------------------------
-    TIPO DE PUBLICO AL CUAL ESTAMOS ENFOCADOS
-    ◉ DESARROLLADORES
-    ◉ GAMERS
-    ◉ INSTITUCIONES EDUCATIVAS 
-    ◉ ENTUSIASTAS DE LA TECNOLOGIA
-   ------------------------------------------------------------
-    SITIOS QUE HACEN PARTE DE LA INSPIRACION
-    ◉ IBANEZ = ESTE SITIO FUE SIN DUDA ALGUNA EL QUE MAS 
-    RESALTO DE LA LISTA POR SU ESTETICA Y FUNCIONALIDAD.
-    URL = https://www.ibanez.com/na/
-    ◉ NZXT = ESTE SITIO FUE ELEGIDO POR SER SIMILAR EN 
-    LOS PRODUCTOS QUE OFRECE, POR SU DISEÑO, POR LOS 
-    EVENTOS DE SCROLL Y FUNCIONALIDAD.
-    URL = https://nzxt.com/en-GB
-    ◉ AMAZON = ESTE SITIO FUE ESCOGIDO POR SU FUNCIONALIDAD
-    EN EL SISTEMA DE COMPRAS Y EL PANEL DE USUARIO.
-    URL = https://www.amazon.com
-    ◉ SPEEDLOGIC = ESTE SITIO FUE ESCOGIDO POR SU ESTETICA 
-    Y FUNCIONALIDAD.
-    URL = https://speedlogic.com.co/
-    ◉ siddharthamusical = EL DISEÑO DE ESTE SITIO NOS RESULTO
-    AGRADABLE POR LO CUAL DECIDIMOS INCLUIRLO EN ESTA LISTA.
-    URL = https://www.siddharthamusical.com/
-   ------------------------------------------------------------- 
-    Wireframe =  
-   -------------------------------------------------------------
-    INTEGRANTES DEL EQUIPO
-    ◉ LUIS MATEO PAYARES RUIZ
-    ◉ JOSE MUÑOZ
-    ◉ KEVIN BOTERO
-    
-            
+# PROYECTO INTEGRADOR GRUPO 4: PEGASUS TECH
+
+--------------------------------
+
+## Productos
+* Monitores
+* Periféricos
+* Teclados
+* Mouse
+* Tarjetas Gráficas
+* Torres Gamer
+
+-------------------------------
+
+## Público Objetivo
+* Derarrolladores
+* Gamers
+* Instituciones Educativas
+* Entusiastas de la Tecnología
+
+------------------------------
+
+## Referencias
+* [AMAZON](https://www.amazon.com): El rey de las ventas mundialmente, funcionalidad excelente, UX impecable.
+* [NZXT](https://nzxt.com/en-GB): Es un referente en distribución del tipo de productos que queremos distribuir.
+* [SpeedLogic](https://speedlogic.com.co/): Excelente funcionalidad.
+* [Ibanez Guitars](https://www.ibanez.com/na/): La estética es absolutamente increíble.
+* [Siddartha Musical](https://www.siddharthamusical.com/): Un diseño agradable y funcionalidad decente.
+
+------------------------------
+
+Para interactuar con el wireframe accede al siguiente [link](https://app.uizard.io/p/ee4b0641)
