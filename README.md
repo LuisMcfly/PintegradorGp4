@@ -1,5 +1,8 @@
 # PROYECTO INTEGRADOR GRUPO 4: PEGASUS TECH
 
+Somos una empresa distribuidora de productos tecnológicos de diversas gamas,
+contamos con las marcas Top del mercado a precios accesibles.
+
 --------------------------------
 
 ## Productos
