@@ -1,5 +1,9 @@
 const express = require('express');
 const app = express();
+const path = require('path');
+// const http = require('http');
+// const server = http.createServer((req, res) => {res.end("response ended")})
+
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/views/index.html')));
 //app.get('/Home', (req, res) => res.sendFile(path.join(__dirname, '/views/home.html')));
