@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --subtileGray: rgb(218, 216, 216);
+    --neonBlue: #548cff;
+    --neonTeal: #43d8c9;
+    --neonPurple: #ed67eb;
+    --neonPink: #f4b9f1;
+}
+
+p, a {
+    font-family: 'Rubik', sans-serif;
+}
+h2, h3 {
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+/*-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-*/
+/*------------- PRODUCT DETAIL ------------*/
+/*-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-*/
+
+.producto {
+    width: 90%;
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.producto > div {
+    background: var(--subtileGray);
+    padding: 10px;
+    border: dotted 1px black;
+    margin: 5px;
+}
+.producto > .imagenes-producto {
+    flex: 6;
+    display: flex;
+    flex-direction: row;
+}
+.producto > .info-producto {flex: 4}
+.producto > .precio-producto {flex: 2}
+
+.img-alt {
+    flex: 1;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+.img-alt > img {
+    width: 100%;
+    height: 100%;
+}
+.img-main {
+    flex: 6;
+}
+.img-main > img {
+    height: 100%;
+    width: 100%;
+}
+
+.info-producto > h2 {
+    font-size: 1.2rem;
+}
+.info-producto > .vendedor {
+    font-size: 0.75rem;
+    color: rgb(104, 104, 104);
+}
+
+.opciones-producto > button {
+    background: var(--neonPink);
+    padding: 3px;
+    border: dotted 1px var(--neonPurple);
+}
+
+.precio-producto > button {
+    width: 100%;
+    padding: 5px;
+    border: solid 1px black;
+}
+.precio-producto > #anadir-carrito {
+    background-color: var(--neonBlue);
+}
+.precio-producto > #anadir-deseados {
+    background-color: var(--neonPurple);
+}
