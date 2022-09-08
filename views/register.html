@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <main class="contenedor-principal contenedor">
+        <h2 class="text-center">Crear cuenta</h2>
+
+        <form class="formulario">
+            <fieldset>
+                <legend>Tus Datos</legend>
+                <div class="campo">
+                    <label for="nombre">Tu Nombre:</label>
+                    <input id="nombre" type="text" placeholder="Ingresa aqui tu nombre" required/>
+                </div>
+
+                <div class="campo">
+                    <label for="Email">Correo:</label>
+                    <input id="Email" type="email" placeholder="Ingresa aqui tu E-mail" required/>
+                </div>
+
+                <div class="campo">
+                    <label for="tel">Teléfono:</label>
+                    <input id="tel" type="tel" placeholder="Ingresa aqui tu telefono" required/>
+                </div>
+
+                <div class="campo">
+                    <label for="tel">Contraseña:</label>
+                    <input id="tel" type="password" placeholder="Ingresa aqui tu contraseña" required/>
+                </div>
+                <div class="campo">
+                    <label for="tel">Vuelve a escribir tu contraseña:</label>
+                    <input id="tel" type="password" placeholder="Ingresa aqui tu contraseña" required/>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Pais</legend>
+                <label for="pais">Pais:</label>
+                <select id="Pais">
+                    <option > -- Seleciona --</option>
+                    <option value="CO"> Colombia </option>
+                    <option value="AR"> Argentina </option>
+                    <option value="MX"> Mexico </option>
+                    <option value="CL"> Chile </option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Informacion Extra</legend>
+
+                <div class="campo">
+                    <input id="cliente" type="radio" name="tipo" value="Cliente">
+                    <label for="cliente">cliente</label>
+                </div>
+                
+                <div class="campo">
+                    <input id="proveedor" type="radio" name="tipo" value="Proveedor">
+                    <label for="proveedor">proveedor</label>
+                </div>
+            </fieldset>
+
+            <input type="submit" value="Registrarse">
+        </form>
+    </main>
+</body>
+</html>
