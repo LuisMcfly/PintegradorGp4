@@ -1,10 +1,42 @@
 <!DOCTYPE html>
+<html lang="es">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400;700&family=Roboto:ital,wght@0,700;1,400;1,500&family=Rubik:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400;700&family=Roboto:ital,wght@0,700;1,400;1,500&family=Rubik:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/normalize.css">
+    <link rel="stylesheet" href="../public/css/style.css">
 </head>
-<body>
+
+<body> 
+<header class="header">
+    <div class="container">
+        <div>
+            <img class="logo" src="../public/img/Header&footer/Pegasus-logo.png" alt="##">
+        </div>
+        <div>
+            <h1 class="nombre-sitio degradado">Pegasus Tech</h1>
+        </div>
+            
+        <div class="contenedor-nav">
+            <nav class="nav-principal">
+                <a href="tienda.html">Tienda</a>
+                <a href="setups.html">Setups</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <nav class="login-register">
+                <a class="botones-diseño" href="login.html">Ingresar</a>
+                <a class="botones-diseño" href="registro.html">Registrarse</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
     <main>
         <section class="producto-detail">
             <div class="imagenes-producto">
@@ -56,5 +88,39 @@
             <div class="producto-preview"></div>
         </section>
     </main>
+
+</body>
+
+<footer class="sitio-footer">
+        <!-- Cambiar el footer ! -->
+    <div class="grid-footer">
+    
+        <div>
+
+            <h3 class="degradado">Sobre nosotros</h3>
+    
+            <nav class="footer-menu">
+                <a href="#">Nuestra hostoria</a>
+                <a href="#">Mision, vision y valores</a>
+                <a href="#">Carreras</a>
+                <a href="#">Politica de privacidad</a>
+                <a href="#">Terminos del servicio</a>
+            </nav>
+        </div>
+    
+        <div>
+            <h3 class="degradado">Soporte</h3>
+    
+            <nav class="footer-menu">
+                <a href="#">Preguntas Frecuentes</a>
+                <a href="#">Ayuda en linea</a>
+                <a href="#">Confianza y seguridad</a>
+            </nav>
+        </div>
+
+    </div>
+
+</footer>
+    
 </body>
 </html>
