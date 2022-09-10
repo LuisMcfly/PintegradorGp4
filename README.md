@@ -1,8 +1,5 @@
 # PROYECTO INTEGRADOR GRUPO 4: PEGASUS TECH
 
-Somos una empresa distribuidora de productos tecnológicos de diversas gamas,
-contamos con las marcas Top del mercado a precios accesibles.
-
 --------------------------------
 
 ## Productos
@@ -33,7 +30,3 @@ contamos con las marcas Top del mercado a precios accesibles.
 ------------------------------
 
 Para interactuar con el wireframe accede al siguiente [link](https://app.uizard.io/p/ee4b0641)
-
-------------------------------
-
-Tablero en [Trello](https://trello.com/invite/b/YXDkvEE9/5279f54142754815d4d4b2ec062e0b4a/tareas-gp4)
