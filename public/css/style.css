@@ -617,7 +617,7 @@ nav {
 }
 
 .control input[type="submit"]{
-    background: crimson;
+    background: var(--primario);
     color: #fff;
     text-transform: uppercase;
     font-size: 1.2em;
