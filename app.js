@@ -6,6 +6,8 @@ const path = require('path');
 
 app.use(express.static('public'))
 
+app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/public/js/slide.js'));
+
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/views/index.html')));
 //app.get('/Home', (req, res) => res.sendFile(path.join(__dirname, '/views/home.html')));
 app.get('/productDetail.html', (req, res) => res.sendFile(path.join(__dirname, '/views/productDetail.html')));
