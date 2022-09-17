@@ -1,0 +1,136 @@
+/*-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-*/
+/*------------- PRODUCT DETAIL ------------*/
+/*-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-*/
+
+p {
+    line-height: 2.4rem;
+}
+main {
+    height:max-content;
+}
+section img {
+    object-fit: contain;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    object-fit: contain;
+}
+.producto-detail {
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+    
+    /*display: grid;
+    grid-template-columns: 6fr 4fr 3fr;*/
+    display: flex;
+    gap: 5px;
+}
+
+.producto-detail > div {
+    background: var(--subtileGray);
+    padding: 20px;
+    /*border: dotted 1px black;*/
+}
+.producto-detail > .imagenes-producto {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 40%;
+
+    padding: 10px;
+
+    /*display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 3fr;*/
+
+    display: flex;
+    gap: 5px;
+}
+.producto-detail > .info-producto {
+    flex-grow: 5;
+    overflow-y: hidden;
+}
+.producto-detail > .precio-producto {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 200px;
+
+    max-height: 450px;
+    border: dotted 1px gray;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* imagenes de producto */
+
+.img-main {
+    width: 100%;
+    height: auto;
+}
+.img-alt {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* info y descripcion */
+
+.info-producto > h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    line-height: 3rem;
+    text-transform: uppercase;
+}
+.info-producto > .vendedor {
+    font-size: 1.5rem;
+    color: rgb(104, 104, 104);
+}
+.calificacion {
+    display: none;
+}
+.opciones-producto > button {
+    background: var(--secundarioLight);
+    padding: 3px;
+    border: dotted 1px gray;
+    border-radius: 3px;
+}
+
+/* precio */
+.precio-numero {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.precio-producto h2 {
+    margin: 0;
+}
+.precio-producto h4 {
+    margin: 1.2rem 0px;
+}
+
+.precio-producto .btns-producto form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.precio-producto button {
+    width: 100%;
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+.anadir-carrito {
+    background-color: var(--primario);
+    color: white;
+}
+.anadir-deseados {
+    background-color: var(--secundario);
+    color: white;
+}

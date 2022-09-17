@@ -4,122 +4,157 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Home</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400;700&family=Roboto:ital,wght@0,700;1,400;1,500&family=Rubik:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
+    rel="stylesheet"/> <!-- iconos -->
+    
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/productDetail.css">
 </head>
 
 <body> 
-<header class="header">
-    <div class="container">
-        <div>
-            <img class="logo" src="/img/Header&footer/Pegasus-logo.png" alt="##">
+    <header>
+        <nav>
+            <div>
+                <img class="logo" src="img/Header&footer/Pegasus-logo.png" alt="">
+            </div>
+            <input type="checkbox" id="check">
+            <label for="check" class="bar-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul class="nav-menu">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="register.html" class="button1">Registrate</a></li>
+                <li><a href="login.html" class="button2">Login</a></li>
+            </ul>
+        </nav>
+        <div class="banner-text">
+            <h1 class="degradado">Pegasus Tech</h1>
+            <div>
+
+            </div>
         </div>
-        <div>
-            <h1 class="nombre-sitio degradado">Pegasus Tech</h1>
+    </header>
+
+    <section class="producto-detail">
+        <div class="imagenes-producto">
+            <div class="img-alt">
+                <img src="/img/productDetail/productoDemo.jpg" alt="view">
+                <img src="/img/productDetail/productoDemo.jpg" alt="view">
+                <img src="/img/productDetail/productoDemo.jpg" alt="view">
+            </div>
+            <div class="img-main"><img src="/img/productDetail/productoDemo.jpg" alt="imagen de producto"></div>
         </div>
+        <div class="info-producto">
+            <h2>La mejor de las mejores super hiper mega diademas RGB +15FPS</h2>
+            <div class="calificacion">
+                <i class="fa-thin fa-star"></i>
+                <i class="fa-thin fa-star"></i>
+                <i class="fa-thin fa-star"></i>
+                <i class="fa-thin fa-star"></i>
+                <i class="fa-thin fa-star"></i>
+            </div>
+            <a class="vendedor">más productos de la marca</a>
             
-        <div class="contenedor-nav">
-            <nav class="nav-principal">
-                <a href="tienda.html">Tienda</a>
-                <a href="setups.html">Setups</a>
-                <a href="nosotros.html">Nosotros</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-            <nav class="login-register">
-                <a class="botones-diseño" href="login.html">Ingresar</a>
-                <a class="botones-diseño" href="register.html">Registrarse</a>
-            </nav>
+            <div class="opciones-producto">
+                <button>Rojo Sangre</button>
+                <button>Azul Cielo</button>
+                <button>Amarillo Pollito</button>
+            </div>
+            <p>Super hiper mega descripción. Solo por leer esta descricción vas 
+                a tener +5 FPS en todos los jueveos, sea en windows, mac o linux 
+                qué esperas para comprar?</p>
+
         </div>
-    </div>
-</header>
-
-    <main>
-        <section class="producto-detail">
-            <div class="imagenes-producto">
-                <div class="img-alt">
-                    <img src="#" alt="view">
-                    <img src="#" alt="view">
-                    <img src="#" alt="view">
-                </div>
-                <div class="img-main"><img src="/img/productDetail/productoDemo.jpg" alt="imagen de producto"></div>
+        <div class="precio-producto">
+            <div class="precio-numero">
+                <h2>$349</h2><h4>.900</h4>
             </div>
-            <div class="info-producto">
-                <h2>La mejor de las mejores super hiper mega diademas RGB +15FPS</h2>
-                <a class="vendedor">más productos de la marca</a>
-                <div class="calificacion">
-                    <i clas="star"></i>
-                    <i clas="star"></i>
-                    <i clas="star"></i>
-                    <i clas="star"></i>
-                    <i clas="star"></i>
-                </div>
-                <div class="opciones-producto">
-                    <button>Rojo Sangre</button>
-                    <button>Azul Cielo</button>
-                    <button>Amarillo Pollito</button>
-                </div>
-                <p>Super hiper mega descripción. Solo por leer esta descricción vas 
-                    a tener +5 FPS en todos los jueveos, sea en windows, mac o linux 
-                    qué esperas para comprar?</p>
-
+            <div class="btns-producto">
+                <form action="productCart.html">
+                    <button class="btn anadir-carrito">Añadir al Carrito<i class="carrito"></i></button>
+                    <button class="btn anadir-deseados">Añadir a Deseados</button>
+                </form>
             </div>
-            <div class="precio-producto">
-                <h2 id="precio">$999.99</h2>
-                <button id="anadir-carrito">Añadir al Carrito<i class="carrito"></i></button>
-                <button id="anadir-deseados">Añadir a Deseados</button>
+        </div>
+    </section>
+
+    <main class="contenedor-principal">
+
+        <h2 class="section-title degradado">Recomendados</h2>
+        <section class="recopilacion">
+            <div class="producto-preview">
+                <img src="/img/productDetail/productoDemo.jpg">
+                <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+                <p class="precio">$500.000</p>
+                <button class="btn">Añadir al Carrito</button>
+            </div>
+            <div class="producto-preview">
+                <img src="/img/productDetail/productoDemo.jpg">
+                <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+                <p class="precio">$500.000</p>
+                <button class="btn">Añadir al Carrito</button>
+            </div>
+            <div class="producto-preview">
+                <img src="/img/productDetail/productoDemo.jpg">
+                <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+                <p class="precio">$500.000</p>
+                <button class="btn">Añadir al Carrito</button>
+            </div>
+            <div class="producto-preview">
+                <img src="/img/productDetail/productoDemo.jpg">
+                <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+                <p class="precio">$500.000</p>
+                <button class="btn">Añadir al Carrito</button>
             </div>
         </section>
 
-        <section class="recomendados">
-            <div class="producto-preview"></div>
-            <div class="producto-preview"></div>
-            <div class="producto-preview"></div>
-            <div class="producto-preview"></div>
-        </section>
-
-        <section class="historial">
+        <section class="recopilacion historial" style="display: none">
             <div class="producto-preview"></div>
             <div class="producto-preview"></div>
             <div class="producto-preview"></div>
             <div class="producto-preview"></div>
         </section>
+        <section></section>
     </main>
 
 
-<footer class="sitio-footer">
-        <!-- Cambiar el footer ! -->
-    <div class="grid-footer">
-    
-        <div>
-
-            <h3 class="degradado">Sobre nosotros</h3>
-    
-            <nav class="footer-menu">
-                <a href="#">Nuestra hostoria</a>
-                <a href="#">Mision, vision y valores</a>
-                <a href="#">Carreras</a>
-                <a href="#">Politica de privacidad</a>
-                <a href="#">Terminos del servicio</a>
-            </nav>
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="img/Header&footer/Pegasus-logo.png" alt="Logo Pegasus">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>Somos una empresa colombiana ubicada en medellin antioquia</p>
+                <p>Llevamos 10 años de experiencia en el mercardo</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="facebook.com" class="fa fa-facebook"></a>
+                    <a href="instagram.com" class="fa fa-instagram"></a>
+                    <a href="twitter.com" class="fa fa-twitter"></a>
+                    <a href="youtube.com" class="fa fa-youtube"></a>
+                </div>
+            </div>
         </div>
-    
-        <div>
-            <h3 class="degradado">Soporte</h3>
-    
-            <nav class="footer-menu">
-                <a href="#">Preguntas Frecuentes</a>
-                <a href="#">Ayuda en linea</a>
-                <a href="#">Confianza y seguridad</a>
-            </nav>
+        <div class="grupo-2">
+            <small>&copy; 2022 <b>Pegasus Tech - Luis el capo</b> - Todos los Derechos Reservados.</small>
         </div>
-
-    </div>
-
-</footer>
-    
+    </footer>
 </body>
 </html>
