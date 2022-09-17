@@ -70,11 +70,12 @@ img {
 
 header {
     width: 100%;
-    height: 90vh;
+    height: 50vh;
     background-image: url(../img/Header&footer/header2.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    margin-bottom: .5rem;
 }
 
 nav {
@@ -134,7 +135,7 @@ nav {
 
 .banner-text {
     padding: 0 3rem;
-    margin-top: 15rem;
+    margin-top: 2rem;
     text-align: center;
     color: #fff;
 }
@@ -145,7 +146,7 @@ nav {
 }
 
 .button1 {
-    margin-right: 4rem;
+    margin-right: 1rem;
     padding: 1rem 3rem;
     background-color: var(--primario);
     color: #fff;
@@ -172,7 +173,7 @@ nav {
     transition: .5s;
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 769px){
     .logo {
         margin-left: 5rem;
     }
@@ -332,7 +333,22 @@ nav {
     transform: translateX(-50px);
   }
 
+  @media only screen and (max-width: 880px) {
+    .nav-slider {
+      display: none;
+    }
+
+    .main-slider {
+        width: 100%;
+    }
+
+  }
+
 /* Productos */
+
+.contenedor-principal {
+    text-transform: uppercase;
+}
 
 .texto-producto {
     font-family: 'Roboto', sans-serif;
@@ -445,56 +461,6 @@ nav {
     margin: 1rem;
 }
 
-.contenedor-principal {
-    text-transform: uppercase;
-}
-
-@media (min-width: 768px) {
-    .sobre-nosotros {
-        background-image: url(../img/Index/fondo-nosotros.jpg);
-        background-position: left center;
-        padding: 3rem 3rem;
-        margin: 4rem;
-        background-repeat: no-repeat;
-        background-size: 100%, 120rem;
-    }
-    
-    .sobre-nosotros-flex {
-        display: flex;
-        justify-content: flex-end;
-    }
-    
-    .texto-nosotros {
-        flex-basis: 25%;
-        padding-left: 1rem;
-        color: #fff;
-        text-transform: uppercase;
-        text-align: center;
-    }
-}
-
-.sobre-nosotros {
-    background-image: url(../img/Index/fondo-nosotros.jpg);
-    background-position: left center;
-    padding: 3rem 3rem;
-    margin: 4rem;
-    background-repeat: no-repeat;
-    background-size: 100%, 120rem;
-}
-
-.sobre-nosotros-flex {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.texto-nosotros {
-    flex-basis: 25%;
-    padding-left: 1rem;
-    color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-}
-
 /* Footer */
 
 *{
@@ -503,12 +469,12 @@ nav {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
-/*:::::Pie de Pagina*/
 
 .pie-pagina{
     width: 100%;
     background-color: #0a141d;
 }
+
 .pie-pagina .grupo-1{
     width: 100%;
     max-width: 1200px;
@@ -518,6 +484,7 @@ nav {
     grid-gap:50px;
     padding: 45px 0px;
 }
+
 .pie-pagina .grupo-1 .box figure{
     width: 100%;
     height: 100%;
@@ -525,18 +492,22 @@ nav {
     justify-content: center;
     align-items: center;
 }
+
 .pie-pagina .grupo-1 .box figure img{
     width: 250px;
 }
+
 .pie-pagina .grupo-1 .box h2{
     color: #fff;
     margin-bottom: 25px;
     font-size: 20px;
 }
+
 .pie-pagina .grupo-1 .box p{
     color: #efefef;
     margin-bottom: 10px;
 }
+
 .pie-pagina .grupo-1 .red-social a{
     display: inline-block;
     text-decoration: none;
@@ -549,18 +520,22 @@ nav {
     text-align: center;
     transition: all 300ms ease;
 }
+
 .pie-pagina .grupo-1 .red-social a:hover{
     color: aqua;
 }
+
 .pie-pagina .grupo-2{
     background-color: #0a1a2a;
     padding: 15px 10px;
     text-align: center;
     color: #fff;
 }
+
 .pie-pagina .grupo-2 small{
     font-size: 15px;
 }
+
 @media screen and (max-width:800px){
     .pie-pagina .grupo-1{
         width: 90%;
@@ -570,7 +545,7 @@ nav {
     }
 }
 
-/* ------ Login ----- */
+/* ------ Login y register ----- */
 
 .login-register-container section {
     position: relative;
