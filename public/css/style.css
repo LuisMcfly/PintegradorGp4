@@ -623,3 +623,48 @@ nav {
     opacity: 1;
 }
 
+/*---------------------------------------------------*/
+/* seccion de recomendados para product Cart y Detail*/
+/*---------------------------------------------------*/
+
+/* Section titles*/
+.section-title {
+    width: fit-content;
+    margin: 0px;
+}
+
+main .recopilacion {
+    background-image: url(../img/Index/fondo-producto.jpg);
+
+    display: flex;
+    flex-wrap: hidden;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 20px auto;
+}
+.producto-preview {
+    width: 180px;
+    padding: 5px;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.producto-preview > * {
+    text-align: center;
+    line-height: 2rem;
+    margin: 5px auto;
+}
+.producto-preview img {
+    border-radius: 5px;
+}
+.producto-preview h3 { 
+    font-size: 1.8rem;
+    color: white;
+    margin: 0px;
+}
+.producto-preview p {
+    font-size: 1.2rem;
+}
