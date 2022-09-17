@@ -6,7 +6,6 @@ img {
 .carrito {
     display: flex;
     flex-direction: column;
-
 }
 .carrito h1 {
     flex: 0;
