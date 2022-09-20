@@ -1,0 +1,155 @@
+.logo {
+    width: 10rem;
+    height: 10rem;
+    margin-left: 3rem;
+    margin-top: 5rem;
+  }
+  
+  header {
+    width: 100%;
+    height: 50vh;
+    background-image: url(../img/Header&footer/header2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 0.5rem;
+  }
+  
+  nav {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .bar-btn {
+    color: #fff;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    width: 100%;
+    height: 0vh;
+    top: 5rem;
+    background: rgba(0, 0, 0, 0.95);
+    text-align: center;
+    transition: all 0.5s;
+  }
+  
+  .nav-menu li {
+    display: none;
+    line-height: 3rem;
+    margin: 5rem 0;
+    transition: all 0.5s;
+  }
+  
+  .nav-menu li a {
+    color: #fff;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  
+  .nav-menu li a.active,
+  .nav-menu li a:hover {
+    color: var(--primario);
+    transition: 0.3s;
+  }
+  
+  #check {
+    display: none;
+  }
+  
+  #check:checked ~ .nav-menu {
+    height: 100vh;
+  }
+  
+  #check:checked ~ .nav-menu li {
+    display: block;
+  }
+  
+  .banner-text {
+    padding: 0 3rem;
+    margin-top: 2rem;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .banner-text h1 {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .button1 {
+    margin-right: 1rem;
+    padding: 1rem 3rem;
+    background-color: var(--primario);
+    color: #fff;
+    border-radius: 0.5rem;
+  }
+  
+  .button1:hover {
+    background-color: var(--fsecundario);
+    color: #fff;
+    transition: 0.5s;
+  }
+  
+  .button2 {
+    margin-right: 4rem;
+    padding: 1rem 3rem;
+    background-color: var(--secundario);
+    color: #fff;
+    border-radius: 0.5rem;
+  }
+  
+  .button2:hover {
+    background-color: var(--fprimario);
+    color: #fff;
+    transition: 0.5s;
+  }
+  
+  @media screen and (min-width: 769px) {
+    .logo {
+      margin-left: 5rem;
+    }
+  
+    nav {
+      height: 10rem;
+    }
+  
+    .bar-btn {
+      display: none;
+    }
+  
+    .nav-menu {
+      position: absolute;
+      height: 10rem;
+      top: 0;
+      background: none;
+      transition: none;
+      text-align: right;
+      margin-right: 5rem;
+      z-index: 1;
+    }
+  
+    .nav-menu li {
+      display: inline-block;
+      line-height: 10rem;
+      margin: 0 1rem;
+      transition: none;
+    }
+  
+    .nav-menu li a {
+      font-size: 1.2rem;
+    }
+  
+    .banner-text h1 {
+      font-size: 7rem;
+      margin-bottom: 3rem;
+      margin: 0 0;
+      text-transform: uppercase;
+    }
+  }
