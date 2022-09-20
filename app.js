@@ -9,7 +9,7 @@ app.use(express.static('public'))
 app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/public/js/slide.js'));
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/views/index.html')));
-//app.get('/Home', (req, res) => res.sendFile(path.join(__dirname, '/views/home.html')));
+app.get('/Home.html', (req, res) => res.sendFile(path.join(__dirname, '/views/index.html')));
 app.get('/index.html', (req, res) => res.sendFile(path.join(__dirname, '/views/index.html')));
 app.get('/productDetail.html', (req, res) => res.sendFile(path.join(__dirname, '/views/productDetail.html')));
 app.get('/productCart.html', (req, res) => res.sendFile(path.join(__dirname, '/views/productCart.html')));

@@ -12,8 +12,7 @@ html {
 
 .degradado {
   color: transparent;
-  background: linear-gradient(
-    to right,
+  background: linear-gradient(to right,
     var(--primario) 0%,
     var(--secundario) 100%
   );
@@ -26,6 +25,7 @@ html {
   --secundario: #fe019a;
   --fprimario: #bc13fe;
   --fsecundario: #0504aa;
+  --Grisfondo: #e1e1e1;
 }
 
 body {
@@ -110,4 +110,16 @@ main .recopilacion {
 }
 .producto-preview p {
   font-size: 1.2rem;
+}
+
+.btn {
+  background-color: var(--primario);
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 900;
+  padding: 1rem;
+  transition: background-color 0.3s ease-out;
+  text-align: center;
+  border: none;
 }
