@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+
+
+<head><link rel="stylesheet" href="/css/login&register.css" /></head>
+
+<body> 
+    <%- include('../partials/header') %>
+
+    <main class="login-register-container">
+        <section>
+            <div class="form-container">
+                <h1>register</h1>
+                <form action="#">
+                    <div class="control">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="control">
+                        <label for="psw">Ingresa una contraseña</label>
+                        <input type="password" name="psw" id="psd">
+                    </div>
+                    <div class="control">
+                        <label for="psw">Repite la contraseña</label>
+                        <input type="password" name="psw" id="psd">
+                    </div>
+                    <div class="control">
+                        <label for="psw">Ingresa tu correo electronico</label>
+                        <input type="email" name="psw" id="psd">
+                    </div>
+                    <div class="control">
+                        <label for="psw">Tu fecha de nacimiento</label>
+                        <input type="date" name="psw" id="psd">
+                    </div>
+                    <span class="Rememberme-login"><input type="checkbox">Aceptas los terminos y condiciones de nuestro servicio</span>
+                    <div class="control">
+                        <input type="submit" value="Terminar el Registro">
+                    </div>
+                </form>
+                <div class="link-forgot-password">
+                    <a href="login.html">Ya tienes una cuenta?</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

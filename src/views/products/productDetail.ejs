@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+  <head><link rel="stylesheet" href="/css/productDetail.css" /></head>
+
+<body> 
+  <%- include('../partials/header') %>
+
+  <section class="producto-detail">
+    <div class="producto-titulo">
+      <h2>La mejor de las mejores super hiper mega diademas RGB +15FPS</h2>
+      <a class="vendedor" href="#">más productos de la marca</a>
+      <div class="calificacion">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+      </div>
+    </div>
+    
+    <div class="producto-elementos">
+      <div class="producto-imagenes">
+        <div class="img-main"><img src="/img/productDetail/productoDemo.jpg" alt="imagen de producto"></div>
+        <ul class="img-alt">
+          <li>
+            <i class="fa-regular fa-circle-dot"></i>
+            <i class="fa-sharp fa-solid fa-circle-dot" style="display: none;"></i>
+            <img src="/img/productDetail/productoDemo.jpg" alt="view">
+          </li>
+          <li>
+            <i class="fa-regular fa-circle-dot"></i>
+            <i class="fa-sharp fa-solid fa-circle-dot" style="display: none;"></i>
+            <img src="/img/productDetail/productoDemo.jpg" alt="view">
+          </li>
+          <li>
+            <i class="fa-regular fa-circle-dot"></i>
+            <i class="fa-sharp fa-solid fa-circle-dot" style="display: none;"></i>
+            <img src="/img/productDetail/productoDemo.jpg" alt="view">
+          </li>
+        </ul>
+      </div>
+      <div class="producto-info">
+        
+        <div class="producto-opciones">
+          <button>Rojo Sangre</button>
+          <button>Azul Cielo</button>
+          <button>Amarillo Pollito</button>
+        </div>
+        <p>Super hiper mega descripción. Solo por leer esta descricción vas 
+          a tener +5 FPS en todos los jueveos, sea en windows, mac o linux 
+          qué esperas para comprar?</p>
+  
+      </div>
+      <div class="producto-precio">
+        <div class="precio-numero"> <h2>$349</h2><h4>.900</h4> </div>
+        <div class="btns-producto">
+          <form action="productCart.html">
+            <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button>
+            <button class="btn anadir-deseados">Añadir a Deseados</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <main class="contenedor-principal">
+
+    <h2 class="section-title degradado">Recomendados</h2>
+    <section class="recopilacion">
+      <div class="producto-preview">
+        <img src="/img/productDetail/productoDemo.jpg">
+        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+        <p class="precio">$500.000</p>
+        <button class="btn">Añadir al Carrito</button>
+      </div>
+      <div class="producto-preview">
+        <img src="/img/productDetail/productoDemo.jpg">
+        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+        <p class="precio">$500.000</p>
+        <button class="btn">Añadir al Carrito</button>
+      </div>
+      <div class="producto-preview">
+        <img src="/img/productDetail/productoDemo.jpg">
+        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+        <p class="precio">$500.000</p>
+        <button class="btn">Añadir al Carrito</button>
+      </div>
+      <div class="producto-preview">
+        <img src="/img/productDetail/productoDemo.jpg">
+        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+        <p class="precio">$500.000</p>
+        <button class="btn">Añadir al Carrito</button>
+      </div>
+    </section>
+
+    <section class="recopilacion historial" style="display: none">
+      <div class="producto-preview"></div>
+      <div class="producto-preview"></div>
+      <div class="producto-preview"></div>
+      <div class="producto-preview"></div>
+    </section>
+    <section></section>
+  </main>
+  
+  <%- include('../partials/footer') %>
+</body>
+</html>
