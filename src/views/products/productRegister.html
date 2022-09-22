@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pegasus Tech | Crear producto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/css/form/base/base.css">
+    <link rel="stylesheet" href="/css/form/registro.css">
+    <link rel="stylesheet" href="/css/form/componentes/card.css">
+    <link rel="stylesheet" href="/css/form/componentes/inputs.css">
+    <link rel="stylesheet" href="/css/form/componentes/button.css">
+    <link rel="stylesheet" href="/css/login&register.css">
+</head>
+<body><!-- esta sección puede ser un parcial? -->
+    <main class="container flex flex--column flex--center">
+        <div class="cadastro-cabecalho">
+            <img src="/img/Header&footer/Pegasus-logo.png" width="10%" alt="Logo Pegasus Tech" class="registry-header__logo">
+            <h1 class="registry-header__title">Pegasus Tech</h1>
+        </div>
+        <section class="cartao">
+            <h2 class="card__title">Registrar producto</h2><!-- opcional -->
+            <form action="./registro_concluido.html" class="formulario flex flex--column">
+                <fieldset>
+                    <legend class="form__label">Información ...</legend>
+                    <div class="input-container">
+                        <input name="name" id="name" class="input" type="text" placeholder="Nombre" required data-tipo="nombre">
+                        <label class="input-label" for="name">Nombre del producto</label>
+                        <span class="input-message-error">Este campo no es valido</span>
+                    </div>
+                    <div class="textarea-container"><!-- Usar textarea o input? -->
+                        <textarea name="descripcion" id="descripcion" class="textarea" type="text" placeholder="descripcion" required data-tipo="descripcion"></textarea>
+                        <label class="textarea-label" for="descripcion">Descripcion del producto</label>
+                        <span class="input-message-error">Este campo no es valido</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="imagen" id="imagen" class="input" type="text" placeholder="Imágen" required  data-tipo="imagen">
+                        <label class="input-label" for="imagen">Imágen del producto</label>
+                        <span class="input-message-error">Este campo no es valido</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="categoria" id="categoria" class="input" type="text" placeholder="Categoria" required data-tipo="categoria">
+                        <label class="input-label" for="categoria">Categoria del producto</label>
+                        <span class="input-message-error">Este campo no es valido</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="precio" id="precio" class="input" type="text" placeholder="Precio" required data-tipo="precio">
+                        <label class="input-label" for="precio">Precio del producto</label>
+                        <span class="input-message-error">Este campo no es valido</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="colores" id="colores" class="input" type="text" placeholder="Colores" required data-tipo="colores">
+                        <label class="input-label" for="colores">Colores del producto</label>
+                        <span class="input-message-error">Este campo no es valido</span>
+                    </div>
+                </fieldset>
+                
+                <button class="button">Registrar</a>
+            </form>
+        </section>
+    </main>
+
+    <script src="/js/validaciones.js" type="module"></script>
+</body>
+</html>

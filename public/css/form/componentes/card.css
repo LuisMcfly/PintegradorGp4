@@ -1,0 +1,19 @@
+.cartao {
+    /* background-color: var(--contrast-light-color); */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 45rem;
+    padding: 1.75rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+  }
+  
+  .card__title {
+    color: var(--contrast-light-color);
+    font-size: var(--font-size-card-title);
+    margin-bottom: 1rem;
+  }
+  
