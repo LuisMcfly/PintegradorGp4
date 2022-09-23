@@ -4,7 +4,7 @@
   "description": "Somos una empresa distribuidora de productos tecnológicos de diversas gamas,\r contamos con las marcas Top del mercado a precios accesibles.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon /src/app.js",
+    "start": "nodemon ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

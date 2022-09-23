@@ -12,6 +12,7 @@ const userRouter = require('./routes/user');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // siempre se debe hacer cuando views no esté en raíz
+app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/controllers/sliderController.js'));
 
 app.use(express.static('public'));
 
