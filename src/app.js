@@ -20,7 +20,6 @@ app.use('/products/', productRouter);
 app.use('/cart/', cartRouter);
 app.use('/', userRouter);
 
-// app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/public/js/slide.js')); 
-// reorganizar la ruta para que cargue el slider del index
+app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/controllers/sliderController.js')); // Ruta del slider funcionando ! 
 
 app.listen(3000, () => console.log('Servidor corriendo en puerto 3000'));
