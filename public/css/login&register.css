@@ -11,7 +11,7 @@
 
 .form-container {
   position: absolute;
-  top: 37%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
