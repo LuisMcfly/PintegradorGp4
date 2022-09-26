@@ -1,3 +1,8 @@
+main h3 {
+    margin: 5px 0px;
+    line-height: 120%;
+}
+
 img {
     width: 100%;
     object-fit: contain;
@@ -22,11 +27,13 @@ img {
     gap: 30px;
 }
 .carrito .checkout {
+    width: 80%;
+    align-self: center;
     background: linear-gradient(to right, var(--primario) 0%, var(--secundario) 100% );
 }
 
 .carrito-producto img {
-    width: 180px;
+    width: 160px;
 }
 .carrito-producto-info {
     display: flex;
@@ -45,7 +52,7 @@ img {
 .carrito-producto .precio {
     justify-self: flex-end;
     align-self: flex-end;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-left: auto;
 }
 .carrito-subtotal {
@@ -53,4 +60,29 @@ img {
 
     display: flex;
     justify-content: space-between;
+}
+
+@media (min-width: 430px) { /* For Tablets */
+}
+
+@media (min-width: 769px) { /* For PC */ 
+    main {
+        width: 80%;
+        max-width: 1080px;
+        margin: 0px auto;
+        /*display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;*/
+    }
+    main > section {
+        width: 100%;
+    }
+
+    .carrito .precio {
+        font-size: 2rem;
+    }
+    .carrito .checkout {
+        width: 500px;
+    }
 }
