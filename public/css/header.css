@@ -24,6 +24,7 @@ nav {
 }
 
 .bar-btn {
+  font-size: 3rem;
   color: #fff;
   margin-right: 20px;
   cursor: pointer;
@@ -143,7 +144,7 @@ nav {
   }
 
   .nav-menu li a {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 
   .banner-text h1 {
