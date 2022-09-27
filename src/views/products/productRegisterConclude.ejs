@@ -1,0 +1,23 @@
+
+  <%- include('../partials/head.ejs') %>  
+  <head><!-- tal vez se pueda hacer un partial del head para products_ -->
+    <link rel="stylesheet" href="/css/form/base/base.css" />
+    <link rel="stylesheet" href="/css/form/registroConcluido.css" />
+    <link rel="stylesheet" href="/css/form/componentes/card.css" />
+    <link rel="stylesheet" href="/css/form/componentes/button.css" />
+  </head>
+  <%- include('../partials/header.ejs') %> 
+  <body>
+    <main class="container flex flex--column flex--center">
+      <section class="registry-card cartao">
+        <span class="registry-card__icon-complete"></span>
+        <h1 class="registry-card__title card__title">
+          ¡Registro realizado con éxito!
+        </h1>
+        <a href="./productRegister" class="button"
+          >Registrar otro producto</a
+        >
+      </section>
+    </main>
+  </body>
+</html>
