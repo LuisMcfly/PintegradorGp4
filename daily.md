@@ -1,3 +1,5 @@
+# SPRINT 3
+
 ## Martes 20 de Septiembre, 2022
 * Se le dió la bienvenida a los nuevos integrantes del grupo. 
 * Se habló del avance que tenía el proyecto hasta el momento y qué tareas quedaron pendientes del segundo Sprint.
@@ -18,4 +20,7 @@ de las vistas (HTML) en archivos EJS
 * Ese día se trabajó en resolver algunos bugs que había en el funcionamiento del header y algunas rutas
 * Se programó una reunión para el Martes 27
 
+## Martes 27 de Septiembre, 2022
+* 
 
+# SPRINT 4
