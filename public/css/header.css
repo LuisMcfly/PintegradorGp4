@@ -32,9 +32,10 @@ nav {
 
 .nav-menu {
   position: absolute;
-  width: 100%;
+  width: 50%;
   height: 0vh;
-  top: 7rem;
+  right: 0rem;
+  top: 0rem;
   background: rgba(0, 0, 0, 0.95);
   text-align: center;
   transition: all 0.5s;
@@ -90,7 +91,6 @@ nav {
 }
 
 .button1 {
-  margin-right: 1rem;
   padding: 1rem 3rem;
   background-color: var(--primario);
   color: #fff;
@@ -104,7 +104,6 @@ nav {
 }
 
 .button2 {
-  margin-right: 4rem;
   padding: 1rem 3rem;
   background-color: var(--secundario);
   color: #fff;
