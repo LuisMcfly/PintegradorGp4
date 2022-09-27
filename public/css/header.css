@@ -2,7 +2,7 @@
   width: 6rem;
   height: 6rem;
   margin-left: 1rem;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 header {
@@ -21,6 +21,20 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.logoSearch{
+  display: flex;
+  align-items: flex-end;
+}
+.fas {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  color: #fff;
+}
+.searchBar {
+  display: none;
 }
 
 .bar-btn {
@@ -126,6 +140,25 @@ nav {
 
   nav {
     height: 10rem;
+  }
+
+  .logoSearch {
+    align-items: center;
+  }
+  .fas {
+    display: flex;
+    align-items: center;
+  }
+  .searchBar {
+    display: block;
+    border: none;
+    
+    background-color: transparent;
+    color: #fff;
+    font-size: 14px;
+    height: 32px;
+    opacity: 1;
+    width: 500px;
   }
 
   .bar-btn {

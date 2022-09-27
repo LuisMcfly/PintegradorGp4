@@ -22,4 +22,4 @@ app.use('/', userRouter);
 
 app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/controllers/sliderController.js')); // Ruta del slider funcionando ! 
 
-app.listen(3000, () => console.log('Servidor corriendo en puerto 3000'));
+app.listen(3000, () => console.log('Servidor corriendo en http://localhost:3000'));
