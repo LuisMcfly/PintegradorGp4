@@ -5,8 +5,17 @@
     </div>
     <input type="checkbox" id="check" />
     <label for="check" class="bar-btn">
-      <i class="fas fa-bars"></i>
+    <!-- <i class="fas fa-bars"></i> -->
+    <span class="top-line"></span>
+    <span class="middle-line"></span>
+    <span class="bottom-line"></span>
     </label>
+    <script>
+      const nav = document.querySelector('.bar-btn');
+      nav.addEventListener('click', () => {
+        nav.classList.toggle('open');
+      });
+    </script>
     <div class="nav-menu">
       <ul>
         <li><a class="active" href="/">Home</a></li>
