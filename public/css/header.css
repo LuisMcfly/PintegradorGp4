@@ -51,23 +51,18 @@ nav {
   margin-right: 2rem;
   height: 0.2rem;
 }
-
 .bar-btn.open .top-line{
   animation-name: top-line-animation;
 }
-
 .bar-btn.open .middle-line{
   animation-name: middle-line-animation;
 }
-
 .bar-btn.open .bottom-line{
   animation-name: bottom-line-animation;
 }
-
 .bar-btn .top-line{
   animation-name: top-line-animation-close;
 }
-
 .bar-btn .middle-line{
   animation-name: middle-line-animation-close;
 }
