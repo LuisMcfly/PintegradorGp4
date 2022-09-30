@@ -21,6 +21,15 @@ de las vistas (HTML) en archivos EJS
 * Se programó una reunión para el Martes 27
 
 ## Martes 27 de Septiembre, 2022
-* 
+* Se estuvo tarbajando en las tareas faltantes para terminar el sprint
+* Se asignaron tareas para pulir algunos elementos del sitio
+
+## Jueves 29 de Septiembre, 2022
+* Se revisaron los avances de las tareas
+* Se hizo los pull request necesarios para hacer la entrega en la rama Main
+
 
 # SPRINT 4
+
+## Jueves 29 de Septiembre, 2022
+*
