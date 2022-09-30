@@ -1,3 +1,7 @@
+header{
+  background-image: none;
+}
+
 .formulario {
   margin-top: 2rem;
 }
@@ -5,8 +9,6 @@
 fieldset {
   border: 0;
 }
-
-
 
 .form__label {
   font-size: var(--font-size-form-fieldset);
@@ -37,7 +39,6 @@ fieldset {
 
 .input::placeholder {
   visibility: hidden;
-  /* color: #00000000; */
   color: var(--contrast-light-color);
 }
 
@@ -46,13 +47,26 @@ fieldset {
   background-color: transparent;
 }
 
+.file{
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+.file:hover+ .input-file{/* se puede modificar el texto con js para que solo dejar el input sin el label */
+  visibility: visible;
+}
+.input-file {/* 
+  visibility: hidden; */
+  margin-top: 1rem;
+  border-radius: 10px;
+}
+
 .input-label {
   position: absolute;
-  top: 1.375rem;
+  /* top: 1.375rem; */
   left: 0.5rem;
   font-size: var(--font-size-input-label);
 
-  transition: all 0.25s;
+  transition: all 0.45s;
 }
 
 .input:not(:placeholder-shown) + .input-label,
@@ -91,8 +105,10 @@ fieldset {
   box-sizing: border-box;
   border: 0;
   border-bottom: 1px solid var(--secondary-color);
+  color: var(--Grisfondo);
   padding: 0.5rem;
   border-radius: 7px;
+  margin-bottom: 2rem;
   width: 100%;
   min-height: 3rem;
 }

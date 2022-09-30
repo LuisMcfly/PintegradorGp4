@@ -1,3 +1,35 @@
-Se le dio la bienvenida a los nuevos integrantes del grupo. Se habló del avance que tenía el proyecto hasta el momento que tareas quedaron pendientes del segundo Sprint. Se revisaron los requerimientos del tercer Sprint y se programó una reunión para implementar el motor de templetes, separar las vistas, crear la carpeta partials e incorporar la página de creación y edición de productos. Después de realizar la reunión se asignaron las tareas individuales en el tablero de Trello con su respectivo responsable.
+# SPRINT 3
 
-Realizar las daylies nos ha permitido aumentar el nivel de compromiso de cada uno de los integrantes del equipo, realizar un mejor seguimiento a las tareas pendientes y a los posibles obstáculos que se presenten. Mejoramos el ritmo de trabajo e implementamos una comunicación asertiva. Si una tarea afecta el desarrollo de las tareas de otros integrantes se prioriza y se le hace un seguimiento más exhaustivo para no provocar retrasos en la respectiva programación.
+## Martes 20 de Septiembre, 2022
+* Se le dió la bienvenida a los nuevos integrantes del grupo. 
+* Se habló del avance que tenía el proyecto hasta el momento y qué tareas quedaron pendientes del segundo Sprint.
+* Se revisaron los requerimientos del tercer Sprint y se programó una reunión para implementar el motor de templetes, separar las vistas, crear la carpeta partials e incorporar la página de creación y edición de productos.
+* Después de realizar la reunión se asignaron tareas individuales en el tablero de Trello con su respectivo responsable.
+
+## Jueves 22 de Septiembre, 2022
+* Se repasaron los conceptos vistos en clase y en el Playground
+* Se repasó el funcionamiento del repositorio en Git
+* Se aclararon dudas acerca de la metodología de trabajo del equipo
+* Ese día se trabajó de manera conjunta la estructura de las carpetas, el enlazado de rutas, y la modularización 
+de las vistas (HTML) en archivos EJS
+* Se asignaron tareas para realizar a lo largo del fin de semana
+
+## Lunes 26 de Septiembre, 2022
+* Se revisó el progreso en el proyecto a lo largo del fin de semana
+* Se montaron los avances a la rama Dev
+* Ese día se trabajó en resolver algunos bugs que había en el funcionamiento del header y algunas rutas
+* Se programó una reunión para el Martes 27
+
+## Martes 27 de Septiembre, 2022
+* Se estuvo tarbajando en las tareas faltantes para terminar el sprint
+* Se asignaron tareas para pulir algunos elementos del sitio
+
+## Jueves 29 de Septiembre, 2022
+* Se revisaron los avances de las tareas
+* Se hizo los pull request necesarios para hacer la entrega en la rama Main
+
+
+# SPRINT 4
+
+## Jueves 29 de Septiembre, 2022
+*

@@ -15,7 +15,7 @@
   text-align: center;
 }
 .button:hover {
-  background-color: var(--fsecundario);
+  background-color: var(--secundario);
 }
 
 .simple-button {

@@ -1,17 +1,12 @@
 .logo {
-  width: 6rem;
-  height: 6rem;
-  margin-left: 1rem;
-  margin-top: 2rem;
+  width: 22rem;
+  height: 22rem;
 }
 
 header {
   width: 100%;
-  height: 30vh;
-  background-image: url(../img/Header&footer/header2.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  height: 10vh;
+  background-color: #000;
   margin-bottom: 0.5rem;
 }
 
@@ -138,21 +133,6 @@ nav {
   display: block;
 }
 
-.banner-text {
-  display:flex;
-  position: relative;
-  justify-content: center;
-  top:-2rem;
-  padding: 0 3rem;
-  margin-top: 1rem;
-  color: #fff;
-}
-
-.banner-text h1 {
-  font-size: 3.5rem;
-  margin-bottom: 3rem;
-}
-
 .button1 {
   padding: 1rem 3rem;
   background-color: var(--primario);
@@ -180,12 +160,12 @@ nav {
 }
 
 @media screen and (min-width: 769px) {
+
   .logo {
-    width: 10rem;
-    height: 10rem;
-    margin-left: 3rem;
-    margin-top: 5rem;
+    width: 22rem;
+    height: 22rem;
   }
+  
 
   nav {
     height: 10rem;
@@ -217,19 +197,4 @@ nav {
     font-size: 1.5rem;
   }
 
-  .banner-text {
-    display:flex;
-    position: relative;
-    justify-content: center;
-    top:-3rem;
-    padding: 0 3rem;
-    margin-top: 1rem;
-    text-align: center;
-    color: #fff;
-  }
-  
-  .banner-text h1 {
-    font-size: 8rem;
-    margin-bottom: 3rem;
-  }
 }
