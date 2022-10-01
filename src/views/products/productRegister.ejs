@@ -49,15 +49,27 @@
                         <input name="imagen" required id="imagen" class="input-file" type="file" placeholder="Imágen" required  data-tipo="imagen"> 
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
-                    <div class="input-container">
-                        <label class="input-label file" for="categoria">Categoria del producto <i class="fas fa-check-square"></i></label>
-                        <select name="categoria" id="categoria" class=" input-file" >
-                            <option value="cat1">cat1</option>
-                            <option value="cat2">cat2</option>
-                            <option value="cat3">cat3</option>
-                            <option value="cat4">cat4</option>
-                          </select>
-                        <span class="input-message-error">Este campo no es valido</span>
+
+                    <div class="list-choice">
+                      <div class="list-choice-title">Seleccione la Categoria <i class="fa-solid fa-layer-group"></i></div>
+                      <div class="list-choice-objects">
+                        <label>
+                          <input type="radio" name="category"/>
+                          <span>Cat one</span>
+                        </label>
+                        <label>
+                          <input type="radio" name="category"/>
+                          <span>Cat two</span>
+                        </label>
+                        <label>
+                          <input type="radio" name="category"/>
+                          <span>Cat three</span>
+                        </label>
+                        <label>
+                          <input type="radio" name="category"/>
+                          <span>Cat four</span>
+                        </label>
+                      </div>
                     </div>
                     <div class="input-container">
                         <input name="precio" id="precio" class="input" type="text" placeholder="Precio" required data-tipo="precio">
