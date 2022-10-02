@@ -116,7 +116,6 @@ main .recopilacion {
   background-color: var(--primario);
   display: block;
   color: #fff;
-  text-transform: uppercase;
   font-weight: 900;
   padding: 1rem;
   transition: background-color 0.3s ease-out;
