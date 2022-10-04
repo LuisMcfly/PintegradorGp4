@@ -13,12 +13,12 @@ header {
   align-items: center;
 }
 
-nav {
+/* nav {
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
 .bar-btn span {
   background-color: white;
@@ -72,14 +72,15 @@ nav {
 }
 
 .nav-menu {
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 1);
+  list-style: none;
+  text-align: center;
   position: absolute;
-  top: 105px;
+  top: 100px;
   right: -40rem;
   width: 0px;
   height: 40rem;
   padding: 0px 20px;
-  text-align: center;
   z-index: 5;
 
   display: flex;
@@ -125,15 +126,10 @@ nav {
 #check {
   display: none;
 }
-
 #check:checked ~ .nav-menu {
   width: 50%;
   right: 0rem;
   transition-duration: 0.5s;
-}
-
-#check:checked ~ .nav-menu li {
-  display: block;
 }
 
 .button1 {
@@ -164,62 +160,33 @@ nav {
 
 @media screen and (min-width: 769px) {
 
-  /* .logo {
-    height: 22rem;
-  }
-  
-
-  nav {
-    height: 10rem;
-  } */
-
   .bar-btn {
     display: none;
   }
 
-  /* .nav-menu {
-    position: absolute;
-    height: 10rem;
-    top: 0rem;
-    background: none;
-    transition: none;
-    text-align: right;
-    margin-right: 5rem;
-    z-index: 5;
-  }
-
-  .nav-menu li {
-    display: inline-block;
-    line-height: 10rem;
-    margin: 0 1rem;
-    transition: none;
-  }
-
-  .nav-menu li a {
-    font-size: 1.7rem;
-  } */
   header {
     padding: 0px 30px;
   }
+
   header div {
     flex-grow: 0  ;
   }
-  header nav {
-    display: block;
-  }
+
   .nav-menu {
-    position: initial;
-    /* top: 0px;
-    left: 0px;
-    right: auto; */
-    width: 100%;
+    position: relative;
+    align-self: flex-end;
+    top: 0px;
+    right: 0px;
+    width: 100% !important;
     height: 100%;
 
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
   }
-
+  .nav-menu > li {
+    flex-shrink: 0;
+  }
 }
