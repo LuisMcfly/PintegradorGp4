@@ -16,7 +16,7 @@
     <main class="container flex flex--column flex--center">
         <section class="cartao">
             <h2 class="card__title">Registrar producto</h2><!-- opcional -->
-            <form action="./productRegisterConclude" class="formulario flex flex--column">
+            <form action="/products/productRegister" method="post" enctype="multipart/form-data" class="formulario flex flex--column">
                 <fieldset>
                     <legend class="form__label">Información ...</legend>
                     <div class="input-container">
@@ -25,9 +25,14 @@
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                     <div class="input-container">
-                        <input name="fabricante" id="fabricante" class="input" type="text" placeholder="Fabricante" required data-tipo="fabricante">
+                      <select name="fabricante" id="">
+                        <% for(let i=0;i<fabricantes.length; i++) {%>
+                          <option value="<%= fabricantes[i].name %>"><%= fabricantes[i].name %> </option>
+                        <% } %>  
+                      </select>
+                        <!-- <input name="fabricante" id="fabricante" class="input" type="text" placeholder="Fabricante" required data-tipo="fabricante">
                         <label class="input-label" for="fabricante">Fabricante del producto <i class="fas fa-file-signature"></i></label>
-                        <span class="input-message-error">Este campo no es valido</span>
+                        <span class="input-message-error">Este campo no es valido</span> -->
                     </div>
                     <div class="input-container">
                         <input name="modelo" id="modelo" class="input" type="text" placeholder="Modelo" required data-tipo="modelo">
@@ -39,7 +44,7 @@
                         <label class="input-label" for="variaciones">Variaciones del producto <i class="fas fa-file-signature"></i></label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
-                    <div class="textarea-container"><!-- Usar textarea o input? -->
+                    <div class="textarea-container">
                         <textarea name="descripcion" id="descripcion" class="textarea" type="text" placeholder="descripcion" required data-tipo="descripcion"></textarea>
                         <label class="textarea-label" for="descripcion">Descripcion del producto <i class="fas fa-file-signature"></i></label>
                         <span class="input-message-error">Este campo no es valido</span>
@@ -54,20 +59,20 @@
                       <div class="list-choice-title">Seleccione la Categoria <i class="fa-solid fa-layer-group"></i></div>
                       <div class="list-choice-objects">
                         <label>
-                          <input type="radio" name="category"/>
-                          <span>Cat one</span>
+                          <input type="radio" name="category" value="portatiles"/>
+                          <span>Portatiles</span>
                         </label>
                         <label>
-                          <input type="radio" name="category"/>
-                          <span>Cat two</span>
+                          <input type="radio" name="category" value="pcEscritorio"/>
+                          <span>Computadores de escritorio</span>
                         </label>
                         <label>
-                          <input type="radio" name="category"/>
-                          <span>Cat three</span>
+                          <input type="radio" name="category" value="perifericos"/>
+                          <span>Periféricos</span>
                         </label>
                         <label>
-                          <input type="radio" name="category"/>
-                          <span>Cat four</span>
+                          <input type="radio" name="category" value="gamer"/>
+                          <span>Gamer</span>
                         </label>
                       </div>
                     </div>
@@ -78,15 +83,15 @@
                     </div>
                     <div class="input-container">
                         <input name="descuento" id="descuento" class="input" type="text" placeholder="Descuento" required data-tipo="descuento">
-                        <label class="input-label" for="descuento">Descuento del producto <i class="fas fa-dollar-sign"></i></label>
+                        <label class="input-label" for="descuento">Descuento del producto <i class="fas fa-percent"></i></label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                     <div class="input-container">
-                        <!-- <label class="input-label" for="colores">Colores del producto <i class="fas fa-palette"></i></label>     -->
+                       <!-- <label class="input-label" for="colores">Colores del producto <i class="fas fa-palette"></i></label>      -->
                     <section class="app">
                         <h3>Colores <i class="fas fa-palette"></i></h3>
                         <article class="feature1">
-                          <input type="checkbox" id="feature1"/>
+                          <input type="checkbox" id="feature1" name="colors[]" value="blanco"/>
                           <div>
                             <span>
                               BLANCO
@@ -95,7 +100,7 @@
                         </article>
                         
                         <article class="feature2">
-                          <input type="checkbox" id="feature2"/>
+                          <input type="checkbox" id="feature2" name="colors[]" value="azul"/>
                           <div>
                             <span>
                               AZUL
@@ -104,7 +109,7 @@
                         </article>
                         
                         <article class="feature3">
-                          <input type="checkbox" id="feature3"/>
+                          <input type="checkbox" id="feature3" name="colors[]" value="rojo"/>
                           <div>
                             <span>
                               ROJO
@@ -113,7 +118,7 @@
                         </article>
                         
                         <article class="feature4">
-                          <input type="checkbox" id="feature4" checked/>
+                          <input type="checkbox" id="feature4" name="colors[]" value="fucsia" checked/>
                           <div>
                             <span>
                               FUCSIA
@@ -125,8 +130,9 @@
                 </fieldset>
                 
                 <button class="button">Registrar</a>
-            </form>
-        </section>
+            </form> 
+            
+          </section>
     </main>
 
     <%- include('../partials/footer') %> 

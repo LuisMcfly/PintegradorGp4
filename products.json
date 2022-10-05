@@ -1,0 +1,15 @@
+[
+  {
+    "id": "26077f1b-effb-4c1f-a60c-c5070cd4b602",
+    "name": "test",
+    "fabricante": "test",
+    "modelo": "test",
+    "variaciones": "test",
+    "descripcion": "test",
+    "category": "portatiles",
+    "precio": "1",
+    "descuento": "1",
+    "colors": ["blanco", "azul", "rojo", "fucsia"],
+    "image": "insignia 2.png"
+  }
+]
