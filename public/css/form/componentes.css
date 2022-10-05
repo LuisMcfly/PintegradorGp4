@@ -1,13 +1,9 @@
-header{
-  background-image: none;
-}
-
 .formulario {
   margin-top: 2rem;
 }
 
 fieldset {
-  border: 0;
+  border: none;
 }
 
 .form__label {
@@ -347,5 +343,66 @@ input[type=checkbox]:checked ~ div {
   color: var(--warning-color);
   margin-top: 0.5rem;
   padding-left: 0.5rem;
+}
+
+
+/* Button.css */
+
+.button {
+  display: block;
+  background-color: var(--primario);
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+  max-width: 20rem;
+  padding: 1.125rem;
+  box-sizing: border-box;
+  color: var(--contrast-light-color);
+  font-size: var(--font-size-button);
+  align-self: center;
+  text-align: center;
+}
+.button:hover {
+  background-color: var(--secundario);
+}
+
+.simple-button {
+  border: none;
+  background-color: unset;
+}
+
+.simple-button--add {
+  color: var(--primary-color);
+}
+
+.simple-button--delete {
+  color: var(--warning-color);
+}
+
+.simple-button--edit {
+  color: var(--success-color);
+}
+
+
+/* Cartd.css (validaciones?) */
+.cartao {
+  /* background-color: var(--contrast-light-color); */
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 45rem;
+  padding: 1.75rem;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.card__title {
+  color: var(--contrast-light-color);
+  font-size: var(--font-size-card-title);
+  margin-bottom: 1rem;
 }
   
