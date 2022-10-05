@@ -16,44 +16,123 @@
     <main class="container flex flex--column flex--center">
         <section class="cartao">
             <h2 class="card__title">Registrar producto</h2><!-- opcional -->
-            <form action="./productRegisterConclude" class="formulario flex flex--column">
+            <form action="/products/productRegister" method="post" enctype="multipart/form-data" class="formulario flex flex--column">
                 <fieldset>
                     <legend class="form__label">Información ...</legend>
                     <div class="input-container">
                         <input name="name" id="name" class="input" type="text" placeholder="Nombre" required data-tipo="nombre">
-                        <label class="input-label" for="name">Nombre del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="textarea-container"><!-- Usar textarea o input? -->
-                        <textarea name="descripcion" id="descripcion" class="textarea" type="text" placeholder="descripcion" required data-tipo="descripcion"></textarea>
-                        <label class="textarea-label" for="descripcion">Descripcion del producto</label>
+                        <label class="input-label" for="name">Nombre del producto <i class="fas fa-file-signature"></i></label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                     <div class="input-container">
-                        <label class="input-label file" for="imagen">Seleccione la imágen del producto</label>
+                      <select name="fabricante" id="">
+                        <% for(let i=0;i<fabricantes.length; i++) {%>
+                          <option value="<%= fabricantes[i].name %>"><%= fabricantes[i].name %> </option>
+                        <% } %>  
+                      </select>
+                        <!-- <input name="fabricante" id="fabricante" class="input" type="text" placeholder="Fabricante" required data-tipo="fabricante">
+                        <label class="input-label" for="fabricante">Fabricante del producto <i class="fas fa-file-signature"></i></label>
+                        <span class="input-message-error">Este campo no es valido</span> -->
+                    </div>
+                    <div class="input-container">
+                        <input name="modelo" id="modelo" class="input" type="text" placeholder="Modelo" required data-tipo="modelo">
+                        <label class="input-label" for="modelo">Modelo del producto <i class="fas fa-file-signature"></i></label>
+                        <span class="input-message-error">Este campo no es valido</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="variaciones" id="variaciones" class="input" type="text" placeholder="Variaciones" required data-tipo="variaciones">
+                        <label class="input-label" for="variaciones">Variaciones del producto <i class="fas fa-file-signature"></i></label>
+                        <span class="input-message-error">Este campo no es valido</span>
+                    </div>
+                    <div class="textarea-container">
+                        <textarea name="descripcion" id="descripcion" class="textarea" type="text" placeholder="descripcion" required data-tipo="descripcion"></textarea>
+                        <label class="textarea-label" for="descripcion">Descripcion del producto <i class="fas fa-file-signature"></i></label>
+                        <span class="input-message-error">Este campo no es valido</span>
+                    </div>
+                    <div class="input-container">
+                        <label class="input-label file" for="imagen">Seleccione la imágen del producto <i class="fa-solid fa-camera"></i></label>
                         <input name="imagen" required id="imagen" class="input-file" type="file" placeholder="Imágen" required  data-tipo="imagen"> 
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
-                    <div class="input-container">
-                        <input name="categoria" id="categoria" class="input" type="text" placeholder="Categoria" required data-tipo="categoria">
-                        <label class="input-label" for="categoria">Categoria del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
+
+                    <div class="list-choice">
+                      <div class="list-choice-title">Seleccione la Categoria <i class="fa-solid fa-layer-group"></i></div>
+                      <div class="list-choice-objects">
+                        <label>
+                          <input type="radio" name="category" value="portatiles"/>
+                          <span>Portatiles</span>
+                        </label>
+                        <label>
+                          <input type="radio" name="category" value="pcEscritorio"/>
+                          <span>Computadores de escritorio</span>
+                        </label>
+                        <label>
+                          <input type="radio" name="category" value="perifericos"/>
+                          <span>Periféricos</span>
+                        </label>
+                        <label>
+                          <input type="radio" name="category" value="gamer"/>
+                          <span>Gamer</span>
+                        </label>
+                      </div>
                     </div>
                     <div class="input-container">
                         <input name="precio" id="precio" class="input" type="text" placeholder="Precio" required data-tipo="precio">
-                        <label class="input-label" for="precio">Precio del producto</label>
+                        <label class="input-label" for="precio">Precio del producto <i class="fas fa-dollar-sign"></i></label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                     <div class="input-container">
-                        <input name="colores" id="colores" class="input" type="text" placeholder="Colores" required data-tipo="colores">
-                        <label class="input-label" for="colores">Colores del producto</label>
+                        <input name="descuento" id="descuento" class="input" type="text" placeholder="Descuento" required data-tipo="descuento">
+                        <label class="input-label" for="descuento">Descuento del producto <i class="fas fa-percent"></i></label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
+                    <div class="input-container">
+                       <!-- <label class="input-label" for="colores">Colores del producto <i class="fas fa-palette"></i></label>      -->
+                    <section class="app">
+                        <h3>Colores <i class="fas fa-palette"></i></h3>
+                        <article class="feature1">
+                          <input type="checkbox" id="feature1" name="colors[]" value="blanco"/>
+                          <div>
+                            <span>
+                              BLANCO
+                            </span>
+                          </div>
+                        </article>
+                        
+                        <article class="feature2">
+                          <input type="checkbox" id="feature2" name="colors[]" value="azul"/>
+                          <div>
+                            <span>
+                              AZUL
+                            </span>
+                          </div>
+                        </article>
+                        
+                        <article class="feature3">
+                          <input type="checkbox" id="feature3" name="colors[]" value="rojo"/>
+                          <div>
+                            <span>
+                              ROJO
+                            </span>
+                          </div>
+                        </article>
+                        
+                        <article class="feature4">
+                          <input type="checkbox" id="feature4" name="colors[]" value="fucsia" checked/>
+                          <div>
+                            <span>
+                              FUCSIA
+                            </span>
+                          </div>
+                        </article>
+                    </section>
+                </div>                      
                 </fieldset>
                 
                 <button class="button">Registrar</a>
-            </form>
-        </section>
+            </form> 
+            
+          </section>
     </main>
 
     <%- include('../partials/footer') %> 

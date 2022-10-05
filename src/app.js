@@ -14,6 +14,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // siempre se debe hacer cuando views no esté en raíz
 
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
 app.use('/', mainRouter)
 app.use('/products/', productRouter);
