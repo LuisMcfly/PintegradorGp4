@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<%- include('../partials/head') %> 
+<head>
+  <link rel="stylesheet" href="/css/productShop.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include('../partials/header.ejs') %>
+  <section class="nav-categorias">
+    <ul>
+      <% for (let i=0; i<categorias.length; i++) { %>
+        <li><%= categorias[i].nombre %></li>
+      <% } %>
+    </ul>
+  </section>
+
+  <section class="shop-filters">
+  </section>
+
+  <main>
+    <% for (let i=0; i<productos.length; i++) {%>
+      <div class="shop-producto">
+        <div><img src="/images/img-cafetera-moulinex.jpg" alt="imagen del producto"></div>
+        <div class="info-de-producto">
+            <i class="fa-solid fa-van-shuttle"></i>
+            <p class="precio"><%= productos[i].precio %></p>
+            <p class="descuento"><%= productos[i].descuento %></p>
+            <h5><%= productos[i].nombre %></h5>
+        </div>
+      </div>
+    <% } %> 
+  </main>
+</body>
+</html>
