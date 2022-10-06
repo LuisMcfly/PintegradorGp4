@@ -1,63 +1,34 @@
 [
   {
-    "id": "26077f1b-effb-4c1f-a60c-c5070cd4b602",
-    "name": "test",
-    "fabricante": "test",
-    "modelo": "test",
-    "categoria": "portatiles",
-    "descripcion": "test",
-    "colores": [
-      "blanco",
-      "azul",
-      "rojo",
-      "fucsia"
-    ],
-    "variaciones": "[]",
-    "precio": "1",
-    "descuento": "1",
-    "rating": "5",
-    "imagenes": "insignia 2.png"
-  },
-  {
-    "id": "26077f1b-effb-4c1f-a60c-c5070cd4b603",
-    "nombre": "Portatil lenovo LV3002 8BG Ram",
-    "fabricante": "fabricantes[1]",
-    "modelo": "LV3002",
-    "categoria": "categorias[1]",
-    "descripcion": "8 GB de Ram",
-    "colores": "['negro', 'plateado']",
-    "variaciones": "[0032902]",
-    "precio": "3300000",
-    "descuento": "10",
-    "rating": "4",
-    "imagenes": "portatilLenovo.png"
-  },
-  {
     "id": "26077f1b-effb-4c1f-a60c-c5070cd4b604",
     "nombre": "Portatil lenovo LV3002 16BG Ram",
     "fabricante": "fabricantes[1]",
     "modelo": "LV3002",
     "categoria": "categorias[1]",
+    "variaciones": "[]",
     "descripcion": "16 GB de Ram",
-    "colores": "['negro', 'plateado']",
-    "variaciones": "[0032901]",
     "precio": "3500000",
     "descuento": "10",
+    "stock": "20",
+    "colores": "['negro', 'plateado']",
     "rating": "5",
     "imagenes": "portatilLenovo.png"
   },
   {
     "id": "3c182d82-c736-4517-af21-edf92c04fc4b",
-    "name": "Redragon Kurama 522 Blue",
+    "nombre": "Redragon Kurama 522 Blue",
     "fabricante": "RedDragon",
     "modelo": "Kurama 522",
+    "categoria": "categorias[3]",
     "variaciones": "test",
     "descripcion": "Blue Switches",
     "precio": "200000",
     "descuento": "0",
-    "colors": [
+    "stock": "20",
+    "colores": [
       "rojo"
     ],
-    "image": "download.jpeg"
+    "rating": "4",
+    "imagenes": "download.jpeg"
   }
 ]
