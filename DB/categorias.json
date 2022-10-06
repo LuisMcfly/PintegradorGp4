@@ -1,0 +1,7 @@
+[
+    {"id": "1", "nombre": "Portátiles"},
+    {"id": "2", "nombre": "Torres"},
+    {"id": "3", "nombre": "Monitores"},
+    {"id": "4", "nombre": "Teclados & Mouse"},
+    {"id": "5", "nombre": "Audio"}
+]
