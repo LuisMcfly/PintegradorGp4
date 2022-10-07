@@ -10,6 +10,8 @@ const productController = {
     
     productDetail: (req, res) => {
         let producto = productos.find(producto => producto.id==req.params.id)
+        
+        console.log('x', producto)
         res.render('products/productDetail', {producto})
     },
 
@@ -23,14 +25,18 @@ const productController = {
         } else {
             image = 'none.png';
         }
-        
         productos.push({id: uuid(),...req.body, image}); // pushea al objeto literal
         let productsJSON = JSON.stringify(productos, null); // convierte a objeto JSON
         fs.writeFileSync('DB/products.json', productsJSON); // Escribe el archivo
 
         res.redirect('productRegisterConclude');
     },
-    productEdit: (req, res) => res.render('products/productEdit'),
+    productEdit: (req, res) =>{ 
+        res.render('products/productEdit')
+    },
+    productDelete: (req, res) => {
+
+    },
     productRegisterConclude: (req, res) => res.render('products/productRegisterConclude'),
 }
 

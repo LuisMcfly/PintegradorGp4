@@ -1,21 +1,21 @@
 [
   {
-   "id": 1,
+   "id": "1",
    "name": "Lenovo IdeaPad 3",
    "manufacturer": "Lenovo",
    "model": "IdeaPad 3",
-   "variations": "[8GB RAM, 256 GB SSD]",
+   "variations": ["8GB RAM", "256 GB SSD"],
    "category": "Portátiles",
    "description": "Lenovo IdeaPad 3 - Laptop con pantalla táctil HD de 15.6 pulgadas, Intel Core i3-1115G4 (hasta 4.1 Ghz), 8 GB DDR4 RAM, 256 GB NVMe SSD, WiFi 5, Bluetooth, cámara web, HDMI, Win 11 S",
-   "price": 390,
-   "discount": 2,
-   "stock": 11,
-   "colors": "[Negro, verde]",
-   "rating": 3,
-   "images": "[portatiles.jpg, portatiles1.jpg, portatiles2.jpg]"
+   "price": "390",
+   "discount": "2",
+   "stock": "11",
+   "colors": ["Negro", "verde"],
+   "rating": "3",
+   "images": ["portatiles.jpg", "portatiles1.jpg", "portatiles2.jpg"]
   },
   {
-   "id": 2,
+   "id": "2",
    "name": "Lenovo IdeaPad 3",
    "manufacturer": "Lenovo",
    "model": "IdeaPad 3",
