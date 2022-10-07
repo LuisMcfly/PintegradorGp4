@@ -6,8 +6,14 @@ const fabricantes = JSON.parse(fs.readFileSync('DB/fabricantes.json', {encoding:
 const categorias = JSON.parse(fs.readFileSync('DB/categorias.json', {encoding: 'utf-8'}));
 
 const productController = {
-    productShop: (req, res) => res.render('products/productShop', {categorias, productos}),
-    productDetail: (req, res) => res.render('products/productDetail'),
+    productShop: (req, res) => res.render('products/productShop', {categorias, productos}),//lista todos los productos
+    
+    productDetail: (req, res) => {
+        let producto = productos.find(producto => producto.id==req.params.id)
+        console.log('xxx',producto.colors)
+        res.render('products/productDetail', {producto})
+    },
+
     productRegister: (req, res) => res.render('products/productRegister', {fabricantes}),
     create: (req, res) => {
         let image 

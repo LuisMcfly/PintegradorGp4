@@ -14,13 +14,13 @@ const multer = require('multer'),
     })
 
 
-const upload = multer({storage:storage})
+const upload = multer({storage:storage}).array('imagen')
 
 router.get('/', productController.productShop);
 router.get('/productRegister', productController.productRegister); //renderiza la vista del form
-router.post('/productRegister', upload.any(), productController.create); //guarda los datos enviados en el form
+router.post('/productRegister', upload, productController.create); //guarda los datos enviados en el form
 
-router.get('/productDetail', productController.productDetail);
+router.get('/productDetail/:id', productController.productDetail);
 router.get('/productEdit', productController.productEdit);
 router.get('/productRegisterConclude', productController.productRegisterConclude);
 

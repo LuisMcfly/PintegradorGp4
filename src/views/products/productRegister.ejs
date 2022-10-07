@@ -17,7 +17,7 @@
       <h2 class="card__title">Registrar producto</h2>
 
       <form action="/products/productRegister" method="post" enctype="multipart/form-data"
-        class="formulario flex flex--column">
+        class="formulario flex flex--column" >
         
         <fieldset>
           <div class="input-container">
@@ -61,8 +61,7 @@
           <div class="input-container">
             <label class="input-label file" for="imagen">Seleccione la imágen del producto 
               <i class="fa-solid fa-camera"></i></label>
-            <input name="imagen" required id="imagen" class="input-file" type="file" placeholder="Imágen" required
-              data-tipo="imagen">
+            <input name="imagen" id="imagen" class="input-file" type="file" multiple placeholder="Imágen" required>
             <span class="input-message-error">Este campo no es valido</span>
           </div>
 
