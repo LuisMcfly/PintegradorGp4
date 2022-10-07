@@ -1,1 +1,96 @@
-[{"id":"26077f1b-effb-4c1f-a60c-c5070cd4b602","name":"test","fabricante":"test","modelo":"test","categoria":"portatiles","descripcion":"test","colores":["blanco","azul","rojo","fucsia"],"variaciones":"[]","precio":"1","descuento":"1","rating":"5","imagenes":"insignia 2.png"},{"id":"26077f1b-effb-4c1f-a60c-c5070cd4b603","nombre":"Portatil lenovo LV3002 8BG Ram","fabricante":"fabricantes[1]","modelo":"LV3002","categoria":"categorias[1]","descripcion":"8 GB de Ram","colores":"['negro', 'plateado']","variaciones":"[0032902]","precio":"3300000","descuento":"10","rating":"4","imagenes":"portatilLenovo1.png"},{"id":"26077f1b-effb-4c1f-a60c-c5070cd4b604","nombre":"Portatil lenovo LV3002 16BG Ram","fabricante":"fabricantes[1]","modelo":"LV3002","categoria":"categorias[1]","descripcion":"16 GB de Ram","colores":"['negro', 'plateado']","variaciones":"[0032901]","precio":"3500000","descuento":"10","rating":"5","imagenes":"portatilLenovo.png"},{"id":"3c182d82-c736-4517-af21-edf92c04fc4b","name":"Redragon Kurama 522 Blue","fabricante":"RedDragon","modelo":"Kurama 522","variaciones":"test","descripcion":"Blue Switches Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit praesentium aut ipsam animi rerum non molestiae soluta, saepe fugit magni harum minus, nesciunt debitis eligendi fugiat voluptate dolore et dolorum?","precio":"200","descuento":"0","stock":"20","colors":["rojo","amarillo pollito"],"image":"productoDemo.jpg"},{"id":"5759ecee-dfa0-462e-9393-58b9567dd641","name":"Teclado","fabricante":"Logitec","modelo":"LT-2001","variaciones":"Resistente al agua","descripcion":"Teclado","category":"perifericos","precio":"100","descuento":"0","colors":["azul"],"image":"teclado.jfif"},{"id":"e50bf4b9-26a5-4ec0-9c6c-0df0d42aaf29","name":"test","fabricante":"Lenovo","modelo":"test","variaciones":"test","descripcion":"test","category":"perifericos","precio":"35","descuento":"0","colors":["blanco"],"image":"teclado2.jfif"},{"id":"0aca2208-ef3c-47a2-97a7-aafebcc846c7","name":"q","fabricante":"Lenovo","modelo":"q","variaciones":"q","descripcion":"q","category":"portatiles","precio":"2","descuento":"2","colors":["fucsia"],"image":"teclado.jfif"}]
+[
+  {
+    "id": "26077f1b-effb-4c1f-a60c-c5070cd4b602",
+    "name": "test",
+    "fabricante": "test",
+    "modelo": "test",
+    "categoria": "portatiles",
+    "descripcion": "test",
+    "colores": ["blanco", "azul", "rojo", "fucsia"],
+    "variaciones": "[]",
+    "precio": "1",
+    "descuento": "1",
+    "rating": "5",
+    "imagenes": "insignia 2.png"
+  },
+  {
+    "id": "26077f1b-effb-4c1f-a60c-c5070cd4b603",
+    "nombre": "Portatil lenovo LV3002 8BG Ram",
+    "fabricante": "fabricantes[1]",
+    "modelo": "LV3002",
+    "categoria": "categorias[1]",
+    "descripcion": "8 GB de Ram",
+    "colores": "['negro', 'plateado']",
+    "variaciones": "[0032902]",
+    "precio": "3300000",
+    "descuento": "10",
+    "rating": "4",
+    "imagenes": "portatilLenovo1.png"
+  },
+  {
+    "id": "26077f1b-effb-4c1f-a60c-c5070cd4b604",
+    "nombre": "Portatil lenovo LV3002 16BG Ram",
+    "fabricante": "fabricantes[1]",
+    "modelo": "LV3002",
+    "categoria": "categorias[1]",
+    "descripcion": "16 GB de Ram",
+    "colores": "['negro', 'plateado']",
+    "variaciones": "[0032901]",
+    "precio": "3500000",
+    "descuento": "10",
+    "rating": "5",
+    "imagenes": "portatilLenovo.png"
+  },
+  {
+    "id": "3c182d82-c736-4517-af21-edf92c04fc4b",
+    "name": "Redragon Kurama 522 Blue",
+    "fabricante": "RedDragon",
+    "modelo": "Kurama 522",
+    "variaciones": "test",
+    "descripcion": "Blue Switches Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit praesentium aut ipsam animi rerum non molestiae soluta, saepe fugit magni harum minus, nesciunt debitis eligendi fugiat voluptate dolore et dolorum?",
+    "precio": "200",
+    "descuento": "0",
+    "stock": "20",
+    "colors": ["rojo", "amarillo pollito"],
+    "image": "productoDemo.jpg"
+  },
+  {
+    "id": "5759ecee-dfa0-462e-9393-58b9567dd641",
+    "name": "Teclado",
+    "fabricante": "Logitec",
+    "modelo": "LT-2001",
+    "variaciones": "Resistente al agua",
+    "descripcion": "Teclado",
+    "category": "perifericos",
+    "precio": "100",
+    "descuento": "0",
+    "colors": ["azul"],
+    "image": "teclado.jfif"
+  },
+  {
+    "id": "e50bf4b9-26a5-4ec0-9c6c-0df0d42aaf29",
+    "name": "test",
+    "fabricante": "Lenovo",
+    "modelo": "test",
+    "variaciones": "test",
+    "descripcion": "test",
+    "category": "perifericos",
+    "precio": "35",
+    "descuento": "0",
+    "colors": ["blanco"],
+    "image": "teclado2.jfif"
+  },
+  {
+    "id": "0aca2208-ef3c-47a2-97a7-aafebcc846c7",
+    "name": "q",
+    "fabricante": "Lenovo",
+    "modelo": "q",
+    "variaciones": "q",
+    "descripcion": "q",
+    "category": "portatiles",
+    "precio": "2",
+    "descuento": "2",
+    "colors": ["fucsia"],
+    "image": "teclado.jfif"
+  }
+]

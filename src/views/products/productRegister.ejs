@@ -27,9 +27,10 @@
           </div>
           
           <div class="input-container">
-            <select name="fabricante" id="">
+            <label class="input-label fabricante">Nombre del fabricante <i class="fa-solid fa-check"></i></label>
+            <select name="fabricante" class="input" id="">
               <% for(let i=0;i<fabricantes.length; i++) {%>
-                <option value="<%= fabricantes[i].nombre %>">
+                <option class="option" value="<%= fabricantes[i].nombre %>">
                   <%= fabricantes[i].nombre %>
                 </option>
               <% } %>
