@@ -23,27 +23,17 @@
     </div>
     
     <div class="producto-elementos">
-      <div class="producto-imagenes">                       <!-- producto.image[0] -->
-        <div class="img-main"><img src="/img/productDetail/<%= producto.image %> " alt="imagen de producto"></div>
+      <div class="producto-imagenes">                       
+        <div class="img-main"><img src="/img/productDetail/<%= producto.image[0] %> " alt="imagen de producto"></div>
         <ul class="img-alt">
-          <li><!--for que comience desde la pos 1 para crear estas imagenes  -->
-            <button>
-              <i class="fa-regular fa-circle-dot"></i>
-              <img src="/img/productDetail/productoDemo.jpg" alt="view">
-            </button>
-          </li>
-          <li>
-            <button>
-              <i class="fa-regular fa-circle-dot"></i>
-              <img src="/img/productDetail/productoDemo.jpg" alt="view">
-            </button>
-          </li>
-          <li>
-            <button>
-              <i class="fa-regular fa-circle-dot"></i>
-              <img src="/img/productDetail/productoDemo.jpg" alt="view">
-            </button>
-          </li>
+          <% for(let i=1;i<producto.image.length;i++){ %>
+            <li>
+              <button>
+                <i class="fa-regular fa-circle-dot"></i>
+                <img src="/img/uploads/<%= producto.image[i] %> " alt="view">
+              </button>
+            </li>
+          <% } %>  
         </ul>
       </div>
       <div class="producto-info">

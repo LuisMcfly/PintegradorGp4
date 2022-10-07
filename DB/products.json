@@ -52,45 +52,6 @@
     "descuento": "0",
     "stock": "20",
     "colors": ["rojo", "amarillo pollito"],
-    "image": "productoDemo.jpg"
-  },
-  {
-    "id": "5759ecee-dfa0-462e-9393-58b9567dd641",
-    "name": "Teclado",
-    "fabricante": "Logitec",
-    "modelo": "LT-2001",
-    "variaciones": "Resistente al agua",
-    "descripcion": "Teclado",
-    "category": "perifericos",
-    "precio": "100",
-    "descuento": "0",
-    "colors": ["azul"],
-    "image": "teclado.jfif"
-  },
-  {
-    "id": "e50bf4b9-26a5-4ec0-9c6c-0df0d42aaf29",
-    "name": "test",
-    "fabricante": "Lenovo",
-    "modelo": "test",
-    "variaciones": "test",
-    "descripcion": "test",
-    "category": "perifericos",
-    "precio": "35",
-    "descuento": "0",
-    "colors": ["blanco"],
-    "image": "teclado2.jfif"
-  },
-  {
-    "id": "0aca2208-ef3c-47a2-97a7-aafebcc846c7",
-    "name": "q",
-    "fabricante": "Lenovo",
-    "modelo": "q",
-    "variaciones": "q",
-    "descripcion": "q",
-    "category": "portatiles",
-    "precio": "2",
-    "descuento": "2",
-    "colors": ["fucsia"],
-    "image": "teclado.jfif"
+    "image": ["productoDemo.jpg","d1.jfif", "d2.jfif", "d3.jfif"]
   }
 ]

@@ -10,15 +10,16 @@ const productController = {
     
     productDetail: (req, res) => {
         let producto = productos.find(producto => producto.id==req.params.id)
-        console.log('xxx',producto.colors)
         res.render('products/productDetail', {producto})
     },
 
     productRegister: (req, res) => res.render('products/productRegister', {fabricantes}),
     create: (req, res) => {
-        let image 
+        let image = []
         if (req.files[0]!=undefined){
-            image=req.files[0].filename;
+            for (let i = 0; i < req.files.length; i++) {
+                image.push(req.files[i].filename)
+            }
         } else {
             image = 'none.png';
         }
