@@ -10,8 +10,6 @@ const productController = {
     
     productDetail: (req, res) => {
         let producto = productos.find(producto => producto.id==req.params.id)
-        
-        console.log('x', producto)
         res.render('products/productDetail', {producto})
     },
 
