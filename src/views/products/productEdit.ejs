@@ -1,19 +1,16 @@
-
-    <head>
-        <title>Pegasus Tech | Crear editar</title>
-        <link rel="stylesheet" href="/css/form/base/base.css">
-        <link rel="stylesheet" href="/css/form/registro.css">
-        <link rel="stylesheet" href="/css/form/componentes/card.css">
-        <link rel="stylesheet" href="/css/form/componentes/inputs.css">
-        <link rel="stylesheet" href="/css/form/componentes/button.css">
-        <link rel="stylesheet" href="/css/login&register.css">
-    </head>
-    <%- include('../partials/head.ejs') %> 
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %> 
+<head>
+  <link rel="stylesheet" href="/css/productDetail.css" />
+  <title>Pegasus Tech | Producto</title>
+</head>
+    
 <body>
     <%- include('../partials/header.ejs') %> 
-    <main class="container flex flex--column flex--center">
+    <!-- <main class="container flex flex--column flex--center">
         <section class="cartao">
-            <h2 class="card__title">Editar producto</h2><!-- opcional -->
+            <h2 class="card__title">Editar producto</h2>
             <form action="./registro_concluido.html" class="formulario flex flex--column">
                 <fieldset>
                     <legend class="form__label">Información ...</legend>
@@ -22,7 +19,7 @@
                         <label class="input-label" for="name">Nombre del producto</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
-                    <div class="textarea-container"><!-- Usar textarea o input? -->
+                    <div class="textarea-container">
                         <textarea name="descripcion" id="descripcion" class="textarea" type="text" placeholder="descripcion" required data-tipo="descripcion"></textarea>
                         <label class="textarea-label" for="descripcion">Descripcion del producto</label>
                         <span class="input-message-error">Este campo no es valido</span>
@@ -48,11 +45,61 @@
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                 </fieldset>
-                
                 <button class="button">Editar</a>
             </form>
         </section>
-    </main>
+    </main> -->
+    <section class="producto-detail">
+    <form action="products/edit/2" >
+        <div class="producto-titulo">
+          <h2><input type="text" name="name"  value="<%= producto.name%>">
+              <input type="text" name="model" value="<%= producto.model %>"><!-- select -->
+          </h2>
+        </div>
+          <a class="vendedor" href="#">más productos de la marca <input type="text" value="<%= producto.manufacturer %>"></a>
+          <div class="calificacion">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+        </div>
+        <div class="producto-elementos">
+          <div class="producto-imagenes">                       
+            <div class="img-main"><img src="/img/uploads/<%= producto.images[0] %> " alt="imagen de producto"></div>
+            <ul class="img-alt">
+              <% for(let i=1;i<producto.images.length;i++){ %>
+                <li>
+                  <button>
+                    <i class="fa-regular fa-circle-dot"></i>
+                    <img src="/img/uploads/<%= producto.images[i] %> " alt="view">
+                  </button>
+                </li>
+              <% } %>  
+            </ul>
+          </div>
+          <div class="producto-info"> 
+            <div class="producto-opciones">
+              <% for(let i=0;i<producto.colors.length;i++){ %>
+                <button> <%= producto.colors[i] %> </button>
+              <% } %>  
+            </div>
+            <p class="stock"><%= producto.stock %>  Unidades restantes</p>
+            <p class="descripcion"><%= producto.description %> </p>
+          </div>
+          <div class="producto-precio">
+            <div class="precio-numero"> <h2><%= producto.price %></h2><h4>.900</h4> </div>
+            <div class="btns-producto">
+              <form action="/cart">
+                <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button>
+                <button class="btn anadir-deseados">Añadir a Deseados</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
     <%- include('../partials/footer') %> 
     <script src="/js/validaciones.js" type="module"></script>
 </body>

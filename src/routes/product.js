@@ -22,7 +22,7 @@ router.get('/productRegister', productController.productRegister); //renderiza l
 router.post('/productRegister', upload, productController.create); //guarda los datos enviados en el form
 
 router.get('/productDetail/:id', productController.productDetail);
-router.get('/productEdit', productController.productEdit);
+router.get('/productEdit/:id', productController.productEdit);
 router.get('/productRegisterConclude', productController.productRegisterConclude);
 
 module.exports = router;
