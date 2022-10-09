@@ -10,7 +10,6 @@ const productController = {
     
     productDetail: (req, res) => {
         let producto = productos.find(producto => producto.id==req.params.id)
-        
         console.log('x', producto)
         res.render('products/productDetail', {producto})
     },
@@ -34,8 +33,12 @@ const productController = {
     productEdit: (req, res) =>{ 
         res.render('products/productEdit')
     },
-    productDelete: (req, res) => {
-
+    productDelete: (req, res) => {//puede ir un middelware de confirmacion para eliminar
+        let nuevosProductos = productos.filter(producto => producto.id != req.params.id)
+        let productosJSON = JSON.stringify(nuevosProductos, null)
+        fs.writeFileSync('DB/products.json', productosJSON)
+        res.send('product destroyed')
+        //definir si se muetra confirmacion del prodcuto eliminado y como
     },
     productRegisterConclude: (req, res) => res.render('products/productRegisterConclude'),
 }

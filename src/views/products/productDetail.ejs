@@ -36,8 +36,7 @@
           <% } %>  
         </ul>
       </div>
-      <div class="producto-info">
-        
+      <div class="producto-info"> 
         <div class="producto-opciones">
           <% for(let i=0;i<producto.colors.length;i++){ %>
             <button> <%= producto.colors[i] %> </button>
@@ -45,8 +44,6 @@
         </div>
         <p class="stock"><%= producto.stock %>  Unidades restantes</p>
         <p class="descripcion"><%= producto.description %> </p>
-        
-  
       </div>
       <div class="producto-precio">
         <div class="precio-numero"> <h2><%= producto.price %></h2><h4>.900</h4> </div>
@@ -96,7 +93,11 @@
       <div class="producto-preview"></div>
       <div class="producto-preview"></div>
     </section>
-    <section></section>
+    <section>
+      <form action="/products/10?_method=DELETE" method="POST"><!-- va el id -->
+        <input type="submit" value="Eliminar">
+      </form>
+    </section>
   </main>
   
   <%- include('../partials/footer') %>

@@ -6,6 +6,7 @@ const mainRouter = require('./routes/main');
 const productRouter = require('./routes/product');
 const cartRouter = require('./routes/cart');
 const userRouter = require('./routes/user');
+const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 
 // const http = require('http');
 // const server = http.createServer((req, res) => {res.end("response ended")})
@@ -16,6 +17,7 @@ app.set('views', path.join(__dirname, 'views')); // siempre se debe hacer cuando
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
+app.use(methodOverride('_method')); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
 
 app.use('/', mainRouter)
 app.use('/products/', productRouter);
