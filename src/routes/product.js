@@ -13,7 +13,6 @@ const multer = require('multer'),
         }
     })
 
-
 const upload = multer({storage:storage}).array('imagen')
 
 router.get('/', productController.productShop);
