@@ -31,10 +31,15 @@ const productController = {
         res.redirect('productRegisterConclude');
     },
     productEdit: (req, res) =>{ 
-        res.render('products/productEdit')
+        let producto = productos.find(producto => producto.id==req.params.id)
+        res.render('products/productEdit', {producto})
     },
-    productDelete: (req, res) => {
-
+    productDelete: (req, res) => {//puede ir un middelware de confirmacion para eliminar
+        let nuevosProductos = productos.filter(producto => producto.id != req.params.id)
+        let productosJSON = JSON.stringify(nuevosProductos, null)
+        fs.writeFileSync('DB/products.json', productosJSON)
+        res.send('product destroyed')
+        //definir si se muetra confirmacion del prodcuto eliminado y como
     },
     productRegisterConclude: (req, res) => res.render('products/productRegisterConclude'),
 }
