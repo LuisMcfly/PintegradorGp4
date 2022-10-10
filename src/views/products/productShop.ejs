@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%- include('../partials/head') %> 
 <head>
+  <link rel="stylesheet" href="/css/productDetail.css">
   <link rel="stylesheet" href="/css/productShop.css">
   <title>Document</title>
 </head>
@@ -8,25 +9,49 @@
 <body>
   <%- include('../partials/header.ejs') %>
   <section class="nav-categorias">
-    <ul>
+    <!-- <ul>
       <% for (let i=0; i<categorias.length; i++) { %>
         <li><%= categorias[i].nombre %></li>
       <% } %>
-    </ul>
+    </ul> -->
   </section>
 
   <section class="shop-filters">
   </section>
 
   <main>
-    <% for (let i=0; i<productos.length; i++) {%>
+    <% let precioDescontado; // Variable para mostrar el precio con descuento%> 
+    <% for (let i=0; i<productos.length; i++) { %>
       <div class="shop-producto">
-        <div><img src="/images/img-cafetera-moulinex.jpg" alt="imagen del producto"></div>
+        <div class="producto-img">
+          <img src="/images/img-cafetera-moulinex.jpg" alt="imagen del producto">
+        </div>
         <div class="info-de-producto">
-            <i class="fa-solid fa-van-shuttle"></i>
-            <p class="precio"><%= productos[i].precio %></p>
-            <p class="descuento"><%= productos[i].descuento %></p>
-            <h5><%= productos[i].nombre %></h5>
+          <h5 class="producto-nombre"><a href="#"><%= productos[i].nombre %></a></h5>
+          <p class="producto-fabricante"> de <%= productos[i].fabricante %></p>
+          <div class="calificacion">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <div class="shop-precio">
+            <% if (productos[i].descuento > 0) { %>
+              <% precioDescontado = productos[i].precio * (1 - (productos[i].descuento / 100)) %> 
+              <h5 class="producto-precio-descuento"><%= precioDescontado %></h5>
+              <h6 class="producto-precio-completo"><%= productos[i].precio %></h6>
+            <% } else { %>
+              <h5 class="producto-precio-descuento"><%= productos[i].precio %></h5>
+            <% } %> 
+          </div>
+          
+          <% if (productos[i].stock <= 15) { %>
+            <p class="stock">5 Unidades restantes</p>
+          <% } %>
+
+          <button class="btn"><i class="fa-solid fa-cart-shopping"></i></button>
+          <!-- <p class="anadir-deseados">añadir a lista de deseados</p> -->
         </div>
       </div>
     <% } %> 
