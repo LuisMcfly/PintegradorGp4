@@ -1,5 +1,5 @@
 let fs = require('fs')
-const { uuid } = require('uuidv4')
+const { uuid } = require('uuidv4') // libreria para ids
 
 const productos = JSON.parse(fs.readFileSync('DB/products.json', {encoding: 'utf-8'}));//trae lo que hay en en archivo, se parsea para poder usarlo en js
 const fabricantes = JSON.parse(fs.readFileSync('DB/fabricantes.json', {encoding: 'utf-8'}));

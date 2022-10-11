@@ -3,7 +3,8 @@
 <%- include('../partials/head') %> 
 <head>
   <link rel="stylesheet" href="/css/productDetail.css" />
-  <title>Pegasus Tech | Producto</title>
+  <link rel="stylesheet" href="/css/productEdit.css" />
+  <title>Pegasus Tech |   Editar producto</title>
 </head>
     
 <body>
@@ -49,14 +50,21 @@
             </form>
         </section>
     </main> -->
-    <section class="producto-detail">
-    <form action="products/edit/2" >
+    <form action="products/edit/2" method="POST">
+      <section class="producto-detail">
         <div class="producto-titulo">
-          <h2><input type="text" name="name"  value="<%= producto.name%>">
-              <input type="text" name="model" value="<%= producto.model %>"><!-- select -->
+          <h2>
+            <label for="name"> Nombre: </label>
+            <input type="text" name="name"  value="<%= producto.name%>">
+            
           </h2>
         </div>
-          <a class="vendedor" href="#">más productos de la marca <input type="text" value="<%= producto.manufacturer %>"></a>
+        <label for="manufacturer"> Fabricante: </label>
+        <input type="text" name="manufacturer" value="<%= producto.manufacturer %>">
+
+        <label for="model"> Modelo: </label>
+        <input type="text" name="model" value="<%= producto.model %>">
+        <!--convertir select-->
           <div class="calificacion">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -79,27 +87,36 @@
               <% } %>  
             </ul>
           </div>
-          <div class="producto-info"> 
+
+          <div class="producto-info">
             <div class="producto-opciones">
               <% for(let i=0;i<producto.colors.length;i++){ %>
                 <button> <%= producto.colors[i] %> </button>
               <% } %>  
             </div>
-            <p class="stock"><%= producto.stock %>  Unidades restantes</p>
-            <p class="descripcion"><%= producto.description %> </p>
+            <input class="stock-edit" type="text" value="<%= producto.stock %>"> Unidades en stock
+            <input class="descripcion-edit" type="textarea" value="<%= producto.description %>">
           </div>
+
           <div class="producto-precio">
-            <div class="precio-numero"> <h2><%= producto.price %></h2><h4>.900</h4> </div>
+            <div class="precio-numero"> 
+              <!-- <h2><%= producto.price %></h2><h4>.900</h4>  -->
+              <label for="price"> $ </label> 
+              <input type="text" name="price" value="<%= producto.price %>">
+            </div>
             <div class="btns-producto">
-              <form action="/cart">
-                <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button>
-                <button class="btn anadir-deseados">Añadir a Deseados</button>
+              <div>
+                <input class="btn" type="submit" value="Guardar Cambios">
+              </div> </form> <!-- Cierre del form principal -->
+                <!-- <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button> -->
+              <form action="/products/<%= producto.id %>?_method=DELETE" method="POST">
+                <input class="btn" type="submit" value="Eliminar Producto">
               </form>
             </div>
           </div>
         </div>
       </section>
-    </form>
+    <!-- El form de la edición se cierra dentro de btns-producto -->
     <%- include('../partials/footer') %> 
     <script src="/js/validaciones.js" type="module"></script>
 </body>
