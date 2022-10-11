@@ -6,7 +6,10 @@ main{
 }
 
 main .shop-producto {
-  padding: 0px 5px;
+  padding: 10px 5px;
+  border-bottom: 1px solid gray;
+  /* margin: 5px 0px; */
+
   display: flex;
   flex-direction: row;
 }
@@ -29,6 +32,7 @@ main .shop-producto {
 .shop-precio .producto-precio-completo {
   color: gray;
   text-decoration: line-through;
+  margin: 0px 5px;
 }
 
 

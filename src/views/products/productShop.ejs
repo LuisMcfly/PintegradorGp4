@@ -11,7 +11,7 @@
   <section class="nav-categorias">
     <!-- <ul>
       <% for (let i=0; i<categorias.length; i++) { %>
-        <li><%= categorias[i].nombre %></li>
+        <li><%= categorias[i].name %></li>
       <% } %>
     </ul> -->
   </section>
@@ -20,15 +20,15 @@
   </section>
 
   <main>
-    <% let precioDescontado; // Variable para mostrar el precio con descuento%> 
+    <% let userPrice; // Variable para mostrar el precio con descuento%> 
     <% for (let i=0; i<productos.length; i++) { %>
       <div class="shop-producto">
         <div class="producto-img">
-          <img src="/images/img-cafetera-moulinex.jpg" alt="imagen del producto">
+          <img src="/img/uploads/<% productos[i].images %>" alt="imagen del producto">
         </div>
         <div class="info-de-producto">
-          <h5 class="producto-nombre"><a href="#"><%= productos[i].nombre %></a></h5>
-          <p class="producto-fabricante"> de <%= productos[i].fabricante %></p>
+          <h5 class="producto-nombre"><a href="products/productDetail/<% productos[i].id %>"><%= productos[i].name %></a></h5>
+          <p class="producto-fabricante"> de <%= productos[i].manufacturer %></p>
           <div class="calificacion">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -37,12 +37,12 @@
             <i class="fa-regular fa-star"></i>
           </div>
           <div class="shop-precio">
-            <% if (productos[i].descuento > 0) { %>
-              <% precioDescontado = productos[i].precio * (1 - (productos[i].descuento / 100)) %> 
-              <h5 class="producto-precio-descuento"><%= precioDescontado %></h5>
-              <h6 class="producto-precio-completo"><%= productos[i].precio %></h6>
+            <% if (productos[i].discount > 0) { %>
+              <% userPrice = (productos[i].price * (1 - (productos[i].discount / 100))).toFixed(0) %> 
+              <h5 class="producto-precio-descuento">$ <%= userPrice %></h5>
+              <h6 class="producto-precio-completo"> <%= productos[i].price %></h6>
             <% } else { %>
-              <h5 class="producto-precio-descuento"><%= productos[i].precio %></h5>
+              <h5 class="producto-precio-descuento">$ <%= productos[i].price %></h5>
             <% } %> 
           </div>
           
