@@ -12,6 +12,8 @@ main .shop-producto {
 
   display: flex;
   flex-direction: row;
+  /* justify-content: space-between; */
+  gap: 10px;
 }
 
 .shop-producto > .producto-img {
@@ -37,6 +39,7 @@ main .shop-producto {
 
 
 .btn {
+  justify-self: flex-end;
   background-color: var(--secundario);
   color: white;
   width: 80px;
