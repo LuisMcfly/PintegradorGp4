@@ -11,8 +11,8 @@
 
   <section class="producto-detail">
     <div class="producto-titulo">
-      <h2><%= producto.name %>   <!-- La mejor de las mejores super hiper mega diademas RGB +15FPS --></h2>
-      <a class="vendedor" href="#">más productos de la marca <%= producto.manufacturer %> <!--  --></a>
+      <h2><%= producto.name +' '+ producto.model %></h2>
+      <a class="vendedor" href="#">más productos de la marca <%= producto.manufacturer %> </a>
       <div class="calificacion">
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
@@ -36,8 +36,7 @@
           <% } %>  
         </ul>
       </div>
-      <div class="producto-info">
-        
+      <div class="producto-info"> 
         <div class="producto-opciones">
           <% for(let i=0;i<producto.colors.length;i++){ %>
             <button> <%= producto.colors[i] %> </button>
@@ -45,8 +44,6 @@
         </div>
         <p class="stock"><%= producto.stock %>  Unidades restantes</p>
         <p class="descripcion"><%= producto.description %> </p>
-        
-  
       </div>
       <div class="producto-precio">
         <div class="precio-numero"> <h2><%= producto.price %></h2><h4>.900</h4> </div>
@@ -61,7 +58,6 @@
   </section>
 
   <main class="contenedor-principal">
-
     <h2 class="section-title degradado">Recomendados</h2>
     <section class="recopilacion">
       <div class="producto-preview">
@@ -96,7 +92,6 @@
       <div class="producto-preview"></div>
       <div class="producto-preview"></div>
     </section>
-    <section></section>
   </main>
   
   <%- include('../partials/footer') %>
