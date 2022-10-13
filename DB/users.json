@@ -1,0 +1,11 @@
+[{
+    "id": "1",
+    "nombreCompleto": "Admin",
+    "correoElectronico": "Admin@Admin.com",
+    "contraseña": "Password",
+    "telefono": 11111111,
+    "direccion": "Avenida siempre viva",
+    "genero": "Masculino",
+    "token": "Por Definir",
+    "Autenticado": false
+}]
