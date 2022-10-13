@@ -9,53 +9,12 @@
     
 <body>
     <%- include('../partials/header.ejs') %> 
-    <!-- <main class="container flex flex--column flex--center">
-        <section class="cartao">
-            <h2 class="card__title">Editar producto</h2>
-            <form action="./registro_concluido.html" class="formulario flex flex--column">
-                <fieldset>
-                    <legend class="form__label">Información ...</legend>
-                    <div class="input-container">
-                        <input name="name" id="name" class="input" type="text" placeholder="Nombre" required data-tipo="nombre">
-                        <label class="input-label" for="name">Nombre del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="textarea-container">
-                        <textarea name="descripcion" id="descripcion" class="textarea" type="text" placeholder="descripcion" required data-tipo="descripcion"></textarea>
-                        <label class="textarea-label" for="descripcion">Descripcion del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <label class="input-label file" for="imagen">Seleccione la imágen del producto</label>
-                        <input name="imagen" id="imagen" class="input-file" type="file" placeholder="Imágen" required  data-tipo="imagen"> 
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <input name="categoria" id="categoria" class="input" type="text" placeholder="Categoria" required data-tipo="categoria">
-                        <label class="input-label" for="categoria">Categoria del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <input name="precio" id="precio" class="input" type="text" placeholder="Precio" required data-tipo="precio">
-                        <label class="input-label" for="precio">Precio del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <input name="colores" id="colores" class="input" type="text" placeholder="Colores" required data-tipo="colores">
-                        <label class="input-label" for="colores">Colores del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                </fieldset>
-                <button class="button">Editar</a>
-            </form>
-        </section>
-    </main> -->
-    <form action="products/edit/2" method="POST">
+    <form action="/products/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
       <section class="producto-detail">
         <div class="producto-titulo">
           <h2>
             <label for="name"> Nombre: </label>
-            <input type="text" name="name"  value="<%= producto.name%>">
+            <input type="text" name="name"  value="<%= producto.name %>">
             
           </h2>
         </div>
@@ -94,8 +53,8 @@
                 <button> <%= producto.colors[i] %> </button>
               <% } %>  
             </div>
-            <input class="stock-edit" type="text" value="<%= producto.stock %>"> Unidades en stock
-            <input class="descripcion-edit" type="textarea" value="<%= producto.description %>">
+            <input class="stock-edit" type="text" name="stock" value="<%= producto.stock %>"> Unidades en stock
+            <input class="descripcion-edit" type="textarea" name="description" value="<%= producto.description %>">
           </div>
 
           <div class="producto-precio">
@@ -103,6 +62,9 @@
               <!-- <h2><%= producto.price %></h2><h4>.900</h4>  -->
               <label for="price"> $ </label> 
               <input type="text" name="price" value="<%= producto.price %>">
+              
+              <input type="text" name="discount" value="<%= producto.discount %>">
+              <label for="discount"> % </label> 
             </div>
             <div class="btns-producto">
               <div>
