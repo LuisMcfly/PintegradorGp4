@@ -30,6 +30,7 @@ header {
 
 .bar-container .nav-search-input {
   display: none;
+  height: 30px;
   border-radius: 5px;
 }
 .bar-container button{
