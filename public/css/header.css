@@ -1,8 +1,3 @@
-.logo {
-  height: 18rem;
-  object-fit: contain;
-}
-
 header {
   background-color: black;
   width: 100%;
@@ -11,6 +6,44 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logo {
+  height: 18rem;
+  object-fit: contain;
+}
+.mini-logo {
+  display: none;
+  height: 5.5rem;
+  object-fit: contain;
+}
+
+#search {
+  display: none;
+}
+#search:checked .logo {
+  display: none;
+}
+#search:checked .mini-logo {
+  display: block;
+}
+
+.bar-container .nav-search-input {
+  display: none;
+  border-radius: 5px;
+}
+.bar-container button{
+  display: none;
+  background-color: rgba(0, 0, 0, 1);
+  border: rgba(0, 0, 0, 1);
+  width: 3rem;
+  height: 3rem;
+}
+
+.bar-container .fa-search {
+  background-color: black;
+  color: white;
+  font-size: 2.1rem;
 }
 
 .bar-btn span {
@@ -27,11 +60,9 @@ header {
 .bar-btn.open .top-line {
   animation-name: top-line-animation;
 }
-
 .bar-btn.open .middle-line {
   animation-name: middle-line-animation;
 }
-
 .bar-btn.open .bottom-line {
   animation-name: bottom-line-animation;
 }
@@ -39,38 +70,28 @@ header {
 .bar-btn .top-line {
   animation-name: top-line-animation-close;
 }
-
 .bar-btn .middle-line {
   animation-name: middle-line-animation-close;
 }
-
 .bar-btn .bottom-line {
   animation-name: bottom-line-animation-close;
 }
 
 /* Animacion del boton burger-menu */
 @keyframes top-line-animation {
-
-  50%,
-  100% {
+  50%, 100% {
     margin: 0 auto;
     transform: rotate(-45deg);
   }
 }
-
 @keyframes bottom-line-animation {
-
-  50%,
-  100% {
+  50%, 100% {
     margin: 0 2rem;
     transform: translateY(-0.32rem) rotate(45deg);
   }
 }
-
 @keyframes middle-line-animation {
-
-  20%,
-  100% {
+  20%, 100% {
     margin: 0 auto;
     width: 0;
     opacity: 0;
@@ -93,10 +114,9 @@ header {
   flex-direction: column;
   justify-content: space-evenly;
 }
-
 .nav-menu li a {
   color: darkgray;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   margin-right: 0.5rem;
 }
@@ -110,23 +130,18 @@ header {
 .nav-menu .nav-shop-btn {
   color: var(--primario);
 }
-
 .nav-menu .nav-user-btn {
   color: white;
 }
-
 .nav-menu .nav-shop-btn:hover {
   color: var(--secundario);
 }
-
 .nav-menu .nav-carrito {
   color: var(--secundario) !important;
 }
-
 .nav-menu .nav-carrito:hover {
   color: var(--primario) !important;
 }
-
 .nav-menu li a .fa-user {
   border: solid 1px;
   padding: 5px;
@@ -134,27 +149,9 @@ header {
   margin: 5px;
 }
 
-.barContainer{
-  display: flex;
-  align-items: center;
-}
-
-.barContainer button{
-  background-color: rgba(0, 0, 0, 1);
-  border: rgba(0, 0, 0, 1);
-  width: 3rem;
-  height: 3rem;
-}
-
-.barContainer .fa-search {
-  background-color: #fff;
-  font-size: 2.1rem;
-}
-
 #check {
   display: none;
 }
-
 #check:checked~.nav-menu {
   width: 50%;
   right: 0rem;
@@ -167,45 +164,49 @@ header {
   color: #fff;
   border-radius: 0.5rem;
 }
-
 .button1:hover {
   background-color: var(--fsecundario);
   color: #fff;
   transition: 0.5s;
 }
-
 .button2 {
   padding: 1rem 3rem;
   background-color: var(--secundario);
   color: #fff;
   border-radius: 0.5rem;
 }
-
 .button2:hover {
   background-color: var(--fprimario);
   color: #fff;
   transition: 0.5s;
 }
 
-@media (max-width: 768px) {
-  
-  .barContainer{
-    display: none;
-  }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1279px){
+@media (min-width: 900px){ /* PC Small */
 
   .bar-btn {
     display: none;
   }
 
- header {
+  header {
     padding: 0px 10px;
   }
 
   header div {
     flex-grow: 0;
+  }
+
+  .bar-container{
+    flex-grow: 1;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  .bar-container .nav-search-input {
+    display: block;
+    width: 80%;
+  }
+  .bar-container button{
+    display: block;
   }
 
   .nav-menu {
@@ -223,13 +224,17 @@ header {
     gap: 10px;
   }
 
-  .nav-menu>li {
+  .nav-menu > li {
     flex-shrink: 0;
+  }
+  .nav-menu li a {
+    font-size: 1.4rem;
   }
 
   .barContainer input{
     width: 25rem;
     height: 3rem;
+    border-radius: 5px;
   }
 
   .barContainer .fa-search{
@@ -239,53 +244,14 @@ header {
 
 }
 
-@media screen and (min-width: 1280px) {
-
-  .bar-btn {
-    display: none;
-  }
-
- header {
-    padding: 0px 10px;
-  }
-
-  header div {
-    flex-grow: 0;
-  }
-
-  .nav-menu {
-    position: relative;
-    align-self: flex-end;
-    top: 0px;
-    right: 0px;
-    width: 100% !important;
-    height: 100%;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .nav-menu>li {
-    flex-shrink: 0;
-  }
-  
+@media (min-width: 1280px) { /* PC Big */
   .nav-menu li a {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
   }
-
-  .barContainer input{
-    width: 50rem;
-    height: 3rem;
+  .bar-container .nav-search-input {
+    display: block;
+    width: 430px;
   }
-
-  .barContainer .fa-search{
-    position: relative;
-    right: 3rem;
-  }
-
 }

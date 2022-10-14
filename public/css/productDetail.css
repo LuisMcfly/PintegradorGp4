@@ -15,11 +15,14 @@ main img,
   background-color: white;
   padding: 5px;
 }
-.producto-titulo h2 {
+.producto-header h2 {
   font-size: 3rem;
   line-height: 130%;
   text-transform: capitalize;
-  margin: 10px 5px;
+  margin: 10px 0px;
+}
+.producto-header .fabricante {
+  color: var(--GrisOscuro);
 }
 
 .imagenes-producto {
@@ -70,6 +73,9 @@ main img,
   justify-content: flex-start;
   align-content: flex-start;
 }
+.precio-numero h4 {
+  margin-top: 8px;
+}
 .btns-producto form,
 .btns-producto div {
   padding: 5px;
@@ -107,7 +113,7 @@ main img,
     max-width: 1080px;
     margin: 0 auto;
   }
-  .producto-titulo {
+  .producto-header {
     margin: 1px 20px;
   }
 

@@ -10,6 +10,15 @@ html {
   box-sizing: inherit;
 }
 
+:root {
+  --primario: #29d0fd;
+  --secundario: #fe019a;
+  --fprimario: #bc13fe;
+  --fsecundario: #0504aa;
+  --Grisfondo: #e1e1e1;
+  --GrisOscuro: rgb(95, 95, 95);
+}
+
 .degradado {
   color: transparent;
   background: linear-gradient(to right,
@@ -20,13 +29,7 @@ html {
   -webkit-background-clip: text;
 }
 
-:root {
-  --primario: #29d0fd;
-  --secundario: #fe019a;
-  --fprimario: #bc13fe;
-  --fsecundario: #0504aa;
-  --Grisfondo: #e1e1e1;
-}
+
 
 body {
   font-family: "Noto Sans", sans-serif;

@@ -10,9 +10,9 @@
   <%- include('../partials/header') %>
 
   <section class="producto-detail">
-    <div class="producto-titulo">
+    <div class="producto-header">
       <h2><%= producto.name +' '+ producto.model %></h2>
-      <a class="vendedor" href="#">más productos de la marca <%= producto.manufacturer %> </a>
+      <a class="fabricante" href="#">más productos de la marca <%= producto.manufacturer %> </a>
       <div class="calificacion">
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
@@ -26,7 +26,7 @@
       <div class="producto-imagenes">                       
         <div class="img-main"><img src="/img/uploads/<%= producto.images[0] %> " alt="imagen de producto"></div>
         <ul class="img-alt">
-          <% for(let i=1;i<producto.images.length;i++){ %>
+          <% for(let i=1; i<producto.images.length; i++){ %>
             <li>
               <button>
                 <i class="fa-regular fa-circle-dot"></i>
@@ -38,7 +38,7 @@
       </div>
       <div class="producto-info"> 
         <div class="producto-opciones">
-          <% for(let i=0;i<producto.colors.length;i++){ %>
+          <% for(let i=0; i<producto.colors.length; i++){ %>
             <button> <%= producto.colors[i] %> </button>
           <% } %>  
         </div>
@@ -46,7 +46,9 @@
         <p class="descripcion"><%= producto.description %> </p>
       </div>
       <div class="producto-precio">
-        <div class="precio-numero"> <h2><%= producto.price %></h2><h4>.900</h4> </div>
+        <div class="precio-numero">
+          <h2>$ <%= producto.price %></h2><h4>.900</h4>
+        </div>
         <div class="btns-producto">
           <form action="/cart">
             <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button>

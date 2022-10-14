@@ -28,15 +28,17 @@ main .shop-producto {
 .info-de-producto * {
   margin: 0px;
 }
+.info-de-producto .producto-fabricante {
+  color: var(--GrisOscuro);
+}
 .shop-precio {
   display: flex;
 }
 .shop-precio .producto-precio-completo {
   color: gray;
   text-decoration: line-through;
-  margin: 0px 5px;
+  margin: 1px 5px;
 }
-
 
 .btn {
   justify-self: flex-end;
