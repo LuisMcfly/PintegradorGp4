@@ -73,7 +73,6 @@ main img,
 .btns-producto form,
 .btns-producto div {
   padding: 5px;
-  /* align-self: center; */
   display: flex;
   flex-direction: column;
   justify-content: center;

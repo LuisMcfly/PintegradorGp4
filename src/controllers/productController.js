@@ -24,7 +24,11 @@ const productController = {
         } else {
             image = 'none.png';
         }
-        productos.push({id: uuid(),...req.body, image}); // pushea al objeto literal
+
+        let rating = 0;
+        
+        productos.push({id: uuid(),...req.body, rating, image}); // pushea al objeto literal
+
         let productsJSON = JSON.stringify(productos, null); // convierte a objeto JSON
         fs.writeFileSync('DB/products.json', productsJSON); // Escribe el archivo
 
