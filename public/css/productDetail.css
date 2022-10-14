@@ -70,7 +70,8 @@ main img,
   justify-content: flex-start;
   align-content: flex-start;
 }
-.btns-producto form {
+.btns-producto form,
+.btns-producto div {
   padding: 5px;
   display: flex;
   flex-direction: column;

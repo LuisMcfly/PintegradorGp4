@@ -29,7 +29,7 @@ fieldset {
   border-bottom: 1px solid var(--secondary-color);
   color: var(--contrast-light-color);
   padding: 1.375rem 0.5rem 0.5rem;
-  height: 3.25rem;
+  /* height: 3.25rem; */
   width: 100%;
 }
 
@@ -41,6 +41,14 @@ fieldset {
 .input:focus {
   outline: none;
   background-color: transparent;
+}
+
+.option {
+  background-color: var(--secundario);
+  text-align: end;
+}
+.option:hover{
+  background-color: var(--primario);
 }
 
 .file{

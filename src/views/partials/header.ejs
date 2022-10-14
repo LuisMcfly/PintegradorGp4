@@ -1,7 +1,13 @@
 <header>
   <div>
-    <a href="/"><img class="logo" src="../../img/header&footer/Pegasus-logo2.png" alt="" /></a>
+    <a href="/"><img class="logo" src="../../img/header&footer/Pegasus-logo2.png" alt=""></a>
   </div>
+  <form class="barContainer" action="../products" method="GET">
+    <input type="text" class="nav-search-input" name="search" placeholder="Buscar productos, marcas y más…">
+    <button type="submit" class="nav-search-btn" tabindex="3">
+      <i class="fa fa-search"></i>
+    </button>
+  </form>
   <nav>
     <input type="checkbox" id="check" />
     <label for="check" class="bar-btn">
@@ -12,13 +18,12 @@
     <script src="../js/burgerMenuOpen"></script> <!-- script de animacion -->
 
     <ul class="nav-menu">
-      <!-- <li><a class="active" href="/">Home</a></li> -->
       <li><a class="nav-shop-btn" href="../products">Tienda</a></li>
-      <li><a href="../nosotros">Nosotros</a></li>
       <li><a href="../contacto">Contacto</a></li>
       <li><a class="nav-user-btn" href="../register">Registrate</a></li>
       <li><a class="nav-user-btn" href="../login">Ingresa<i class="fa-regular fa-user"></i></a></li>
-      <li><a class="nav-carrito" href="../cart">Carrito<i class="fa-solid fa-cart-shopping"></i></a></li>
+      <li><a class="nav-carrito" href="../cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
     </ul>
   </nav>
 </header>
+

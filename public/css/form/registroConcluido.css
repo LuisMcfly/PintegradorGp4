@@ -10,42 +10,47 @@
     width: 2.625rem;
     margin-bottom: 0.5rem;
   }
-  
+  /* 
   .registry-header__title {
     font-family: var(--font-family-logo);
     font-size: var(--font-size-logo);
     margin-bottom: 1rem;
   }
-  
+   */
   .registry-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-  
-  .registry-card__icon-complete {
+  .fas {
+    font-size: 6rem;
+    color: greenyellow;
+    border-radius: 50%;
+    background-color: white;
+  }
+  .imagenUsuario {
+    height: 100px;
+    width: 100px;
+    border: 1px solid fuchsia;
+  }
+/*   .registry-card__icon-complete {
     display: block;
     width: 3.5rem;
     height: 3.5rem;
-  
     margin-bottom: 1rem;
-  
-    background-image: url(../img/checkmark.svg);
     background-size: cover;
     background-repeat: no-repeat;
   }
-  
+   */
   .registry-card__title {
     max-width: 20rem;
   }
   
   @media (min-width: 800px) {
-    .registry-header__logo {
-      width: 5.75rem;
-      margin-bottom: 1rem;
+    .registry-card{
+      flex-direction: row;
     }
-  
     .registry-header__title {
       margin-bottom: 2rem;
     }
