@@ -41,10 +41,18 @@ const productController = {
     productUpdate: (req, res) => {
         let producto = productos.find(producto => producto.id==req.params.id)
         let image = producto.images;
+        //console.log(req.file, 'img', image)
         
-        // for (let i = 0; i < req.files.length; i++) {
-        //     image.push(req.files[i].filename);
-        // }
+         if (req.files[0]!=undefined){//no esta funcionando
+            for (let i = 0; i < req.files.length; i++) {
+                console.log('por aca')
+                image = []
+                image.push(req.files[i].filename)
+            }
+        } else {
+            image = image;
+        }
+        console.log(image)
 
         let newProductToUpdate = {
             id: producto.id,
@@ -59,7 +67,7 @@ const productController = {
             stock: req.body.stock,
             colors: [],
             rating: 5,
-            images: image,
+            images: image
         };
 
         let newProduct = productos.map(product => {
@@ -69,9 +77,10 @@ const productController = {
             return product = product;
         })
         
-        products = newProduct
+        //products = newProduct
         fs.writeFileSync('DB/products.json',JSON.stringify(newProduct, null));
         // res.redirect('/product/editSuccesful');
+        
         res.send('Edicion exitosa');
     },
     productDelete: (req, res) => { //puede ir un middelware de confirmacion para eliminar

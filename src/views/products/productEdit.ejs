@@ -32,9 +32,16 @@
             <i class="fa-regular fa-star"></i>
           </div>
         </div>
+
         <div class="producto-elementos">
-          <div class="producto-imagenes">                       
-            <div class="img-main"><img src="/img/uploads/<%= producto.images[0] %> " alt="imagen de producto"></div>
+          <div class="producto-imagenes">
+            
+            <!-- <img id="img1"><br/> -->
+            <input id="inputFile1"  type="file" name="imagen" >
+
+            <div class="img-main">
+              <img id="img1" src="/img/uploads/<%= producto.images[0] %> " alt="imagen de producto">
+            </div>
             <ul class="img-alt">
               <% for(let i=1;i<producto.images.length;i++){ %>
                 <li>
@@ -80,6 +87,24 @@
       </section>
     <!-- El form de la edición se cierra dentro de btns-producto -->
     <%- include('../partials/footer') %> 
-    <script src="/js/validaciones.js" type="module"></script>
+    <script>
+      function init() {
+        var inputFile = document.getElementById('inputFile1');
+        inputFile.addEventListener('change', mostrarImagen, false);
+      }
+  
+      function mostrarImagen(event) {
+        var file = event.target.files[0];
+
+        var reader = new FileReader();
+        reader.onload = function(event) {
+          var img = document.getElementById('img1');
+          img.src= event.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+  
+    window.addEventListener('load', init, false);
+    </script>
 </body>
 </html>
