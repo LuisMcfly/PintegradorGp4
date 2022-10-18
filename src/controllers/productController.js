@@ -43,10 +43,9 @@ const productController = {
         let image = producto.images;
         //console.log(req.file, 'img', image)
         
-         if (req.files[0]!=undefined){//no esta funcionando
+         if (req.files[0]!=undefined){
+            image = []
             for (let i = 0; i < req.files.length; i++) {
-                console.log('por aca')
-                image = []
                 image.push(req.files[i].filename)
             }
         } else {

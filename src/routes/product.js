@@ -21,7 +21,7 @@ router.post('/productRegister', upload.array('imagen'), productController.create
 
 router.get('/productDetail/:id', productController.productDetail);
 router.get('/productEdit/:id', productController.productEdit);
-router.put('/:id', upload.any('imagen'), productController.productUpdate);
+router.put('/:id', upload.array('imagen'), productController.productUpdate);
 router.delete('/:id', productController.productDelete);
 router.get('/productRegisterConclude', productController.productRegisterConclude);
 
