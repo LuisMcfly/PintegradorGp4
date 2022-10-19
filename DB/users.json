@@ -1,11 +1,49 @@
 [{
     "id": "1",
-    "nombreCompleto": "Admin",
+    "nombreCompleto": "LuisAdmin",
     "correoElectronico": "Admin@Admin.com",
     "contraseña": "Password",
     "telefono": 11111111,
     "direccion": "Avenida siempre viva",
     "genero": "Masculino",
+    "admin": true,
     "token": "Por Definir",
     "Autenticado": false
-}]
+},
+{
+    "id": "2",
+    "nombreCompleto": "JoseAdmin",
+    "correoElectronico": "Admin@Admin.com",
+    "contraseña": "Password",
+    "telefono": 11111111,
+    "direccion": "Avenida siempre viva",
+    "genero": "Masculino",
+    "admin": true,
+    "token": "Por Definir",
+    "Autenticado": false
+},
+{
+    "id": "3",
+    "nombreCompleto": "JorgeAdmin",
+    "correoElectronico": "Admin@Admin.com",
+    "contraseña": "Password",
+    "telefono": 11111111,
+    "direccion": "Avenida siempre viva",
+    "genero": "Masculino",
+    "admin": true,
+    "token": "Por Definir",
+    "Autenticado": false
+},
+{
+    "id": "4",
+    "nombreCompleto": "RicardoAdmin",
+    "correoElectronico": "Admin@Admin.com",
+    "contraseña": "Password",
+    "telefono": 11111111,
+    "direccion": "Avenida siempre viva",
+    "genero": "Masculino",
+    "admin": true,
+    "token": "Por Definir",
+    "Autenticado": false
+}
+]

@@ -117,6 +117,15 @@ main img,
     margin: 1px 20px;
   }
 
+  .producto-imagenes {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 250px;
+    /* width: 800px; */
+  }
+  .img-main {
+    width: 100%;
+  }
   .img-alt {
     display: flex;
     justify-content: flex-start;
@@ -145,7 +154,7 @@ main img,
   .producto-precio {
     flex-grow: 0;
     flex-shrink: 0;
-    flex-basis: 170px;
+    flex-basis: 180px;
     width: 400px;
     padding: 10px;
     border: 1px dotted black;
