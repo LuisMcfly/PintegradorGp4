@@ -4,7 +4,7 @@ const { uuid } = require('uuidv4') // libreria para ids
 const productos = JSON.parse(fs.readFileSync('DB/products.json', {encoding: 'utf-8'}));//trae lo que hay en en archivo, se parsea para poder usarlo en js
 const fabricantes = JSON.parse(fs.readFileSync('DB/fabricantes.json', {encoding: 'utf-8'}));
 const categorias = JSON.parse(fs.readFileSync('DB/categorias.json', {encoding: 'utf-8'}));
-
+console.log(productos[productos.length-1].id +1 )
 const productController = {
     productShop: (req, res) => res.render('products/productShop', {categorias, productos}),//lista todos los productos
     
@@ -26,8 +26,9 @@ const productController = {
         }
 
         let rating = 0;
-        
-        productos.push({id: uuid(),...req.body, rating, image}); // pushea al objeto literal
+                        //id: uuid()
+                        
+        productos.push({id: productos[productos.length - 1].id + 1,...req.body, rating, images:image}); // pushea al objeto literal
 
         let productsJSON = JSON.stringify(productos, null); // convierte a objeto JSON
         fs.writeFileSync('DB/products.json', productsJSON); // Escribe el archivo
@@ -51,7 +52,6 @@ const productController = {
         } else {
             image = image;
         }
-        console.log(image)
 
         let newProductToUpdate = {
             id: producto.id,
