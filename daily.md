@@ -32,4 +32,29 @@ de las vistas (HTML) en archivos EJS
 # SPRINT 4
 
 ## Jueves 29 de Septiembre, 2022
+* Se asignaron las tareas del sprint
+
+## Martes 4 de Octubre, 2022
+* Se trabajó en conjunto el sistema de ruteo
+* Se implementó el multer para cargar imágenes a los productos
+* Se implementó el formulario para crear productos
+
+## Jueves 13 de Octubre, 2022
+* Se organizó la base de datos de productos
+* Se trabajó en conjunto la edición de productos
+* Se subió la base de datos de usuarios
+
+## Martes 18 de Octubre, 2022
+* Se revisó el progreso del sprint
+* Se comenzó a trabajar en pulir ajustes especialmente de diseño del sitio
+
+## Miércoles 19 de Octubre, 2022
+* Se revisaron los ajustes en el Dev
+* Se subió la entrega del Dev al Main
+* Se comenzó a definir las tareas para el 5to sprint
+
+
+# SPRINT 5
+
+## Miércoles 19 de Octubre, 2022
 *
