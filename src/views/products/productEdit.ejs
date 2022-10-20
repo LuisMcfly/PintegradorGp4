@@ -1,59 +1,114 @@
-
-    <head>
-        <title>Pegasus Tech | Crear editar</title>
-        <link rel="stylesheet" href="/css/form/base/base.css">
-        <link rel="stylesheet" href="/css/form/registro.css">
-        <link rel="stylesheet" href="/css/form/componentes/card.css">
-        <link rel="stylesheet" href="/css/form/componentes/inputs.css">
-        <link rel="stylesheet" href="/css/form/componentes/button.css">
-        <link rel="stylesheet" href="/css/login&register.css">
-    </head>
-    <%- include('../partials/head.ejs') %> 
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %> 
+<head>
+  <link rel="stylesheet" href="/css/productDetail.css" />
+  <link rel="stylesheet" href="/css/productEdit.css" />
+  <title>Pegasus Tech | Editar producto</title>
+</head>
+    
 <body>
     <%- include('../partials/header.ejs') %> 
-    <main class="container flex flex--column flex--center">
-        <section class="cartao">
-            <h2 class="card__title">Editar producto</h2><!-- opcional -->
-            <form action="./registro_concluido.html" class="formulario flex flex--column">
-                <fieldset>
-                    <legend class="form__label">Información ...</legend>
-                    <div class="input-container">
-                        <input name="name" id="name" class="input" type="text" placeholder="Nombre" required data-tipo="nombre">
-                        <label class="input-label" for="name">Nombre del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="textarea-container"><!-- Usar textarea o input? -->
-                        <textarea name="descripcion" id="descripcion" class="textarea" type="text" placeholder="descripcion" required data-tipo="descripcion"></textarea>
-                        <label class="textarea-label" for="descripcion">Descripcion del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <label class="input-label file" for="imagen">Seleccione la imágen del producto</label>
-                        <input name="imagen" id="imagen" class="input-file" type="file" placeholder="Imágen" required  data-tipo="imagen"> 
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <input name="categoria" id="categoria" class="input" type="text" placeholder="Categoria" required data-tipo="categoria">
-                        <label class="input-label" for="categoria">Categoria del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <input name="precio" id="precio" class="input" type="text" placeholder="Precio" required data-tipo="precio">
-                        <label class="input-label" for="precio">Precio del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <input name="colores" id="colores" class="input" type="text" placeholder="Colores" required data-tipo="colores">
-                        <label class="input-label" for="colores">Colores del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                </fieldset>
-                
-                <button class="button">Editar</a>
-            </form>
-        </section>
-    </main>
+    <form action="/products/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+      <section class="producto-detail">
+        <div class="producto-titulo">
+          <h2>
+            <label for="name"> Nombre: </label>
+            <input type="text" name="name"  value="<%= producto.name %>">
+            
+          </h2>
+        </div>
+        <label for="manufacturer"> Fabricante: </label>
+        <input type="text" name="manufacturer" value="<%= producto.manufacturer %>">
+
+        <label for="model"> Modelo: </label>
+        <input type="text" name="model" value="<%= producto.model %>">
+        <!--convertir select-->
+          <div class="calificacion">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+        </div>
+
+        <div class="producto-elementos">
+          <div class="producto-imagenes">
+            <input id="inputFile1"  type="file" name="imagen" multiple>
+
+            <div class="img-main">
+              <img class="img-main" id="img1" src="/img/uploads/<%= producto.images[0] %> " alt="imagen de producto">
+            </div>
+            <ul class="img-alt">
+              <% for(let i=1;i<producto.images.length;i++){ %>
+                <li>
+                  <button>
+                    <i class="fa-regular fa-circle-dot"></i>
+                    <img src="/img/uploads/<%= producto.images[i] %> " alt="view">
+                  </button>
+                </li>
+              <% } %>  
+            </ul>
+          </div>
+
+          <div class="producto-info">
+            <div class="producto-opciones">
+              <% for(let i=0;i<producto.colors.length;i++){ %>
+                <button> <%= producto.colors[i] %> </button>
+              <% } %>  
+            </div>
+            <input class="stock-edit" type="text" name="stock" value="<%= producto.stock %>"> Unidades en stock
+            <textarea class="descripcion-edit" rows="5" wrap="hard" name="description">
+              <%= producto.description %>
+            </textarea>
+          </div>
+          
+          <div class="producto-precio">
+            <div class="precio-numero"> 
+              <div>
+                <label for="price"> $ </label> 
+                <input type="text" name="price" value="<%= producto.price %>">
+              </div>
+              
+              <div>
+                <input type="text" name="discount" value="<%= producto.discount %>">
+                <label for="discount"> % </label> 
+              </div>
+            </div>
+
+            <div class="btns-producto">
+              <div>
+                <input class="btn" type="submit" value="Guardar Cambios">
+              </div> </form> <!-- Cierre del form principal -->
+
+              <form action="/products/<%= producto.id %>?_method=DELETE" method="POST">
+                <input class="btn" type="submit" value="Eliminar Producto">
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- El form de la edición se cierra dentro de btns-producto -->
     <%- include('../partials/footer') %> 
-    <script src="/js/validaciones.js" type="module"></script>
+    <script>
+      function init() {
+        var inputFile = document.getElementById('inputFile1');
+        inputFile.addEventListener('change', mostrarImagen, false);
+      }
+  
+      function mostrarImagen(event) {
+        var file = event.target.files[0];
+
+        var reader = new FileReader();
+        reader.onload = function(event) {
+          var img = document.getElementById('img1');
+          img.src= event.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+  
+    window.addEventListener('load', init, false);
+    </script>
 </body>
 </html>

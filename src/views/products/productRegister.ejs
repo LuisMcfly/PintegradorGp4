@@ -1,62 +1,144 @@
+<%- include('../partials/head.ejs') %>
 
 <head>
-    <title>Pegasus Tech | Crear producto</title>
-    <link rel="stylesheet" href="/css/form/base/base.css">
-    <link rel="stylesheet" href="/css/form/registro.css">
-    <link rel="stylesheet" href="/css/form/componentes/card.css">
-    <link rel="stylesheet" href="/css/form/componentes/inputs.css">
-    <link rel="stylesheet" href="/css/form/componentes/button.css">
-    <link rel="stylesheet" href="/css/login&register.css">
+  <title>Pegasus Tech | Crear producto</title>
+  <link rel="stylesheet" href="/css/form/base/base.css">
+  <link rel="stylesheet" href="/css/form/registro.css">
+  <link rel="stylesheet" href="/css/form/componentes.css" />
+  <link rel="stylesheet" href="/css/login&register.css">
 </head>
-<%- include('../partials/head.ejs') %> 
 
 <body>
-    <%- include('../partials/header.ejs') %> 
+  <%- include('../partials/header.ejs') %>
 
-    <main class="container flex flex--column flex--center">
-        <section class="cartao">
-            <h2 class="card__title">Registrar producto</h2><!-- opcional -->
-            <form action="./productRegisterConclude" class="formulario flex flex--column">
-                <fieldset>
-                    <legend class="form__label">Información ...</legend>
-                    <div class="input-container">
-                        <input name="name" id="name" class="input" type="text" placeholder="Nombre" required data-tipo="nombre">
-                        <label class="input-label" for="name">Nombre del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="textarea-container"><!-- Usar textarea o input? -->
-                        <textarea name="descripcion" id="descripcion" class="textarea" type="text" placeholder="descripcion" required data-tipo="descripcion"></textarea>
-                        <label class="textarea-label" for="descripcion">Descripcion del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <label class="input-label file" for="imagen">Seleccione la imágen del producto</label>
-                        <input name="imagen" required id="imagen" class="input-file" type="file" placeholder="Imágen" required  data-tipo="imagen"> 
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <input name="categoria" id="categoria" class="input" type="text" placeholder="Categoria" required data-tipo="categoria">
-                        <label class="input-label" for="categoria">Categoria del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <input name="precio" id="precio" class="input" type="text" placeholder="Precio" required data-tipo="precio">
-                        <label class="input-label" for="precio">Precio del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                    <div class="input-container">
-                        <input name="colores" id="colores" class="input" type="text" placeholder="Colores" required data-tipo="colores">
-                        <label class="input-label" for="colores">Colores del producto</label>
-                        <span class="input-message-error">Este campo no es valido</span>
-                    </div>
-                </fieldset>
-                
-                <button class="button">Registrar</a>
-            </form>
-        </section>
-    </main>
+  <main class="container flex flex--column flex--center">
+    <section class="cartao">
 
-    <%- include('../partials/footer') %> 
-    <script src="" type="module"></script><!-- script de las validaciones -->
+      <h2 class="card__title">Registrar producto</h2>
+
+      <form action="/products/productRegister" method="post" enctype="multipart/form-data"
+        class="formulario flex flex--column" >
+        
+        <fieldset>
+          <div class="input-container">
+            <input name="name" id="name" class="input" type="text" placeholder="Nombre" required >
+            <label class="input-label" for="name">Nombre del producto <i class="fas fa-file-signature"></i></label>
+            <span class="input-message-error">Este campo no es valido</span>
+          </div>
+          
+          <div class="input-container">
+            <label class="input-label manufacturer">Nombre del fabricante <i class="fa-solid fa-check"></i></label>
+            <select name="manufacturer" class="input" id="">
+              <% for(let i=0;i<fabricantes.length; i++) {%>
+                <option class="option" value="<%= fabricantes[i].nombre %>">
+                  <%= fabricantes[i].nombre %>
+                </option>
+              <% } %>
+            </select>
+          </div>
+          
+          <div class="input-container">
+            <input name="model" id="model" class="input" type="text" placeholder="Modelo" required>
+            <label class="input-label" for="model">Modelo del producto 
+              <i class="fas fa-file-signature"></i></label>
+            <span class="input-message-error">Este campo no es valido</span>
+          </div>
+          
+          <div class="input-container">
+            <input name="variations" id="variaciones" class="input" type="text" placeholder="Variaciones">
+            <label class="input-label" for="variaciones">Variaciones del producto 
+              <i class="fas fa-file-signature"></i></label>
+            <span class="input-message-error">Este campo no es valido</span>
+          </div>
+
+          <div class="list-choice">
+            <div class="list-choice-title">Seleccione la Categoria <i class="fa-solid fa-layer-group"></i></div>
+            <div class="list-choice-objects">
+              <label>
+                <input type="radio" name="category" value="portatiles" />
+                <span>Portatiles</span>
+              </label>
+              <label>
+                <input type="radio" name="category" value="pcEscritorio" />
+                <span>Computadores de escritorio</span>
+              </label>
+              <label>
+                <input type="radio" name="category" value="perifericos" />
+                <span>Periféricos</span>
+              </label>
+              <label>
+                <input type="radio" name="category" value="gamer" />
+                <span>Gamer</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="textarea-container">
+            <textarea name="description" id="descripcion" class="textarea" type="text" placeholder="descripcion"
+              required></textarea>
+            <label class="textarea-label" for="descripcion">Descripcion del producto 
+              <i class="fas fa-file-signature"></i></label>
+            <span class="input-message-error">Este campo no es valido</span>
+          </div>
+          
+          <div class="input-container">
+            <input name="price" id="precio" class="input" type="text" placeholder="Precio" required>
+            <label class="input-label" for="precio">Precio del producto <i class="fas fa-dollar-sign"></i></label>
+            <span class="input-message-error">Este campo no es valido</span>
+          </div>
+
+          <div class="input-container">
+            <input name="discount" id="descuento" class="input" type="text" placeholder="Descuento">
+            <label class="input-label" for="descuento">Descuento del producto <i class="fas fa-percent"></i></label>
+            <span class="input-message-error">Este campo no es valido</span>
+          </div>
+
+          <div class="input-container">
+            <input name="stock" id="stock" class="input" type="text" placeholder="Descuento">
+            <label class="input-label" for="stock">Stock del producto <i class="fab fa-stack-overflow"></i></label>
+            <span class="input-message-error">Este campo no es valido</span>
+          </div>
+
+          <div class="input-container">
+            <section class="app">
+              <h3>Colores <i class="fas fa-palette"></i></h3>
+              <article class="feature1">
+                <input type="checkbox" id="feature1" name="colors[]" value="blanco" />
+                <div><span>BLANCO</span></div>
+              </article>
+
+              <article class="feature2">
+                <input type="checkbox" id="feature2" name="colors[]" value="azul" />
+                <div><span>AZUL</span></div>
+              </article>
+
+              <article class="feature3">
+                <input type="checkbox" id="feature3" name="colors[]" value="rojo" />
+                <div><span>ROJO</span></div>
+              </article>
+
+              <article class="feature4">
+                <input type="checkbox" id="feature4" name="colors[]" value="fucsia" checked />
+                <div><span>FUCSIA</span></div>
+              </article> 
+            </section>
+          </div>
+
+          <div class="input-container">
+            <label class="input-label file" for="imagen">Seleccione la imágen del producto 
+              <i class="fa-solid fa-camera"></i></label>
+            <input name="imagen" id="imagen" class="input-file" type="file" multiple placeholder="Imágen" required>
+            <span class="input-message-error">Este campo no es valido</span>
+          </div>
+        </fieldset>
+
+        <button class="button">Registrar</a>
+      </form>
+
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+  <script src="" type="module"></script><!-- script de las validaciones -->
 </body>
 </html>

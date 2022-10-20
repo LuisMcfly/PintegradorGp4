@@ -15,11 +15,14 @@ main img,
   background-color: white;
   padding: 5px;
 }
-.producto-titulo h2 {
+.producto-header h2 {
   font-size: 3rem;
   line-height: 130%;
   text-transform: capitalize;
-  margin: 10px 5px;
+  margin: 10px 0px;
+}
+.producto-header .fabricante {
+  color: var(--GrisOscuro);
 }
 
 .imagenes-producto {
@@ -70,9 +73,12 @@ main img,
   justify-content: flex-start;
   align-content: flex-start;
 }
-.btns-producto form {
+.precio-numero h4 {
+  margin-top: 8px;
+}
+.btns-producto form,
+.btns-producto div {
   padding: 5px;
-  /* align-self: center; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,10 +113,19 @@ main img,
     max-width: 1080px;
     margin: 0 auto;
   }
-  .producto-titulo {
+  .producto-header {
     margin: 1px 20px;
   }
 
+  .producto-imagenes {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 250px;
+    /* width: 800px; */
+  }
+  .img-main {
+    width: 100%;
+  }
   .img-alt {
     display: flex;
     justify-content: flex-start;
@@ -139,7 +154,7 @@ main img,
   .producto-precio {
     flex-grow: 0;
     flex-shrink: 0;
-    flex-basis: 170px;
+    flex-basis: 180px;
     width: 400px;
     padding: 10px;
     border: 1px dotted black;
