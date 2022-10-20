@@ -1,35 +1,35 @@
 ## 1. EMPEZAR A HACER
-* implementar el tablero
-* crear ramas para cada cosa que desarrolle cada uno sobre el DEV
-* hacer un checkpoint a lo largo de la semana
-* ninguna tarea debe tomar más de 6 días sin adelantar
-* pomodoros
+* Implementar el tablero
+* Crear ramas para cada cosa que desarrolle cada uno sobre el DEV
+* Hacer un checkpoint a lo largo de la semana
+* Ninguna tarea debe tomar más de 6 días sin adelantar
+* Pomodoros
 
 ---------------------------------------------
 
-## 2. HACER MAS
-* buscar recursos
-* mantener en constante comunicación
-* mantener buenas prácticas de desarrollo
-* apegarnos mejor a las reuniones diarias
+## 2. HACER MÁS
+* Buscar recursos
+* Mantener en constante comunicación
+* Mantener buenas prácticas de desarrollo
+* Apegarnos mejor a las reuniones diarias
 
 ---------------------------------------------
 
 ## 3. CONTINUAR HACIENDO
-* adelantar trabajo
-* mantener una buena relación de equipo
-* aprovechar la herramienta de GIT
-* seguirnos colaborando unos a otros
+* Adelantar trabajo
+* Mantener una buena relación de equipo
+* Aprovechar la herramienta de GIT
+* Seguirnos colaborando unos a otros
 
 ---------------------------------------------
 
 ## 4. HACER MENOS
-* procrastinar
-* distribuir mejor las tareas
-* disminuir distracciones
+* Procrastinar
+* Distribuir mejor las tareas
+* Disminuir distracciones
 
 ---------------------------------------------
 
 ## 5. DEJAR DE HACER
-* no pasar más de 2 días sin reunión
-* no dejarnos abrumar por una tarea (buscar ayuda)
+* No pasar más de 2 días sin reunión
+* No dejarnos abrumar por una tarea (buscar ayuda)
