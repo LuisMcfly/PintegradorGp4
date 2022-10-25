@@ -1,5 +1,7 @@
-const mainController = {
-    index: (req, res) => res.render('index')
-}
 
-module.exports = mainController;
+const indexRender = (req, res) => res.render('index')
+
+
+module.exports = {
+    indexRender,
+};

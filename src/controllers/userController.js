@@ -1,9 +1,12 @@
-const userController = {
-    register: (req, res) => res.render('users/register'),
-    registerConclude: (req, res) => { 
+const registerRender = (req, res) => res.render('users/register');
+const registerConcludeRender = (req, res) => { 
         res.render('users/registerConclude')//se debe enviar el ultimo usuario registrado
-    },
-    login: (req, res) => res.render('users/login')
-}
+    };
+const loginRender = (req, res) => res.render('users/login');
 
-module.exports = userController;
+
+module.exports = {
+    registerRender,
+    registerConcludeRender,
+    loginRender
+};

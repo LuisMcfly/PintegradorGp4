@@ -10,7 +10,7 @@
 <body>
     <%- include('../partials/header.ejs') %> 
     <section class="producto-detail">
-      <form action="/products/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data"></form>
+      <form action="/products/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="producto-titulo">
           <h2>
             <label for="name"> Nombre: </label>
