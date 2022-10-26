@@ -61,7 +61,7 @@ main .shop-producto {
     flex: 3;
   }
   .info-de-producto * {
-    margin: 3px;
+    /* margin: 3px; */
   }
 }
 

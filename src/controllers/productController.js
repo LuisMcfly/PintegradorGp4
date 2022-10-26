@@ -1,48 +1,54 @@
 let fs = require('fs')
 const { uuid } = require('uuidv4') // libreria para ids
-
-const productos = JSON.parse(fs.readFileSync('DB/products.json', {encoding: 'utf-8'}));//trae lo que hay en en archivo, se parsea para poder usarlo en js
+const {validationResult} = require('express-validator')//validaciones del form
+const ObjProductos = JSON.parse(fs.readFileSync('DB/products.json', {encoding: 'utf-8'}));//trae lo que hay en en archivo, se parsea para poder usarlo en js
 const fabricantes = JSON.parse(fs.readFileSync('DB/fabricantes.json', {encoding: 'utf-8'}));
 const categorias = JSON.parse(fs.readFileSync('DB/categorias.json', {encoding: 'utf-8'}));
-console.log(productos[productos.length-1].id +1 )
+
 const productController = {
-    productShop: (req, res) => res.render('products/productShop', {categorias, productos}),//lista todos los productos
+    productShop: (req, res) => res.render('products/productShop', {categorias, ObjProductos}),//lista todos los Productos
     
     productDetail: (req, res) => {
-        let producto = productos.find(producto => producto.id==req.params.id)
+        let producto = ObjProductos.find(producto => producto.id==req.params.id)
         
-        res.render('products/productDetail', {producto})
+        res.render('products/productDetail.ejs', {producto})
     },
 
     productRegister: (req, res) => res.render('products/productRegister', {fabricantes}),
+
     create: (req, res) => {
-        let image = []
+        let images = []
         if (req.files[0]!=undefined){
             for (let i = 0; i < req.files.length; i++) {
-                image.push(req.files[i].filename)
+                images.push(req.files[i].filename)
             }
         } else {
-            image = 'none.png';
+            images = ['noImage.png'];
         }
+        /*validaciones del form */
+        let errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return res.render('products/productRegister', {fabricantes,
+                                                           errors: errors.mapped(),
+                                                           old: req.body,
+                                                           oldFile: req.file})
+        }else{ 
+            let rating = 0;
+            ObjProductos.push({id: uuid(),...req.body, rating, images}); // pushea al objeto literal
 
-        let rating = 0;
-                        //id: uuid()
-                        
-        productos.push({id: productos[productos.length - 1].id + 1,...req.body, rating, images:image}); // pushea al objeto literal
+            let productsJSON = JSON.stringify(ObjProductos, null); // convierte a objeto JSON
+            fs.writeFileSync('DB/products.json', productsJSON); // Escribe el archivo
 
-        let productsJSON = JSON.stringify(productos, null); // convierte a objeto JSON
-        fs.writeFileSync('DB/products.json', productsJSON); // Escribe el archivo
-
-        res.redirect('productRegisterConclude');
+            res.redirect('productRegisterConclude'); 
+        }
     },
     productEdit: (req, res) =>{ 
-        let producto = productos.find(producto => producto.id==req.params.id)
+        let producto = ObjProductos.find(producto => producto.id==req.params.id)
         res.render('products/productEdit', {producto})
     },
     productUpdate: (req, res) => {
-        let producto = productos.find(producto => producto.id==req.params.id)
+        let producto = ObjProductos.find(producto => producto.id==req.params.id)
         let image = producto.images;
-        //console.log(req.file, 'img', image)
         
          if (req.files[0]!=undefined){
             image = []
@@ -55,7 +61,8 @@ const productController = {
 
         let newProductToUpdate = {
             id: producto.id,
-            name: req.body.name,
+            ...req.body,
+            /* name: req.body.name,
             manufacturer: req.body.manufacturer,
             model: req.body.model,
             variations: [],
@@ -64,12 +71,12 @@ const productController = {
             price: req.body.price,
             discount: 0,
             stock: req.body.stock,
-            colors: [],
+            colors: [], */
             rating: 5,
             images: image
         };
 
-        let newProduct = productos.map(product => {
+        let updatedProductsObj = ObjProductos.map(product => {
             if (product.id == newProductToUpdate.id){
                 return product = {...newProductToUpdate};
             }
@@ -77,17 +84,17 @@ const productController = {
         })
         
         //products = newProduct
-        fs.writeFileSync('DB/products.json',JSON.stringify(newProduct, null));
+        fs.writeFileSync('DB/products.json',JSON.stringify(updatedProductsObj, null));
         // res.redirect('/product/editSuccesful');
         
         res.send('Edicion exitosa');
     },
     productDelete: (req, res) => { //puede ir un middelware de confirmacion para eliminar
-        let nuevosProductos = productos.filter(producto => producto.id != req.params.id)
+        let nuevosProductos = ObjProductos.filter(producto => producto.id != req.params.id)
         let productosJSON = JSON.stringify(nuevosProductos, null)
         fs.writeFileSync('DB/products.json', productosJSON)
         res.send('product destroyed')
-        //definir si se muetra confirmacion del prodcuto eliminado y como
+        //definir si se muestra confirmacion del prodcuto eliminado y como
     },
     productRegisterConclude: (req, res) => res.render('products/productRegisterConclude'),
 }
@@ -100,4 +107,4 @@ function imgValidate (imgs) {
     }
 }
 
-module.exports = productController;
+module.exports = productController

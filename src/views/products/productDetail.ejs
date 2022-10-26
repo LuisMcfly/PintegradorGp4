@@ -36,6 +36,7 @@
           <% } %>  
         </ul>
       </div>
+
       <div class="producto-info"> 
         <div class="producto-opciones">
           <% for(let i=0; i<producto.colors.length; i++){ %>
@@ -45,10 +46,12 @@
         <p class="stock"><%= producto.stock %>  Unidades restantes</p>
         <p class="descripcion"><%= producto.description %> </p>
       </div>
+
       <div class="producto-precio">
         <div class="precio-numero">
           <h2>$ <%= producto.price %></h2><h4>.900</h4>
         </div>
+        
         <div class="btns-producto">
           <form action="/cart">
             <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button>
@@ -56,6 +59,7 @@
           </form>
         </div>
       </div>
+
     </div>
   </section>
 

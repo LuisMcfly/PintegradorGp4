@@ -13,15 +13,17 @@
 
   <main class="container flex flex--column flex--center">
     <section class="cartao">
-
-      <h2 class="card__title">Registrar producto</h2>
-
+      <h2 class="card__title">Registrar producto</h2><!-- dice que si el controlador envio variables locales y so dentro de esas variables hay un mensaje de error se itere -->
+      <% if(locals.errors) { %> 
+        <% for(let error in errors) { %> 
+          <p><%= errors[error].msg %> </p>
+        <% } %> 
+      <% } %> 
       <form action="/products/productRegister" method="post" enctype="multipart/form-data"
         class="formulario flex flex--column" >
-        
         <fieldset>
           <div class="input-container">
-            <input name="name" id="name" class="input" type="text" placeholder="Nombre" required >
+            <input name="name" id="name" class="input" type="text" placeholder="Nombre" value="<%= locals.old && old.name ? old.name : '' %>" >
             <label class="input-label" for="name">Nombre del producto <i class="fas fa-file-signature"></i></label>
             <span class="input-message-error">Este campo no es valido</span>
           </div>
@@ -30,22 +32,22 @@
             <label class="input-label manufacturer">Nombre del fabricante <i class="fa-solid fa-check"></i></label>
             <select name="manufacturer" class="input" id="">
               <% for(let i=0;i<fabricantes.length; i++) {%>
-                <option class="option" value="<%= fabricantes[i].nombre %>">
+                <option class="option" value="<%= fabricantes[i].nombre %>" <%= locals.old && old.manufacturer ===  fabricantes[i].nombre ? 'selected' : ''%> >
                   <%= fabricantes[i].nombre %>
                 </option>
               <% } %>
             </select>
-          </div>
+          </div> 
           
           <div class="input-container">
-            <input name="model" id="model" class="input" type="text" placeholder="Modelo" required>
+            <input name="model" id="model" class="input" type="text" placeholder="Modelo" value="<%= locals.old && old.model ? old.model : ''%> ">
             <label class="input-label" for="model">Modelo del producto 
               <i class="fas fa-file-signature"></i></label>
             <span class="input-message-error">Este campo no es valido</span>
           </div>
           
           <div class="input-container">
-            <input name="variations" id="variaciones" class="input" type="text" placeholder="Variaciones">
+            <input name="variations" id="variaciones" class="input" type="text" placeholder="Variaciones" value="<%= locals.old && old.variations ? old.variations : '' %> ">
             <label class="input-label" for="variaciones">Variaciones del producto 
               <i class="fas fa-file-signature"></i></label>
             <span class="input-message-error">Este campo no es valido</span>
@@ -74,27 +76,27 @@
           </div>
           
           <div class="textarea-container">
-            <textarea name="description" id="descripcion" class="textarea" type="text" placeholder="descripcion"
-              required></textarea>
+            <textarea name="description" id="descripcion" class="textarea" type="text" placeholder="descripcion" 
+            value="<%= locals.old && old.description ? old.descripcion : '' %> "  ></textarea>
             <label class="textarea-label" for="descripcion">Descripcion del producto 
               <i class="fas fa-file-signature"></i></label>
             <span class="input-message-error">Este campo no es valido</span>
           </div>
           
           <div class="input-container">
-            <input name="price" id="precio" class="input" type="text" placeholder="Precio" required>
+            <input name="price" id="precio" class="input" type="text" placeholder="Precio" value="<%= locals.old && old.price ? old.price : '' %> ">
             <label class="input-label" for="precio">Precio del producto <i class="fas fa-dollar-sign"></i></label>
             <span class="input-message-error">Este campo no es valido</span>
           </div>
 
           <div class="input-container">
-            <input name="discount" id="descuento" class="input" type="text" placeholder="Descuento">
+            <input name="discount" id="descuento" class="input" type="text" placeholder="Descuento" value="<%= locals.discount && old.Discount ? old.discount : '' %> ">
             <label class="input-label" for="descuento">Descuento del producto <i class="fas fa-percent"></i></label>
             <span class="input-message-error">Este campo no es valido</span>
           </div>
 
           <div class="input-container">
-            <input name="stock" id="stock" class="input" type="text" placeholder="Descuento">
+            <input name="stock" id="stock" class="input" type="text" placeholder="Descuento" value="<%= locals.old && old.stock ? old.stock : '' %> ">
             <label class="input-label" for="stock">Stock del producto <i class="fab fa-stack-overflow"></i></label>
             <span class="input-message-error">Este campo no es valido</span>
           </div>
@@ -103,7 +105,7 @@
             <section class="app">
               <h3>Colores <i class="fas fa-palette"></i></h3>
               <article class="feature1">
-                <input type="checkbox" id="feature1" name="colors[]" value="blanco" />
+                <input type="checkbox" id="feature1" name="colors[]" value="blanco"/>
                 <div><span>BLANCO</span></div>
               </article>
 
@@ -127,7 +129,7 @@
           <div class="input-container">
             <label class="input-label file" for="imagen">Seleccione la imágen del producto 
               <i class="fa-solid fa-camera"></i></label>
-            <input name="imagen" id="imagen" class="input-file" type="file" multiple placeholder="Imágen" required>
+            <input name="imagen" id="imagen" class="input-file" type="file" multiple placeholder="Imágen" >
             <span class="input-message-error">Este campo no es valido</span>
           </div>
         </fieldset>

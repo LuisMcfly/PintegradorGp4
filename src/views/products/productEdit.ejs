@@ -4,7 +4,7 @@
 <head>
   <link rel="stylesheet" href="/css/productDetail.css" />
   <link rel="stylesheet" href="/css/productEdit.css" />
-  <title>Pegasus Tech |   Editar producto</title>
+  <title>Pegasus Tech | Editar producto</title>
 </head>
     
 <body>
@@ -35,12 +35,10 @@
 
         <div class="producto-elementos">
           <div class="producto-imagenes">
-            
-            <!-- <img id="img1"><br/> -->
             <input id="inputFile1"  type="file" name="imagen" multiple>
 
             <div class="img-main">
-              <img id="img1" src="/img/uploads/<%= producto.images[0] %> " alt="imagen de producto">
+              <img class="img-main" id="img1" src="/img/uploads/<%= producto.images[0] %> " alt="imagen de producto">
             </div>
             <ul class="img-alt">
               <% for(let i=1;i<producto.images.length;i++){ %>
@@ -61,23 +59,29 @@
               <% } %>  
             </div>
             <input class="stock-edit" type="text" name="stock" value="<%= producto.stock %>"> Unidades en stock
-            <input  type="textarea" rows="5" cols="20" name="description" value="<%= producto.description %>">
+            <textarea class="descripcion-edit" rows="5" wrap="hard" name="description">
+              <%= producto.description %>
+            </textarea>
           </div>
-
+          
           <div class="producto-precio">
             <div class="precio-numero"> 
-              <!-- <h2><%= producto.price %></h2><h4>.900</h4>  -->
-              <label for="price"> $ </label> 
-              <input type="text" name="price" value="<%= producto.price %>">
+              <div>
+                <label for="price"> $ </label> 
+                <input type="text" name="price" value="<%= producto.price %>">
+              </div>
               
-              <input type="text" name="discount" value="<%= producto.discount %>">
-              <label for="discount"> % </label> 
+              <div>
+                <input type="text" name="discount" value="<%= producto.discount %>">
+                <label for="discount"> % </label> 
+              </div>
             </div>
+
             <div class="btns-producto">
               <div>
                 <input class="btn" type="submit" value="Guardar Cambios">
               </div> </form> <!-- Cierre del form principal -->
-                <!-- <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button> -->
+
               <form action="/products/<%= producto.id %>?_method=DELETE" method="POST">
                 <input class="btn" type="submit" value="Eliminar Producto">
               </form>
