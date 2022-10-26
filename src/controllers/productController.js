@@ -1,9 +1,9 @@
-let fs = require('fs')
-const { uuid } = require('uuidv4') // libreria para ids
+let fs = require('fs');
+const { uuid } = require('uuidv4'); // libreria para ids
 
 const ObjProductos = JSON.parse(fs.readFileSync('DB/products.json', {encoding: 'utf-8'}));//trae lo que hay en en archivo, se parsea para poder usarlo en js
-const fabricantes = JSON.parse(fs.readFileSync('DB/fabricantes.json', {encoding: 'utf-8'}));
-const categorias = JSON.parse(fs.readFileSync('DB/categorias.json', {encoding: 'utf-8'}));
+const fabricantes = JSON.parse(fs.readFileSync('DB/manufacturers.json', {encoding: 'utf-8'}));
+const categorias = JSON.parse(fs.readFileSync('DB/categories.json', {encoding: 'utf-8'}));
 
 const productShopRender = (req, res) => res.render('products/productShop', {categorias, ObjProductos});
 const productDetailRender = (req, res) => {
@@ -30,10 +30,10 @@ const productCreate = (req, res) => {
     let productsJSON = JSON.stringify(ObjProductos, null); // convierte a objeto JSON
     fs.writeFileSync('DB/products.json', productsJSON); // Escribe el archivo
 
-    res.redirect('productRegisterConclude');
+    res.render('products/productRegisterConclude');
 };
 const productUpdate = (req, res) => {
-    let producto = ObjProductos.find(producto => producto.id==req.params.id)
+    let producto = ObjProductos.find(producto => producto.id == req.params.id)
     let image = producto.images;
     
     if (req.files[0]!=undefined) {
@@ -79,7 +79,6 @@ const productDelete = (req, res) => { //puede ir un middelware de confirmacion p
     res.send('product destroyed')
     //definir si se muetra confirmacion del prodcuto eliminado y como
 };
-const productRegisterConclude = (req, res) => res.render('products/productRegisterConclude');
 
 
 function imgValidate (imgs) {
@@ -98,6 +97,5 @@ module.exports = {
     productEditRender,
     productCreate,
     productUpdate,
-    productDelete,
-    productRegisterConclude
+    productDelete
 }

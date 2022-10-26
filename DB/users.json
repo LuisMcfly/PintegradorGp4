@@ -1,49 +1,76 @@
-[{
-    "id": "1",
-    "nombreCompleto": "LuisAdmin",
-    "correoElectronico": "Admin@Admin.com",
-    "contraseña": "Password",
-    "telefono": 11111111,
-    "direccion": "Avenida siempre viva",
-    "genero": "Masculino",
-    "admin": true,
+[
+  {
+    "id": 1,
+    "fullName": "Luistitle",
+    "email": "title@title.com",
+    "password": "Password",
+    "phone": 11111111,
+    "address": "Avenida siempre viva",
+    "gender": "Masculino",
+    "title": "Admin",
     "token": "Por Definir",
-    "Autenticado": false
-},
-{
-    "id": "2",
-    "nombreCompleto": "JoseAdmin",
-    "correoElectronico": "Admin@Admin.com",
-    "contraseña": "Password",
-    "telefono": 11111111,
-    "direccion": "Avenida siempre viva",
-    "genero": "Masculino",
-    "admin": true,
+    "authenticated": false
+  },
+  {
+    "id": 2,
+    "fullName": "Josetitle",
+    "email": "title@title.com",
+    "password": "Password",
+    "phone": 11111111,
+    "address": "Avenida siempre viva",
+    "gender": "Masculino",
+    "title": "Admin",
     "token": "Por Definir",
-    "Autenticado": false
-},
-{
-    "id": "3",
-    "nombreCompleto": "JorgeAdmin",
-    "correoElectronico": "Admin@Admin.com",
-    "contraseña": "Password",
-    "telefono": 11111111,
-    "direccion": "Avenida siempre viva",
-    "genero": "Masculino",
-    "admin": true,
+    "authenticated": false
+  },
+  {
+    "id": 3,
+    "fullName": "Jorgetitle",
+    "email": "title@title.com",
+    "password": "Password",
+    "phone": 11111111,
+    "address": "Avenida siempre viva",
+    "gender": "Masculino",
+    "title": "Admin",
     "token": "Por Definir",
-    "Autenticado": false
-},
-{
-    "id": "4",
-    "nombreCompleto": "RicardoAdmin",
-    "correoElectronico": "Admin@Admin.com",
-    "contraseña": "Password",
-    "telefono": 11111111,
-    "direccion": "Avenida siempre viva",
-    "genero": "Masculino",
-    "admin": true,
+    "authenticated": false
+  },
+  {
+    "id": 4,
+    "fullName": "Ricardotitle",
+    "email": "title@title.com",
+    "password": "Password",
+    "phone": 11111111,
+    "address": "Avenida siempre viva",
+    "gender": "Masculino",
+    "title": "Admin",
     "token": "Por Definir",
-    "Autenticado": false
-}
+    "authenticated": false
+  },
+  {
+    "id": 5,
+    "fullName": "jose",
+    "email": "hola@gmail.com",
+    "password": "soniso",
+    "repassword": "soniso",
+    "phone": "3012801368",
+    "address": "undefined",
+    "gender": "undefined",
+    "title": "User",
+    "token": null,
+    "authenticated": false
+  },
+  {
+    "id": 6,
+    "fullName": "Jorge",
+    "email": "josemanuel.tmn@gmail.com",
+    "password": "",
+    "repassword": "",
+    "phone": "",
+    "address": "undefined",
+    "gender": "undefined",
+    "title": "User",
+    "token": null,
+    "authenticated": false
+  }
 ]

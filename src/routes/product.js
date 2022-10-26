@@ -9,8 +9,7 @@ const {
     productCreate,
     productEditRender,
     productUpdate,
-    productDelete,
-    productRegisterConclude
+    productDelete
 } = require('../controllers/productController');
 
 
@@ -34,6 +33,5 @@ router.get('/productDetail/:id', productDetailRender);
 router.get('/productEdit/:id', productEditRender);
 router.put('/:id', upload.array('imagen'), productUpdate);
 router.delete('/:id', productDelete);
-router.get('/productRegisterConclude', productRegisterConclude);
 
 module.exports = router;
