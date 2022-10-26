@@ -1,9 +1,21 @@
-const userController = {
-    register: (req, res) => res.render('users/register'),
-    registerConclude: (req, res) => { 
-        res.render('users/registerConclude')//se debe enviar el ultimo usuario registrado
-    },
-    login: (req, res) => res.render('users/login')
+let {userWrite} = require('../../models/User');
+const {validationResult} = require('express-validator')
+
+
+const registerRender = (req, res) => res.render('users/register');
+const loginRender = (req, res) => res.render('users/login');
+const userCreate = (req, res) => {
+    let errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return res.render('users/register', {errors: errors.mapped(), oldData: req.body})
+    }
+
+    userWrite(req.body);
+    res.render('users/registerConclude');
 }
 
-module.exports = userController;
+module.exports = {
+    registerRender,
+    loginRender,
+    userCreate
+};

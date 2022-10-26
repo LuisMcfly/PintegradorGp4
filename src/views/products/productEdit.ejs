@@ -9,8 +9,8 @@
     
 <body>
     <%- include('../partials/header.ejs') %> 
-    <form action="/products/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-      <section class="producto-detail">
+    <section class="producto-detail">
+      <form action="/products/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="producto-titulo">
           <h2>
             <label for="name"> Nombre: </label>
@@ -88,8 +88,9 @@
             </div>
           </div>
         </div>
-      </section>
-    <!-- El form de la edición se cierra dentro de btns-producto -->
+      <!-- El form de la edición se cierra dentro de btns-producto -->
+    </section>
+    
     <%- include('../partials/footer') %> 
     <script>
       function init() {
