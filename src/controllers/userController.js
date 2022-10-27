@@ -37,7 +37,7 @@ const userLogin = (req, res) => {
             delete user.token;
             delete user.authenticated;
             
-            req.session.idioma = 'hola';
+            req.session.idioma = 'hola';// NO HACE ASIGNACIÓN, PREGUNTAR AL PROFE
             res.send(req.session.idioma);
             // res.render('users/userProfile')
         }
