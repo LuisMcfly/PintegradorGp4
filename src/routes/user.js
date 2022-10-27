@@ -7,8 +7,12 @@ const {
     profileRender,
     userLogin,
     userCreate,
-    userDelete
+    userDelete,
+    logout
 } = require('../controllers/userController');
+
+const guestMiddleware = require('../middlewares/guestMiddleware')
+const authMiddleware = require('../middlewares/authMiddleware')
 
 const validaciones = [
     body('fullName').notEmpty().withMessage('Este campo es requerido, por favor ingrese su nombre'),
@@ -18,16 +22,17 @@ const validaciones = [
     body('phone').notEmpty().withMessage('Este campo es requerido, por favor ingrese el numero celular'),
 ]
 
+router.get('/register', guestMiddleware,  registerRender);
 
+router.get('/login', guestMiddleware, loginRender);
+//router.get('/profile/:id', profileRender)
+router.get('/profile', authMiddleware, profileRender)
 
-router.get('/register',  registerRender);
-
-router.get('/login', loginRender);
-router.get('/profile/:id', profileRender)
-
-router.post('/register', validaciones, userCreate);
-router.post('/login', userLogin)
+router.post('/register',  validaciones, userCreate);
+router.post('/login',  userLogin)
 router.post('/register', userCreate);
 router.delete('/delete/:id', userDelete);
+
+router.get('/logout', logout)//falta btn que haga esto
 
 module.exports = router;

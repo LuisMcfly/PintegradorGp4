@@ -2,6 +2,7 @@
 <html lang="es">
 <%- include('../partials/head') %>
 <head>
+    
     <link rel="stylesheet" href="/css/login&register.css" />
 </head>
 
@@ -59,7 +60,7 @@
                         <input type="text" name="phone" id="phone" value="<%= locals.oldData && oldData.phone ? oldData.phone : null%>">
                         <% if(locals.errors && errors.phone) { %>
                             <div>
-                                <%= errors.phone.msg %> 
+                                <%= errors.phone.msg %>   
                             </div> 
                         <% } %>
                     </div>
@@ -72,7 +73,7 @@
                         <input type="checkbox">Aceptas los terminos y condiciones de nuestro servicio
                     </span>
                     <div class="control">
-                        <input type="submit" value="Terminar el Registro">
+                        <input onclick="confirmar()" id="btn" type="submit" value="Terminar el Registro">
                     </div>
                 </form>
                 <div class="link-forgot-password">
@@ -83,6 +84,16 @@
     </main>
 
     <%- include('../partials/footer') %>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>/*preguntar si el registro del usuario se hizo*/
+        function confirmar(){
+                Swal.fire({
+                    title: 'Registro realizado con exito!'
+                }).then(res=>{
+                    window.location = '/users/register'
+                })
+        }
+    </script>
 </body>
 </html>
