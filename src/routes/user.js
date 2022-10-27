@@ -18,6 +18,7 @@ const validaciones = [
 
 
 router.get('/register',  registerRender);
+
 router.get('/login', loginRender);
 
 router.post('/register', validaciones, userCreate);
