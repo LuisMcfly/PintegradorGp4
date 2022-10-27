@@ -4,7 +4,10 @@ const router = express.Router();
 const {
     registerRender,
     loginRender,
-    userCreate
+    profileRender,
+    userLogin,
+    userCreate,
+    userDelete
 } = require('../controllers/userController');
 
 const validaciones = [
@@ -20,7 +23,11 @@ const validaciones = [
 router.get('/register',  registerRender);
 
 router.get('/login', loginRender);
+router.get('/profile/:id', profileRender)
 
 router.post('/register', validaciones, userCreate);
+router.post('/login', userLogin)
+router.post('/register', userCreate);
+router.delete('/delete/:id', userDelete);
 
 module.exports = router;
