@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+  <%- include('../partials/header') %>
+  
+  <form action="../users/userEdit/<%= user.id %> ?_method=PUT" 
+    method="POST" enctype="multipart/form-data">
+    <label for="fullName">fullName</label>
+    <input type="text" name="fullName" id="fullName" value="<%=  %> ">
+
+    <label for="email">email</label>
+    <input type="email" name="email" id="email" value="<%=  %> ">
+
+    <label for="phone">phone</label>
+    <input type="text" name="phone" id="phone" value="<%=  %> ">
+
+    <label for="address">address</label>
+    <input type="text" name="address" id="address" value="<%=  %> ">
+
+    <select name="gender" value="<%=  %> ">
+      <option value="Hombre">Hombre</option>
+      <option value="Mujer">Mujer</option>
+      <option value="Otro">Otro</option>
+    </select>
+    <label for="profileImage">profileImage</label>
+    <input type="file" name="profileImage" id="profileImage">
+
+  </form>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

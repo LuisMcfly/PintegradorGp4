@@ -9,7 +9,8 @@
     "gender": "Masculino",
     "title": "Admin",
     "token": "Por Definir",
-    "authenticated": false
+    "authenticated": false,
+    "profileImage": []
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@
     "gender": "Masculino",
     "title": "Admin",
     "token": "Por Definir",
-    "authenticated": false
+    "authenticated": false,
+    "profileImage": []
   },
   {
     "id": 3,
@@ -33,7 +35,8 @@
     "gender": "Masculino",
     "title": "Admin",
     "token": "Por Definir",
-    "authenticated": false
+    "authenticated": false,
+    "profileImage": []
   },
   {
     "id": 4,
@@ -45,7 +48,8 @@
     "gender": "Masculino",
     "title": "Admin",
     "token": "Por Definir",
-    "authenticated": false
+    "authenticated": false,
+    "profileImage": []
   },
   {
     "id": 5,
@@ -58,7 +62,8 @@
     "gender": "undefined",
     "title": "User",
     "token": null,
-    "authenticated": false
+    "authenticated": false,
+    "profileImage": []
   },
   {
     "id": 6,
@@ -71,6 +76,20 @@
     "gender": "undefined",
     "title": "User",
     "token": null,
-    "authenticated": false
+    "authenticated": false,
+    "profileImage": []
+  },
+  {
+    "id": 7,
+    "fullName": "Jorge Hernán",
+    "email": "jorge@gmail.com",
+    "password": "$2a$10$ZL8FseTeoBODVVSH6achNOPiDR/mjrCN6OLQDQEalQu0ijWD4lIm6",
+    "phone": "12345",
+    "address": "undefined",
+    "gender": "undefined",
+    "title": "User",
+    "token": null,
+    "authenticated": false,
+    "profileImage": []
   }
 ]

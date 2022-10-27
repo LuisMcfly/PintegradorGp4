@@ -4,14 +4,28 @@ const filename = './DB/users.json';
 
 const userWrite = (userInfo) => {
     let userList = requestUserList();
-    let newUser = { id: idGenerator(),...userInfo, token: null, authenticated: false };
+    let newUser = { id: idGenerator(), ...userInfo};
 
     userList.push(newUser);
-    fs.writeFileSync(filename, JSON.stringify(userList, null, '  '));
+    dataBaseWrite(userList);
+}
+
+const userSearch = (field, value) => {
+    let userList = requestUserList()
+    return userList.find(user => user[field] === value)
+}
+
+const userErase = (userId) => {
+    let userList = requestUserList().filter(producto => producto.id != userId);
+    dataBaseWrite(userList);
 }
 
 const requestUserList = () => {
     return JSON.parse(fs.readFileSync(filename, 'utf-8'));
+}
+
+const dataBaseWrite = (info) => {
+    fs.writeFileSync('DB/users.json', JSON.stringify(info, null, ' '));
 }
 
 const idGenerator = () => {
@@ -22,7 +36,8 @@ const idGenerator = () => {
 }
 
 module.exports = {
-    userWrite,
     requestUserList,
-    idGenerator
+    userSearch,
+    userWrite,
+    userErase
 }
