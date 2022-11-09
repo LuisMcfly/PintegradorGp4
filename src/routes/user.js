@@ -8,7 +8,8 @@ const {
     userLogin,
     userCreate,
     userDelete,
-    logout
+    logout,
+    editRender
 } = require('../controllers/userController');
 
 const guestMiddleware = require('../middlewares/guestMiddleware')
@@ -27,6 +28,7 @@ router.get('/register', guestMiddleware,  registerRender);
 router.get('/login', guestMiddleware, loginRender);
 //router.get('/profile/:id', profileRender)
 router.get('/profile', authMiddleware, profileRender)
+router.get('/edit', authMiddleware, editRender)
 
 router.post('/register',  validaciones, userCreate);
 router.post('/login',  userLogin)

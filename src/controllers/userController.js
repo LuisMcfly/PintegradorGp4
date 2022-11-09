@@ -66,7 +66,7 @@ const userLogin = (req, res) => {
 }//end login
 
 const profileRender = (req, res) => {
-    res.render('users/userProfile', {us: req.session.userLogged});// falta terminar el proceso de login
+    res.render('users/userProfile', {us: req.session.userLogged});
 }
 
 const userCreate = (req, res) => {
@@ -87,6 +87,11 @@ const userCreate = (req, res) => {
     res.render('users/register'); 
 }
 
+const editRender = (req, res) => {
+
+    res.render("users/userEdit", {us: req.session.userLogged})
+}
+
 const userDelete = (req, res) => {
     userErase(req.params.id);
     res.send('Usuario Eliminado');
@@ -105,5 +110,6 @@ module.exports = {
     profileRender,
     userLogin,
     userCreate,
-    userDelete
+    userDelete,
+    editRender
 };
