@@ -14,6 +14,7 @@ main img,
 .producto-detail {
   background-color: white;
   padding: 5px;
+  /* height: 100%; */
 }
 .producto-header h2 {
   font-size: 3rem;

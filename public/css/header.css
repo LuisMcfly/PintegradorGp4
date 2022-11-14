@@ -116,7 +116,7 @@ header {
   justify-content: space-evenly;
 }
 .nav-menu li a {
-  color: darkgray;
+  color: white;
   font-size: 1.6rem;
   font-weight: 600;
   margin-right: 0.5rem;
@@ -128,20 +128,11 @@ header {
   transition: 0.3s;
 }
 
-.nav-menu .nav-shop-btn {
-  color: var(--primario);
-}
-.nav-menu .nav-user-btn {
-  color: white;
-}
-.nav-menu .nav-shop-btn:hover {
-  color: var(--secundario);
-}
 .nav-menu .nav-carrito {
-  color: var(--secundario) !important;
+  color: var(--primario) !important;
 }
 .nav-menu .nav-carrito:hover {
-  color: var(--primario) !important;
+  color: var(--secundario) !important;
 }
 .nav-menu li a .fa-user {
   border: solid 1px;

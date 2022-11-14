@@ -3,6 +3,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px */
+  height: 100%;
 }
 *,
 *:before,
@@ -32,6 +33,7 @@ html {
 
 
 body {
+  height: 100%;
   font-family: "Noto Sans", sans-serif;
   font-size: 1.6rem;
   line-height: 2;
