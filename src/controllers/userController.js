@@ -44,7 +44,7 @@ const userLogin = (req, res) => {
             
             return res.redirect('profile')
 
-        }else {
+        } else {
             return res.render('users/login', {
                 errors: {
                     email: {
@@ -76,6 +76,10 @@ const userCreate = (req, res) => {
     if(!errors.isEmpty()){
         res.render('users/register', {errors: errors.mapped(), oldData: req.body})
     }
+    if(req.body.password != req.body.repassword) {
+        // validacion
+        res.render('users/register')
+    }
 
     let userData = { ...req.body, token: null, authenticated: false };
     let hashPassword = bcryptjs.hashSync(req.body.password, 10);
@@ -88,7 +92,6 @@ const userCreate = (req, res) => {
 }
 
 const editRender = (req, res) => {
-
     res.render("users/userEdit", {us: req.session.userLogged})
 }
 

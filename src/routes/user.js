@@ -24,7 +24,6 @@ const validaciones = [
 ]
 
 router.get('/register', guestMiddleware,  registerRender);
-
 router.get('/login', guestMiddleware, loginRender);
 //router.get('/profile/:id', profileRender)
 router.get('/profile', authMiddleware, profileRender)

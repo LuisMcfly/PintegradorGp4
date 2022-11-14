@@ -6,8 +6,10 @@ const userWrite = (userInfo) => {
     let userList = requestUserList();
     let newUser = { id: idGenerator(), ...userInfo};
 
-    userList.push(newUser);
-    dataBaseWrite(userList);
+    if(!userSearch('email', userInfo.email)) {
+        userList.push(newUser);
+        dataBaseWrite(userList);
+    }
 }
 
 const userSearch = (field, value) => {
