@@ -10,18 +10,28 @@
         <section>
             <div class="form-container">
                 <h1>Login</h1>
-                <form action="#">
+                <form action="/users/login" method="POST">
                     <div class="control">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name">
+                        <label for="email">email</label>
+                        <input type="text" name="email" id="email">
+                        <% if(locals.errors && errors.email) { %>
+                            <div>
+                                <%= errors.email.msg %> 
+                            </div> 
+                        <% } %>
                     </div>
                     <div class="control">
-                        <label for="psw">Password</label>
-                        <input type="password" name="psw" id="psd">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password">
+                        <% if(locals.errors && errors.email) { %>
+                            <div>
+                                <%= errors.email.msg %> 
+                            </div> 
+                        <% } %>
                     </div>
-                    <span class="Rememberme-login"><input type="checkbox">Remember me.</span>
+                    <span class="Rememberme-login"><input type="checkbox" name="remember">Remember me.</span>
                     <div class="control">
-                        <input type="submit" value="Login">
+                        <input type="submit" value="Ingresar">
                     </div>
                 </form>
                 <div class="link-forgot-password">
