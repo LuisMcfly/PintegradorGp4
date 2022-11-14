@@ -4,44 +4,44 @@
 <head><link rel="stylesheet" href="/css/login&register.css" /></head>
 
 <body> 
-    <%- include('../partials/header') %>
+  <%- include('../partials/header') %>
 
-    <main class="login-register-container">
-        <section>
-            <div class="form-container">
-                <h1>Login</h1>
-                <form action="/users/login" method="POST">
-                    <div class="control">
-                        <label for="email">email</label>
-                        <input type="text" name="email" id="email">
-                        <% if(locals.errors && errors.email) { %>
-                            <div>
-                                <%= errors.email.msg %> 
-                            </div> 
-                        <% } %>
-                    </div>
-                    <div class="control">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password">
-                        <% if(locals.errors && errors.email) { %>
-                            <div>
-                                <%= errors.email.msg %> 
-                            </div> 
-                        <% } %>
-                    </div>
-                    <span class="Rememberme-login"><input type="checkbox" name="remember">Remember me.</span>
-                    <div class="control">
-                        <input type="submit" value="Ingresar">
-                    </div>
-                </form>
-                <div class="link-forgot-password">
-                    <a href="#">Forgot password ?</a>
-                </div>
-            </div>
-        </section>
-    </main>
+  <main class="login-register-container">
+    <section>
+      <div class="form-container">
+        <h1>Login</h1>
+        <form action="/users/login" method="POST">
+          <div class="control">
+            <label for="email">email</label>
+            <input type="text" name="email" id="email">
+            <% if(locals.errors && errors.email) { %>
+              <div>
+                <%= errors.email.msg %> 
+              </div> 
+            <% } %>
+          </div>
+          <div class="control">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <% if(locals.errors && errors.email) { %>
+              <div>
+                <%= errors.email.msg %> 
+              </div> 
+            <% } %>
+          </div>
+          <span class="Rememberme-login"><input type="checkbox" name="remember">Remember me.</span>
+          <div class="control">
+            <input type="submit" value="Ingresar">
+          </div>
+        </form>
+        <div class="link-forgot-password">
+          <a href="#">Forgot password ?</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>
 
 </body>
 </html>
