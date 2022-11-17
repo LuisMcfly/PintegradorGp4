@@ -1,4 +1,3 @@
-
 const {check, validationResult} = require('express-validator');
 const bcryptjs = require('bcryptjs');
 const {
@@ -26,7 +25,6 @@ const userLogin = (req, res) => {
     // }
 
     let {email, password} = req.body;
-
     let user = userSearch('email', email);
     
     if (user) { // revisar el uso de async y await para la validacion de usuario
@@ -69,26 +67,22 @@ const profileRender = (req, res) => {
     res.render('users/userProfile', {us: req.session.userLogged});
 }
 
-const userCreate = (req, res) => {
-    
+const userCreate = (req, res) => {    
     let errors = validationResult(req)
 
     if(!errors.isEmpty()){
-        res.render('users/register', {errors: errors.mapped(), oldData: req.body})
-    }
-    if(req.body.password != req.body.repassword) {
-        // validacion
-        res.render('users/register')
-    }
+        // res.send(req.body);
+        res.render('users/register', {errors: errors.mapped(), oldData: req.body});
+    } else {
+        let userData = { ...req.body, token: null, authenticated: false };
+        let hashPassword = bcryptjs.hashSync(req.body.password, 10);
+        userData.password = hashPassword;
+        delete userData.repassword;
 
-    let userData = { ...req.body, token: null, authenticated: false };
-    let hashPassword = bcryptjs.hashSync(req.body.password, 10);
-    userData.password = hashPassword;
-    delete userData.repassword;
-    
-    userWrite(userData);
+        userWrite(userData);
 
-    res.render('users/register'); 
+        res.render('users/register'); 
+    }
 }
 
 const editRender = (req, res) => {

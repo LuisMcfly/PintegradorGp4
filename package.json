@@ -26,8 +26,10 @@
     "express-validator": "^6.14.2",
     "method-override": "^3.0.0",
     "multer": "^1.4.5-lts.1",
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.19",
     "override": "^0.0.1",
+    "sequelize": "^6.25.6",
     "sweetalert2": "^11.6.3",
     "swiper": "^8.3.2",
     "uuidv4": "^6.2.13"

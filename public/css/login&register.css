@@ -1,6 +1,6 @@
 /* ------ Login y register ----- */
 
-.login-register-container section {
+main {
   position: relative;
   /* height: 100vh; */
   width: 100%;
@@ -9,31 +9,40 @@
   background-position: center center;
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .form-container {
-  /* position: relative; */
-  /* top: 30%;
-  left: 50%; */
-  /* transform: translate(-50%, -50%); */
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); */
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
   width: 45rem;
   padding: 5rem 3rem;
   border-radius: 1rem;
   box-shadow: 0.7rem 0.7rem 6rem #000;
+
+}
+
+.form-container > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
 }
 
 .login-register-container h1 {
   text-transform: uppercase;
   font-size: 2em;
   text-align: center;
-  margin-bottom: 2em;
   color: #fff;
+  margin-bottom: 1rem;
 }
 
+.control {
+  margin: 15px 0px;
+  line-height: 2rem;
+}
 .control input {
   width: 100%;
   display: block;
@@ -59,6 +68,14 @@
 
 .control input[type="submit"]:hover {
   opacity: 1;
+}
+
+.control .form-error-message {
+  background:rgba(0, 0, 0, 0.8);
+  color: red;
+  font-weight: bold;
+  padding: 3px;
+  border-radius: 3px;
 }
 
 .Rememberme-login {

@@ -64,11 +64,11 @@
   "authenticated": false
  },
  {
-  "id": 15,
-  "fullName": "jorge salazar",
-  "email": "hernaranjo@gmail.com",
-  "password": "$2a$10$DqL2ZIQd53CBAcUx.w2t8.4HTE7eFkMBkGlzbthetbPHxO1mpG0eC",
-  "phone": "3002625054",
+  "id": 16,
+  "fullName": "Jose Manuel Munoz",
+  "email": "josemanuel.tmn@gmail.com",
+  "password": "$2a$10$Jv3kQE5PaLtCG8uuCwVGV.l8/2nzYyR50WMljDmxiJn9nQN3rZOR6",
+  "phone": "3012801368",
   "address": "undefined",
   "gender": "undefined",
   "title": "User",
@@ -76,11 +76,11 @@
   "authenticated": false
  },
  {
-  "id": 16,
-  "fullName": "Jose Manuel Munoz",
-  "email": "josemanuel.tmn@gmail.com",
-  "password": "$2a$10$Jv3kQE5PaLtCG8uuCwVGV.l8/2nzYyR50WMljDmxiJn9nQN3rZOR6",
-  "phone": "3012801368",
+  "id": 17,
+  "fullName": "",
+  "email": "",
+  "password": "$2a$10$NlG.gZAoLoAFA3ElFym8Vejw60gIXW94raL8MB/YTHH7UAfOH3KBS",
+  "phone": "123",
   "address": "undefined",
   "gender": "undefined",
   "title": "User",
