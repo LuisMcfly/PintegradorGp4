@@ -9,75 +9,75 @@
   <%- include('../partials/header') %>
 
   <main class="login-register-container">
-    <section>
-      <div class="form-container">
-        <h1>register</h1>
-        <form action="/users/register" method="POST">
-          <input type="hidden" value="id">
-          <div class="control">
-            <label for="fullName" >Nombre completo</label>
-            <input type="text" name="fullName" id="fullName" value="<%= locals.oldData && oldData.fullName ? oldData.fullName : null%>">
-            <% if(locals.errors && errors.fullName) { %>
-              <div>
-                <%= errors.fullName.msg %> 
-              </div> 
-            <% } %>
-          </div>
+    
+    <section class="form-container">
+      <h1>register</h1>
 
-          <div class="control">
-            <label for="email">Correo electrónico</label>
-            <input type="email" name="email" id="email" value="<%= locals.oldData && oldData.email ? oldData.email : null%>">
-            <% if(locals.errors && errors.email) { %>
-              <div>
-                <%= errors.email.msg %> 
-              </div> 
-            <% } %>
-          </div>
+      <form action="/users/register" method="POST">
 
-          <div class="control">
-            <label for="password">Ingresa una contraseña</label>
-            <input type="password" name="password" id="password" value="<%= locals.oldData && oldData.password ? oldData.password: null%>">
-            <% if(locals.errors && errors.password) { %>
-              <div>
-                <%= errors.password.msg %> 
-              </div> 
-            <% } %>
-          </div>
-
-          <div class="control">
-            <label for="repassword">Repite la contraseña</label>
-            <input type="password" name="repassword" id="repassword" value="<%= locals.oldData && oldData.repassword? oldData.repassword : null%>">
-            <% if(locals.errors && errors.repassword) { %>
-              <div>
-                <%= errors.repassword.msg %> 
-              </div> 
-            <% } %>
-          </div>
-
-          <div class="control">
-            <label for="phone">Numero Celular</label>
-            <input type="text" name="phone" id="phone" value="<%= locals.oldData && oldData.phone ? oldData.phone : null%>">
-            <% if(locals.errors && errors.phone) { %>
-              <div>
-                <%= errors.phone.msg %>   
-              </div> 
-            <% } %>
-          </div>
-
-          <input type="hidden" name="address" value="undefined">
-          <input type="hidden" name="gender" value="undefined">
-          <input type="hidden" name="title" value="User">
-
-          <span class="Rememberme-login">
-            <input type="checkbox">Aceptas los terminos y condiciones de nuestro servicio
-          </span>
-          <div class="control">
-            <input onclick="confirmar()" id="btn" type="submit" value="Terminar el Registro">
-          </div>
-        </form>
-        <div class="link-forgot-password">
-          <a href="login.html">Ya tienes una cuenta?</a>
+        <div class="control">
+          <label for="fullName" >Nombre completo</label>
+          <input type="text" name="fullName" id="fullName" value="<%= locals.oldData && oldData.fullName ? oldData.fullName : null%>">
+          <% if(locals.errors && errors.fullName) { %>
+            <div class="form-error-message">
+              <%= errors.fullName.msg %> 
+            </div> 
+          <% } %>
         </div>
+
+        <div class="control">
+          <label for="email">Correo electrónico</label>
+          <input type="email" name="email" id="email" value="<%= locals.oldData && oldData.email ? oldData.email : null%>">
+          <% if(locals.errors && errors.email) { %>
+            <div class="form-error-message">
+              <%= errors.email.msg %> 
+            </div> 
+          <% } %>
+        </div>
+
+        <div class="control">
+          <label for="password">Ingresa una contraseña</label>
+          <input type="password" name="password" id="password" value="<%= locals.oldData && oldData.password ? oldData.password: null%>">
+          <% if(locals.errors && errors.password) { %>
+            <div class="form-error-message">
+              <%= errors.password.msg %> 
+            </div> 
+          <% } %>
+        </div>
+
+        <div class="control">
+          <label for="repassword">Repite la contraseña</label>
+          <input type="password" name="repassword" id="repassword" value="<%= locals.oldData && oldData.repassword? oldData.repassword : null%>">
+          <% if(locals.errors && errors.repassword) { %>
+            <div class="form-error-message">
+              <%= errors.repassword.msg %> 
+            </div> 
+          <% } %>
+        </div>
+
+        <div class="control">
+          <label for="phone">Numero Celular</label>
+          <input type="text" name="phone" id="phone" value="<%= locals.oldData && oldData.phone ? oldData.phone : null%>">
+          <% if(locals.errors && errors.phone) { %>
+            <div class="form-error-message">
+              <%= errors.phone.msg %>   
+            </div> 
+          <% } %>
+        </div>
+
+        <input type="hidden" name="address" value="undefined">
+        <input type="hidden" name="gender" value="undefined">
+        <input type="hidden" name="title" value="User">
+
+        <span class="Rememberme-login">
+          <input type="checkbox" name="termsAndConditions"> Aceptas los terminos y condiciones de nuestro servicio
+        </span>
+        <div class="control">
+          <input onclick="confirmar()" id="btn" type="submit" value="Terminar el Registro">
+        </div>
+      </form>
+      <div class="link-forgot-password">
+        <a href="login.html">Ya tienes una cuenta?</a>
       </div>
     </section>
   </main>
@@ -87,11 +87,11 @@
   
   <script>/*preguntar si el registro del usuario se hizo*/
       function confirmar(){
-              Swal.fire({
-                  title: 'Registro realizado con exito!'
-              }).then(res=>{
-                  window.location = '/users/register'
-              })
+          Swal.fire({
+              title: 'Formulario enviado con exito!'
+          }).then(res=>{
+              window.location = '/users/register'
+          })
       }
   </script>
 </body>

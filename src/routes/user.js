@@ -17,10 +17,18 @@ const authMiddleware = require('../middlewares/authMiddleware')
 
 const validaciones = [
     body('fullName').notEmpty().withMessage('Este campo es requerido, por favor ingrese su nombre'),
-    body('email').isEmail().withMessage('Debe tener un formato de email'),
-    body('password').notEmpty().withMessage('Este campo es requerido, por favor ingrese el passwors'),
-    body('repassword').notEmpty().withMessage('Este campo es requerido, por favor ingrese de nuevo su password'),
+    body('email').notEmpty().withMessage('Este campo es requerido, por favor ingrese una dirección de correo'),
+    body('email').isEmail().withMessage('Este campo debe tener un formato de correo'),
+    body('password').notEmpty().withMessage('Este campo es requerido, por favor ingrese una contraseña'),
+    body('repassword').notEmpty().withMessage('Este campo es requerido, por favor ingrese de nuevo su contraseña'),
+    body('repassword').custom( (value, {req}) => {
+        if(value !== req.body.password) {
+            throw new Error('Por favor verifique que la confirmación sea igual que su contraseña')
+        }
+        return true;
+    }),
     body('phone').notEmpty().withMessage('Este campo es requerido, por favor ingrese el numero celular'),
+    body('termsAndConditions').exists().withMessage('Debes aceptar los términos y condiciones')
 ]
 
 router.get('/register', guestMiddleware,  registerRender);
