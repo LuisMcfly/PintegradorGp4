@@ -78,13 +78,14 @@ main {
     opacity: 1;
   }
   
-  .control .form-error-message {
+  .form-error-message div {
     background: red;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
     padding: 10px;
     text-align: center;
+    margin-top: 10px;
   }
   
   .Rememberme-login {

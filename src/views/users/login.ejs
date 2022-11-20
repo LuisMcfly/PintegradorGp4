@@ -10,6 +10,17 @@
       <div class="form-container">
         <a href="/"><i class="fa-solid fa-circle-left fa-2x"></i></i></a>
         <h1>Iniciar Sesion</h1>
+
+        <% if(errores) {%> 
+          <div class="form-error-message">
+            <% errores.forEach(element => { %>
+              <div>
+              <%= element.msg %>
+              </div>
+            <% }); %>
+          </div>
+        <% }; %>  
+        
         <form action="/users/login" method="POST">
           <div class="control">
             <label for="email">Email</label>

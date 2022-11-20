@@ -19,7 +19,7 @@ const userCreate = async (req, res) => {
     //Mostrar errores y hacer la validacion
     let resultado = validationResult(req)
     console.log(resultado)
-    //Verificar que el resultado este vacio
+    //Verificar que el resultado no este vacio
     if(!resultado.isEmpty()){
         return res.render('users/register', {
                 errores: resultado.array(),
@@ -44,14 +44,49 @@ const userCreate = async (req, res) => {
 
 }
 
+const loginRender = (req, res) => res.render('users/login', {
+    errores: []
+});
+
+const userLogin = async (req, res) => {
+    // Validacion
+    await check('email').isEmail().withMessage('El email es obligatorio').run(req)
+    await check('password').notEmpty().withMessage('La contraseña es obligatoria').run(req)
+
+    let resultado = validationResult(req)
+
+    //Verificar que el resultado no este vacio
+    if(!resultado.isEmpty()){
+        return res.render('users/login', {
+                errores: resultado.array(),
+        })
+    }
+
+    // Comprobar si el usuario existe
+
+    const {email, password} = req.body;
+
+    const usuario = await Usuario.findOne({where : {email}});
+    if(!usuario){
+        return res.render('users/login', {
+            errores: [{msg: 'El usuario no existe'}]
+        })
+    }
+
+    // Revisar el password
+
+    if(!usuario.verificarPassword(password)){
+        return res.render('users/login', {
+            errores: [{msg: 'La contraseña es incorrecta'}]
+        })
+    }
+
+    res.redirect('/')
+}
 
 
-const loginRender = (req, res) => res.render('users/login');
 const editRender = (req, res) => res.render("users/userEdit", {us: req.session.userLogged});
 const profileRender = ( req, res ) => {}
-
-const userLogin = (req, res) => {
-}
 
 const userDelete = (req, res) => {
 
