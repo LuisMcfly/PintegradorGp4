@@ -18,7 +18,7 @@ const userCreate = async (req, res) => {
 
     //Mostrar errores y hacer la validacion
     let resultado = validationResult(req)
-    console.log(resultado)
+
     //Verificar que el resultado no este vacio
     if(!resultado.isEmpty()){
         return res.render('users/register', {
@@ -32,6 +32,18 @@ const userCreate = async (req, res) => {
     }
     
     const { fullName, email, password, phone } = req.body;
+
+    // Verificar que el usuario no este duplicado
+    const existeUsuario = await Usuario.findOne( { where : { email } })
+    if(existeUsuario) {
+        return res.render('users/register', {
+            errores: [{msg: 'El Usuario ya esta Registrado'}], 
+            usuario: {
+                nombre: req.body.fullName,
+                email: req.body.email
+            }
+        })
+    }
 
     // Almacenar un usuario
     const usuarioC = await Usuario.create({
