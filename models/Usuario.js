@@ -19,6 +19,9 @@ const Usuario = db.define('usuarios', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    imagen: {
+        type: DataTypes.STRING,
+    },
     token: DataTypes.STRING,
     confirmado: DataTypes.BOOLEAN
 }, {
@@ -28,6 +31,13 @@ const Usuario = db.define('usuarios', {
             Usuario.password = await bcrypt.hash( Usuario.password, salt);
         }
     },
+    scopes: {
+        eliminarPassword:{
+            attributes: {
+                exclude: ['password', 'token', 'confirmado', 'createdAt', 'updatedAt']
+            }
+        }
+    }
 });
 
 Usuario.prototype.verificarPassword = function(password){

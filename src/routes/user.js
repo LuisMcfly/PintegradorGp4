@@ -21,6 +21,6 @@ router.get('/profile', profileRender);
 router.get('/edit', editRender);
 router.delete('/delete/:id', userDelete);
 
-router.get('/logout', logout);
+router.post('/logout', logout);
 
 module.exports = router;

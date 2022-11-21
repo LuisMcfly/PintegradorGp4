@@ -2,7 +2,8 @@ const {check, validationResult} = require('express-validator');
 const bcrypt = require('bcrypt');
 const db = require('../../config/db.js');
 const Usuario = require('../../models/Usuario.js');
-const { generarId } = require('../../helpers/tokens.js');
+const { generarId, generarJWT } = require('../../helpers/tokens.js');
+const Jwt = require('jsonwebtoken');
 
 const registerRender = (req, res) => res.render('users/register', {
                 errores: [],
@@ -93,19 +94,53 @@ const userLogin = async (req, res) => {
         })
     }
 
-    res.redirect('/')
+    // Autenticar al usuario
+    const token = generarJWT({id: usuario.id, fullName: usuario.fullName, phone: usuario.phone, email: usuario.email});
+    
+
+    // Almacenar en un cookie
+
+    return res.cookie('_token', token, {
+        httpOnly: true
+        // secure: true,
+        // sameSite: true
+    }).redirect('/')
+}
+
+const profileRender = async ( req, res ) => {
+    // Verificar si hay un token
+    const { _token } = req.cookies
+    if(!_token) {
+        return res.redirect('/users/login')
+    }
+    // Comprobar el token
+    try {
+        const decoded = Jwt.verify(_token, process.env.JWT_SECRET)
+        const usuario = await Usuario.scope('eliminarPassword').findByPk(decoded.id)
+
+        // Almacenar el usuario al req
+        if(usuario) {
+            req.usuario = usuario
+        }else {
+            return res.redirect('/users/login')
+        }
+        return res.render('users/userProfile', {usuario})
+    } catch (error) {
+        return res.clearCookie('_token').redirect('/users/login')
+    }  
 }
 
 
 const editRender = (req, res) => res.render("users/userEdit", {us: req.session.userLogged});
-const profileRender = ( req, res ) => {}
+
+
 
 const userDelete = (req, res) => {
 
 }
 
 const logout = (req, res) => {
-
+    return res.clearCookie('_token').status(200).redirect('/')
 }
 
 module.exports = {
