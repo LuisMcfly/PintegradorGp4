@@ -18,7 +18,7 @@ router.get('/login', loginRender);
 router.post('/login', userLogin);
 
 router.get('/profile', profileRender);
-router.get('/edit', editRender);
+router.get('/edit/:id', editRender);
 router.delete('/delete/:id', userDelete);
 
 router.post('/logout', logout);

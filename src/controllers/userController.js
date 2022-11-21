@@ -16,7 +16,8 @@ const userCreate = async (req, res) => {
     await check('email').isEmail().withMessage('Eso no parece un email').run(req)
     await check('password').isLength({ min: 6 }).withMessage('La contraseña debe tener por lo menos 6 caracteres').run(req)
     await check('repassword').equals(req.body.password).withMessage('Las contraseñas no son iguales').run(req)
-
+    await check('phone').isLength({ min: 10 }).withMessage('El numero de telefono debe ser de 10 digitos').run(req)
+    
     //Mostrar errores y hacer la validacion
     let resultado = validationResult(req)
 
@@ -131,7 +132,16 @@ const profileRender = async ( req, res ) => {
 }
 
 
-const editRender = (req, res) => res.render("users/userEdit", {us: req.session.userLogged});
+const editRender = async (req, res) => {
+    const { id } = req.params;
+    
+    // Validar que el usuariow exista
+    const usuario = await Usuario.findByPk(id);
+    if(!usuario){
+        return res.redirect('/users/login')
+    }
+    return res.render('users/userEdit')
+};
 
 
 
