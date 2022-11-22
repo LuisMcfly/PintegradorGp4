@@ -127,12 +127,13 @@ const profileRender = async ( req, res ) => {
 
 
 const editRender = async (req, res) => {
-
+    
+    // Comprobar el token   
     const { _token } = req.cookies
     if(!_token) {
         return res.redirect('/users/login')
     }
-    // Comprobar el token
+    
     try {
         const decoded = Jwt.verify(_token, process.env.JWT_SECRET)
         const usuarioId = await Usuario.scope('eliminarPassword').findByPk(decoded.id)
