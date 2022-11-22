@@ -7,16 +7,16 @@
   <form action="" 
     method="POST" enctype="multipart/form-data">
     <label for="fullName">fullName</label>
-    <input type="text" name="fullName" id="fullName" value="">
+    <input type="text" name="fullName" id="fullName" value="<%= usuario.fullName %>">
 
     <label for="email">email</label>
-    <input type="email" name="email" id="email" value="">
+    <input type="email" name="email" id="email" value="<%= usuario.email %>">
 
     <label for="phone">phone</label>
-    <input type="text" name="phone" id="phone" value="">
+    <input type="text" name="phone" id="phone" value="<%= usuario.phone %>">
 
     <label for="address">address</label>
-    <input type="text" name="address" id="address" value="">
+    <input type="password" name="address" id="address" value="<%= usuario.password %>">
 
     <select name="gender" value=" ">
       <option value="Hombre">Hombre</option>
