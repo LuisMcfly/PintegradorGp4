@@ -4,6 +4,15 @@ const path = require('path');
 const session = require('express-session');
 const cookies = require('cookie-parser')
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
+const db = require('../config/db.js')
+
+try {
+    db.authenticate();
+    db.sync();
+    console.log('Conexion correcta a la base datos');
+} catch (error) {
+    console.log(error);
+};
 
 //cookie-parser
 app.use(cookies())
@@ -50,3 +59,6 @@ app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/controllers/sliderC
 //     next()
 // });
 app.listen(3000, () => console.log('Servidor corriendo en http://localhost:3000'));
+
+
+// Conexion a la base de datos

@@ -1,103 +1,154 @@
 const {check, validationResult} = require('express-validator');
-const bcryptjs = require('bcryptjs');
-const {
-    requestUserList,
-    userSearch, 
-    userWrite, 
-    userErase} = require('../../models/User');
-const { localsName } = require('ejs');
+const bcrypt = require('bcrypt');
+const db = require('../../config/db.js');
+const Usuario = require('../../models/Usuario.js');
+const { generarId, generarJWT } = require('../../helpers/tokens.js');
+const Jwt = require('jsonwebtoken');
 
-const registerRender = (req, res) => res.render('users/register');
-const loginRender = (req, res) => res.render('users/login');
+const registerRender = (req, res) => res.render('users/register', {
+                errores: [],
+                usuario: ''
+});
 
-const userLogin = (req, res) => {
-    // check('email').isEmail().withMessage('El email es obligatorio').run(req)
-    // check('password').notEmpty().withMessage('La contraseña es obligatoria').run(req)
-
-    // let resultado = validationResult(req)
-
-    // //Verificar que el resultado no este vacio
-    // if(!resultado.isEmpty()){
-    //     return res.render('auth/login', {
-    //             pagina: 'Iniciar Sesión',
-    //             errores: resultado.array(),
-    //     })
-    // }
-
-    let {email, password} = req.body;
-    let user = userSearch('email', email);
+const userCreate = async (req, res) => {
+    // Validacion
+    await check('fullName').notEmpty().withMessage('El nombre es obligatorio').run(req)
+    await check('email').isEmail().withMessage('Eso no parece un email').run(req)
+    await check('password').isLength({ min: 6 }).withMessage('La contraseña debe tener por lo menos 6 caracteres').run(req)
+    await check('repassword').equals(req.body.password).withMessage('Las contraseñas no son iguales').run(req)
+    await check('phone').isLength({ min: 10 }).withMessage('El numero de telefono debe ser de 10 digitos').run(req)
     
-    if (user) { // revisar el uso de async y await para la validacion de usuario
-        if(bcryptjs.compareSync(password, user.password)) {
+    //Mostrar errores y hacer la validacion
+    let resultado = validationResult(req)
 
-            delete user.password;
-            delete user.token;
-            delete user.authenticated;
-            
-            req.session.userLogged = user;
-            
-            if(req.body.remember) {
-                res.cookie('userEmail', req.body.email, {maxAge: 120000}) 
-            } 
-            
-            return res.redirect('profile')
-
-        } else {
-            return res.render('users/login', {
-                errors: {
-                    email: {
-                        msg: 'Las credenciales son inválidas'
-                    }
+    //Verificar que el resultado no este vacio
+    if(!resultado.isEmpty()){
+        return res.render('users/register', {
+                errores: resultado.array(),
+                usuario: {
+                    fullName: req.body.fullName,
+                    email: req.body.email,
+                    phone: req.body.phone
                 }
-            })
-        }
+        })
     }
-
-    return res.render('users/login', {
-        errors: {
-            email:{
-                msg: 'El email no se encuentra en la db'
-            } 
-        }
-    })
     
-}//end login
+    const { fullName, email, password, phone } = req.body;
 
-const profileRender = (req, res) => {
-    res.render('users/userProfile', {us: req.session.userLogged});
-}
-
-const userCreate = (req, res) => {    
-    let errors = validationResult(req)
-
-    if(!errors.isEmpty()){
-        // res.send(req.body);
-        res.render('users/register', {errors: errors.mapped(), oldData: req.body});
-    } else {
-        let userData = { ...req.body, token: null, authenticated: false };
-        let hashPassword = bcryptjs.hashSync(req.body.password, 10);
-        userData.password = hashPassword;
-        delete userData.repassword;
-
-        userWrite(userData);
-
-        res.render('users/register'); 
+    // Verificar que el usuario no este duplicado
+    const existeUsuario = await Usuario.findOne( { where : { email } })
+    if(existeUsuario) {
+        return res.render('users/register', {
+            errores: [{msg: 'El Usuario ya esta Registrado'}], 
+            usuario: {
+                nombre: req.body.fullName,
+                email: req.body.email
+            }
+        })
     }
+
+    // Almacenar un usuario
+    const usuarioC = await Usuario.create({
+        fullName,
+        email,
+        password,
+        phone,
+        token: generarId()
+    })
 }
 
-const editRender = (req, res) => {
-    res.render("users/userEdit", {us: req.session.userLogged})
+const loginRender = (req, res) => res.render('users/login', {
+    errores: []
+});
+
+const userLogin = async (req, res) => {
+    // Validacion
+    await check('email').isEmail().withMessage('El email es obligatorio').run(req)
+    await check('password').notEmpty().withMessage('La contraseña es obligatoria').run(req)
+
+    let resultado = validationResult(req)
+
+    //Verificar que el resultado no este vacio
+    if(!resultado.isEmpty()){
+        return res.render('users/login', {
+                errores: resultado.array(),
+        })
+    }
+
+    // Comprobar si el usuario existe
+
+    const {email, password} = req.body;
+
+    const usuario = await Usuario.findOne({where : {email}});
+    if(!usuario){
+        return res.render('users/login', {
+            errores: [{msg: 'El usuario no existe'}]
+        })
+    }
+
+    // Revisar el password
+
+    if(!usuario.verificarPassword(password)){
+        return res.render('users/login', {
+            errores: [{msg: 'La contraseña es incorrecta'}]
+        })
+    }
+
+    // Autenticar al usuario
+    const token = generarJWT({id: usuario.id, fullName: usuario.fullName, phone: usuario.phone, email: usuario.email});
+    
+
+    // Almacenar en un cookie
+
+    return res.cookie('_token', token, {
+        httpOnly: true
+        // secure: true,
+        // sameSite: true
+    }).redirect('/')
 }
 
-const userDelete = (req, res) => {
-    userErase(req.params.id);
-    res.send('Usuario Eliminado');
+const profileRender = async ( req, res ) => {
+    // Verificar si hay un token
+    const { _token } = req.cookies
+    if(!_token) {
+        return res.redirect('/users/login')
+    }
+    // Comprobar el token
+    try {
+        const decoded = Jwt.verify(_token, process.env.JWT_SECRET)
+        const usuario = await Usuario.scope('eliminarPassword').findByPk(decoded.id)
+
+        
+        return res.render('users/userProfile', {usuario})
+    } catch (error) {
+        return res.clearCookie('_token').redirect('/users/login')
+    }  
+}
+
+
+const editRender = async (req, res) => {
+    
+    // Comprobar el token   
+    const { _token } = req.cookies
+    if(!_token) {
+        return res.redirect('/users/login')
+    }
+    
+    try {
+        const decoded = Jwt.verify(_token, process.env.JWT_SECRET)
+        const usuarioId = await Usuario.scope('eliminarPassword').findByPk(decoded.id)
+    
+        // Validar que el usuario y buscarlo en la base de datos
+        const usuario = await Usuario.findByPk(usuarioId.id);
+        res.render('users/userEdit', {usuario})
+    } catch (error) {
+        return res.clearCookie('_token').redirect('/users/login')
+    }  
+    
 }
 
 const logout = (req, res) => {
-    res.clearCookie('userEmail')//elimina la cookie
-    req.session.destroy()//borra todo lo que hay en session
-    res.redirect('/')
+    return res.clearCookie('_token').status(200).redirect('/');
 }
 
 module.exports = {
@@ -107,6 +158,5 @@ module.exports = {
     profileRender,
     userLogin,
     userCreate,
-    userDelete,
     editRender
 };

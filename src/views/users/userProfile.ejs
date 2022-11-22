@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/userEdit.css" />
 <body>
   <%- include('../partials/header') %>
-  
-  <h2>Bienvenido <%= us.fullName %> </h2>
-  <h3><%= us.email %> </h3>
-  <a href="/users/edit">Editar información</a>
+  <main>
+    <div class="section">
+      <div class="circular--portrait">
+        <img src="/img/users/guest.png"  />
+      </div>
+
+      <div class="title">
+        <h1>Bienvenido <span><%= usuario.fullName %> </span></h1>
+      <div>
+
+      <div class="buttoms">
+        <form action="/users/edit" method="GET">
+          <button type="submit">Editar Tu Perfil</button>
+        </form>
+
+        <form action="/users/edit" method="GET">
+          <button type="submit">Soporte</button>
+        </form>
+
+        <form action="/users/edit" method="GET">
+          <button type="submit">Ver tu carrito</button>
+        </form>
+      </div>
+
+      <div class="info-account">
+        <div>
+          <p>Email</p>
+          <div class="border-info">
+            <p><span><%= usuario.email %> </span></p>
+          </div>
+        </div>
+        <div>
+          <p>Numero De Telefono</p>
+          <div class="border-info">
+            <p><span><%= usuario.phone %> </span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
   <%- include('../partials/footer') %>
 </body>
 </html>
