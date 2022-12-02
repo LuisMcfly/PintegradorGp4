@@ -21,7 +21,7 @@ const Propiedad = db.define('Propiedades', {
         allowNull: false
     },
     imagen: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY,
         allowNull: false
     },
     publicado: {
