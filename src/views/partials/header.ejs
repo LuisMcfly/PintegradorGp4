@@ -1,19 +1,13 @@
 <header>
-  <div>
-    <a href="/">
-      <img id="logo" class="logo" src="../../img/HeaderFooter/Pegasus-logo2.png">
-      <img id="mini-logo" class="mini-logo" src="../../img/HeaderFooter/Pegasus-logo.png">
-    </a>
-  </div>
+  <a href="/" class="logo-container">
+    <img id="logo" class="logo-desktop" src="../../img/HeaderFooter/Pegasus-logo-desktop.png">
+    <img id="mini-logo" class="logo-mobile" src="../../img/HeaderFooter/Pegasus-logo.png">
+  </a>
   <form class="bar-container" action="../products" method="GET">
-    <!-- <script src="../js/searchBarOpen.js"></script>
-    <input type="checkbox" id="search" />
-    <label for="search" class="search-icon">
-      <i class="fa fa-search"></i>
-    </label> -->
 
-    <input type="text" class="nav-search-input" name="search" placeholder="Busca productos, marcas y más…">
-    <button type="submit" class="nav-search-btn" tabindex="3">
+    <!-- <input type="text" class="nav-search-input" name="search" placeholder="Busca productos, marcas y más…"> -->
+    <input type="text" class="text-input nav-search-input" name="search" placeholder="Busca productos, marcas y más…">
+    <button type="submit" tabindex="3">
       <i class="fa fa-search"></i>
     </button>
   </form>
@@ -24,7 +18,6 @@
       <span class="middle-line"></span>
       <span class="bottom-line"></span>
     </label>
-    <!-- <script src="../js/burgerMenuOpen"></script> script de animacion -->
 
     <ul class="nav-menu">
       <li><a class="nav-btn" href="../../products/">Tienda</a></li>
@@ -35,4 +28,4 @@
     </ul>
   </nav>
 </header>
-
+<!-- <script src="../js/burgerMenuOpen"></script> script de animacion -->

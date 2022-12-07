@@ -6,8 +6,8 @@ const { generarId, generarJWT } = require('../../helpers/tokens.js');
 const Jwt = require('jsonwebtoken');
 
 const registerRender = (req, res) => res.render('users/register', {
-                errores: [],
-                usuario: ''
+    errores: [],
+    usuario: ''
 });
 
 const userCreate = async (req, res) => {
@@ -24,7 +24,7 @@ const userCreate = async (req, res) => {
     //Verificar que el resultado no este vacio
     if(!resultado.isEmpty()){
         return res.render('users/register', {
-                errores: resultado.array(),
+                errores: resultado.mapped(),
                 usuario: {
                     fullName: req.body.fullName,
                     email: req.body.email,
@@ -39,7 +39,7 @@ const userCreate = async (req, res) => {
     const existeUsuario = await Usuario.findOne( { where : { email } })
     if(existeUsuario) {
         return res.render('users/register', {
-            errores: [{msg: 'El Usuario ya esta Registrado'}], 
+            errores: [{msg: 'El Usuario ya está Registrado'}], 
             usuario: {
                 nombre: req.body.fullName,
                 email: req.body.email
@@ -63,23 +63,28 @@ const loginRender = (req, res) => res.render('users/login', {
 
 const userLogin = async (req, res) => {
     // Validacion
-    await check('email').isEmail().withMessage('El email es obligatorio').run(req)
+    await check('email').isEmail().withMessage('Debes ingresar una dirección de correo válida').run(req)
     await check('password').notEmpty().withMessage('La contraseña es obligatoria').run(req)
 
     let resultado = validationResult(req)
+    
+    // res.send(resultado.mapped())
 
-    //Verificar que el resultado no este vacio
+    // Enviar mensaje de error si existe
     if(!resultado.isEmpty()){
+        
         return res.render('users/login', {
-                errores: resultado.array(),
+            // errores: resultado.array(),
+            errores: resultado.mapped(),
         })
     }
-
+    
     // Comprobar si el usuario existe
-
     const {email, password} = req.body;
+    
 
     const usuario = await Usuario.findOne({where : {email}});
+
     if(!usuario){
         return res.render('users/login', {
             errores: [{msg: 'El usuario no existe'}]
@@ -87,7 +92,6 @@ const userLogin = async (req, res) => {
     }
 
     // Revisar el password
-
     if(!usuario.verificarPassword(password)){
         return res.render('users/login', {
             errores: [{msg: 'La contraseña es incorrecta'}]
@@ -95,16 +99,16 @@ const userLogin = async (req, res) => {
     }
 
     // Autenticar al usuario
-    const token = generarJWT({id: usuario.id, fullName: usuario.fullName, phone: usuario.phone, email: usuario.email});
+    const token = generarJWT({id: usuario.id, fullName: usuario.fullName, 
+        phone: usuario.phone, email: usuario.email});
     
 
     // Almacenar en un cookie
-
     return res.cookie('_token', token, {
         httpOnly: true
         // secure: true,
         // sameSite: true
-    }).redirect('/')
+    }).redirect('/profile')
 }
 
 const profileRender = async ( req, res ) => {

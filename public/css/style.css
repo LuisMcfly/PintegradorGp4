@@ -18,29 +18,90 @@ html {
   --fsecundario: #0504aa;
   --Grisfondo: #e1e1e1;
   --GrisOscuro: rgb(95, 95, 95);
+
+  --colorMagenta: #E409CF;
+  --colorVioleta: #9242DA;
+  --colorAzul: #5470DD;
+  --colorAzulNeon: #07A5E3;
+  --colorPetroleo: #0a141d;
+  --colorPetroleoOp: #0a141db3;
+
+  --borderRadius: 8%;
+  --borderRadiusPopUp: 15px;
+  --borderRadiusInput: 9px;
 }
 
 .degradado {
   color: transparent;
-  background: linear-gradient(to right,
+  /* background: linear-gradient(to right,
     var(--primario) 0%,
     var(--secundario) 100%
+  ); */
+  background: linear-gradient(to right,
+    var(--colorAzul) 0%,
+    var(--colorVioleta) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
 }
 
-
-
 body {
-  height: 100%;
-  font-family: "Noto Sans", sans-serif;
-  font-size: 1.6rem;
-  line-height: 2;
-  background-color: #e1e1e1;
+  min-height: 100vh;
+  font-family: "Work Sans", sans-serif;
+  /* font-size: 1.6rem; */
+  line-height: 1.2;
+  background-color: var(--Grisfondo);
   overflow-x: hidden;
+
+  display: grid;
+  grid-template-rows: 100px auto 1fr;
 }
 
+h1 { /* titular*/
+  font-weight: 700; /* bold */
+  font-size: 32px;
+}
+h2 { /* subtitulo */
+  font-weight: 600; /* semibold */
+  font-size: 24px;
+}
+
+h3, h4, h5 { /* Base */
+  font-size: 20px;
+}
+h3, .semibold {
+  font-weight: 600; /* semibold */
+}
+h4, .medium {
+  font-weight: 500; /* medium */
+}
+
+p, .paragraph {
+  font-size: 16px;
+  margin: 0;
+}
+a {
+  color: var(--colorAzulNeon);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.icon::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+i {
+  color: white;
+}
+i:hover {
+  color: var(--colorMagenta);
+}
+i:active {
+  color: var(--colorAzulNeon);
+}
+
+/*
 a {
   text-decoration: none;
   color: #000;
@@ -70,9 +131,10 @@ h5 {
 h6 {
   font-size: 1.4rem;
 }
+*/
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
   height: auto;
 }
 
@@ -126,7 +188,7 @@ main .recopilacion {
   font-size: 1.2rem;
 }
 
-.btn {
+/* .btn {
   background-color: var(--primario);
   display: block;
   color: #fff;
@@ -135,4 +197,10 @@ main .recopilacion {
   transition: background-color 0.3s ease-out;
   text-align: center;
   border: none;
+} */
+
+@media (min-width: 900px){ /* PC Small */
+  body {
+    grid-template-rows: 100px auto 408px;
+  }
 }
