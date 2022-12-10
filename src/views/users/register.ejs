@@ -85,12 +85,13 @@
 
       <div class="form-field">
         <div class="check-container">
-          <input type="checkbox" name="termsAndConditions" id="termsAndConditions" class="checkbox-input with-font" form="registerForm">
-          <label for="termsAndConditions" class="icon paragraph"> Acepto </label>
+          <input type="checkbox" name="termsAndConditions" id="termsAndConditions" 
+          class="checkbox-input with-font" form="registerForm">
+          <label for="termsAndConditions" class="icon paragraph"> Acepto los términos y condiciones de este servicio </label>
         </div>
         <% if(locals.errores && errores.termsAndConditions) {%> 
           <div class="error-message parragraph">
-            <%= errores.termsAndConditions.msg %>
+            <p> <%= errores.termsAndConditions.msg %> </p>
           </div>
         <% }; %>
       </div>

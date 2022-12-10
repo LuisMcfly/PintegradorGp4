@@ -54,10 +54,10 @@ app.use('/users/', userRouter);
 
 
 app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/controllers/sliderController.js')); // Ruta del slider funcionando ! 
-// app.use((req, res, next) => {
-//     res.status(404).render('error')
-//     next()
-// });
+app.use((req, res, next) => {
+    res.status(404).render('error')
+    next()
+});
 
 app.listen(3000, () => console.log('Servidor corriendo en http://localhost:3000'));
 // Conexion a la base de datos

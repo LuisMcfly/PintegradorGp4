@@ -60,6 +60,7 @@ header {
   animation-fill-mode: forwards;
 }
 
+
 .bar-btn.open .top-line {
   animation-name: top-line-animation;
 }
@@ -120,24 +121,27 @@ header {
   justify-content: space-evenly;
 }
 .nav-menu li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
   color: white;
   font-size: 1.6rem;
   font-weight: 600;
   margin-right: 0.5rem;
 }
-
 .nav-menu li a.active,
 .nav-menu li a:hover {
   color: var(--primario);
   transition: 0.3s;
 }
+.nav-menu li a > img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
 
-.nav-menu .nav-carrito {
-  color: var(--primario) !important;
-}
-.nav-menu .nav-carrito:hover {
-  color: var(--secundario) !important;
-}
 .nav-menu li a .fa-user {
   border: solid 1px;
   padding: 5px;

@@ -1,5 +1,5 @@
 
-const indexRender = (req, res) => res.render('index')
+const indexRender = (req, res) => res.render('index', req.cookies)
 
 
 module.exports = {

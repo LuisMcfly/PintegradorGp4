@@ -20,11 +20,17 @@
     </label>
 
     <ul class="nav-menu">
-      <li><a class="nav-btn" href="../../products/">Tienda</a></li>
-      <li><a href="../contacto">Contacto</a></li>
-      <li><a class="nav-btn" href="../../users/register">Registrate</a></li>
-      <li><a class="nav-btn" href="../../users/login">Ingresa<i class="fa-regular fa-user"></i></a></li>
-      <li><a class="nav-carrito" href="../../cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+      <li><a href="../../products/"><h3>Tienda</h3></a></li>
+      <li><a href="../contacto"><h3>Contacto</h3></a></li>
+
+      <% if (locals.isLogged) { %> 
+        <li><a href="../users/profile"><h3><%= locals.userName %></h3> <img src="../../img/users/<%= locals.userImage %>"/></a></li>
+      <% } else { %> 
+        <li><a href="../../users/register"><h3>Registrate</h3></a></li>
+        <li><a href="../../users/login"><h3>Ingresa</h3><i class="fa-regular fa-user"></i></a></li>
+      <% } %>
+
+      <li><a class="nav-carrito" href="../../cart"><h3><i class="fa-solid fa-cart-shopping"></i></h3></i></a></li>
     </ul>
   </nav>
 </header>
