@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
-<link rel="stylesheet" href="/css/userEdit.css" />
+<head>
+  <link rel="stylesheet" href="/css/userProfile.css" />
+</head>
+
 <body>
   <%- include('../partials/header') %>
-  <main>
-    <div class="section">
-      <div class="circular--portrait">
-        <img src="/img/users/guest.png"  />
-      </div>
-
-      <div class="title">
-        <h1>Bienvenido <span><%= usuario.fullName %> </span></h1>
+  <main class="form-container profile-grid">
+    
+    <section class="form-section user-image">
       <div>
-
-      <div class="buttoms">
-        <form action="/users/edit" method="GET">
-          <button type="submit">Editar Tu Perfil</button>
-        </form>
-
-        <form action="/users/edit" method="GET">
-          <button type="submit">Soporte</button>
-        </form>
-
-        <form action="/users/edit" method="GET">
-          <button type="submit">Ver tu carrito</button>
-        </form>
+        <img src=<%= usuario.imagen %>/>
       </div>
+      <h2>Bienvenido</h2>
+      <h1><%= usuario.fullName %></h1>
+    </section>
 
-      <div class="info-account">
-        <div>
-          <p>Email</p>
-          <div class="border-info">
-            <p><span><%= usuario.email %> </span></p>
-          </div>
-        </div>
-        <div>
-          <p>Numero De Telefono</p>
-          <div class="border-info">
-            <p><span><%= usuario.phone %> </span></p>
-          </div>
-        </div>
+    <section class="form-section user-info">
+      <div class="form-field">
+        <h2><%= usuario.fullName %> </h2>
       </div>
-    </div>
+      <div class="form-field">
+        <p> Correo </p>
+        <h3> <%= usuario.email %> </h3>
+      </div>
+      <div class="form-field">
+        <p> Teléfono </p>
+        <h3> <%= usuario.phone %> </h3>
+      </div>
+      <div class="form-field">
+        <p> Dirección </p>
+        <% address = usuario.address !== null ? usuario.address : 'Sin definir' %> 
+        <h3> <%= address %> </h3>
+      </div>
+      <div class="form-field">
+        <p> Género </p>
+        <h3> <%= usuario.gender %> </h3>
+      </div>
+    </section>
 
+    <section class="form-section user-edit-button">
+      <i class="fa-solid fa-gear"></i>
+      <h2>Editar Información</h2>
+    </section>
+
+    <section class="form-section user-log-out">
+      <i class="fa-solid fa-power-off"></i>
+      <h2>Cerrar Sesión</h2>
+    </section>
   </main>
   <%- include('../partials/footer') %>
 </body>
