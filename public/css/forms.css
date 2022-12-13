@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-section.form-section {
+.form-section {
   background: var(--colorPetroleoOp);
   color: white;
   padding: 50px;

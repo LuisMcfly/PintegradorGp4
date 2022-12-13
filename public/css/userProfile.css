@@ -1,0 +1,55 @@
+.profile-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 0.5fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "image image"
+    "info info"
+    "editButton logOut";
+  gap: 16px;
+  width: 95%;
+  margin: 0px auto;
+}
+
+.profile-grid > section {
+  height: 100%;
+  width: 100%;
+}
+
+.user-image {
+  grid-area: image;
+  align-items: center;
+}
+.user-info {
+  grid-area: info;
+}
+.user-edit-button {
+  grid-area: editButton;
+  align-items: center;
+}
+.user-log-out {
+  grid-area: logOut;
+  align-items: center;
+}
+
+.form-field {
+  width: auto;
+}
+
+@media (min-width: 900px) {
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+      "image info editButton"
+      "image info logOut";
+  
+    width: 95%;
+    margin: 0px auto;
+  }
+  .profile-grid > section {
+    /* height: 100%; */
+    width: auto;
+  }
+}

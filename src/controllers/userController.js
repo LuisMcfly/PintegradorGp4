@@ -61,6 +61,7 @@ const userCreate = async (req, res) => {
         image: "default.png",
         token: generarId()
     })
+    res.redirect('../users/profile');
 }
 
 const loginRender = (req, res) => res.render('users/login', {errores: []});
@@ -135,6 +136,12 @@ const getUserInfo = async (req, res, pageToRender) => {
     
         // Validar que el usuario y buscarlo en la base de datos
         const usuario = await Usuario.findByPk(usuarioId.id);
+
+        // res.send(usuario.address)
+        if(!usuario.hasOwnProperty('address')) usuario.address = "sin definir";
+        if(!usuario.hasOwnProperty('gender')) usuario.gender = "sin definir";
+        
+        // res.send(usuario);
         
         return res.render(pageToRender, {usuario})
     } catch (error) {

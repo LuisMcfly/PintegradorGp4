@@ -133,7 +133,7 @@ header {
 }
 .nav-menu li a.active,
 .nav-menu li a:hover {
-  color: var(--primario);
+  color: var(--colorAzulNeon);
   transition: 0.3s;
 }
 .nav-menu li a > img {
@@ -149,6 +149,13 @@ header {
   margin: 5px;
 }
 
+.nav-menu .fa-cart-shopping {
+  color: var(--colorAzulNeon)
+}
+.nav-menu .fa-cart-shopping:hover {
+  color: var(--colorMagenta)
+}
+
 #check {
   display: none;
 }
@@ -156,29 +163,6 @@ header {
   width: 50%;
   right: 0rem;
   transition-duration: 0.5s;
-}
-
-.button1 {
-  padding: 1rem 3rem;
-  background-color: var(--primario);
-  color: #fff;
-  border-radius: 0.5rem;
-}
-.button1:hover {
-  background-color: var(--fsecundario);
-  color: #fff;
-  transition: 0.5s;
-}
-.button2 {
-  padding: 1rem 3rem;
-  background-color: var(--secundario);
-  color: #fff;
-  border-radius: 0.5rem;
-}
-.button2:hover {
-  background-color: var(--fprimario);
-  color: #fff;
-  transition: 0.5s;
 }
 
 @media (min-width: 900px){ /* PC Small */
