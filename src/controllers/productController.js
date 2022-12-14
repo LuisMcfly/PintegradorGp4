@@ -4,6 +4,9 @@ const {validationResult} = require('express-validator')//validaciones del form
 const ObjProductos = JSON.parse(fs.readFileSync('DB/products.json', {encoding: 'utf-8'}));//trae lo que hay en en archivo, se parsea para poder usarlo en js
 const fabricantes = JSON.parse(fs.readFileSync('DB/manufacturers.json', {encoding: 'utf-8'}));
 const categorias = JSON.parse(fs.readFileSync('DB/categories.json', {encoding: 'utf-8'}));
+const { Sequelize } = require('sequelize');
+const Products = require('../../models/Product.js');
+
 
 const productShopRender = (req, res) => res.render('products/productShop', {categorias, ObjProductos});
 const productDetailRender = (req, res) => {
@@ -15,6 +18,7 @@ const productEditRender = (req, res) =>{
     let producto = ObjProductos.find(producto => producto.id==req.params.id)
     res.render('products/productEdit', {producto})
 };
+
 const productCreate = (req, res) => {
     let image = []
     if (req.files[0]!=undefined){

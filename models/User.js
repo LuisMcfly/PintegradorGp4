@@ -24,7 +24,8 @@ const Usuario = db.define('usuarios', {
     },
     token: DataTypes.STRING,
     confirmado: DataTypes.BOOLEAN
-}, {
+}, 
+{
     hooks: {
         beforeCreate: async function(Usuario) {
             const salt = await bcrypt.genSalt(10);
@@ -38,7 +39,8 @@ const Usuario = db.define('usuarios', {
             }
         }
     }
-});
+}
+);
 
 Usuario.prototype.verificarPassword = function(password){
     return bcrypt.compareSync(password, this.password)
