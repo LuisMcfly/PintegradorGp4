@@ -1,46 +1,54 @@
 let fs = require('fs')
 const { uuid } = require('uuidv4') // libreria para ids
-const {validationResult} = require('express-validator')//validaciones del form
-const ObjProductos = JSON.parse(fs.readFileSync('DB/products.json', {encoding: 'utf-8'}));//trae lo que hay en en archivo, se parsea para poder usarlo en js
-const fabricantes = JSON.parse(fs.readFileSync('DB/manufacturers.json', {encoding: 'utf-8'}));
-const categorias = JSON.parse(fs.readFileSync('DB/categories.json', {encoding: 'utf-8'}));
+const { validationResult } = require('express-validator')//validaciones del form
+const ObjProductos = JSON.parse(fs.readFileSync('DB/products.json', { encoding: 'utf-8' }));//trae lo que hay en en archivo, se parsea para poder usarlo en js
+const fabricantes = JSON.parse(fs.readFileSync('DB/manufacturers.json', { encoding: 'utf-8' }));
+const categorias = JSON.parse(fs.readFileSync('DB/categories.json', { encoding: 'utf-8' }));
 const { Sequelize } = require('sequelize');
 const Products = require('../../models/Product.js');
+const Categories = require('../../models/Category.js');
 
-
-const productShopRender = (req, res) => res.render('products/productShop', {categorias, ObjProductos});
+const productShopRender = (req, res) => res.render('products/productShop', { categorias, ObjProductos });
 const productDetailRender = (req, res) => {
     let producto = ObjProductos.find(producto => producto.id == req.params.id);
-    res.render('products/productDetail', {producto});
+    res.render('products/productDetail', { producto });
 };
-const productRegisterRender = (req, res) => res.render('products/productRegister', {fabricantes});
-const productEditRender = (req, res) =>{ 
-    let producto = ObjProductos.find(producto => producto.id==req.params.id)
-    res.render('products/productEdit', {producto})
+const productRegisterRender = (req, res) => res.render('products/productRegister', { fabricantes });
+const productEditRender = (req, res) => {
+    let producto = ObjProductos.find(producto => producto.id == req.params.id)
+    res.render('products/productEdit', { producto })
 };
 
 const productCreate = (req, res) => {
     let image = []
-    if (req.files[0]!=undefined){
+    let colors = req.body.colors.toString()
+    let rating = 0;
+    if (req.files[0] != undefined) {
         for (let i = 0; i < req.files.length; i++) {
             image.push(req.files[i].filename)
         }
     } else {
         image = ['noImage.png'];
     }
-    let rating = 0;
+    let images = image.toString();
+    Categories.findOne({
+        where: {
+            name: req.body.category
+        }
+    }).then(searchCategory => {
+        console.log(searchCategory);
+        let category = searchCategory.id
+        Products.create({ ...req.body, category, colors, rating, images })
+        .then(() => res.render('products/productRegisterConclude'))
+    })
     
-    ObjProductos.push({id: uuid(),...req.body, rating, image}); // pushea al objeto literal
-    let productsJSON = JSON.stringify(ObjProductos, null); // convierte a objeto JSON
-    fs.writeFileSync('DB/products.json', productsJSON); // Escribe el archivo
+}
 
-    res.render('products/productRegisterConclude');
-};
 const productUpdate = (req, res) => {
     let producto = ObjProductos.find(producto => producto.id == req.params.id)
     let image = producto.images;
-    
-    if (req.files[0]!=undefined) {
+
+    if (req.files[0] != undefined) {
         image = [];
         for (let i = 0; i < req.files.length; i++) {
             image.push(req.files[i].filename);
@@ -67,13 +75,13 @@ const productUpdate = (req, res) => {
     };
 
     let updatedProductsObj = ObjProductos.map(product => {
-        if (product.id == newProductToUpdate.id){
-            return product = {...newProductToUpdate};
+        if (product.id == newProductToUpdate.id) {
+            return product = { ...newProductToUpdate };
         }
         return product = product;
     })
-    fs.writeFileSync('DB/products.json',JSON.stringify(updatedProductsObj, null));
-    
+    fs.writeFileSync('DB/products.json', JSON.stringify(updatedProductsObj, null));
+
     res.send('Edicion exitosa');
 };
 const productDelete = (req, res) => { //puede ir un middelware de confirmacion para eliminar
@@ -85,10 +93,10 @@ const productDelete = (req, res) => { //puede ir un middelware de confirmacion p
 };
 
 
-function imgValidate (imgs) {
-    if(imgs != undefined){
+function imgValidate(imgs) {
+    if (imgs != undefined) {
         return imgs[0].filename;
-    }else{
+    } else {
         return productToUpdate.image;
     }
 }
