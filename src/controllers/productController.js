@@ -7,6 +7,7 @@ const categorias = JSON.parse(fs.readFileSync('DB/categories.json', { encoding: 
 const { Sequelize } = require('sequelize');
 const Products = require('../../models/Product.js');
 const Categories = require('../../models/Category.js');
+// const model = require('../../models/Index.js')
 
 const productShopRender = (req, res) => res.render('products/productShop', { categorias, ObjProductos });
 const productDetailRender = (req, res) => {
@@ -31,17 +32,11 @@ const productCreate = (req, res) => {
         image = ['noImage.png'];
     }
     let images = image.toString();
-    Categories.findOne({
-        where: {
-            name: req.body.category
-        }
-    }).then(searchCategory => {
-        console.log(searchCategory);
-        let category = searchCategory.id
-        Products.create({ ...req.body, category, colors, rating, images })
+
+    Products.create({ ...req.body, colors, rating, images })
         .then(() => res.render('products/productRegisterConclude'))
-    })
-    
+
+
 }
 
 const productUpdate = (req, res) => {

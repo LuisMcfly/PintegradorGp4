@@ -1,7 +1,7 @@
 const {check, validationResult} = require('express-validator');
 const bcrypt = require('bcrypt');
 const db = require('../../config/db.js');
-const Usuario = require('../../models/User.js');
+const User = require('../../models/User.js');
 const { generarId, generarJWT } = require('../../helpers/tokens.js');
 const Jwt = require('jsonwebtoken');
 const { Sequelize } = require('sequelize');
@@ -15,7 +15,7 @@ const userCreate = async (req, res) => {
     const { fullName, email, password, phone } = req.body;
 
     // Verificar que el usuario no este en la base de datos
-    const existeUsuario = await Usuario.findOne( { where : { email } })
+    const existeUsuario = await User.findOne( { where : { email } })
     
     if(existeUsuario) {
         return res.render('users/login', {
@@ -53,7 +53,7 @@ const userCreate = async (req, res) => {
     }
 
     // Almacenar un usuario
-    await Usuario.create({
+    await User.create({
         fullName,
         email,
         password,
@@ -84,7 +84,7 @@ const userLogin = async (req, res) => {
     // Comprobar si el usuario existe
     const {email, password} = req.body;
 
-    const usuario = await Usuario.findOne({where : {email}});
+    const usuario = await User.findOne({where : {email}});
 
     if(!usuario){
         return res.render('users/login', {
@@ -132,10 +132,10 @@ const getUserInfo = async (req, res, pageToRender) => {
     
     try {
         const decoded = Jwt.verify(_token, process.env.JWT_SECRET)
-        const usuarioId = await Usuario.scope('eliminarPassword').findByPk(decoded.id)
+        const usuarioId = await User.scope('eliminarPassword').findByPk(decoded.id)
     
         // Validar que el usuario y buscarlo en la base de datos
-        const usuario = await Usuario.findByPk(usuarioId.id);
+        const usuario = await User.findByPk(usuarioId.id);
 
         // res.send(usuario.address)
         if(!usuario.hasOwnProperty('address')) usuario.address = "sin definir";

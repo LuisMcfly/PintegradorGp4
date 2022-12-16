@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const db = require('../config/db.js');
 
-const Usuario = db.define('usuarios', {
+const User = db.define('users', {
     fullName: {
         type: DataTypes.STRING,
         allowNull: false
@@ -42,8 +42,8 @@ const Usuario = db.define('usuarios', {
 }
 );
 
-Usuario.prototype.verificarPassword = function(password){
+User.prototype.verificarPassword = function(password){
     return bcrypt.compareSync(password, this.password)
 };
 
-module.exports = Usuario;
+module.exports = User;
