@@ -4,13 +4,13 @@ const router = express.Router();
 const path = require('path')
 // const productController = require('../controllers/productController');
 const {
-    productShopRender,
-    productDetailRender,
+    // productShopRender,
+    // productDetailRender,
     productRegisterRender,
     productCreate,
-    productEditRender,
-    productUpdate,
-    productDelete
+    // productEditRender,
+    // productUpdate,
+    // productDelete
 } = require('../controllers/productController');
 
 
@@ -25,13 +25,13 @@ const multer = require('multer'),
     })
     const upload = multer({storage:storage})/* definir si se valida la imagen con multer o con expv */
 
-router.get('/', productShopRender);
+// router.get('/', productShopRender);
 router.get('/productRegister', productRegisterRender); //renderiza la vista del form
 router.post('/productRegister', upload.array('imagen'), productCreate); //guarda los datos enviados en el form
 
-router.get('/productDetail/:id', productDetailRender);
-router.get('/productEdit/:id', productEditRender);
-router.put('/:id', upload.array('imagen'), productUpdate);
-router.delete('/:id', productDelete);
+// router.get('/productDetail/:id', productDetailRender);
+// router.get('/productEdit/:id', productEditRender);
+// router.put('/:id', upload.array('imagen'), productUpdate);
+// router.delete('/:id', productDelete);
 
 module.exports = router;

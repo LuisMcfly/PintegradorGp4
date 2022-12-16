@@ -45,18 +45,7 @@ const Product = db.define('products', {
     images: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    category_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'category',
-            key: 'id'
-        },
-        onUpdate: 'cascade',
-        onDelete: 'cascade'
-      }
-}, 
-
-);
+    }   
+});
 
 module.exports = Product;
