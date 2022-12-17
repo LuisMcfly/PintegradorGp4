@@ -7,7 +7,7 @@ const Jwt = require('jsonwebtoken');
 const { Sequelize } = require('sequelize');
 
 const registerRender = (req, res) => res.render('users/register', {
-    errores: [],
+    errors: [],
     usuario: ''
 });
 
@@ -19,7 +19,7 @@ const userCreate = async (req, res) => {
     
     if(existeUsuario) {
         return res.render('users/login', {
-            errores: {email: {msg: 'El correo ya está Registrado'}}, 
+            errors: {email: {msg: 'El correo ya está Registrado'}}, 
             usuario: {
                 nombre: req.body.fullName,
                 email: req.body.email
@@ -43,7 +43,7 @@ const userCreate = async (req, res) => {
     //Verificar que el resultado no este vacio
     if(!resultado.isEmpty()){
         return res.render('users/register', {
-            errores: resultado.mapped(),
+            errors: resultado.mapped(),
             usuario: {
                 fullName: req.body.fullName,
                 email: req.body.email,
@@ -64,7 +64,7 @@ const userCreate = async (req, res) => {
     res.redirect('../users/profile');
 }
 
-const loginRender = (req, res) => res.render('users/login', {errores: []});
+const loginRender = (req, res) => res.render('users/login', {errors: []});
 
 const userLogin = async (req, res) => {
     // Validacion
@@ -77,7 +77,7 @@ const userLogin = async (req, res) => {
     if(!resultado.isEmpty()){
         return res.render('users/login', {
             // errores: resultado.array(),
-            errores: resultado.mapped(),
+            errors: resultado.mapped(),
         })
     }
     
@@ -88,14 +88,14 @@ const userLogin = async (req, res) => {
 
     if(!usuario){
         return res.render('users/login', {
-            errores: {email: {msg: 'El usuario no existe'}}
+            errors: {email: {msg: 'El usuario no existe'}}
         })
     }
 
     // Revisar el password
     if(!usuario.verificarPassword(password)){
         return res.render('users/login', {
-            errores: {password: {msg: 'La contraseña es incorrecta'}}
+            errors: {password: {msg: 'La contraseña es incorrecta'}}
         })
     }
 
@@ -141,8 +141,7 @@ const getUserInfo = async (req, res, pageToRender) => {
         if(!usuario.hasOwnProperty('address')) usuario.address = "sin definir";
         if(!usuario.hasOwnProperty('gender')) usuario.gender = "sin definir";
         
-        // res.send(usuario);
-        
+        // res.send(usuario);  
         return res.render(pageToRender, {usuario})
     } catch (error) {
         return res.clearCookie('_token').redirect('../users/login')

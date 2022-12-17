@@ -52,8 +52,6 @@ body {
   line-height: 1.2;
   background-color: var(--Grisfondo);
   overflow-x: hidden;
-
-  display: grid;
   grid-template-rows: 100px auto 1fr;
 }
 

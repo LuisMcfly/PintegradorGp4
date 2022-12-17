@@ -6,8 +6,7 @@ const Category = db.define('category', {
         type: DataTypes.STRING,
         allowNull: false
     },
-},
-);
+});
 
 module.exports = Category;
 

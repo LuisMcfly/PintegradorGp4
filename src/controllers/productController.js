@@ -1,36 +1,77 @@
-let fs = require('fs')
-const { Product, Category } = require('../../models/Index');
-const fabricantes = JSON.parse(fs.readFileSync('DB/manufacturers.json', { encoding: 'utf-8' }));
-
-const productCreate = (req, res) => {
-    let image = []
-    let colors = req.body.colors.toString()
-    let rating = 0;
-    if (req.files[0] != undefined) {
-        for (let i = 0; i < req.files.length; i++) {
-            image.push(req.files[i].filename)
-        }
-    } else {
-        image = ['noImage.png'];
-    }
-    let images = image.toString();
-
-    Product.create({ ...req.body, colors, rating, images })
-        .then(() => res.render('products/productRegisterConclude'))
-}
+const { check, validationResult } = require('express-validator');
+const { Product, Category, Manofacturers, Features } = require('../../models/Index');
 
 const productRegisterRender = async (req, res) => {
     // Consultar a la base de datos por las categorias
-    const [Categorys] = await Promise.all([
+    const [categorys, manofacturers, features] = await Promise.all([
         Category.findAll(),
+        Manofacturers.findAll(),
+        Features.findAll()
     ])
 
     res.render('products/productRegister', {
-        Categorys,
-        fabricantes
+        categorys, 
+        manofacturers, 
+        features,
+        errors: [],
+        datos: {}
     })
-
 }
+
+const productCreate = async (req, res) => {
+
+    // Validaciones
+    await check('name').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
+    await check('manufacturer').notEmpty().withMessage('Debes seleccionar el nombre de un fabricante').run(req)
+    await check('model').notEmpty().withMessage('Debes indicar el modelo del producto').run(req)
+    await check('variations').notEmpty().withMessage('Debes seleccionar las caracteristicas').run(req)
+    await check('category').notEmpty().withMessage('Debes seleccionar la categoria').run(req)
+    await check('description').notEmpty().withMessage('La descripcion es necesaria').run(req)
+    await check('price').notEmpty().withMessage('Debes indicar el precio del producto').run(req)
+    await check('discount').notEmpty().withMessage('Debes indicar el descuento del producto').run(req)
+    await check('stock').notEmpty().withMessage('Debes indicar el stock del producto').run(req)
+
+    let resultado = validationResult(req);
+
+    if(!resultado.isEmpty()){
+
+        const [categorys, manofacturers, features] = await Promise.all([
+            Category.findAll(),
+            Manofacturers.findAll(),
+            Features.findAll()
+        ])
+
+        return res.render('products/productRegister', {
+            categorys, 
+            manofacturers, 
+            features,
+            errors: resultado.array(),
+            datos: req.body
+        });
+    };
+
+    const { name, manufacturer: manofacturer_id, model, variations: features_id, category: category_id, description, price, discount, stock, images} = req.body
+
+    try {
+        const productSave = await Product.create({
+            name,
+            manofacturer_id,
+            model,
+            features_id, 
+            category_id, 
+            description, 
+            price, 
+            discount, 
+            stock, 
+            images: ""
+        })
+    } catch (error) {
+        console.log(error);
+    }
+
+    res.redirect('/');
+}
+
 
 module.exports = {
     productCreate,
