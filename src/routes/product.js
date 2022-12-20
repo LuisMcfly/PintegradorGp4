@@ -8,9 +8,10 @@ const {
     // productDetailRender,
     productRegisterRender,
     productCreate,
-    // productEditRender,
-    // productUpdate,
-    // productDelete
+    productEditRender,
+    productEdit,
+    deletProduct
+    
 } = require('../controllers/productController');
 
 
@@ -30,8 +31,8 @@ router.get('/productRegister', productRegisterRender); //renderiza la vista del 
 router.post('/productRegister', upload.array('imagen'), productCreate); //guarda los datos enviados en el form
 
 // router.get('/productDetail/:id', productDetailRender);
-// router.get('/productEdit/:id', productEditRender);
-// router.put('/:id', upload.array('imagen'), productUpdate);
-// router.delete('/:id', productDelete);
+router.get('/productEdit/:id', productEditRender);
+router.post('/productEdit/:id', productEdit);
+router.delete('/productDelete/:id', deletProduct);
 
 module.exports = router;

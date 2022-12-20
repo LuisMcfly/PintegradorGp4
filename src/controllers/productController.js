@@ -1,5 +1,5 @@
 const { check, validationResult } = require('express-validator');
-const { Product, Category, Manofacturers, Features } = require('../../models/Index');
+const { Product, Category, Manofacturers, Features } = require('../../models/index');
 
 const productRegisterRender = async (req, res) => {
     // Consultar a la base de datos por las categorias
@@ -72,8 +72,132 @@ const productCreate = async (req, res) => {
     res.redirect('/');
 }
 
+const productEditRender = async (req, res) => {
+
+    let resultado = validationResult(req);
+
+    if(!resultado.isEmpty()){
+
+        const [categorys, manofacturers, features] = await Promise.all([
+            Category.findAll(),
+            Manofacturers.findAll(),
+            Features.findAll()
+        ])
+
+        return res.render('products/productEdit', {
+            categorys, 
+            manofacturers, 
+            features,
+            errors: resultado.array(),
+            datos: req.body
+        });
+    };
+
+    const { id } = req.params;
+
+    // Validacion de que el producto si existe
+
+    const product = await Product.findByPk(id);
+    console.log(product);
+    if(!product){
+        return res.redirect('products/productShop');
+    }
+
+    // Hacer la consulta del producto en la base de datos
+
+    const [categorys, manofacturers, features] = await Promise.all([
+        Category.findAll(),
+        Manofacturers.findAll(),
+        Features.findAll()
+    ])
+
+    return res.render('products/productEdit', {
+        categorys, 
+        manofacturers, 
+        features,
+        errors: resultado.array(),
+        datos: product
+    });
+};
+
+const productEdit = async (req, res) => {
+
+    let resultado = validationResult(req);
+
+    if(!resultado.isEmpty()){
+
+        const [categorys, manofacturers, features] = await Promise.all([
+            Category.findAll(),
+            Manofacturers.findAll(),
+            Features.findAll()
+        ])
+
+        return res.render('products/productEdit', {
+            categorys, 
+            manofacturers, 
+            features,
+            errors: resultado.array(),
+            datos: req.body
+        });
+    };
+
+    const { id } = req.params;
+
+    // Validacion de que el producto si existe
+
+    const product = await Product.findByPk(id);
+
+    if(!product){
+        return res.redirect('/productShop');
+    }
+
+    try {
+        const { name, manufacturer: manofacturer_id, model, variations: features_id, category: category_id, description, price, discount, stock, images} = req.body;
+
+        product.set({
+            name,
+            manofacturer_id,
+            model,
+            features_id, 
+            category_id, 
+            description, 
+            price, 
+            discount, 
+            stock, 
+            images: ""
+        })
+
+        await product.save();
+
+        res.redirect('/')
+
+    } catch (error) {
+        console.log(error);
+    }
+
+};
+
+const deletProduct = async (req, res) => {
+
+    const { id } = req.params;
+
+    // Validacion de que el producto si existe
+
+    const product = await Product.findByPk(id);
+
+    if(!product){
+        return res.redirect('/productShop');
+    }
+
+    // Eliminar el producto
+    await product.destroy();
+    res.redirect('/productShop');
+};
 
 module.exports = {
     productCreate,
     productRegisterRender,
+    productEditRender,
+    productEdit,
+    deletProduct
 }
