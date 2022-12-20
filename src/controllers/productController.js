@@ -177,6 +177,24 @@ const productEdit = async (req, res) => {
 
 };
 
+const productDeleteRender = async (req, res) => {
+
+    const { id } = req.params;
+
+    // Validacion de que el producto si existe
+
+    const product = await Product.findByPk(id);
+    if(!product){
+        return res.redirect('products/productShop');
+    }
+
+    // Hacer la consulta del producto en la base de datos
+
+    return res.render('products/productDelete', {
+        datos: product
+    });
+};
+
 const deletProduct = async (req, res) => {
 
     const { id } = req.params;
@@ -199,5 +217,6 @@ module.exports = {
     productRegisterRender,
     productEditRender,
     productEdit,
+    productDeleteRender,
     deletProduct
 }

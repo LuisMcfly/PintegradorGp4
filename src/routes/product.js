@@ -10,7 +10,8 @@ const {
     productCreate,
     productEditRender,
     productEdit,
-    deletProduct
+    deletProduct,
+    productDeleteRender
     
 } = require('../controllers/productController');
 
@@ -33,6 +34,8 @@ router.post('/productRegister', upload.array('imagen'), productCreate); //guarda
 // router.get('/productDetail/:id', productDetailRender);
 router.get('/productEdit/:id', productEditRender);
 router.post('/productEdit/:id', productEdit);
-router.delete('/productDelete/:id', deletProduct);
+
+router.get('/productDelete/:id', productDeleteRender)
+router.post('/productDelete/:id', deletProduct);
 
 module.exports = router;
