@@ -13,13 +13,13 @@
           })
       }
   </script>
+  <form action="/users/register" method="POST" id="registerForm"></form>
 </head>
 
 <body> 
   <%- include('../partials/header') %>
 
   <main class="form-container">
-    <form action="/users/register" method="POST" id="registerForm"></form>
     <section class="form-section">
       
       <h1>Crea tu cuenta</h1>
@@ -28,9 +28,9 @@
         <label for="fullName"><p>Nombre completo</p></label>
         <input type="text" name="fullName" id="fullName" class="text-input" 
           form="registerForm" value="<%= usuario ? usuario.fullName : '' %>">
-        <% if(locals.errores && errores.fullName) {%> 
+        <% if(locals.errors && errors.fullName) {%> 
           <div class="error-message">
-            <p> <%= errores.fullName.msg %> </p>
+            <p> <%= errors.fullName.msg %> </p>
           </div>
         <% }; %>
       </div>
@@ -39,9 +39,9 @@
         <label for="email"><p>Correo electrónico</p></label>
         <input type="email" name="email" id="email" class="text-input"
           form="registerForm" value="<%= usuario ? usuario.email : '' %>">
-        <% if(locals.errores && errores.email) {%> 
+        <% if(locals.errors && errors.email) {%> 
           <div class="error-message">
-            <p> <%= errores.email.msg %> </p>
+            <p> <%= errors.email.msg %> </p>
           </div>
         <% }; %>
       </div>
@@ -50,9 +50,9 @@
         <label for="password"><p>Ingresa una contraseña</p></label>
         <input type="password" name="password" class="text-input"
           form="registerForm" id="password">
-        <% if(locals.errores && errores.password) {%> 
+        <% if(locals.errors && errors.password) {%> 
           <div class="error-message">
-            <p> <%= errores.password.msg %> </p>
+            <p> <%= errors.password.msg %> </p>
           </div>
         <% }; %>
       </div>
@@ -61,9 +61,9 @@
         <label for="repassword"><p>Repite la contraseña</p></label>
         <input type="password" name="repassword" class="text-input" 
           form="registerForm" id="repassword" >
-        <% if(locals.errores && errores.repassword) {%> 
+        <% if(locals.errors && errors.repassword) {%> 
           <div class="error-message">
-            <p> <%= errores.repassword.msg %> </p>
+            <p> <%= errors.repassword.msg %> </p>
           </div>
         <% }; %>
       </div>
@@ -72,9 +72,9 @@
         <label for="phone"><p>Número Celular</p></label>
         <input type="text" name="phone" id="phone" class="text-input" 
           form="registerForm" value="<%= usuario ? usuario.phone : '' %>">
-        <% if(locals.errores && errores.phone) {%> 
+        <% if(locals.errors && errors.phone) {%> 
           <div class="error-message paragraph">
-            <p> <%= errores.phone.msg %> </p>
+            <p> <%= errors.phone.msg %> </p>
           </div>
         <% }; %>
       </div>
@@ -86,12 +86,12 @@
       <div class="form-field">
         <div class="check-container">
           <input type="checkbox" name="termsAndConditions" id="termsAndConditions" 
-          class="checkbox-input with-font" form="registerForm">
+          class="with-font" form="registerForm">
           <label for="termsAndConditions" class="icon paragraph"> Acepto los términos y condiciones de este servicio </label>
         </div>
-        <% if(locals.errores && errores.termsAndConditions) {%> 
+        <% if(locals.errors && errors.termsAndConditions) {%> 
           <div class="error-message parragraph">
-            <p> <%= errores.termsAndConditions.msg %> </p>
+            <p> <%= errors.termsAndConditions.msg %> </p>
           </div>
         <% }; %>
       </div>

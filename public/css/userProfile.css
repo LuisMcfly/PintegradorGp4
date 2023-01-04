@@ -8,6 +8,7 @@
     "editButton logOut";
   gap: 16px;
   width: 95%;
+  max-width: 1200px;
   margin: 0px auto;
 }
 
@@ -16,12 +17,25 @@
   width: 100%;
 }
 
+.user-edit-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "image info";
+  gap: 16px;
+  width: 95%;
+  max-width: 1000px;
+  margin: 0px auto;
+}
+
 .user-image {
   grid-area: image;
   align-items: center;
 }
 .user-info {
   grid-area: info;
+  min-height: 100%;
 }
 .user-edit-button {
   grid-area: editButton;

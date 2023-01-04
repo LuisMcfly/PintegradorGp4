@@ -58,14 +58,17 @@ body {
 h1 { /* titular*/
   font-weight: 700; /* bold */
   font-size: 32px;
+  margin: 5px 0px;
 }
 h2 { /* subtitulo */
   font-weight: 600; /* semibold */
   font-size: 24px;
+  margin: 5px 0px;
 }
 
 h3, h4, h5 { /* Base */
   font-size: 20px;
+  margin: 0px;
 }
 h3, .semibold {
   font-weight: 600; /* semibold */

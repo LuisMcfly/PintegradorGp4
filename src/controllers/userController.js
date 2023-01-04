@@ -11,6 +11,16 @@ const registerRender = (req, res) => res.render('users/register', {
     usuario: ''
 });
 
+const loginRender = (req, res) => res.render('users/login', {errors: []});
+
+const profileRender = async ( req, res ) => {
+    return getUserInfo(req, res, 'users/userProfile')
+}
+
+const editRender = async (req, res) => {
+    return getUserInfo(req, res, 'users/userEdit')
+}
+
 const userCreate = async (req, res) => {
     const { fullName, email, password, phone } = req.body;
 
@@ -24,7 +34,7 @@ const userCreate = async (req, res) => {
                 nombre: req.body.fullName,
                 email: req.body.email
             }
-        })
+        });
     }
 
     // Validaciones
@@ -41,7 +51,7 @@ const userCreate = async (req, res) => {
     // res.send(resultado.mapped())
 
     //Verificar que el resultado no este vacio
-    if(!resultado.isEmpty()){
+    if(!resultado.isEmpty()) {
         return res.render('users/register', {
             errors: resultado.mapped(),
             usuario: {
@@ -58,13 +68,11 @@ const userCreate = async (req, res) => {
         email,
         password,
         phone,
-        image: "default.png",
+        image: "defaultUserImage.png",
         token: generarId()
     })
-    res.redirect('../users/profile');
+    res.redirect('../users/login');
 }
-
-const loginRender = (req, res) => res.render('users/login', {errors: []});
 
 const userLogin = async (req, res) => {
     // Validacion
@@ -72,6 +80,9 @@ const userLogin = async (req, res) => {
     await check('password').notEmpty().withMessage('La contraseña es obligatoria').run(req)
 
     let resultado = validationResult(req)
+
+    // res.send(req.body) // Debugging
+    // res.send(resultado.mapped()) // Debugging
 
     // Enviar mensaje de error si existe
     if(!resultado.isEmpty()){
@@ -108,16 +119,14 @@ const userLogin = async (req, res) => {
         httpOnly: true
         // secure: true,
         // sameSite: true
-    }).redirect('../users/profile')
+    }).redirect('/')
 }
 
-const profileRender = async ( req, res ) => {
-    return getUserInfo(req, res, 'users/userProfile')
-}
+const userEdit = async (req, res) => {
+    await User.update({
 
-
-const editRender = async (req, res) => {
-    return getUserInfo(req, res, 'users/userEdit')
+    })
+    return res.redirect('../users/profile');
 }
 
 const logout = (req, res) => {
@@ -138,8 +147,8 @@ const getUserInfo = async (req, res, pageToRender) => {
         const usuario = await User.findByPk(usuarioId.id);
 
         // res.send(usuario.address)
-        if(!usuario.hasOwnProperty('address')) usuario.address = "sin definir";
-        if(!usuario.hasOwnProperty('gender')) usuario.gender = "sin definir";
+        if(!usuario.hasOwnProperty('address')) usuario.address = "Sin definir";
+        if(!usuario.hasOwnProperty('gender')) usuario.gender = "Sin definir";
         
         // res.send(usuario);  
         return res.render(pageToRender, {usuario})
@@ -149,11 +158,12 @@ const getUserInfo = async (req, res, pageToRender) => {
 }
 
 module.exports = {
-    logout,
     registerRender,
     loginRender,
     profileRender,
+    editRender,
     userLogin,
     userCreate,
-    editRender
+    userEdit,
+    logout
 };

@@ -1,7 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
+<head>
+  <link rel="stylesheet" href="/css/userProfile.css" />
+  <form action="/users/edit" method="POST" id="saveEditForm"></form>
+</head>
+
 <body>
+  <%- include('../partials/header') %>
+  <main class="form-container user-edit-grid">
+    
+    <section class="form-section user-image">
+      <input type="file" name="profileImage" id="profileImage">
+      <label for="profileImage">
+        <div>
+          <img src="../../img/users/<%= usuario.image %>"/>
+        </div>
+      </label>
+      
+      <h1><%= usuario.fullName %></h1>
+      <h3><%= usuario.email %></h3>
+    </section>
+
+    <section class="form-section user-info">
+      <div class="form-field">
+        <label for="fullName"><p>Nombre completo</p></label>
+        <input type="text" name="fullName" id="fullName" class="text-input" 
+          form="editSaveForm" placeholder="<%= usuario ? usuario.fullName : '' %>">
+        <% if(locals.errors && errors.fullName) {%> 
+          <div class="error-message">
+            <p> <%= errors.fullName.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="email"><p>Correo electrónico</p></label>
+        <input type="email" name="email" id="email" class="text-input"
+          form="editSaveForm" placeholder="<%= usuario ? usuario.email : '' %>">
+        <% if(locals.errors && errors.email) {%> 
+          <div class="error-message">
+            <p> <%= errors.email.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="phone"><p>Teléfono</p></label>
+        <input type="text" name="phone" id="phone" class="text-input" 
+          form="editSaveForm" placeholder="<%= usuario ? usuario.phone : '' %>">
+        <% if(locals.errors && errors.phone) {%> 
+          <div class="error-message paragraph">
+            <p> <%= errors.phone.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="address"><p>Dirección</p></label>
+        <input type="text" name="address" id="address" class="text-input" 
+          form="editSaveForm" placeholder="<%= usuario ? usuario.address : '' %>">
+        <% if(locals.errors && errors.address) {%> 
+          <div class="error-message paragraph">
+            <p> <%= errors.address.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label><p>Género</p></label>
+        <div class="check-container">
+          <input type="radio" name="gender" id="genderOpt1" 
+          class="with-font" form="saveEditForm" value="Masculino">
+          <label for="genderOpt1" class="icon paragraph"> Masculino </label>
+
+          <input type="radio" name="gender" id="genderOpt2" 
+          class="with-font" form="saveEditForm" value="Femenino">
+          <label for="genderOpt2" class="icon paragraph"> Femenino </label>
+
+          <input type="radio" name="gender" id="genderOpt3" 
+          class="with-font" form="saveEditForm" value="Otro">
+          <label for="genderOpt3" class="icon paragraph"> Otro </label>
+        </div>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" form="editSaveForm" class="main-button">Continuar</button>
+        <button type="reset" form="editSaveForm">Cancelar</button>
+      </div>
+    </section>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>
+
+<!-- <body>
   <%- include('../partials/header') %>
   
   <form action="" 
@@ -31,4 +124,4 @@
 
   <%- include('../partials/footer') %>
 </body>
-</html>
+</html> -->

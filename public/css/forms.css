@@ -14,7 +14,7 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   gap: 10px;
 }
 
@@ -27,6 +27,11 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  margin-bottom: 5px;
+}
+.form-field h3 {
+  margin: auto 0px;
 }
 
 .text-input {
@@ -42,6 +47,7 @@
 
 .check-container {
   display: flex;
+  
 }
 .check-container > label {
   width: 100%;
@@ -50,7 +56,8 @@
 
 /*---------------*/
 
-input[type=checkbox].with-font { /* Elimina el estilo del checkbox */
+input[type=checkbox].with-font,
+input[type=radio].with-font { /* Elimina el estilo del checkbox */
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -60,7 +67,8 @@ input[type=checkbox].with-font { /* Elimina el estilo del checkbox */
   position: absolute;
   width: 1px; 
 }     
-input[type=checkbox].with-font + label:before { /* Pega el Font Awesome antes del label */
+input[type=checkbox].with-font + label:before,
+input[type=radio].with-font + label:before{ /* Pega el Font Awesome antes del label */
   font: var(--fa-font-regular);
   
   display: inline-block;
@@ -69,14 +77,24 @@ input[type=checkbox].with-font + label:before { /* Pega el Font Awesome antes de
   font-size: 16px;
   color: white;
 }
+input[type=checkbox].with-font:hover + label:before,
+input[type=checkbox].with-font:checked:hover + label:before,
+input[type=radio].with-font:hover + label:before,
+input[type=radio].with-font:checked:hover + label:before {
+  color: var(--colorAzul);
+}
+
 input[type=checkbox].with-font:checked + label:before {
-  content: "\f192";
+  content: "\f058";
   color: white;
   font-size: 16px;
   border: none;
 }
-input[type=checkbox].with-font:hover + label:before {
-  color: var(--colorAzul);
+input[type=radio].with-font:checked + label:before {
+  content: "\f192";
+  color: white;
+  font-size: 16px;
+  border: none;
 }
 
 /*---------------*/
@@ -91,6 +109,7 @@ input[type=checkbox].with-font:hover + label:before {
 .form-buttons {
   display: flex;
   justify-content: center;
+  gap: 5px;
 }
 
 .form-section button {
@@ -103,6 +122,13 @@ input[type=checkbox].with-font:hover + label:before {
   border: none;
   border-radius: var(--borderRadiusInput);
   text-align: center;
+}
+
+button.icon-button {
+  background-color: rgba(0,0,0,0);
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0px;
 }
 
 a.btn {
