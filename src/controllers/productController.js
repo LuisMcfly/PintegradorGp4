@@ -1,17 +1,41 @@
 const { check, validationResult } = require('express-validator');
-const { Product, Category, Manofacturers, Features } = require('../../models/index');
+const { Product, Category, Manufacturers, Features } = require('../../models/index');
+
+const productShopRender = async (req, res) => {
+    const [categories, Manufacturers, features] = await Promise.all([
+        Category.findAll(),
+        Manufacturers.findAll(),
+        Features.findAll()
+    ])
+
+    return res.send(Manufacturers)
+
+    res.render('products/productShop', {
+        categories, 
+        Manufacturers, 
+        features,
+        errors: [],
+        datos: {}
+    })
+};
+
+const productDetailRender = (req, res) => {
+    // let producto = ObjProductos.find(producto => producto.id == req.params.id);
+    // res.render('products/productDetail', { producto });
+    res.render('products/productDetail');
+};
 
 const productRegisterRender = async (req, res) => {
     // Consultar a la base de datos por las categorias
-    const [categorys, manofacturers, features] = await Promise.all([
+    const [categories, Manufacturers, features] = await Promise.all([
         Category.findAll(),
-        Manofacturers.findAll(),
+        Manufacturers.findAll(),
         Features.findAll()
     ])
 
     res.render('products/productRegister', {
-        categorys, 
-        manofacturers, 
+        categories, 
+        Manufacturers, 
         features,
         errors: [],
         datos: {}
@@ -35,15 +59,15 @@ const productCreate = async (req, res) => {
 
     if(!resultado.isEmpty()){
 
-        const [categorys, manofacturers, features] = await Promise.all([
+        const [categories, Manufacturers, features] = await Promise.all([
             Category.findAll(),
-            Manofacturers.findAll(),
+            Manufacturers.findAll(),
             Features.findAll()
         ])
 
         return res.render('products/productRegister', {
-            categorys, 
-            manofacturers, 
+            categories, 
+            Manufacturers, 
             features,
             errors: resultado.array(),
             datos: req.body
@@ -78,15 +102,15 @@ const productEditRender = async (req, res) => {
 
     if(!resultado.isEmpty()){
 
-        const [categorys, manofacturers, features] = await Promise.all([
+        const [categories, Manufacturers, features] = await Promise.all([
             Category.findAll(),
-            Manofacturers.findAll(),
+            Manufacturers.findAll(),
             Features.findAll()
         ])
 
         return res.render('products/productEdit', {
-            categorys, 
-            manofacturers, 
+            categories, 
+            Manufacturers, 
             features,
             errors: resultado.array(),
             datos: req.body
@@ -105,15 +129,15 @@ const productEditRender = async (req, res) => {
 
     // Hacer la consulta del producto en la base de datos
 
-    const [categorys, manofacturers, features] = await Promise.all([
+    const [categories, Manufacturers, features] = await Promise.all([
         Category.findAll(),
-        Manofacturers.findAll(),
+        Manufacturers.findAll(),
         Features.findAll()
     ])
 
     return res.render('products/productEdit', {
-        categorys, 
-        manofacturers, 
+        categories, 
+        Manufacturers, 
         features,
         errors: resultado.array(),
         datos: product
@@ -126,15 +150,15 @@ const productEdit = async (req, res) => {
 
     if(!resultado.isEmpty()){
 
-        const [categorys, manofacturers, features] = await Promise.all([
+        const [categories, Manufacturers, features] = await Promise.all([
             Category.findAll(),
-            Manofacturers.findAll(),
+            Manufacturers.findAll(),
             Features.findAll()
         ])
 
         return res.render('products/productEdit', {
-            categorys, 
-            manofacturers, 
+            categories, 
+            Manufacturers, 
             features,
             errors: resultado.array(),
             datos: req.body
@@ -195,7 +219,7 @@ const productDeleteRender = async (req, res) => {
     });
 };
 
-const deletProduct = async (req, res) => {
+const deleteProduct = async (req, res) => {
 
     const { id } = req.params;
 
@@ -213,10 +237,12 @@ const deletProduct = async (req, res) => {
 };
 
 module.exports = {
+    productShopRender,
+    productDetailRender,
     productCreate,
     productRegisterRender,
     productEditRender,
     productEdit,
     productDeleteRender,
-    deletProduct
+    deleteProduct
 }
