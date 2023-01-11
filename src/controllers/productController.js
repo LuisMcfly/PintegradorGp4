@@ -1,5 +1,30 @@
 const { check, validationResult } = require('express-validator');
 const { Product, Category, Manofacturers, Features } = require('../../models/index');
+//'products/productShop'
+const productShopRender = async (req, res) => {
+    const [products] = await Promise.all([Product.findAll()])
+    res.send(products)
+    //res.render('products/productShop', )
+}
+
+const productDetailRender = async (req, res) => {
+    /*  include: [
+            {model: Precio, as: 'precio'},
+            {model: Categoria, as: 'categoria'}
+        ] */
+    const { id } = req.params;
+  
+    // Validacion de que el producto si existe
+    const product = await Product.findByPk(id);
+    const manofacturers = await Manofacturers.findByPk(product.manofacturer_id);
+  
+    if (!product) {
+      return res.redirect('/');
+    }
+  
+    return res.render('products/productDetail', {product, manofacturers})
+}
+
 
 const productRegisterRender = async (req, res) => {
     // Consultar a la base de datos por las categorias
@@ -213,10 +238,13 @@ const deletProduct = async (req, res) => {
 };
 
 module.exports = {
+    productShopRender,
+    productDetailRender,
     productCreate,
     productRegisterRender,
     productEditRender,
     productEdit,
     productDeleteRender,
-    deletProduct
+    deletProduct,
+    
 }
