@@ -8,21 +8,23 @@ const productShopRender = async (req, res) => {
 }
 
 const productDetailRender = async (req, res) => {
-    /*  include: [
-            {model: Precio, as: 'precio'},
-            {model: Categoria, as: 'categoria'}
-        ] */
+    
     const { id } = req.params;
   
     // Validacion de que el producto si existe
-    const product = await Product.findByPk(id);
-    const manofacturers = await Manofacturers.findByPk(product.manofacturer_id);
-  
+    const product = await Product.findByPk(id, {
+        include: [
+            {model: Manofacturers, as: 'manofacturer'},
+            {model: Category, as: 'category'},
+            {model: Features, as: 'feature'}
+        ]
+    });
+    
     if (!product) {
       return res.redirect('/');
     }
   
-    return res.render('products/productDetail', {product, manofacturers})
+    return res.render('products/productDetail', {product})
 }
 
 

@@ -12,7 +12,7 @@
   <section class="product-detail">
     <div class="product-header">
       <h2><%= product.name +' '+ product.model %></h2>
-      <a class="fabricante" href="#">más productos de la marca <%= manofacturers.name %> </a>
+      <a class="fabricante" href="#">más productos de la marca <%= product.manofacturer.name  %> </a>
       <div class="calificacion">
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
@@ -20,12 +20,11 @@
         <i class="fa-solid fa-star"></i>
         <i class="fa-regular fa-star"></i>
       </div>
-    </div>
-    
+    </div> 
       <div>
         <p class="stock"><%= product.stock %>  Unidades restantes</p>
         <p class="descripcion"><%= product.description %> </p>
-        <p class="descripcion">manufacturer: --> <%= manofacturers.name%> </p>
+        <p class="descripcion">manufacturer: --> <%= product.manofacturer.name %> </p>
       </div>
 
       <div class="product-precio">
