@@ -9,76 +9,32 @@
 <body> 
   <%- include('../partials/header') %>
 
-  <section class="product-detail">
-    <div class="product-header">
-      <h2><%= product.name +' '+ product.model %></h2>
-      <a class="fabricante" href="#">más productos de la marca <%= product.manofacturer.name  %> </a>
-      <div class="calificacion">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-      </div>
-    </div> 
-      <div>
-        <p class="stock"><%= product.stock %>  Unidades restantes</p>
-        <p class="descripcion"><%= product.description %> </p>
-        <p class="descripcion">manufacturer: --> <%= product.manofacturer.name %> </p>
-      </div>
+  <main class="product">
+    <div class="img">
+      <img src="<%= productInfo.images %> " alt=""/>
+    </div>
+    <div class="product-info">
+      <div class="product-name"><h1><%= productInfo.name %> </h1></div>
+      <div class="product-price"><h2>$ <%= productInfo.price %> </h2></div>
+      <div class="product-description"><p><%= productInfo.description %> </p></div>
+      <div class="product-stock"><h5>Stock: <%= productInfo.stock %> </h5></div>
+    </div>
+  </main>
 
-      <div class="product-precio">
-        <div class="precio-numero">
-          <h2>$ <%= product.price %></h2><h4>.900</h4>
-        </div>
-        
-        <div class="btns-product">
-          <form action="/cart">
-            <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button>
-            <button class="btn anadir-deseados">Añadir a Deseados</button>
-          </form>
-        </div>
-      </div>
-
-    </div> -->
+  <h2 class="section-title degradado">Recomendados</h2>
+  <section class="recopilacion">
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
   </section>
 
-  <main class="contenedor-principal">
-    <h2 class="section-title degradado">Recomendados</h2>
-    <section class="recopilacion">
-      <div class="product-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-      <div class="product-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-      <div class="product-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-      <div class="product-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-    </section>
-
-    <section class="recopilacion historial" style="display: none">
-      <div class="product-preview"></div>
-      <div class="product-preview"></div>
-      <div class="product-preview"></div>
-      <div class="product-preview"></div>
-    </section>
-  </main>
+  <section class="recopilacion historial" style="display: none">
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+  </section>
   
   <%- include('../partials/footer') %>
 </body>

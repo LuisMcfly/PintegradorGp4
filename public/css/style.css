@@ -58,14 +58,17 @@ body {
 h1 { /* titular*/
   font-weight: 700; /* bold */
   font-size: 32px;
+  margin: 5px 0px;
 }
 h2 { /* subtitulo */
   font-weight: 600; /* semibold */
   font-size: 24px;
+  margin: 5px 0px;
 }
 
 h3, h4, h5 { /* Base */
   font-size: 20px;
+  margin: 0px;
 }
 h3, .semibold {
   font-weight: 600; /* semibold */
@@ -98,38 +101,6 @@ i:hover {
 i:active {
   color: var(--colorAzulNeon);
 }
-
-/*
-a {
-  text-decoration: none;
-  color: #000;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Roboto", sans-serif;
-  margin: 0 0 5rem 0;
-}
-h1 {
-  font-size: 4.4rem;
-}
-h2 {
-  font-size: 3.6rem;
-}
-h3 {
-  font-size: 2.8rem;
-}
-h4 {
-  font-size: 2.3rem;
-}
-h5 {
-  font-size: 1.8rem;
-}
-h6 {
-  font-size: 1.4rem;
-}
-*/
 img {
   display: block;
   max-width: 100%;
@@ -159,33 +130,18 @@ main .recopilacion {
   gap: 20px;
   margin: 20px auto;
 }
-.producto-preview {
-  width: 180px;
-  padding: 5px;
-  color: white;
+.product-preview {
+  padding: 0px 5px;
+  border: 1px dotted gray;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
-.producto-preview > * {
-  text-align: center;
-  line-height: 2rem;
-  margin: 5px auto;
-}
-.producto-preview img {
+.product-preview img {
   border-radius: 5px;
 }
-.producto-preview h3 {
-  font-size: 1.8rem;
-  color: white;
-  margin: 0px;
-}
-.producto-preview p {
-  font-size: 1.2rem;
-}
-
 /* .btn {
   background-color: var(--primario);
   display: block;

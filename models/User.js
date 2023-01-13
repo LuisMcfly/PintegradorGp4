@@ -19,6 +19,11 @@ const User = db.define('users', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    userType: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'User'
+    },
     image: {
         type: DataTypes.STRING,
     },

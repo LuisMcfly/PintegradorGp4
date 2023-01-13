@@ -7,7 +7,7 @@ const Product = db.define('products', {
         allowNull: false
     },
     model: {
-       type: DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false 
     },
     description: {

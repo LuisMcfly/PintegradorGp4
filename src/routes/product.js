@@ -6,13 +6,13 @@ const path = require('path')
 const {
     productShopRender,
     productDetailRender,
+    productEditListRender,
     productRegisterRender,
-    productCreate,
     productEditRender,
+    productDeleteRender,
+    productCreate,
     productEdit,
-    deletProduct,
-    productDeleteRender
-    
+    productDelete
 } = require('../controllers/productController');
 
 
@@ -29,13 +29,13 @@ const multer = require('multer'),
 
 router.get('/', productShopRender);
 router.get('/productRegister', productRegisterRender); //renderiza la vista del form
-router.post('/productRegister', upload.array('imagen'), productCreate); //guarda los datos enviados en el form
-
 router.get('/productDetail/:id', productDetailRender);
+router.get('/productEditListRender', productEditListRender);
 router.get('/productEdit/:id', productEditRender);
-router.post('/productEdit/:id', productEdit);
-
 router.get('/productDelete/:id', productDeleteRender)
-router.post('/productDelete/:id', deletProduct);
+
+router.post('/productRegister', upload.array('imagen'), productCreate); //guarda los datos enviados en el form
+router.post('/productEdit/:id', productEdit);
+router.post('/productDelete/:id', productDelete);
 
 module.exports = router;
