@@ -1,6 +1,6 @@
-// const User = require('../../models/User')//se traen los usuarios para buscar el email
-const User = require('../../models/User.js');
+const User = require('../../models/User');
 const Jwt = require('jsonwebtoken');
+const { uploadsPath } = require('../../helpers/filePaths')
 //pregunta si hay alguien en session para mostrar una parte de la barra de navegacion o no
 
 async function userLoggedMiddleware(req, res, next) { //res.locals son vbles que se pueden compartir atravez de todas las vistas, este midd hace que toda la app tenga acceso a esta vble
@@ -17,7 +17,7 @@ async function userLoggedMiddleware(req, res, next) { //res.locals son vbles que
             res.locals.isLogged = true;
 
             res.locals.userName = userInfo.fullName;
-            res.locals.userImage = userInfo.image;
+            res.locals.userImage = uploadsPath + '/users/' + userInfo.image;
         }
     }
 

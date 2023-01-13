@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %> 
+<head>
+  <link rel="stylesheet" href="/css/productDetail.css" />
+  <title>Pegasus Tech | Producto</title>
+</head>
+
+<body> 
+  <%- include('../partials/header') %>
+
+  <section class="product-detail">
+    <div class="product-header">
+      <h2><%= product.name +' '+ product.model %></h2>
+      <a class="fabricante" href="#">más productos de la marca <%= product.manofacturer %> </a>
+      <div class="calificacion">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+      </div>
+    </div>
+    
+   <!--  <div class="product-elementos">
+      <div class="product-imagenes">                       
+        <div class="img-main"><img src="/img/uploads/<%= product.images[0] %> " alt="imagen de product"></div>
+         <ul class="img-alt">
+          <% for(let i=1; i<product.images.length; i++){ %>
+            <li>
+              <button>
+                <i class="fa-regular fa-circle-dot"></i>
+                <img src="/img/uploads/<%= product.images[i] %> " alt="view">
+              </button>
+            </li>
+          <% } %>  
+        </ul>
+      </div>
+
+      <div class="product-info"> 
+        <!-- <div class="product-opciones">
+          <% for(let i=0; i<product.colors.length; i++){ %>
+            <button> <%= product.colors[i] %> </button>
+          <% } %>  
+        </div> -->
+        <p class="stock"><%= product.stock %>  Unidades restantes</p>
+        <p class="descripcion"><%= product.description %> </p>
+      </div>
+
+      <div class="product-precio">
+        <div class="precio-numero">
+          <h2>$ <%= product.price %></h2><h4>.900</h4>
+        </div>
+        
+        <div class="btns-product">
+          <form action="/cart">
+            <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button>
+            <button class="btn anadir-deseados">Añadir a Deseados</button>
+          </form>
+        </div>
+      </div>
+
+    </div> -->
+  </section>
+
+  <main class="contenedor-principal">
+    <h2 class="section-title degradado">Recomendados</h2>
+    <section class="recopilacion">
+      <div class="product-preview">
+        <img src="/img/productDetail/productoDemo.jpg">
+        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+        <p class="precio">$500.000</p>
+        <button class="btn">Añadir al Carrito</button>
+      </div>
+      <div class="product-preview">
+        <img src="/img/productDetail/productoDemo.jpg">
+        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+        <p class="precio">$500.000</p>
+        <button class="btn">Añadir al Carrito</button>
+      </div>
+      <div class="product-preview">
+        <img src="/img/productDetail/productoDemo.jpg">
+        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+        <p class="precio">$500.000</p>
+        <button class="btn">Añadir al Carrito</button>
+      </div>
+      <div class="product-preview">
+        <img src="/img/productDetail/productoDemo.jpg">
+        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
+        <p class="precio">$500.000</p>
+        <button class="btn">Añadir al Carrito</button>
+      </div>
+    </section>
+
+    <section class="recopilacion historial" style="display: none">
+      <div class="product-preview"></div>
+      <div class="product-preview"></div>
+      <div class="product-preview"></div>
+      <div class="product-preview"></div>
+    </section>
+  </main>
+  
+  <%- include('../partials/footer') %>
+</body>
+</html>

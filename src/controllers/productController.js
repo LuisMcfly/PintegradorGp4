@@ -1,21 +1,59 @@
 const { check, validationResult } = require('express-validator');
-const { Product, Category, Manofacturers, Features } = require('../../models/index');
+const { Product, Category, Manufacturer, Features } = require('../../models/index');
+const { uploadsPath } = require('../../helpers/filePaths')
+//'products/productShop'
+const productShopRender = async (req, res) => {
+    const [products] = await Promise.all([Product.findAll()])
+    res.send(products)
+    //res.render('products/productShop', )
+}
+
+const productDetailRender = async (req, res) => {    
+    const { id } = req.params;
+
+    // Validacion de que el producto si existe
+    const product = await Product.findByPk(id, {
+        include: [
+            { model: Manufacturer, as: 'manufacturer'},
+            { model: Category, as: 'category'},
+            { model: Features, as: 'feature'}
+        ]
+    }).catch(()=>{
+        return res.redirect('/');
+    });
+    
+    return res.send(product)
+
+    return res.render('products/productDetail', {product})
+}
+
 
 const productRegisterRender = async (req, res) => {
     // Consultar a la base de datos por las categorias
-    const [categorys, manofacturers, features] = await Promise.all([
+    const [categorys, manufacturers, features] = await Promise.all([
         Category.findAll(),
-        Manofacturers.findAll(),
+        Manufacturer.findAll(),
         Features.findAll()
     ])
 
     res.render('products/productRegister', {
         categorys, 
-        manofacturers, 
+        manufacturers, 
         features,
         errors: [],
         datos: {}
     })
+}
+
+const productEditListRender = async (req, res) => {
+    const [ products ] = await Product.findAll({
+        include: [
+            { model: Manufacturer, as: 'manufacturer'}
+        ]
+    }).catch(()=>{
+        return res.send('Error fetching product list');
+    })
+    
 }
 
 const productCreate = async (req, res) => {
@@ -152,7 +190,16 @@ const productEdit = async (req, res) => {
     }
 
     try {
-        const { name, manufacturer: manofacturer_id, model, variations: features_id, category: category_id, description, price, discount, stock, images} = req.body;
+        const { 
+            name, 
+            manufacturer: manofacturer_id, 
+            model, variations: features_id, 
+            category: category_id, 
+            description, 
+            price, 
+            discount, 
+            stock, 
+            images} = req.body;
 
         product.set({
             name,
@@ -195,7 +242,7 @@ const productDeleteRender = async (req, res) => {
     });
 };
 
-const deletProduct = async (req, res) => {
+const productDelete = async (req, res) => {
 
     const { id } = req.params;
 
@@ -213,10 +260,13 @@ const deletProduct = async (req, res) => {
 };
 
 module.exports = {
-    productCreate,
+    productShopRender,
+    productDetailRender,
     productRegisterRender,
+    productEditListRender,
     productEditRender,
-    productEdit,
     productDeleteRender,
-    deletProduct
+    productCreate,
+    productEdit,
+    productDelete,
 }

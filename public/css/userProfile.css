@@ -1,49 +1,42 @@
 .profile-grid {
   display: grid;
-  grid-template-rows: 1fr 1fr 0.5fr;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-    "image image"
-    "info info"
-    "editButton logOut";
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
   width: 95%;
   max-width: 1200px;
   margin: 0px auto;
 }
 
-.profile-grid > section {
-  height: 100%;
-  width: 100%;
+.user-image {
+  align-items: center;
+}
+.user-image img {
+  width: 250px;
+}
+
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+.user-actions > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-actions > div > i {
+  color: blue;
 }
 
 .user-edit-grid {
   display: grid;
-  grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-    "image info";
   gap: 16px;
   width: 95%;
   max-width: 1000px;
   margin: 0px auto;
-}
-
-.user-image {
-  grid-area: image;
-  align-items: center;
-}
-.user-info {
-  grid-area: info;
-  min-height: 100%;
-}
-.user-edit-button {
-  grid-area: editButton;
-  align-items: center;
-}
-.user-log-out {
-  grid-area: logOut;
-  align-items: center;
 }
 
 .form-field {

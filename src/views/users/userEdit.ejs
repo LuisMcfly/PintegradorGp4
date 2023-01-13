@@ -11,22 +11,26 @@
   <main class="form-container user-edit-grid">
     
     <section class="form-section user-image">
-      <input type="file" name="profileImage" id="profileImage">
       <label for="profileImage">
-        <div>
-          <img src="../../img/users/<%= usuario.image %>"/>
+        <div class="image-edit-area">
+          <img src="<%= userInfo.image %>" class="darken"/>
+        </div> 
+        <div class="add-image-icon">
+          <i class="fa-regular fa-file-image"></i>
+          <i class="fa-solid fa-circle-plus"></i>
         </div>
       </label>
+      <input type="file" name="profileImage" id="profileImage">
       
-      <h1><%= usuario.fullName %></h1>
-      <h3><%= usuario.email %></h3>
+      <h1><%= userInfo.fullName %></h1>
+      <h3><%= userInfo.email %></h3>
     </section>
 
-    <section class="form-section user-info">
+    <section class="form-section">
       <div class="form-field">
-        <label for="fullName"><p>Nombre completo</p></label>
+        <label for="fullName"><p>Nombre</p></label>
         <input type="text" name="fullName" id="fullName" class="text-input" 
-          form="editSaveForm" placeholder="<%= usuario ? usuario.fullName : '' %>">
+          form="editSaveForm" placeholder="<%= userInfo ? userInfo.fullName : '' %>">
         <% if(locals.errors && errors.fullName) {%> 
           <div class="error-message">
             <p> <%= errors.fullName.msg %> </p>
@@ -37,7 +41,7 @@
       <div class="form-field">
         <label for="email"><p>Correo electrónico</p></label>
         <input type="email" name="email" id="email" class="text-input"
-          form="editSaveForm" placeholder="<%= usuario ? usuario.email : '' %>">
+          form="editSaveForm" placeholder="<%= userInfo ? userInfo.email : '' %>">
         <% if(locals.errors && errors.email) {%> 
           <div class="error-message">
             <p> <%= errors.email.msg %> </p>
@@ -48,7 +52,7 @@
       <div class="form-field">
         <label for="phone"><p>Teléfono</p></label>
         <input type="text" name="phone" id="phone" class="text-input" 
-          form="editSaveForm" placeholder="<%= usuario ? usuario.phone : '' %>">
+          form="editSaveForm" placeholder="<%= userInfo ? userInfo.phone : '' %>">
         <% if(locals.errors && errors.phone) {%> 
           <div class="error-message paragraph">
             <p> <%= errors.phone.msg %> </p>
@@ -59,7 +63,7 @@
       <div class="form-field">
         <label for="address"><p>Dirección</p></label>
         <input type="text" name="address" id="address" class="text-input" 
-          form="editSaveForm" placeholder="<%= usuario ? usuario.address : '' %>">
+          form="editSaveForm" placeholder="<%= userInfo ? userInfo.address : '' %>">
         <% if(locals.errors && errors.address) {%> 
           <div class="error-message paragraph">
             <p> <%= errors.address.msg %> </p>
@@ -85,43 +89,11 @@
       </div>
 
       <div class="form-buttons">
-        <button type="submit" form="editSaveForm" class="main-button">Continuar</button>
-        <button type="reset" form="editSaveForm">Cancelar</button>
+        <button type="submit" form="editSaveForm" class="btn main-button">Guardar</button>
+        <button type="reset" form="editSaveForm" class="btn">Cancelar</button>
       </div>
     </section>
   </main>
   <%- include('../partials/footer') %>
 </body>
 </html>
-
-<!-- <body>
-  <%- include('../partials/header') %>
-  
-  <form action="" 
-    method="POST" enctype="multipart/form-data">
-    <label for="fullName">fullName</label>
-    <input type="text" name="fullName" id="fullName" value="<%= usuario.fullName %>">
-
-    <label for="email">email</label>
-    <input type="email" name="email" id="email" value="<%= usuario.email %>">
-
-    <label for="phone">phone</label>
-    <input type="text" name="phone" id="phone" value="<%= usuario.phone %>">
-
-    <label for="address">address</label>
-    <input type="password" name="address" id="address" value="<%= usuario.password %>">
-
-    <select name="gender" value=" ">
-      <option value="Hombre">Hombre</option>
-      <option value="Mujer">Mujer</option>
-      <option value="Otro">Otro</option>
-    </select>
-    <label for="profileImage">profileImage</label>
-    <input type="file" name="profileImage" id="profileImage">
-
-    
-  </form>
-
-  <%- include('../partials/footer') %>
-</body>
-</html> -->

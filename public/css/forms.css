@@ -7,14 +7,17 @@
 }
 
 .form-section {
+  height: 100%;
+
   background: var(--colorPetroleoOp);
   color: white;
-  padding: 50px;
+  padding: 40px;
   border-radius: var(--borderRadiusPopUp);
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-content: center;
   gap: 10px;
 }
 
@@ -44,6 +47,38 @@
   border-radius: var(--borderRadiusInput);
 }
 
+label[for=profileImage] {
+  position: relative;
+  border: 5px white;
+  border-style: solid;
+  border-radius: 50%;
+  place-items: center;
+}
+label[for=profileImage]:hover,
+label[for=profileImage]:hover ~ .fa-file-image,
+label[for=profileImage]:hover ~ .fa-circle-plus {
+  border-color: var(--colorAzul);
+}
+#profileImage {
+  display: none;
+}
+.add-image-icon {
+  position: absolute;
+  left: 108px;
+  top: 105px;
+}
+.add-image-icon > .fa-file-image {
+  font-size: 50px;
+}
+.add-image-icon > .fa-circle-plus {
+  position: relative;
+  left: -15px;
+  top: -35px;
+  font-size: 20px;
+}
+.darken {
+  filter: brightness(50%);
+}
 
 .check-container {
   display: flex;
@@ -57,6 +92,7 @@
 /*---------------*/
 
 input[type=checkbox].with-font,
+input[type=radio].with-font,
 input[type=radio].with-font { /* Elimina el estilo del checkbox */
   border: 0;
   clip: rect(0 0 0 0);
@@ -84,7 +120,20 @@ input[type=radio].with-font:checked:hover + label:before {
   color: var(--colorAzul);
 }
 
+input[type=checkbox].with-font:hover + label:before,
+input[type=checkbox].with-font:checked:hover + label:before,
+input[type=radio].with-font:hover + label:before,
+input[type=radio].with-font:checked:hover + label:before {
+  color: var(--colorAzul);
+}
+
 input[type=checkbox].with-font:checked + label:before {
+  content: "\f058";
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+input[type=radio].with-font:checked + label:before {
   content: "\f058";
   color: white;
   font-size: 16px;
@@ -112,26 +161,7 @@ input[type=radio].with-font:checked + label:before {
   gap: 5px;
 }
 
-.form-section button {
-  background-color: white;
-  color: var(--colorAzul);
-  font-size: 20px;
-  font-weight: 600;
-  width: 225px;
-  height: 34px;
-  border: none;
-  border-radius: var(--borderRadiusInput);
-  text-align: center;
-}
-
-button.icon-button {
-  background-color: rgba(0,0,0,0);
-  width: fit-content;
-  height: fit-content;
-  border-radius: 0px;
-}
-
-a.btn {
+.btn {
   background-color: white;
   color: var(--colorAzul);
   font-size: 20px;
@@ -144,7 +174,20 @@ a.btn {
   padding: 5px 30px;
 }
 
-.form-container .main-button {
+button.icon-button {
+  background-color: rgba(0,0,0,0);
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  font-size: 30px;
+}
+
+.main-button {
   background: linear-gradient(to right,
     var(--colorAzul) 0%,
     var(--colorVioleta) 100%

@@ -1,60 +1,31 @@
 <!DOCTYPE html>
 <%- include('../partials/head') %> 
 <head>
-  <link rel="stylesheet" href="/css/productDetail.css">
   <link rel="stylesheet" href="/css/productShop.css">
   <title>Document</title>
 </head>
 
 <body>
   <%- include('../partials/header.ejs') %>
-  <section class="nav-categorias">
-    <!-- <ul>
-      <% for (let i=0; i<categorias.length; i++) { %>
-        <li><%= categorias[i].name %></li>
-      <% } %>
-    </ul> -->
-  </section>
-
-  <section class="shop-filters">
-  </section>
-
+  
   <main>
-    <% let userPrice; // Variable para mostrar el precio con descuento%> 
-    <% for (let i=0; i<ObjProductos.length; i++) { %>
-      <div class="shop-producto">
-        <div class="producto-img">
-          <img src="/img/uploads/<%= ObjProductos[i].images[0] %> " alt="imagen del producto">
-        </div>
-        <div class="info-de-producto">
-          <h5 class="producto-nombre"><a href="../products/productDetail/<%= ObjProductos[i].id %>"><%= ObjProductos[i].name %></a></h5>
-          <p class="producto-fabricante"> de <%= ObjProductos[i].manufacturer %></p>
-          <div class="calificacion">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <div class="shop-precio">
-            <% if (ObjProductos[i].discount > 0) { %>
-              <% userPrice = (ObjProductos[i].price * (1 - (ObjProductos[i].discount / 100))).toFixed(0) %> 
-              <h5 class="producto-precio-descuento">$ <%= userPrice %></h5>
-              <h6 class="producto-precio-completo"> <%= ObjProductos[i].price %></h6>
-            <% } else { %>
-              <h5 class="producto-precio-descuento">$ <%= ObjProductos[i].price %></h5>
-            <% } %> 
-          </div>
-          
-          <% if (ObjProductos[i].stock <= 15) { %>
-            <p class="stock">5 Unidades restantes</p>
-          <% } %>
+    <section class="shop-filters">
 
-          <button class="btn"><i class="fa-solid fa-cart-shopping"></i></button>
-          <!-- <p class="anadir-deseados">añadir a lista de deseados</p> -->
+    </section>
+    <section class="products-display">
+      <% for (let i=0; i<products.length; i++) {%>
+        <% productName = products[i].manufacturer_id + products[i].line_id + products[i].variation %> 
+        <div class="product-preview">
+          <div class="preview-img">
+            <img src="/img/uploads/products/<%= products[i].images %>"/>
+          </div>
+          <div class="product-name">
+            <a href="../products/productDetail/<%= products[i].id %>"><h3><%= productName %></h3></a>
+          </div>
+          <div class="price"><h2>$ <%= products[i].price %></h2></div>
         </div>
-      </div>
-    <% } %> 
+      <% } %> 
+    </section>
   </main>
   <%- include('../partials/footer') %> 
 </body>
