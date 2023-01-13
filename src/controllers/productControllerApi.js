@@ -3,11 +3,14 @@ const { Product, Category, Manofacturers, Features } = require('../../models/ind
 //'products/productShop'
 const productShopRender = async (req, res) => {
     const [products] = await Promise.all([Product.findAll()])
-    
-    res.render('products/productShop', {products})
+    return await res.status(200).json({
+        total: products.length,
+        data: products,
+        status: 200
+    })
 }
 
-const productDetailRender = async (req, res) => {
+/* const productDetailRender = async (req, res) => {
     
     const { id } = req.params;
   
@@ -237,16 +240,16 @@ const deletProduct = async (req, res) => {
     // Eliminar el producto
     await product.destroy();
     res.redirect('/productShop');
-};
+}; */
 
 module.exports = {
     productShopRender,
-    productDetailRender,
+    /* productDetailRender,
     productCreate,
     productRegisterRender,
     productEditRender,
     productEdit,
     productDeleteRender,
-    deletProduct,
+    deletProduct, */
     
 }
