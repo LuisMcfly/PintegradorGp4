@@ -34,10 +34,6 @@ html {
 
 .degradado {
   color: transparent;
-  /* background: linear-gradient(to right,
-    var(--primario) 0%,
-    var(--secundario) 100%
-  ); */
   background: linear-gradient(to right,
     var(--colorAzul) 0%,
     var(--colorVioleta) 100%
