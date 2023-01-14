@@ -7,7 +7,7 @@ const {
     userLogin,
     userCreate,
     editRender,
-    userEdit,
+    // userEdit,
     logout
 } = require('../controllers/userController');
 
@@ -19,7 +19,7 @@ router.post('/login', userLogin);
 
 router.get('/profile', profileRender);
 router.get('/edit', editRender);
-router.post('/editInfo', userEdit);
+// router.post('/editInfo', userEdit);
 
 router.post('/logout', logout);
 

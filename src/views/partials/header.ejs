@@ -23,8 +23,11 @@
       <li><a href="../../products/"><h3>Tienda</h3></a></li>
       <li><a href="../contacto"><h3>Contacto</h3></a></li>
 
-      <% if (locals.isLogged) { %> 
-        <li><a href="../users/profile"><h3><%= locals.userName %></h3> <img src="<%= locals.userImage %>"/></a></li>
+      <% if (locals.isLogged) { %>
+        <li><a href="../../users/profile">
+          <h3><%= locals.userName %></h3>
+          <img src="<%= locals.userImage %>"/>
+        </a></li>
       <% } else { %> 
         <li><a href="../../users/register"><h3>Registrate</h3></a></li>
         <li><a href="../../users/login"><h3>Ingresa</h3></a></li>

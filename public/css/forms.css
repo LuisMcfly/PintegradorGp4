@@ -1,5 +1,9 @@
+form {
+  display: none;
+}
+
 .form-container {
-  padding: 30px 0;
+  padding: 0px;
 
   display: flex;
   justify-content: center;
@@ -46,20 +50,33 @@
   border: solid 2px var(--colorAzul);
   border-radius: var(--borderRadiusInput);
 }
+select {
+  background: rgba(0,0,0,0);
+  color: white;
+  font-size: 12px;
+  height: 32px;
+  padding: 7px 12px;
+  border: solid 2px var(--colorAzul);
+  border-radius: var(--borderRadiusInput);
+}
+select > option {
+  color: black;
+  font-size: 12px;
+}
 
-label[for=profileImage] {
+label[for=uploadImage] {
   position: relative;
   border: 5px white;
   border-style: solid;
   border-radius: 50%;
   place-items: center;
 }
-label[for=profileImage]:hover,
-label[for=profileImage]:hover ~ .fa-file-image,
-label[for=profileImage]:hover ~ .fa-circle-plus {
+label[for=uploadImage]:hover,
+label[for=uploadImage]:hover ~ .fa-file-image,
+label[for=uploadImage]:hover ~ .fa-circle-plus {
   border-color: var(--colorAzul);
 }
-#profileImage {
+#uploadImage {
   display: none;
 }
 .add-image-icon {
@@ -162,24 +179,25 @@ input[type=radio].with-font:checked + label:before {
 }
 
 .btn {
-  background-color: white;
+  background-color: var(--colorBotonGris);
   color: var(--colorAzul);
   font-size: 20px;
   font-weight: 600;
-  width: 225px;
-  height: 34px;
+  padding: 5px 45px;
+  /* width: 225px; */
+  /* height: 34px; */
+  
   border: none;
   border-radius: var(--borderRadiusInput);
   text-align: center;
-  padding: 5px 30px;
 }
 
-button.icon-button {
+/* button.icon-button {
   background-color: rgba(0,0,0,0);
   width: fit-content;
   height: fit-content;
   border-radius: 0px;
-}
+} */
 
 .icon-button {
   background: none;

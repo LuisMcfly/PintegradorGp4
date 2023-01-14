@@ -101,26 +101,26 @@ const userLogin = async (req, res) => {
     // Comprobar si el usuario existe
     const {email, password} = req.body;
 
-    const usuario = await User.findOne({where : {email}});
+    const userInfo = await User.findOne({where : {email}});
 
-    if(!usuario){
+    if(!userInfo){
         return res.render('users/login', {
             errors: {email: {msg: 'El usuario no existe'}}
         })
     }
 
     // Revisar el password
-    if(!usuario.verificarPassword(password)){
+    if(!userInfo.verificarPassword(password)){
         return res.render('users/login', {
             errors: {password: {msg: 'La contraseña es incorrecta'}}
         })
     }
 
     // Autenticar al usuario
-    const token = generarJWT({id: usuario.id,
-        fullName: usuario.fullName,
-        phone: usuario.phone,
-        email: usuario.email
+    const token = generarJWT({id: userInfo.id,
+        fullName: userInfo.fullName,
+        phone: userInfo.phone,
+        email: userInfo.email
     });
     
     // Almacenar en un cookie
@@ -142,7 +142,7 @@ const getUserInfo = async (req, res, pageToRender) => {
         const usuarioId = await User.scope('eliminarPassword').findByPk(decoded.id)
     
         // Validar que el usuario y buscarlo en la base de datos
-        const userInfo = await User.findByPk(usuarioId.id);
+        let userInfo = await User.findByPk(usuarioId.id);
 
         // res.send(userInfo.address)
         if(!userInfo.hasOwnProperty('address')) userInfo.address = "Sin definir";
@@ -151,7 +151,7 @@ const getUserInfo = async (req, res, pageToRender) => {
         delete userInfo.password
         userInfo.image = uploadsPath + '/users/' + userInfo.image;
         
-        // res.send(userInfo);  
+        // return res.send(userInfo);  
         return res.render(pageToRender, {userInfo})
     } catch (error) {
         return res.clearCookie('_token').redirect('../users/login')
@@ -165,6 +165,6 @@ module.exports = {
     editRender,
     userLogin,
     userCreate,
-    userEdit,
+    // userEdit,
     logout
 };

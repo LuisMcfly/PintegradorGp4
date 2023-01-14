@@ -8,19 +8,15 @@
 
 <body>
   <%- include('../partials/header') %>
-  <main class="form-container profile-grid">
+  <main class="profile-grid">
     
     <section class="form-section user-image">
-      <div>
-<<<<<<< HEAD
-        <img src="../../img/users/<%= usuario.image %>"/>
-=======
-        <img src="../../img/users/<%= userInfo.image %>"/>
+
+        <img src="<%= userInfo.image %>"/>
       </div>
       <div>
         <h2>Bienvenido</h2>
         <h1><%= userInfo.fullName %></h1>
->>>>>>> 7a728bc1dc096b4242ebf78a712a229430757801
       </div>
     </section>
 
@@ -35,11 +31,7 @@
       </div>
       <div class="form-field">
         <p> Dirección </p>
-<<<<<<< HEAD
-        <h3> <%= usuario.address %> </h3>
-=======
         <h3> <%= userInfo.address %> </h3>
->>>>>>> 7a728bc1dc096b4242ebf78a712a229430757801
       </div>
       <div class="form-field">
         <p> Género </p>
@@ -47,17 +39,6 @@
       </div>
     </section>
 
-<<<<<<< HEAD
-    <section class="form-section user-edit-button">
-      <a href="../../users/edit"><i class="fa-solid fa-gear"></i></a>
-      <h2>Editar Información</h2>
-    </section>
-
-    <section class="form-section user-log-out">
-      <button type="submit" form="logoutForm" class="icon-button"><i class="fa-solid fa-power-off"></i></button>
-      <h2>Cerrar Sesión</h2>
-    </section>
-=======
     <section class="user-actions">
       <div class="form-section">
         <a href="../../users/edit" class="icon-button">
@@ -68,10 +49,10 @@
 
       <% if (userInfo.userType == "Admin") { %> 
         <div class="form-section">
-          <a href="../../products/productEditList" class="icon-button">
+          <a href="../../products/" class="icon-button">
             <i class="fa-solid fa-list"></i>
           </a>
-          <h3>Lista de Productos</h3>
+          <h3>Funciones de Administrador</h3>
         </div>
       <% } %> 
 
@@ -82,8 +63,6 @@
         <h3>Cerrar Sesión</h3>
       </div>
     </section>
-
->>>>>>> 7a728bc1dc096b4242ebf78a712a229430757801
   </main>
   <%- include('../partials/footer') %>
 </body>

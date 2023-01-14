@@ -11,7 +11,7 @@
   <main class="form-container user-edit-grid">
     
     <section class="form-section user-image">
-      <label for="profileImage">
+      <label for="uploadImage">
         <div class="image-edit-area">
           <img src="<%= userInfo.image %>" class="darken"/>
         </div> 
@@ -20,7 +20,7 @@
           <i class="fa-solid fa-circle-plus"></i>
         </div>
       </label>
-      <input type="file" name="profileImage" id="profileImage">
+      <input type="file" name="uploadImage" id="uploadImage" form="saveEditForm">
       
       <h1><%= userInfo.fullName %></h1>
       <h3><%= userInfo.email %></h3>
@@ -30,7 +30,7 @@
       <div class="form-field">
         <label for="fullName"><p>Nombre</p></label>
         <input type="text" name="fullName" id="fullName" class="text-input" 
-          form="editSaveForm" placeholder="<%= userInfo ? userInfo.fullName : '' %>">
+          form="saveEditForm" placeholder="<%= userInfo ? userInfo.fullName : '' %>">
         <% if(locals.errors && errors.fullName) {%> 
           <div class="error-message">
             <p> <%= errors.fullName.msg %> </p>
@@ -41,7 +41,7 @@
       <div class="form-field">
         <label for="email"><p>Correo electrónico</p></label>
         <input type="email" name="email" id="email" class="text-input"
-          form="editSaveForm" placeholder="<%= userInfo ? userInfo.email : '' %>">
+          form="saveEditForm" placeholder="<%= userInfo ? userInfo.email : '' %>">
         <% if(locals.errors && errors.email) {%> 
           <div class="error-message">
             <p> <%= errors.email.msg %> </p>
@@ -52,7 +52,7 @@
       <div class="form-field">
         <label for="phone"><p>Teléfono</p></label>
         <input type="text" name="phone" id="phone" class="text-input" 
-          form="editSaveForm" placeholder="<%= userInfo ? userInfo.phone : '' %>">
+          form="saveEditForm" placeholder="<%= userInfo ? userInfo.phone : '' %>">
         <% if(locals.errors && errors.phone) {%> 
           <div class="error-message paragraph">
             <p> <%= errors.phone.msg %> </p>
@@ -63,7 +63,7 @@
       <div class="form-field">
         <label for="address"><p>Dirección</p></label>
         <input type="text" name="address" id="address" class="text-input" 
-          form="editSaveForm" placeholder="<%= userInfo ? userInfo.address : '' %>">
+          form="saveEditForm" placeholder="<%= userInfo ? userInfo.address : '' %>">
         <% if(locals.errors && errors.address) {%> 
           <div class="error-message paragraph">
             <p> <%= errors.address.msg %> </p>
@@ -89,8 +89,8 @@
       </div>
 
       <div class="form-buttons">
-        <button type="submit" form="editSaveForm" class="btn main-button">Guardar</button>
-        <button type="reset" form="editSaveForm" class="btn">Cancelar</button>
+        <button type="submit" form="saveEditForm" class="btn main-button">Guardar</button>
+        <button type="reset" form="saveEditForm" class="btn">Cancelar</button>
       </div>
     </section>
   </main>

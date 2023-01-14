@@ -11,17 +11,26 @@
 
   <main class="product">
     <div class="img">
-      <img src="<%= productInfo.images %> " alt=""/>
+      <img src="<%= uploadsPath + '/products/' + productInfo.images %>" alt=""/>
     </div>
     <div class="product-info">
+
+      <div class="product-category"><p>Categoría: <%= productInfo.category.name %> </p></div>
       <div class="product-name"><h1><%= productInfo.name %> </h1></div>
-      <div class="product-price"><h2>$ <%= productInfo.price %> </h2></div>
+      <div class="product-price"><h3>$ <%= productInfo.price %> </h3></div>
       <div class="product-description"><p><%= productInfo.description %> </p></div>
       <div class="product-stock"><h5>Stock: <%= productInfo.stock %> </h5></div>
+      
+      <div class="form-buttons">
+        <button type="button" form="addToCart" class="btn main-button">Agregar al Carrito</button>
+        <% if (locals.isLogged && locals.userType == "Admin") { %>
+          <a href="/products/productEdit/<%= productInfo.id %>" class="btn">Editar Producto</a>
+        <% } %> 
+      </div>
     </div>
   </main>
 
-  <h2 class="section-title degradado">Recomendados</h2>
+  <!-- <h2 class="section-title degradado">Recomendados</h2>
   <section class="recopilacion">
     <div class="producto-preview"></div>
     <div class="producto-preview"></div>
@@ -34,7 +43,7 @@
     <div class="producto-preview"></div>
     <div class="producto-preview"></div>
     <div class="producto-preview"></div>
-  </section>
+  </section>-->
   
   <%- include('../partials/footer') %>
 </body>

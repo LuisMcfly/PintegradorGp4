@@ -8,7 +8,7 @@ const Product = db.define('products', {
     },
     model: {
         type: DataTypes.STRING,
-        allowNull: false 
+        
     },
     description: {
         type: DataTypes.STRING,
@@ -28,7 +28,8 @@ const Product = db.define('products', {
     },
     images: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'defaultProductImage.png'
     }   
 });
 
