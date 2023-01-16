@@ -5,11 +5,9 @@ main {
 }
 
 main > .products-display {
-  /* display: flex;
-  flex-wrap: "wrap";
-  justify-content: space-around; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .shop-producto > .producto-img {

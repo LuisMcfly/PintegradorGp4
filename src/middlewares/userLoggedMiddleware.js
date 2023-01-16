@@ -18,19 +18,11 @@ async function userLoggedMiddleware(req, res, next) { //res.locals son vbles que
 
             res.locals.userName = userInfo.fullName;
             res.locals.userImage = uploadsPath + '/users/' + userInfo.image;
+            res.locals.userType = userInfo.userType;
         }
     }
 
     next()
-
-    // if(userFromCookie){
-    //     req.session.userLogged = userFromCookie
-    // }
-
-    // if(req.session && req.session.userLogged){
-    //     res.locals.isLogged = true
-    //     res.locals.userLogged = req.session.userLogged
-    // }
 }
 
 module.exports = userLoggedMiddleware

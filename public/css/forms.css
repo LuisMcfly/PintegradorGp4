@@ -1,5 +1,9 @@
+form {
+  display: none;
+}
+
 .form-container {
-  padding: 30px 0;
+  padding: 0px;
 
   display: flex;
   justify-content: center;
@@ -30,6 +34,11 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  margin-bottom: 5px;
+}
+.form-field h3 {
+  margin: auto 0px;
 }
 
 .text-input {
@@ -41,20 +50,33 @@
   border: solid 2px var(--colorAzul);
   border-radius: var(--borderRadiusInput);
 }
+select {
+  background: rgba(0,0,0,0);
+  color: white;
+  font-size: 12px;
+  height: 32px;
+  padding: 7px 12px;
+  border: solid 2px var(--colorAzul);
+  border-radius: var(--borderRadiusInput);
+}
+select > option {
+  color: black;
+  font-size: 12px;
+}
 
-label[for=profileImage] {
+label[for=uploadImage] {
   position: relative;
   border: 5px white;
   border-style: solid;
   border-radius: 50%;
   place-items: center;
 }
-label[for=profileImage]:hover,
-label[for=profileImage]:hover ~ .fa-file-image,
-label[for=profileImage]:hover ~ .fa-circle-plus {
+label[for=uploadImage]:hover,
+label[for=uploadImage]:hover ~ .fa-file-image,
+label[for=uploadImage]:hover ~ .fa-circle-plus {
   border-color: var(--colorAzul);
 }
-#profileImage {
+#uploadImage {
   display: none;
 }
 .add-image-icon {
@@ -77,6 +99,7 @@ label[for=profileImage]:hover ~ .fa-circle-plus {
 
 .check-container {
   display: flex;
+  
 }
 .check-container > label {
   width: 100%;
@@ -86,6 +109,7 @@ label[for=profileImage]:hover ~ .fa-circle-plus {
 /*---------------*/
 
 input[type=checkbox].with-font,
+input[type=radio].with-font,
 input[type=radio].with-font { /* Elimina el estilo del checkbox */
   border: 0;
   clip: rect(0 0 0 0);
@@ -113,7 +137,20 @@ input[type=radio].with-font:checked:hover + label:before {
   color: var(--colorAzul);
 }
 
+input[type=checkbox].with-font:hover + label:before,
+input[type=checkbox].with-font:checked:hover + label:before,
+input[type=radio].with-font:hover + label:before,
+input[type=radio].with-font:checked:hover + label:before {
+  color: var(--colorAzul);
+}
+
 input[type=checkbox].with-font:checked + label:before {
+  content: "\f058";
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+input[type=radio].with-font:checked + label:before {
   content: "\f058";
   color: white;
   font-size: 16px;
@@ -138,21 +175,29 @@ input[type=radio].with-font:checked + label:before {
 .form-buttons {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .btn {
-  background-color: white;
+  background-color: var(--colorBotonGris);
   color: var(--colorAzul);
   font-size: 20px;
   font-weight: 600;
-  width: 225px;
-  height: 34px;
+  padding: 5px 45px;
+  /* width: 225px; */
+  /* height: 34px; */
+  
   border: none;
   border-radius: var(--borderRadiusInput);
   text-align: center;
-  padding: 5px 30px;
 }
+
+/* button.icon-button {
+  background-color: rgba(0,0,0,0);
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0px;
+} */
 
 .icon-button {
   background: none;

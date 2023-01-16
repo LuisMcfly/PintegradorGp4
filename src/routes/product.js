@@ -6,7 +6,6 @@ const path = require('path')
 const {
     productShopRender,
     productDetailRender,
-    productEditListRender,
     productRegisterRender,
     productEditRender,
     productDeleteRender,
@@ -30,7 +29,6 @@ const multer = require('multer'),
 router.get('/', productShopRender);
 router.get('/productRegister', productRegisterRender); //renderiza la vista del form
 router.get('/productDetail/:id', productDetailRender);
-router.get('/productEditListRender', productEditListRender);
 router.get('/productEdit/:id', productEditRender);
 router.get('/productDelete/:id', productDeleteRender)
 

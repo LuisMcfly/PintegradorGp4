@@ -4,6 +4,15 @@
   gap: 16px;
   width: 95%;
   max-width: 1200px;
+  margin: 0px auto 5px;
+}
+
+.user-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 95%;
+  max-width: 1000px;
   margin: 0px auto;
 }
 
@@ -16,6 +25,7 @@
 
 .user-actions {
   display: flex;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
@@ -23,20 +33,12 @@
 .user-actions > div {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
-.user-actions > div > i {
-  color: blue;
-}
-
-.user-edit-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  width: 95%;
-  max-width: 1000px;
-  margin: 0px auto;
+.user-actions > div > a,
+.user-actions > div > button {
+  font-size: 60px;
 }
 
 .form-field {
@@ -44,19 +46,4 @@
 }
 
 @media (min-width: 900px) {
-  .profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-      "image info editButton"
-      "image info logOut";
-  
-    width: 95%;
-    margin: 0px auto;
-  }
-  .profile-grid > section {
-    /* height: 100%; */
-    width: auto;
-  }
 }

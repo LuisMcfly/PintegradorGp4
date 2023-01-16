@@ -8,11 +8,11 @@
 
 <body>
   <%- include('../partials/header') %>
-  <main class="form-container profile-grid">
+  <main class="profile-grid">
     
     <section class="form-section user-image">
-      <div>
-        <img src="../../img/users/<%= userInfo.image %>"/>
+
+        <img src="<%= userInfo.image %>"/>
       </div>
       <div>
         <h2>Bienvenido</h2>
@@ -49,10 +49,10 @@
 
       <% if (userInfo.userType == "Admin") { %> 
         <div class="form-section">
-          <a href="../../products/productEditList" class="icon-button">
+          <a href="../../products/" class="icon-button">
             <i class="fa-solid fa-list"></i>
           </a>
-          <h3>Lista de Productos</h3>
+          <h3>Funciones de Administrador</h3>
         </div>
       <% } %> 
 
@@ -63,7 +63,6 @@
         <h3>Cerrar Sesión</h3>
       </div>
     </section>
-
   </main>
   <%- include('../partials/footer') %>
 </body>

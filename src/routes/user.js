@@ -6,8 +6,9 @@ const {
     profileRender,
     userLogin,
     userCreate,
-    logout,
-    editRender
+    editRender,
+    // userEdit,
+    logout
 } = require('../controllers/userController');
 
 router.get('/register', registerRender);
@@ -18,6 +19,7 @@ router.post('/login', userLogin);
 
 router.get('/profile', profileRender);
 router.get('/edit', editRender);
+// router.post('/editInfo', userEdit);
 
 router.post('/logout', logout);
 
