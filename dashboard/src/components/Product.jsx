@@ -1,17 +1,19 @@
 
 export const Product = ({prod}) => {
-  return (
+  const {name, model, description, price, discount, stock} = prod
+  
+     return (
     <div>
-        <h2>Nombre del producto: {prod.name}</h2>
-        <span>Modelo: {prod.model}</span>
+        <h2>Nombre del producto: {name}</h2>
+        <span>Modelo: {model}</span>
         <br />
-        <span>Descripción: {prod.description}</span>
+        <span>Descripción: {description}</span>
         <br />
-        <span>Precio: {prod.price}</span>
+        <span>Precio: {price}</span>
         <br />
-        <span>Descuente: {prod.discount}</span>
+        <span>Descuente: {discount}</span>
         <br />
-        <span>Unidades disponibles: {prod.stock}</span>
+        <span>Unidades disponibles: {stock}</span>
         <br />
         
     </div>

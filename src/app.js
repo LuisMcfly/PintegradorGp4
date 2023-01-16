@@ -33,6 +33,7 @@ const productRouter = require('./routes/product');
 const productRouterApi = require('./routes/productApi');
 const cartRouter = require('./routes/cart');
 const userRouter = require('./routes/user');
+const categoryRouter = require('./routes/category')
 const methodOverride =  require('method-override'); // Para poder usar los métodos PUT y DELETE
 
 // const http = require('http');
@@ -55,6 +56,8 @@ app.use('/', mainRouter)
 app.use('/products/', productRouter);
 app.use('/cart/', cartRouter);
 app.use('/users/', userRouter);
+app.use('/category', categoryRouter);
+
 
 app.use('/api', productRouterApi);///xoxoxoxoxo
 

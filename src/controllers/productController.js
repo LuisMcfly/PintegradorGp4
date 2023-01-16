@@ -46,7 +46,15 @@ const productRegisterRender = async (req, res) => {
 }
 
 const productCreate = async (req, res) => {
-
+    let image = []
+    if (req.files[0] != undefined) {
+        for (let i = 0; i < req.files.length; i++) {
+            image.push(req.files[i].filename)
+        }
+    } else {
+        image = ['noImage.png'];
+    }
+    let images = image.toString();
     // Validaciones
     await check('name').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
     await check('manufacturer').notEmpty().withMessage('Debes seleccionar el nombre de un fabricante').run(req)
@@ -77,7 +85,7 @@ const productCreate = async (req, res) => {
         });
     };
 
-    const { name, manufacturer: manofacturer_id, model, variations: features_id, category: category_id, description, price, discount, stock, images} = req.body
+    const { name, manufacturer: manofacturer_id, model, variations: features_id, category: category_id, description, price, discount, stock} = req.body
 
     try {
         const productSave = await Product.create({

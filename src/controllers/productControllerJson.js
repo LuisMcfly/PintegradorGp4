@@ -21,9 +21,10 @@ const productEditRender = (req, res) => {
 };
 
 const productCreate = (req, res) => {
-    let image = []
+    let image = []  
     let colors = req.body.colors.toString()
     let rating = 0;
+    
     if (req.files[0] != undefined) {
         for (let i = 0; i < req.files.length; i++) {
             image.push(req.files[i].filename)
