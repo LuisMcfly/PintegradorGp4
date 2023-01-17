@@ -13,6 +13,7 @@
   <%- include('../partials/header.ejs') %>
 
   <main class="form-container product-form-grid">
+
     <section class="form-section product-image">
       <label for="uploadImage">
         <div class="image-edit-area">
@@ -23,11 +24,14 @@
           <i class="fa-solid fa-circle-plus"></i>
         </div>
       </label>
-      <input type="file" name="uploadImage" id="uploadImage" form="productCreate">
+      <input type="file" name="uploadImage" id="uploadImage" form="productCreate" multiple>
     </section>
 
-
     <section class="form-section">
+      <div class="form-field">
+        <p><%= errors %> </p>
+      </div>
+
       <div class="form-field">
         <label for="productName"><p>Nombre</p></label>
         <input type="text" name="productName" id="productName" class="text-input" 

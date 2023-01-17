@@ -52,11 +52,22 @@ const productRegisterRender = async (req, res) => {
 
 const productCreate = async (req, res) => {
 
+    let image = []
+    // let colors = req.body.colors.toString()
+    // let rating = 0;
+    if (req.files[0] != undefined) {
+        for (let i = 0; i < req.files.length; i++) {
+            image.push(req.files[i].filename)
+        }
+    } else {
+        image = ['noImage.png'];
+    }
+    let images = image.toString();
+
     // Validaciones
-    await check('name').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
+    await check('productName').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
     await check('manufacturer').notEmpty().withMessage('Debes seleccionar el nombre de un fabricante').run(req)
-    await check('model').notEmpty().withMessage('Debes indicar el modelo del producto').run(req)
-    await check('variations').notEmpty().withMessage('Debes seleccionar las caracteristicas').run(req)
+    await check('features').notEmpty().withMessage('Debes seleccionar las caracteristicas').run(req)
     await check('category').notEmpty().withMessage('Debes seleccionar la categoria').run(req)
     await check('description').notEmpty().withMessage('La descripcion es necesaria').run(req)
     await check('price').notEmpty().withMessage('Debes indicar el precio del producto').run(req)
@@ -77,12 +88,12 @@ const productCreate = async (req, res) => {
             categories, 
             manufacturers, 
             features,
-            errors: resultado.array(),
+            errors: resultado.mapped(),
             product: req.body
         });
     };
 
-    const { name, 
+    const { productName, 
         manufacturer: manufacturer_id, 
         model, 
         variations: features_id, 
@@ -90,21 +101,21 @@ const productCreate = async (req, res) => {
         description, 
         price, 
         discount, 
-        stock, 
-        images} = req.body
+        stock 
+    } = req.body
 
     try {
         const productSave = await Product.create({
-            name,
+            name: productName,
             manufacturer_id,
-            model,
+            model: "hola",
             features_id, 
             category_id, 
             description, 
             price, 
             discount, 
             stock, 
-            images: "defaultProductImage.png"
+            images
         })
     } catch (error) {
         console.log(error);
