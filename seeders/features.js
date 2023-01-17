@@ -1,4 +1,4 @@
-const feature = [
+const features = [
     {
         name: '4 Ram'
     },
@@ -28,4 +28,4 @@ const feature = [
     }
 ];
 
-module.exports = feature;
+module.exports = features;
