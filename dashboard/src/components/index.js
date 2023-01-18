@@ -1,5 +1,5 @@
 export * from './Loading'
-export * from './ProductItem'
+export * from './Item'
 export * from './Product'
 export * from './ProductList'
 export * from './LastProductInList'

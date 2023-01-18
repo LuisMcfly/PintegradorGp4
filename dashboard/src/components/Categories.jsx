@@ -1,11 +1,12 @@
 import { useFetch } from "../hooks/useFetch"
 import { Loading } from "./Loading"
-import { ProductItem } from "./ProductItem"
+import { CategoryList } from "./CategoryList"
+
+import '../styles.css'
 
 export const Categories = () => {
-  const {data, isLoading} = useFetch("http://localhost:3000/api")
-  
- 
+  const {categorys, data, isLoading} = useFetch("http://localhost:3000/api")
+
   return (
     <>
       {
@@ -14,7 +15,12 @@ export const Categories = () => {
             <Loading />
           )
           :(
-            <h1>Categories</h1>
+            <div className="cats">
+              <h1>Categorias</h1>{/* sirve Item pero no product */}
+              {
+                <CategoryList data={data} cat={categorys} />
+              }
+            </div>
           )
        }
     </>

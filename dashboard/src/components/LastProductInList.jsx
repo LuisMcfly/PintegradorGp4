@@ -14,7 +14,7 @@ export const LastProductInList = () => {
                     <Loading />
                 )
                 :(
-                    <Product prod={data[data.length - 1]}/>
+                    <Product info={data[data.length - 1]}/>
                 )
         }
     </>

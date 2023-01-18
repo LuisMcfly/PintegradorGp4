@@ -1,21 +1,33 @@
 
-export const Product = ({prod}) => {
-  const {name, model, description, price, discount, stock} = prod
-  
+export const Product = (props) => {
+  const {name, model, description, price, discount, stock} = props.info
+
+
      return (
-    <div>
-        <h2>Nombre del producto: {name}</h2>
-        <span>Modelo: {model}</span>
-        <br />
-        <span>Descripción: {description}</span>
-        <br />
-        <span>Precio: {price}</span>
-        <br />
-        <span>Descuente: {discount}</span>
-        <br />
-        <span>Unidades disponibles: {stock}</span>
-        <br />
-        
+      <div>
+        {
+          name && <h2> {name}</h2>
+        }
+        {
+          model && <span>Modelo: {model}</span>
+        }
+          {/* <br /> */}
+        {
+          description && <span>Descripción: {description}</span>
+        }
+          {/* <br /> */}
+        {
+          price && <span>Precio: {price}</span>
+        }
+          {/* <br /> */}
+        {
+          discount && <span>Descuente: {discount}</span>
+        }
+        {/*  <br /> */}
+        {
+          stock && <span>Unidades disponibles: {stock}</span>
+        }
+          {/* <br /> */}
     </div>
   )
 }

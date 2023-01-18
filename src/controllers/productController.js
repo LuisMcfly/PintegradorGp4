@@ -1,5 +1,5 @@
 const { check, validationResult } = require('express-validator');
-const { Product, Category, Manofacturers, Features } = require('../../models/index');
+const { Product, Category, Manofacturers, Features } = require('../../models/index'); 
 //'products/productShop'
 const productShopRender = async (req, res) => {
     const [products] = await Promise.all([Product.findAll()])
