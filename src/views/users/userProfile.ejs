@@ -3,51 +3,65 @@
 <%- include('../partials/head') %>
 <head>
   <link rel="stylesheet" href="/css/userProfile.css" />
+  <form action="/users/logout" method="POST" id="logoutForm"></form>
 </head>
 
 <body>
   <%- include('../partials/header') %>
-  <main class="form-container profile-grid">
+  <main class="profile-grid">
     
     <section class="form-section user-image">
-      <div>
-        <img src=<%= usuario.imagen %>/>
+
+        <img src="<%= userInfo.image %>"/>
       </div>
-      <h2>Bienvenido</h2>
-      <h1><%= usuario.fullName %></h1>
+      <div>
+        <h2>Bienvenido</h2>
+        <h1><%= userInfo.fullName %></h1>
+      </div>
     </section>
 
     <section class="form-section user-info">
       <div class="form-field">
-        <h2><%= usuario.fullName %> </h2>
-      </div>
-      <div class="form-field">
         <p> Correo </p>
-        <h3> <%= usuario.email %> </h3>
+        <h3> <%= userInfo.email %> </h3>
       </div>
       <div class="form-field">
         <p> Teléfono </p>
-        <h3> <%= usuario.phone %> </h3>
+        <h3> <%= userInfo.phone %> </h3>
       </div>
       <div class="form-field">
         <p> Dirección </p>
-        <% address = usuario.address !== null ? usuario.address : 'Sin definir' %> 
-        <h3> <%= address %> </h3>
+        <h3> <%= userInfo.address %> </h3>
       </div>
       <div class="form-field">
         <p> Género </p>
-        <h3> <%= usuario.gender %> </h3>
+        <h3> <%= userInfo.gender %> </h3>
       </div>
     </section>
 
-    <section class="form-section user-edit-button">
-      <i class="fa-solid fa-gear"></i>
-      <h2>Editar Información</h2>
-    </section>
+    <section class="user-actions">
+      <div class="form-section">
+        <a href="../../users/edit" class="icon-button">
+          <i class="fa-solid fa-gear"></i>
+        </a>
+        <h3>Editar Información</h3>
+      </div>
 
-    <section class="form-section user-log-out">
-      <i class="fa-solid fa-power-off"></i>
-      <h2>Cerrar Sesión</h2>
+      <% if (userInfo.userType == "Admin") { %> 
+        <div class="form-section">
+          <a href="../../products/" class="icon-button">
+            <i class="fa-solid fa-list"></i>
+          </a>
+          <h3>Funciones de Administrador</h3>
+        </div>
+      <% } %> 
+
+      <div class="form-section">
+        <button type="submit" form="logoutForm" class="icon-button">
+          <i class="fa-solid fa-power-off"></i>
+        </button>
+        <h3>Cerrar Sesión</h3>
+      </div>
     </section>
   </main>
   <%- include('../partials/footer') %>

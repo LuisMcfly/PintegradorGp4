@@ -1,9 +1,5 @@
 export const swalPrefix = 'swal2-'
 
-/**
- * @param {string[]} items
- * @returns {object}
- */
 export const prefix = (items) => {
   const result = {}
   for (const i in items) {
@@ -82,7 +78,6 @@ export const swalClasses = prefix([
   'icon-info',
   'icon-question',
   'icon-error',
-  'no-war',
 ])
 
 export const iconTypes = prefix(['success', 'warning', 'info', 'question', 'error'])

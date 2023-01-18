@@ -2,114 +2,221 @@
 <html lang="es">
 <%- include('../partials/head') %> 
 <head>
-  <link rel="stylesheet" href="/css/productDetail.css" />
-  <link rel="stylesheet" href="/css/productEdit.css" />
   <title>Pegasus Tech | Editar producto</title>
+  <link rel="stylesheet" href="/css/productRegisterEdit.css">
+  <form action="/products/productEdit/<%= product.id %> " method="POST" id="saveEditForm"></form>
 </head>
     
 <body>
-    <%- include('../partials/header.ejs') %> 
-    <section class="producto-detail">
-      <form action="/products/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-        <div class="producto-titulo">
-          <h2>
-            <label for="name"> Nombre: </label>
-            <input type="text" name="name"  value="<%= producto.name %>">
-            
-          </h2>
+  <%- include('../partials/header.ejs') %> 
+  <main class="form-container product-form-grid">
+    <section class="form-section product-image">
+      <label for="uploadImage">
+        <div class="image-edit-area">
+          <img src="<%= product.image %>" class="darken"/>
+        </div> 
+        <div class="add-image-icon">
+          <i class="fa-regular fa-file-image"></i>
+          <i class="fa-solid fa-circle-plus"></i>
         </div>
-        <label for="manufacturer"> Fabricante: </label>
-        <input type="text" name="manufacturer" value="<%= producto.manufacturer %>">
-
-        <label for="model"> Modelo: </label>
-        <input type="text" name="model" value="<%= producto.model %>">
-        <!--convertir select-->
-          <div class="calificacion">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-        </div>
-
-        <div class="producto-elementos">
-          <div class="producto-imagenes">
-            <input id="inputFile1"  type="file" name="imagen" multiple>
-
-            <div class="img-main">
-              <img class="img-main" id="img1" src="/img/uploads/<%= producto.images[0] %> " alt="imagen de producto">
-            </div>
-            <ul class="img-alt">
-              <% for(let i=1;i<producto.images.length;i++){ %>
-                <li>
-                  <button>
-                    <i class="fa-regular fa-circle-dot"></i>
-                    <img src="/img/uploads/<%= producto.images[i] %> " alt="view">
-                  </button>
-                </li>
-              <% } %>  
-            </ul>
-          </div>
-
-          <div class="producto-info">
-            <div class="producto-opciones">
-              <% for(let i=0;i<producto.colors.length;i++){ %>
-                <button> <%= producto.colors[i] %> </button>
-              <% } %>  
-            </div>
-            <input class="stock-edit" type="text" name="stock" value="<%= producto.stock %>"> Unidades en stock
-            <textarea class="descripcion-edit" rows="5" wrap="hard" name="description">
-              <%= producto.description %>
-            </textarea>
-          </div>
-          
-          <div class="producto-precio">
-            <div class="precio-numero"> 
-              <div>
-                <label for="price"> $ </label> 
-                <input type="text" name="price" value="<%= producto.price %>">
-              </div>
-              
-              <div>
-                <input type="text" name="discount" value="<%= producto.discount %>">
-                <label for="discount"> % </label> 
-              </div>
-            </div>
-
-            <div class="btns-producto">
-              <div>
-                <input class="btn" type="submit" value="Guardar Cambios">
-              </div> </form> <!-- Cierre del form principal -->
-
-              <form action="/products/<%= producto.id %>?_method=DELETE" method="POST">
-                <input class="btn" type="submit" value="Eliminar Producto">
-              </form>
-            </div>
-          </div>
-        </div>
-      <!-- El form de la edición se cierra dentro de btns-producto -->
+      </label>
+      <input type="file" name="uploadImage" id="uploadImage" form="saveEditForm">
+      
+      <div>
+        <h1><%= product.name %></h1>
+        <h3> SKU: <%= product.id %></h3>
+      </div>
     </section>
-    
-    <%- include('../partials/footer') %> 
-    <script>
-      function init() {
-        var inputFile = document.getElementById('inputFile1');
-        inputFile.addEventListener('change', mostrarImagen, false);
-      }
-  
-      function mostrarImagen(event) {
-        var file = event.target.files[0];
 
-        var reader = new FileReader();
-        reader.onload = function(event) {
-          var img = document.getElementById('img1');
-          img.src= event.target.result;
-        }
-        reader.readAsDataURL(file);
-      }
+
+    <section class="form-section">
+      <div class="form-field">
+        <label for="productName"><p>Nombre</p></label>
+        <input type="text" name="productName" id="productName" class="text-input" 
+          form="saveEditForm" placeholder="<%= product ? product.name : '' %>">
+        <% if(locals.errors && errors.name) {%> 
+          <div class="error-message">
+            <p> <%= errors.name.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="manufacturer"><p>Fabricante</p></label>
+        <select name="manufacturer" id="manufacturer" form="saveEditForm">
+          <% manufacturers.forEach(manufacturer => {%>
+            <option value="<%= manufacturer.dataValues.id %>">
+              <%= manufacturer.dataValues.name %> 
+            </option>
+          <% }) %>
+        </select>
+        <% if(locals.errors && errors.manufacturers) {%> 
+          <div class="error-message">
+            <p> <%= errors.manufacturer.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="features"><p>Variaciones</p></label>
+        <select name="features" id="features" form="saveEditForm">
+          <% features.forEach(feature => {%>
+            <option value="<%= feature.dataValues.id %>">
+              <%= feature.dataValues.name %> 
+            </option>
+          <% }) %>
+        </select>
+        <% if(locals.errors && errors.features) {%> 
+          <div class="error-message">
+            <p> <%= errors.features.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="category"><p>Categoría</p></label>
+        <select name="category" id="category" form="saveEditForm">
+          <% categories.forEach(category => {%>
+            <option value="<%= category.dataValues.id %>">
+              <%= category.dataValues.name %> 
+            </option>
+          <% }) %>
+        </select>
+        <% if(locals.errors && errors.categories) {%> 
+          <div class="error-message">
+            <p> <%= errors.category.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="description"><p>Descripción</p></label>
+        <input type="texta" name="description" id="description" class="text-input" 
+          form="saveEditForm" placeholder="<%= product ? product.name : '' %>">
+        <% if(locals.errors && errors.name) {%> 
+          <div class="error-message">
+            <p> <%= errors.name.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="price"><p>Precio ($ COP)</p></label>
+        <input type="text" name="price" id="price" class="text-input" 
+          form="saveEditForm" placeholder="<%= product ? product.price : '' %>">
+        <% if(locals.errors && errors.price) {%> 
+          <div class="error-message">
+            <p> <%= errors.price.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="discount"><p>Descuento (%)</p></label>
+        <input type="text" name="discount" id="discount" class="text-input" 
+          form="saveEditForm" placeholder="<%= product ? product.discount : '' %>">
+        <% if(locals.errors && errors.discount) {%> 
+          <div class="error-message">
+            <p> <%= errors.discount.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="stock"><p>Stock</p></label>
+        <input type="text" name="stock" id="stock" class="text-input" 
+          form="saveEditForm" placeholder="<%= product ? product.stock : '' %>">
+        <% if(locals.errors && errors.stock) {%> 
+          <div class="error-message">
+            <p> <%= errors.stock.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" form="saveEditForm" class="btn main-button">Guardar</button>
+        <a href="../../products/productDetail/<%= product.id %>" class="btn">Cancelar</a>
+      </div>
+    </section>
+  </main>
+    <!-- <div class="producto-titulo">
+      <h2>
+        <label for="name"> Nombre: </label>
+        <input type="text" name="name" id="name" value="<%= product.name %> ">
+      </h2>
+    </div>
+    <div class="input-container">
+      <label class="input-label manufacturer">Nombre del fabricante <i class="fa-solid fa-check"></i></label>
+      <select name="manufacturer" class="input">
+        <% manufacturers.forEach(manufacturer => {%>
+          <option class="option" value="<%= manufacturer.dataValues.id %>">
+            <%= manufacturer.dataValues.name %> 
+          </option>
+        <% }) %>
+      </select>
+    </div> 
+
+    <div class="input-container">
+      <input name="model" id="model" class="input" type="text" placeholder="Modelo" value="<%= product.model ? product.model : "" %>">
+      <label class="input-label" for="model">Modelo del producto 
+        <i class="fas fa-file-signature"></i></label>
+    </div>
+
+    <div class="input-container">
+      <label class="input-label" for="variaciones">Variaciones del producto<i class="fas fa-file-signature"></i></label>
+      <select name="variations" id="variations" class="input">
+        <% features.forEach(feature => { %>
+          <option class="option" value="<%= feature.dataValues.id %> ">
+            <%= feature.dataValues.name %> 
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="list-choice">
+      <div class="list-choice-title">Seleccione la Categoria <i class="fa-solid fa-layer-group"></i></div>
+      <div class="list-choice-objects">
+        <select name="category" value="portatiles">
+          <% categories.forEach(category => { %>
+            <option class="option" value="<%= category.dataValues.id %> ">
+              <%= category.dataValues.name %> 
+            </option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+    
+    <div class="textarea-container">
+      <textarea name="description" id="descripcion" class="textarea" type="text" placeholder="descripcion" ><%= product.description ? product.description : "" %></textarea>
+      <label class="textarea-label" for="descripcion">Descripcion del producto 
+        <i class="fas fa-file-signature"></i></label>
+    </div>
+    
+    <div class="input-container">
+      <input name="price" id="precio" class="input" type="text" placeholder="Precio" value="<%= product.price ? product.price : "" %>">
+      <label class="input-label" for="precio">Precio del producto <i class="fas fa-dollar-sign"></i></label>
+    </div>
+
+    <div class="input-container">
+      <input name="discount" id="descuento" class="input" type="text" placeholder="Descuento" value="<%= product.discount ? product.discount : "" %>">
+      <label class="input-label" for="descuento">Descuento del producto <i class="fas fa-percent"></i></label>
+    </div>
+
+    <div class="input-container">
+      <input name="stock" id="stock" class="input" type="text" placeholder="Descuento" value="<%= product.stock ? product.stock : "" %>">
+      <label class="input-label" for="stock">Stock del producto <i class="fab fa-stack-overflow"></i></label>
+    </div>
+
+    <div class="input-container">
+      <label class="input-label file" for="imagen">Seleccione la imágen del producto 
+        <i class="fa-solid fa-camera"></i></label>
+      <input name="images" id="images" class="input-file" type="file" multiple placeholder="Imágen" >
+    </div>
+
+    <button type="submit" class="btn main-button">Guardar</button>
+    <a href="../../products/productDetail/<%= product.id %>" class="btn">Cancelar</a>
+  </section> -->
   
-    window.addEventListener('load', init, false);
-    </script>
+  <%- include('../partials/footer') %> 
 </body>
 </html>
