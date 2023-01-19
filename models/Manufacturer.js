@@ -1,12 +1,13 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db.js');
 
-const Manofacturers = db.define('manofacturers', {
+const Manufacturer = db.define('manufacturers', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-},
-);
+},{
+    timestamps: false
+});
 
-module.exports = Manofacturers;
+module.exports = Manufacturer;

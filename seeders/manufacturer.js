@@ -1,4 +1,4 @@
-const manofacturer = [
+const manufacturers = [
     {
         name: 'Dell'
     },
@@ -16,4 +16,4 @@ const manofacturer = [
     }
 ];
 
-module.exports = manofacturer;
+module.exports = manufacturers;

@@ -1,15 +1,30 @@
-const {check, validationResult} = require('express-validator');
-const bcrypt = require('bcrypt');
 const db = require('../../config/db.js');
 const User = require('../../models/User.js');
-const { generarId, generarJWT } = require('../../helpers/tokens.js');
-const Jwt = require('jsonwebtoken');
 const { Sequelize } = require('sequelize');
+const { generarId, generarJWT } = require('../../helpers/tokens.js');
+const {check, validationResult} = require('express-validator');
+const bcrypt = require('bcrypt');
+const Jwt = require('jsonwebtoken');
+const { uploadsPath } = require('../../helpers/filePaths')
 
 const registerRender = (req, res) => res.render('users/register', {
     errors: [],
     usuario: ''
 });
+
+const loginRender = (req, res) => res.render('users/login', {errors: []});
+
+const profileRender = async ( req, res ) => {
+    return getUserInfo(req, res, 'users/userProfile')
+}
+
+const editRender = async (req, res) => {
+    return getUserInfo(req, res, 'users/userEdit')
+}
+
+const logout = (req, res) => {
+    return res.clearCookie('_token').status(200).redirect('/');
+}
 
 const userCreate = async (req, res) => {
     const { fullName, email, password, phone } = req.body;
@@ -20,11 +35,11 @@ const userCreate = async (req, res) => {
     if(existeUsuario) {
         return res.render('users/login', {
             errors: {email: {msg: 'El correo ya está Registrado'}}, 
-            usuario: {
+            userInfo: {
                 nombre: req.body.fullName,
                 email: req.body.email
             }
-        })
+        });
     }
 
     // Validaciones
@@ -41,10 +56,10 @@ const userCreate = async (req, res) => {
     // res.send(resultado.mapped())
 
     //Verificar que el resultado no este vacio
-    if(!resultado.isEmpty()){
+    if(!resultado.isEmpty()) {
         return res.render('users/register', {
             errors: resultado.mapped(),
-            usuario: {
+            userInfo: {
                 fullName: req.body.fullName,
                 email: req.body.email,
                 phone: req.body.phone
@@ -58,13 +73,12 @@ const userCreate = async (req, res) => {
         email,
         password,
         phone,
-        image: "default.png",
+        userType: "User",
+        image: "defaultUserImage.png",
         token: generarId()
     })
-    res.redirect('../users/profile');
+    res.redirect('../users/login');
 }
-
-const loginRender = (req, res) => res.render('users/login', {errors: []});
 
 const userLogin = async (req, res) => {
     // Validacion
@@ -72,6 +86,9 @@ const userLogin = async (req, res) => {
     await check('password').notEmpty().withMessage('La contraseña es obligatoria').run(req)
 
     let resultado = validationResult(req)
+
+    // res.send(req.body) // Debugging
+    // res.send(resultado.mapped()) // Debugging
 
     // Enviar mensaje de error si existe
     if(!resultado.isEmpty()){
@@ -84,44 +101,34 @@ const userLogin = async (req, res) => {
     // Comprobar si el usuario existe
     const {email, password} = req.body;
 
-    const usuario = await User.findOne({where : {email}});
+    const userInfo = await User.findOne({where : {email}});
 
-    if(!usuario){
+    if(!userInfo){
         return res.render('users/login', {
             errors: {email: {msg: 'El usuario no existe'}}
         })
     }
 
     // Revisar el password
-    if(!usuario.verificarPassword(password)){
+    if(!userInfo.verificarPassword(password)){
         return res.render('users/login', {
             errors: {password: {msg: 'La contraseña es incorrecta'}}
         })
     }
 
     // Autenticar al usuario
-    const token = generarJWT({id: usuario.id, fullName: usuario.fullName, 
-        phone: usuario.phone, email: usuario.email});
+    const token = generarJWT({id: userInfo.id,
+        fullName: userInfo.fullName,
+        phone: userInfo.phone,
+        email: userInfo.email
+    });
     
     // Almacenar en un cookie
     return res.cookie('_token', token, {
         httpOnly: true
         // secure: true,
         // sameSite: true
-    }).redirect('../users/profile')
-}
-
-const profileRender = async ( req, res ) => {
-    return getUserInfo(req, res, 'users/userProfile')
-}
-
-
-const editRender = async (req, res) => {
-    return getUserInfo(req, res, 'users/userEdit')
-}
-
-const logout = (req, res) => {
-    return res.clearCookie('_token').status(200).redirect('/');
+    }).redirect('/')
 }
 
 const getUserInfo = async (req, res, pageToRender) => {
@@ -135,25 +142,29 @@ const getUserInfo = async (req, res, pageToRender) => {
         const usuarioId = await User.scope('eliminarPassword').findByPk(decoded.id)
     
         // Validar que el usuario y buscarlo en la base de datos
-        const usuario = await User.findByPk(usuarioId.id);
+        let userInfo = await User.findByPk(usuarioId.id);
 
-        // res.send(usuario.address)
-        if(!usuario.hasOwnProperty('address')) usuario.address = "sin definir";
-        if(!usuario.hasOwnProperty('gender')) usuario.gender = "sin definir";
+        // res.send(userInfo.address)
+        if(!userInfo.hasOwnProperty('address')) userInfo.address = "Sin definir";
+        if(!userInfo.hasOwnProperty('gender')) userInfo.gender = "Sin definir";
         
-        // res.send(usuario);  
-        return res.render(pageToRender, {usuario})
+        delete userInfo.password
+        userInfo.image = uploadsPath + '/users/' + userInfo.image;
+        
+        // return res.send(userInfo);  
+        return res.render(pageToRender, {userInfo})
     } catch (error) {
         return res.clearCookie('_token').redirect('../users/login')
     }
 }
 
 module.exports = {
-    logout,
     registerRender,
     loginRender,
     profileRender,
+    editRender,
     userLogin,
     userCreate,
-    editRender
+    // userEdit,
+    logout
 };
