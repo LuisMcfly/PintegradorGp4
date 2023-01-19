@@ -74,10 +74,45 @@ const userCreate = async (req, res) => {
         password,
         phone,
         userType: "User",
-        image: "defaultUserImage.png",
+        images: "defaultUserImage.png",
         token: generarId()
     })
     res.redirect('../users/login');
+}
+
+const userEdit = async (req, res) => {
+    
+    let images = []
+
+    if (req.files[0] != undefined) {
+        for (let i = 0; i < req.files.length; i++) {
+            images.push(req.files[i].filename)
+        }
+    } else {
+        images = ['noImage.png'];
+    }
+    let image = images.toString();
+
+        const { _token } = req.cookies
+     
+        if (!_token) {
+            return res.redirect('/login')
+        }
+     
+        try {
+            const decoded = Jwt.verify(_token, process.env.JWT_SECRET)
+            const usuarioId = await User.scope('eliminarPassword').findByPk(decoded.id)
+     
+            // Validar que el usuario y buscarlo en la base de datos
+            const userInfo = await User.findByPk(usuarioId.id);
+            User.update({
+                ...req.body,
+                image
+            }, { where: { id: userInfo.id } })
+            res.render('users/userProfile', { userInfo })
+        } catch (error) {
+            return res.clearCookie('_token').redirect('/login')
+        }
 }
 
 const userLogin = async (req, res) => {
@@ -149,7 +184,7 @@ const getUserInfo = async (req, res, pageToRender) => {
         if(!userInfo.hasOwnProperty('gender')) userInfo.gender = "Sin definir";
         
         delete userInfo.password
-        userInfo.image = uploadsPath + '/users/' + userInfo.image;
+        userInfo.images = uploadsPath + '/users/' + userInfo.images;
         
         // return res.send(userInfo);  
         return res.render(pageToRender, {userInfo})
@@ -165,6 +200,6 @@ module.exports = {
     editRender,
     userLogin,
     userCreate,
-    // userEdit,
+    userEdit,
     logout
 };

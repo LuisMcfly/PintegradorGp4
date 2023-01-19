@@ -24,7 +24,7 @@ const multer = require('multer'),
             cb(null, file.originalname)
         }
     })
-    const upload = multer({storage:storage})/* definir si se valida la imagen con multer o con expv */
+    const upload = multer({storage:storage})
 
 router.get('/', productShopRender);
 
