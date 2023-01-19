@@ -5,20 +5,21 @@ const path = require('path')
 // const productController = require('../controllers/productController');
 const {
     productShopRender,
-    productDetailRender,
+    /* productDetailRender,
     productRegisterRender,
-    productEditRender,
-    productDeleteRender,
     productCreate,
+    productEditRender,
     productEdit,
-    productDelete
-} = require('../controllers/productController');
+    deletProduct,
+    productDeleteRender */
+    
+} = require('../controllers/productControllerApi');
 
 
 const multer = require('multer'),
     storage =  multer.diskStorage({
         destination: (req, file, cb)=>{
-            cb(null, path.join('public','img','uploads','products'))
+            cb(null, path.join('public','img','uploads'))
         },
         filename: (req, file, cb)=>{
             cb(null, file.originalname)
@@ -28,13 +29,14 @@ const multer = require('multer'),
 
 router.get('/', productShopRender);
 
-router.get('/productRegister', productRegisterRender); //renderiza la vista del form
+/* router.get('/productRegister', productRegisterRender); //renderiza la vista del form
+router.post('/productRegister', upload.array('imagen'), productCreate); //guarda los datos enviados en el form
+
 router.get('/productDetail/:id', productDetailRender);
 router.get('/productEdit/:id', productEditRender);
-router.get('/productDelete/:id', productDeleteRender)
-
-router.post('/productRegister', upload.array('uploadImage'), productCreate); //guarda los datos enviados en el form
 router.post('/productEdit/:id', productEdit);
-router.post('/productDelete/:id', productDelete);
 
+router.get('/productDelete/:id', productDeleteRender)
+router.post('/productDelete/:id', deletProduct);
+ */
 module.exports = router;
