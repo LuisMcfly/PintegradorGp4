@@ -4,7 +4,7 @@ export const Product = (props) => {
 
 
      return (
-      <div>
+      <li>
         {
           name && <h2> {name}</h2>
         }
@@ -28,6 +28,6 @@ export const Product = (props) => {
           stock && <span>Unidades disponibles: {stock}</span>
         }
           {/* <br /> */}
-    </div>
+    </li>
   )
 }

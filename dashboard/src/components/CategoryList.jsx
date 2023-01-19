@@ -5,6 +5,7 @@ import '../styles.css'
 export const CategoryList = (props) => {
 
   const prodByCat = (cat) => props.data.filter(prod=> prod.category_id == cat)
+  
   const catProd = props.cat.map(ca => ({
     id: ca.id,
     name: ca.name,

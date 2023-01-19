@@ -2,8 +2,6 @@ import { Product } from "./Product"
 import '../styles.css'
 
 export const Category = ({info}) => {
-    
-  console.log('info >> ',  info)
   return (
     <>
       {
@@ -12,9 +10,12 @@ export const Category = ({info}) => {
             <h2>{name}</h2>
             <span>Numero de productos por categoria: {arrXCat.length}</span>
             {
-              arrXCat.map(prod => (
-                <Product key={prod.id} info={{name: prod.name}} />//
-              ))
+              <ul>{
+                  arrXCat.map(prod => (
+                    <Product key={prod.id} info={{name: prod.name}} />
+                  ))
+                }
+              </ul>
             }
           </div>
         ))
