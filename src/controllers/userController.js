@@ -9,7 +9,7 @@ const { uploadsPath } = require('../../helpers/filePaths')
 
 const registerRender = (req, res) => res.render('users/register', {
     errors: [],
-    usuario: ''
+    userInfo: ''
 });
 
 const loginRender = (req, res) => res.render('users/login', {errors: []});
