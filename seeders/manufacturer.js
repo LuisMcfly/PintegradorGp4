@@ -6,13 +6,16 @@ const manufacturers = [
         name: 'Samsung'
     },
     {
-        name: 'Hp'
+        name: 'HP'
     },
     {
         name: 'Lenovo'
     },
     {
-        name: 'Alienwar'
+        name: 'Alienware'
+    },
+    {
+        name: 'Asus'
     }
 ];
 

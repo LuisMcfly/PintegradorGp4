@@ -94,15 +94,15 @@ const userEdit = async (req, res) => {
     let image = images.toString();
 
         const { _token } = req.cookies
-     
+
         if (!_token) {
             return res.redirect('/login')
         }
-     
+
         try {
             const decoded = Jwt.verify(_token, process.env.JWT_SECRET)
             const usuarioId = await User.scope('eliminarPassword').findByPk(decoded.id)
-     
+
             // Validar que el usuario y buscarlo en la base de datos
             const userInfo = await User.findByPk(usuarioId.id);
             User.update({

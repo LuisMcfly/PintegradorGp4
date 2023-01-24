@@ -1,30 +1,36 @@
 const features = [
     {
-        name: '4 Ram'
+        name: 'RAM 8GB | SSD 128GB'
     },
     {
-        name: '8 Ram'
+        name: 'RAM 16GB | SSD 256GB'
     },
     {
-        name: '12 Ram'
+        name: 'RAM 16GB | SSD 512GB'
     },
     {
-        name: '16 Ram'
+        name: 'RAM 32GB | SSD 1TB'
     },
     {
-        name: '24 Ram'
+        name: 'RAM 32GB | SSD 2TB'
     },
     {
-        name: '32 Ram'
+        name: 'Suiches RED'
     },
     {
-        name: '64 Ram'
+        name: 'Suiches BLUE'
     },
     {
-        name: 'Curvo'
+        name: 'Suiches BROWN'
     },
     {
-        name: 'Gamer'
+        name: '24"'
+    },
+    {
+        name: '27"'
+    },
+    {
+        name: '32"'
     }
 ];
 
