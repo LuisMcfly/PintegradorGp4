@@ -5,6 +5,7 @@ const session = require('express-session');
 const cookies = require('cookie-parser')
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const db = require('../config/db.js')
+const appRoutes = require('../src/routes/appRoutes')
 
 try {
     db.authenticate();
@@ -52,6 +53,7 @@ app.use(methodOverride('_method')); // Pasar poder pasar el method="POST" en el 
     saveUninitialized: false
 })) */
 
+app.use('/', appRoutes);
 app.use('/', mainRouter)
 app.use('/products/', productRouter);
 app.use('/cart/', cartRouter);
