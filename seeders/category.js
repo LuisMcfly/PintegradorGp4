@@ -1,9 +1,9 @@
 const category = [
     {
-        name: 'Portatiles'
+        name: 'Portátiles'
     },
     {
-        name: 'Perifericos'
+        name: 'Periféricos'
     },
     {
         name: 'Computadores de escritorio'

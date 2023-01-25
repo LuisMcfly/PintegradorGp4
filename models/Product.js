@@ -15,16 +15,19 @@ const Product = db.define('products', {
         allowNull: false
     },
     price: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
     },
     discount: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
     },
     stock: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
     },
     images: {
         type: DataTypes.STRING,
