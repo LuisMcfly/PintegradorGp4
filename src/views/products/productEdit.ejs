@@ -34,7 +34,7 @@
       <div class="form-field">
         <label for="productName"><p>Nombre</p></label>
         <input type="text" name="productName" id="productName" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.name : '' %>">
+          form="saveEditForm" value="<%= product ? product.name : '' %>">
         <% if(locals.errors && errors.name) {%> 
           <div class="error-message">
             <p> <%= errors.name.msg %> </p>
@@ -104,7 +104,7 @@
       <div class="form-field">
         <label for="description"><p>Descripción</p></label>
         <input type="texta" name="description" id="description" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.name : '' %>">
+          form="saveEditForm" value="<%= product ? product.description : '' %>">
         <% if(locals.errors && errors.name) {%> 
           <div class="error-message">
             <p> <%= errors.name.msg %> </p>
@@ -115,7 +115,7 @@
       <div class="form-field">
         <label for="price"><p>Precio ($ COP)</p></label>
         <input type="text" name="price" id="price" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.price : '' %>">
+          form="saveEditForm" value="<%= product ? product.price : '' %>">
         <% if(locals.errors && errors.price) {%> 
           <div class="error-message">
             <p> <%= errors.price.msg %> </p>
@@ -126,7 +126,7 @@
       <div class="form-field">
         <label for="discount"><p>Descuento (%)</p></label>
         <input type="text" name="discount" id="discount" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.discount : '' %>">
+          form="saveEditForm" value="<%= product ? product.discount : '' %>">
         <% if(locals.errors && errors.discount) {%> 
           <div class="error-message">
             <p> <%= errors.discount.msg %> </p>
@@ -137,7 +137,7 @@
       <div class="form-field">
         <label for="stock"><p>Stock</p></label>
         <input type="text" name="stock" id="stock" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.stock : '' %>">
+          form="saveEditForm" value="<%= product ? product.stock : '' %>">
         <% if(locals.errors && errors.stock) {%> 
           <div class="error-message">
             <p> <%= errors.stock.msg %> </p>
