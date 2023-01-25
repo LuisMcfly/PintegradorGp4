@@ -65,7 +65,7 @@ const productCreate = async (req, res) => {
     let images = image.toString();
 
     // Validaciones
-    await check('productName').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
+    await check('name').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
     await check('manufacturer').notEmpty().withMessage('Debes seleccionar el nombre de un fabricante').run(req)
     await check('model').notEmpty().withMessage('El producto debe tener un modelo').run(req)
     await check('features').notEmpty().withMessage('Debes seleccionar las caracteristicas').run(req)
@@ -128,38 +128,6 @@ const productCreate = async (req, res) => {
 
 const productEditRender = async (req, res) => {
 
-    // Validaciones
-    await check('productName').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
-    await check('manufacturer').notEmpty().withMessage('Debes seleccionar el nombre de un fabricante').run(req)
-    await check('model').notEmpty().withMessage('El producto debe tener un modelo').run(req)
-    await check('features').notEmpty().withMessage('Debes seleccionar las caracteristicas').run(req)
-    await check('category').notEmpty().withMessage('Debes seleccionar la categoria').run(req)
-    await check('description').notEmpty().withMessage('La descripcion es necesaria').run(req)
-    await check('price').notEmpty().withMessage('Debes indicar el precio del producto').run(req)
-    await check('discount').notEmpty().withMessage('Debes indicar el descuento del producto').run(req)
-    await check('stock').notEmpty().withMessage('Debes indicar el stock del producto').run(req)
-
-    const { id } = req.params;
-
-    let resultado = validationResult(req);
-
-    if (!resultado.isEmpty()) {
-
-        const [categories, manufacturers, features] = await Promise.all([
-            Category.findAll(),
-            Manufacturer.findAll(),
-            Features.findAll()
-        ]);
-
-        return res.render(`products/productEdit/${id}`, {
-            categories,
-            manufacturers,
-            features,
-            errors: resultado.array(),
-            product: req.body
-        });
-    };
-
     const productId = req.params.id;
     const product = await Product.findByPk(productId, {
         include: [
@@ -180,21 +148,26 @@ const productEditRender = async (req, res) => {
         Features.findAll()
     ])
 
-    return res.render(`products/productEdit/${id}`, {
+    return res.render(`products/productEdit`, {
         product,
         categories,
         manufacturers,
         features,
-        errors: resultado.array(),
-        product
     });
 };
 
 const productEdit = async (req, res) => {
+
     const { id } = req.params;
+    // return res.send(req.body)
+
+    // Validacion de que el producto si existe
+    const product = await Product.findByPk(id);
+    if (!product) {
+        return res.redirect('/products');
+    }
 
     let image = []
-
     if (req.files[0] != undefined) {
         for (let i = 0; i < req.files.length; i++) {
             image.push(req.files[i].filename)
@@ -204,32 +177,40 @@ const productEdit = async (req, res) => {
     }
     let images = image.toString();
 
+    // Validaciones
+    await check('name').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
+    await check('manufacturer').notEmpty().withMessage('Debes seleccionar el nombre de un fabricante').run(req)
+    await check('model').notEmpty().withMessage('El producto debe tener un modelo').run(req)
+    await check('features').notEmpty().withMessage('Debes seleccionar las caracteristicas').run(req)
+    await check('category').notEmpty().withMessage('Debes seleccionar la categoria').run(req)
+    await check('description').notEmpty().withMessage('La descripcion es necesaria').run(req)
+    await check('price').notEmpty().withMessage('Debes indicar el precio del producto').run(req)
+    await check('discount').notEmpty().withMessage('Debes indicar el descuento del producto').run(req)
+    await check('stock').notEmpty().withMessage('Debes indicar el stock del producto').run(req)
+    
+    let resultado = validationResult(req);
+    
     if (!resultado.isEmpty()) {
-
-        const [categorys, manufacturers, features] = await Promise.all([
+        const [categories, manufacturers, features] = await Promise.all([
             Category.findAll(),
             Manufacturer.findAll(),
             Features.findAll()
-        ])
+        ]);
+        
+        // return res.send(resultado.mapped())
 
-        return res.render(`products/productEdit/${id}`, {
-            categorys,
+        return res.render(`products/productEdit`, {
+            product,
+            categories,
             manufacturers,
-            features,
-            datos: req.body
+            errors: resultado.mapped(),
+            features
         });
     };
 
-    // Validacion de que el producto si existe
-    const product = await Product.findByPk(id);
-
-    if (!product) {
-        return res.redirect('/products');
-    }
-
     try {
         const {
-            productName: name,
+            name,
             manufacturer: manufacturer_id,
             model,
             features: features_id,
@@ -240,7 +221,6 @@ const productEdit = async (req, res) => {
             stock 
         } = req.body;
 
-
         product.set({
             name,
             manufacturer_id,
@@ -250,12 +230,14 @@ const productEdit = async (req, res) => {
             description,
             price,
             discount,
-            stock
+            stock,
+            images
         })
 
         await product.save();
-        res.redirect('/')
+        res.redirect('/products')
     } catch (error) {
+        return res.send("error")
         console.log(error);
     }
 
