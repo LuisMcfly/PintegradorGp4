@@ -27,7 +27,7 @@
       <div class="form-field">
         <label for="fullName"><p>Nombre completo</p></label>
         <input type="text" name="fullName" id="fullName" class="text-input" 
-          form="registerForm" value="<%= usuario ? usuario.fullName : '' %>">
+          form="registerForm" value="<%= userInfo ? userInfo.fullName : '' %>">
         <% if(locals.errors && errors.fullName) {%> 
           <div class="error-message">
             <p> <%= errors.fullName.msg %> </p>
@@ -38,7 +38,7 @@
       <div class="form-field">
         <label for="email"><p>Correo electrónico</p></label>
         <input type="email" name="email" id="email" class="text-input"
-          form="registerForm" value="<%= usuario ? usuario.email : '' %>">
+          form="registerForm" value="<%= userInfo ? userInfo.email : '' %>">
         <% if(locals.errors && errors.email) {%> 
           <div class="error-message">
             <p> <%= errors.email.msg %> </p>
@@ -71,7 +71,7 @@
       <div class="form-field">
         <label for="phone"><p>Número Celular</p></label>
         <input type="text" name="phone" id="phone" class="text-input" 
-          form="registerForm" value="<%= usuario ? usuario.phone : '' %>">
+          form="registerForm" value="<%= userInfo ? userInfo.phone : '' %>">
         <% if(locals.errors && errors.phone) {%> 
           <div class="error-message paragraph">
             <p> <%= errors.phone.msg %> </p>

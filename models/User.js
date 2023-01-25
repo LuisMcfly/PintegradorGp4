@@ -16,8 +16,16 @@ const User = db.define('users', {
         allowNull: false
     },
     phone: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
+    },
+    address: {
+        type: DataTypes.STRING,
+        defaultValue: 'Sin Definir'
+    },
+    gender: {
+        type: DataTypes.STRING,
+        defaultValue: 'Sin Definir'
     },
     userType: {
         type: DataTypes.STRING,
@@ -26,6 +34,7 @@ const User = db.define('users', {
     },
     image: {
         type: DataTypes.STRING,
+        defaultValue: 'defaultUserImage.png'
     },
     token: DataTypes.STRING,
     confirmado: DataTypes.BOOLEAN

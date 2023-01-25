@@ -4,7 +4,8 @@
 <head>
   <title>Pegasus Tech | Editar producto</title>
   <link rel="stylesheet" href="/css/productRegisterEdit.css">
-  <form action="/products/productEdit/<%= product.id %> " method="POST" id="saveEditForm"></form>
+  <form action="/products/productEdit/<%= product.id %>" method="POST" 
+    id="saveEditForm" enctype="multipart/form-data"></form>
 </head>
     
 <body>
@@ -28,12 +29,12 @@
       </div>
     </section>
 
-
     <section class="form-section">
+      
       <div class="form-field">
-        <label for="productName"><p>Nombre</p></label>
-        <input type="text" name="productName" id="productName" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.name : '' %>">
+        <label for="name"><p>Nombre</p></label>
+        <input type="text" name="name" id="name" class="text-input" 
+          form="saveEditForm" value="<%= product.name ? product.name : '' %>">
         <% if(locals.errors && errors.name) {%> 
           <div class="error-message">
             <p> <%= errors.name.msg %> </p>
@@ -53,6 +54,17 @@
         <% if(locals.errors && errors.manufacturers) {%> 
           <div class="error-message">
             <p> <%= errors.manufacturer.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="model"><p>Modelo</p></label>
+        <input type="text" name="model" id="model" class="text-input" 
+          form="saveEditForm" value="<%= product ? product.model : '' %>">
+        <% if(locals.errors && errors.model) {%> 
+          <div class="error-message">
+            <p> <%= errors.model.msg %> </p>
           </div>
         <% }; %>
       </div>
@@ -91,11 +103,11 @@
 
       <div class="form-field">
         <label for="description"><p>Descripción</p></label>
-        <input type="texta" name="description" id="description" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.name : '' %>">
-        <% if(locals.errors && errors.name) {%> 
+        <input type="textarea" name="description" id="description" class="text-input" 
+          form="saveEditForm" value="<%= product ? product.description : '' %>">
+        <% if(locals.errors && errors.description) {%> 
           <div class="error-message">
-            <p> <%= errors.name.msg %> </p>
+            <p> <%= errors.description.msg %> </p>
           </div>
         <% }; %>
       </div>
@@ -103,7 +115,7 @@
       <div class="form-field">
         <label for="price"><p>Precio ($ COP)</p></label>
         <input type="text" name="price" id="price" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.price : '' %>">
+          form="saveEditForm" value="<%= product ? product.price : '' %>">
         <% if(locals.errors && errors.price) {%> 
           <div class="error-message">
             <p> <%= errors.price.msg %> </p>
@@ -114,7 +126,7 @@
       <div class="form-field">
         <label for="discount"><p>Descuento (%)</p></label>
         <input type="text" name="discount" id="discount" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.discount : '' %>">
+          form="saveEditForm" value="<%= product ? product.discount : '' %>">
         <% if(locals.errors && errors.discount) {%> 
           <div class="error-message">
             <p> <%= errors.discount.msg %> </p>
@@ -125,7 +137,7 @@
       <div class="form-field">
         <label for="stock"><p>Stock</p></label>
         <input type="text" name="stock" id="stock" class="text-input" 
-          form="saveEditForm" placeholder="<%= product ? product.stock : '' %>">
+          form="saveEditForm" value="<%= product ? product.stock : '' %>">
         <% if(locals.errors && errors.stock) {%> 
           <div class="error-message">
             <p> <%= errors.stock.msg %> </p>
@@ -137,85 +149,9 @@
         <button type="submit" form="saveEditForm" class="btn main-button">Guardar</button>
         <a href="../../products/productDetail/<%= product.id %>" class="btn">Cancelar</a>
       </div>
+      
     </section>
   </main>
-    <!-- <div class="producto-titulo">
-      <h2>
-        <label for="name"> Nombre: </label>
-        <input type="text" name="name" id="name" value="<%= product.name %> ">
-      </h2>
-    </div>
-    <div class="input-container">
-      <label class="input-label manufacturer">Nombre del fabricante <i class="fa-solid fa-check"></i></label>
-      <select name="manufacturer" class="input">
-        <% manufacturers.forEach(manufacturer => {%>
-          <option class="option" value="<%= manufacturer.dataValues.id %>">
-            <%= manufacturer.dataValues.name %> 
-          </option>
-        <% }) %>
-      </select>
-    </div> 
-
-    <div class="input-container">
-      <input name="model" id="model" class="input" type="text" placeholder="Modelo" value="<%= product.model ? product.model : "" %>">
-      <label class="input-label" for="model">Modelo del producto 
-        <i class="fas fa-file-signature"></i></label>
-    </div>
-
-    <div class="input-container">
-      <label class="input-label" for="variaciones">Variaciones del producto<i class="fas fa-file-signature"></i></label>
-      <select name="variations" id="variations" class="input">
-        <% features.forEach(feature => { %>
-          <option class="option" value="<%= feature.dataValues.id %> ">
-            <%= feature.dataValues.name %> 
-          </option>
-        <% }) %>
-      </select>
-    </div>
-
-    <div class="list-choice">
-      <div class="list-choice-title">Seleccione la Categoria <i class="fa-solid fa-layer-group"></i></div>
-      <div class="list-choice-objects">
-        <select name="category" value="portatiles">
-          <% categories.forEach(category => { %>
-            <option class="option" value="<%= category.dataValues.id %> ">
-              <%= category.dataValues.name %> 
-            </option>
-          <% }) %>
-        </select>
-      </div>
-    </div>
-    
-    <div class="textarea-container">
-      <textarea name="description" id="descripcion" class="textarea" type="text" placeholder="descripcion" ><%= product.description ? product.description : "" %></textarea>
-      <label class="textarea-label" for="descripcion">Descripcion del producto 
-        <i class="fas fa-file-signature"></i></label>
-    </div>
-    
-    <div class="input-container">
-      <input name="price" id="precio" class="input" type="text" placeholder="Precio" value="<%= product.price ? product.price : "" %>">
-      <label class="input-label" for="precio">Precio del producto <i class="fas fa-dollar-sign"></i></label>
-    </div>
-
-    <div class="input-container">
-      <input name="discount" id="descuento" class="input" type="text" placeholder="Descuento" value="<%= product.discount ? product.discount : "" %>">
-      <label class="input-label" for="descuento">Descuento del producto <i class="fas fa-percent"></i></label>
-    </div>
-
-    <div class="input-container">
-      <input name="stock" id="stock" class="input" type="text" placeholder="Descuento" value="<%= product.stock ? product.stock : "" %>">
-      <label class="input-label" for="stock">Stock del producto <i class="fab fa-stack-overflow"></i></label>
-    </div>
-
-    <div class="input-container">
-      <label class="input-label file" for="imagen">Seleccione la imágen del producto 
-        <i class="fa-solid fa-camera"></i></label>
-      <input name="images" id="images" class="input-file" type="file" multiple placeholder="Imágen" >
-    </div>
-
-    <button type="submit" class="btn main-button">Guardar</button>
-    <a href="../../products/productDetail/<%= product.id %>" class="btn">Cancelar</a>
-  </section> -->
   
   <%- include('../partials/footer') %> 
 </body>

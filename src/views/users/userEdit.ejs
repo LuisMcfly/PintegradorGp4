@@ -31,7 +31,7 @@
       <div class="form-field">
         <label for="fullName"><p>Nombre</p></label>
         <input type="text" name="fullName" id="fullName" class="text-input" 
-          form="saveEditForm" placeholder="<%= userInfo ? userInfo.fullName : '' %>">
+          form="saveEditForm" value="<%= userInfo ? userInfo.fullName : '' %>">
         <% if(locals.errors && errors.fullName) {%> 
           <div class="error-message">
             <p> <%= errors.fullName.msg %> </p>
@@ -42,7 +42,7 @@
       <div class="form-field">
         <label for="email"><p>Correo electrónico</p></label>
         <input type="email" name="email" id="email" class="text-input"
-          form="saveEditForm" placeholder="<%= userInfo ? userInfo.email : '' %>">
+          form="saveEditForm" value="<%= userInfo ? userInfo.email : '' %>">
         <% if(locals.errors && errors.email) {%> 
           <div class="error-message">
             <p> <%= errors.email.msg %> </p>
@@ -53,7 +53,7 @@
       <div class="form-field">
         <label for="phone"><p>Teléfono</p></label>
         <input type="text" name="phone" id="phone" class="text-input" 
-          form="saveEditForm" placeholder="<%= userInfo ? userInfo.phone : '' %>">
+          form="saveEditForm" value="<%= userInfo ? userInfo.phone : '' %>">
         <% if(locals.errors && errors.phone) {%> 
           <div class="error-message paragraph">
             <p> <%= errors.phone.msg %> </p>
@@ -64,14 +64,14 @@
       <div class="form-field">
         <label for="address"><p>Dirección</p></label>
         <input type="text" name="address" id="address" class="text-input" 
-          form="saveEditForm" placeholder="<%= userInfo ? userInfo.address : '' %>">
+          form="saveEditForm" value="<%= userInfo.address ? userInfo.address : "Sin definir" %>">
         <% if(locals.errors && errors.address) {%> 
           <div class="error-message paragraph">
             <p> <%= errors.address.msg %> </p>
           </div>
         <% }; %>
       </div>
-
+      <% console.log(userInfo) %> 
       <div class="form-field">
         <label><p>Género</p></label>
         <div class="check-container">

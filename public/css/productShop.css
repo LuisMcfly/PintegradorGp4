@@ -54,9 +54,6 @@ main > .products-display {
   .shop-producto .info-de-producto {
     flex: 3;
   }
-  .info-de-producto * {
-    /* margin: 3px; */
-  }
 }
 
 @media (min-width: 769px) { /* For PC */

@@ -34,7 +34,7 @@ router.get('/productEdit/:id', productEditRender);
 router.get('/productDelete/:id', productDeleteRender)
 
 router.post('/productRegister', upload.array('uploadImage'), productCreate); //guarda los datos enviados en el form
-router.post('/productEdit/:id', productEdit);
+router.post('/productEdit/:id', upload.array('uploadImage'), productEdit);
 router.post('/productDelete/:id', productDelete);
 
 module.exports = router;

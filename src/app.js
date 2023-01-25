@@ -5,7 +5,11 @@ const session = require('express-session');
 const cookies = require('cookie-parser')
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const db = require('../config/db.js')
+<<<<<<< HEAD
 let cors = require("cors");
+=======
+const appRoutes = require('../src/routes/appRoutes')
+>>>>>>> e624b41b8f2c8fba931122a8b88f1a56d79b321f
 
 try {
     db.authenticate();
@@ -54,6 +58,7 @@ app.use(methodOverride('_method')); // Pasar poder pasar el method="POST" en el 
     saveUninitialized: false
 })) */
 
+app.use('/', appRoutes);
 app.use('/', mainRouter)
 app.use('/products/', productRouter);
 app.use('/cart/', cartRouter);
