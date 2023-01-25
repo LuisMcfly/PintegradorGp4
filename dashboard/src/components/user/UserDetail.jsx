@@ -10,7 +10,7 @@ export const UserDetail = () => {
     if(data){
       user = data.filter(user => user.id == id) 
     } 
-
+console.log(data)
     return (
         <>
             {
@@ -26,7 +26,7 @@ export const UserDetail = () => {
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item fs-4">Nombre:     {user[0].fullName}      </li>
                                     <li className="list-group-item fs-4">Email:      {user[0].email}         </li>
-                                    <li className="list-group-item fs-4">Dirección:  {user[0].addres}        </li>
+                                    <li className="list-group-item fs-4">Dirección:  {user[0].address}        </li>
                                     <li className="list-group-item fs-4">Teléfono:   {user[0].phone}         </li>
                                 </ul>
                             </div>

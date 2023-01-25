@@ -67,6 +67,7 @@ const userCreate = async (req, res) => {
         })
     }
 
+    //return res.send(req.body)
     // Almacenar un usuario
     await User.create({
         fullName,

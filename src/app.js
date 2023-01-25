@@ -5,12 +5,8 @@ const session = require('express-session');
 const cookies = require('cookie-parser')
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const db = require('../config/db.js')
-<<<<<<< HEAD
-let cors = require("cors");
-=======
 const appRoutes = require('../src/routes/appRoutes')
->>>>>>> e624b41b8f2c8fba931122a8b88f1a56d79b321f
-
+const cors = require('cors')
 try {
     db.authenticate();
     db.sync();

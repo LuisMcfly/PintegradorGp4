@@ -95,9 +95,8 @@ const productCreate = async (req, res) => {
     };
 
 
-<<<<<<< HEAD
     const { 
-        productName, 
+        name, 
         manufacturer: manufacturer_id, 
         model, 
         variations: features_id, 
@@ -106,22 +105,11 @@ const productCreate = async (req, res) => {
         price, 
         discount, 
         stock 
-=======
-    const { productName,
-        manufacturer: manufacturer_id,
-        model,
-        features: features_id,
-        category: category_id,
-        description,
-        price,
-        discount,
-        stock
->>>>>>> e624b41b8f2c8fba931122a8b88f1a56d79b321f
     } = req.body
 
     try {
         const productSave = await Product.create({
-            name: productName,
+            name,
             manufacturer_id,
             model,
             features_id,
