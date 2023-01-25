@@ -11,9 +11,16 @@ export const ProductList = () => {
           isLoading 
           ?(
             <Loading />
-          )
-          :(
-            <Item data={data} message="Nombre del Producto"/>
+          ):(
+            <div className="container">
+              <div className="mt-3">
+                <h1>Lista de Productos</h1><hr />
+                <p>Cantidad de productos: {data.length}</p>
+              </div>
+            {/* <table className="table table-hover table-success table-striped container"> */}
+              <Item data={data} message="Nombre del Producto" />
+            {/* </table> */}
+            </div>
           )
        }   
     </>

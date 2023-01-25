@@ -10,11 +10,16 @@ h2 {
     font-size: 2rem;
 }
 
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .cats {
     background-color: lightcoral;
-    display: flex;
 }
 .cats-item {
+    flex-direction: row;
     border: 1px solid black;
     padding: 1rem;
     margin: 0.5rem;

@@ -11,6 +11,7 @@ export const useFetch = (url) => {
 
     const resp = await fetch(url)
     const {data, categorys} = await resp.json()
+    //if(data)
 
     setState({
       categorys,
@@ -21,6 +22,7 @@ export const useFetch = (url) => {
 
   useEffect(() => {
     getFetch()
+    
   }, [url])
 
     return {
@@ -28,5 +30,4 @@ export const useFetch = (url) => {
       data: state.data,
       isLoading: state.isLoading,
     }
-
 }

@@ -97,7 +97,8 @@ const productCreate = async (req, res) => {
     };
 
 
-    const { productName, 
+    const { 
+        productName, 
         manufacturer: manufacturer_id, 
         model, 
         variations: features_id, 
@@ -151,6 +152,7 @@ const productEditRender = async (req, res) => {
     };
 
     const productId = req.params.id;
+
     const product = await Product.findByPk(productId, {
         include: [
         { model: Manufacturer, as: 'manufacturer'},

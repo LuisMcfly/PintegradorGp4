@@ -12,11 +12,11 @@
 
   <main class="product">
     <div class="img">
-      <img src="<%= uploadsPath + '/products/' + productInfo.images %>" alt=""/>
+      <img src="<%= uploadsPath + '/products/' + productInfo.images %>" alt="productInfo.name"/>
     </div>
     <div class="product-info">
 
-      <div class="product-category"><p>Categoría: <%= productInfo.category.name %> </p></div>
+      <div class="product-category"><p>Categoría: <%= productInfo.category.name ? productInfo.category.name : null  %> </p></div>
       <div class="product-name"><h1><%= productInfo.name %> </h1></div>
       <div class="product-price"><h3>$ <%= productInfo.price %> </h3></div>
       <div class="product-description"><p><%= productInfo.description %> </p></div>

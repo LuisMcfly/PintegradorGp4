@@ -5,6 +5,7 @@ const session = require('express-session');
 const cookies = require('cookie-parser')
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const db = require('../config/db.js')
+let cors = require("cors");
 
 try {
     db.authenticate();
@@ -25,7 +26,7 @@ app.use(session({
 
 app.use(userLoggedMiddleware)
 
-let cors = require("cors");
+
 app.use(cors());
 
 const mainRouter = require('./routes/main');
@@ -34,6 +35,7 @@ const productRouterApi = require('./routes/productApi');
 const cartRouter = require('./routes/cart');
 const userRouter = require('./routes/user');
 const categoryRouter = require('./routes/category')
+const userApi = require('./routes/userApi')
 const methodOverride =  require('method-override'); // Para poder usar los métodos PUT y DELETE
 
 // const http = require('http');
@@ -56,10 +58,10 @@ app.use('/', mainRouter)
 app.use('/products/', productRouter);
 app.use('/cart/', cartRouter);
 app.use('/users/', userRouter);
+
 app.use('/category', categoryRouter);
-
-
 app.use('/api', productRouterApi);///xoxoxoxoxo
+app.use('/userApi', userApi)
 
 app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/controllers/sliderController.js')); // Ruta del slider funcionando ! 
 app.use((req, res, next) => {
