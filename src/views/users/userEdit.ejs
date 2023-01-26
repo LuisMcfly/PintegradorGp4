@@ -8,18 +8,20 @@
 
 <body>
   <%- include('../partials/header') %>
-  <main class="form-container user-edit-grid">
-    <% console.log(userInfo) %> 
+  <main class="form-container user-edit-grid">    
+
     <section class="form-section user-image">
+      
       <label for="uploadImage">
         <div class="image-edit-area">
-          
           <img src="/img/uploads/users/<%= userInfo.image %>" class="darken"/>
-        </div> 
+        </div>
+
         <div class="add-image-icon">
           <i class="fa-regular fa-file-image"></i>
           <i class="fa-solid fa-circle-plus"></i>
         </div>
+
       </label>
       <input type="file" name="uploadImage" id="uploadImage" form="saveEditForm">
       
