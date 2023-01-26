@@ -33,10 +33,10 @@ router.get('/productRegister', productRegisterRender); //renderiza la vista del 
 router.get('/productDetail/:id', productDetailRender);
 router.get('/productEdit/:id', productEditRender);
 router.get('/productDelete/:id', productDeleteRender)
-router.get('/addToCart/:id', addToCart)
 
 router.post('/productRegister', upload.array('uploadImage'), productCreate); //guarda los datos enviados en el form
 router.post('/productEdit/:id', upload.array('uploadImage'), productEdit);
 router.post('/productDelete/:id', productDelete);
+router.post('/addToCart/:id', addToCart)
 
 module.exports = router;

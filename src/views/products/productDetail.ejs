@@ -4,7 +4,8 @@
 <head>
   <link rel="stylesheet" href="/css/productDetail.css" />
   <title>Pegasus Tech | Producto</title>
-  <form action="/products/addToCart/<%= product.id %> " id="addToCart" method="get"></form>
+  <script src="/js/cartLocalStorage.js"></script>
+  <form action="/products/addToCart/<%= product.id %> " id="addToCart" method="POST"></form>
 </head>
 
 <body> 
@@ -23,6 +24,8 @@
       <div class="product-stock"><h5>Stock: <%= product.stock %> </h5></div>
       
       <div class="form-buttons">
+        <input type="hidden" name="price" form="addToCart" value="<%= product.price %>">
+        <input type="hidden" name="discount" form="addToCart" value="<%= product.discount %>">
         <button type="submit" form="addToCart" class="btn main-button">Agregar al Carrito</button>
         <% if (locals.isLogged && locals.userType == "Admin") { %>
           <a href="/products/productEdit/<%= product.id %>" class="btn">Editar Producto</a>
