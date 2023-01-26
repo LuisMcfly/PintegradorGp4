@@ -30,9 +30,9 @@
     <section class="form-section">
 
       <div class="form-field">
-        <label for="productName"><p>Nombre</p></label>
-        <input type="text" name="productName" id="productName" class="text-input" 
-          form="productCreate" value="<%= product ? product.productName : '' %>">
+        <label for="name"><p>Nombre</p></label>
+        <input type="text" name="name" id="name" class="text-input" 
+          form="productCreate" value="<%= product ? product.name : '' %>">
         <% if(locals.errors && errors.name) {%> 
           <div class="error-message">
             <p> <%= errors.name.msg %> </p>
@@ -103,9 +103,9 @@
         <label for="description"><p>Descripción</p></label>
         <input type="texta" name="description" id="description" class="text-input" 
           form="productCreate" value="<%= product ? product.description : '' %>">
-        <% if(locals.errors && errors.name) {%> 
+        <% if(locals.errors && errors.description) {%> 
           <div class="error-message">
-            <p> <%= errors.name.msg %> </p>
+            <p> <%= errors.description.msg %> </p>
           </div>
         <% }; %>
       </div>

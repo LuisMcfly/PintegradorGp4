@@ -4,7 +4,21 @@ const { Op } = require("sequelize");
 const { Product, Category, Manufacturer, Features, Invoice } = require('../../models/index');
 const { uploadsPath } = require('../../helpers/filePaths')
 
-const cartRender = (req, res) => res.render('cart/cart')
+const cartRender = async (req, res) => {
+    
+    const invoiceNumberLocal = localStorage.getItem('invoice')
+
+    const [invoice] = await Promise.all([Invoice.findAll({
+        where: {
+            invoiceNumber: { [Op.eq]: invoiceNumberLocal } // Si no hay stock, no lo muestra en la tienda
+        }
+    })]);
+
+    res.render('cart/cart', { products })
+}
+
+
+
 
 
 module.exports = {

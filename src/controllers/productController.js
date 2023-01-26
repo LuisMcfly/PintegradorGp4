@@ -278,6 +278,11 @@ const productDelete = async (req, res) => {
     res.redirect('/productShop');
 };
 
+const addToCart = async (req, res) => {
+
+    let invoice = localStorage.setItem('invoice', 5)
+}
+
 module.exports = {
     productShopRender,
     productDetailRender,
@@ -287,4 +292,5 @@ module.exports = {
     productCreate,
     productEdit,
     productDelete,
+    addToCart,
 }

@@ -8,7 +8,8 @@ const Invoice = require('./Invoice.js');
 Product.belongsTo(Category, {foreignKey: 'category_id'});
 Product.belongsTo(Features, {foreignKey: 'features_id'});
 Product.belongsTo(Manufacturer, {foreignKey: 'manufacturer_id'});
-// Invoice.belongsTo(Product, {foreignKey: 'product_id'});
+Invoice.belongsTo(Product, {foreignKey: 'product_id'});
+Invoice.belongsTo(User, {foreignKey: 'user_id'});
 
 module.exports = {
     Product,
