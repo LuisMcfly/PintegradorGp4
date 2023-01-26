@@ -104,7 +104,7 @@ const userEdit = async (req, res) => {
     }
 
     let images = []
-
+    let image
     if (req.files[0] != undefined) {
         for (let i = 0; i < req.files.length; i++) {
             images.push(req.files[i].filename)
@@ -112,7 +112,7 @@ const userEdit = async (req, res) => {
     } else {
         images = ['noImage.png'];
     }
-    let image = images.toString();
+    image = images.toString();
 
     const { _token } = req.cookies
 

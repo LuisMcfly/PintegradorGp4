@@ -161,7 +161,6 @@ const productEditRender = async (req, res) => {
 const productEdit = async (req, res) => {
 
     const { id } = req.params;
-    // return res.send(req.body)
 
     // Validacion de que el producto si existe
     const product = await Product.findByPk(id);
@@ -170,14 +169,16 @@ const productEdit = async (req, res) => {
     }
 
     let image = []
+    let images
     if (req.files[0] != undefined) {
         for (let i = 0; i < req.files.length; i++) {
             image.push(req.files[i].filename)
         }
+        images = image.toString();
     } else {
-        image = ['noImage.png'];
+        images = product.images;
     }
-    let images = image.toString();
+    
 
     // Validaciones
     await check('name').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
