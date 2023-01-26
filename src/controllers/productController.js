@@ -18,7 +18,7 @@ const productDetailRender = async (req, res) => {
     const { id } = req.params;
 
     // Validacion de que el producto si existe
-    const productInfo = await Product.findByPk(id, {
+    const product = await Product.findByPk(id, {
         include: [
             { model: Manufacturer, as: 'manufacturer' },
             { model: Category, as: 'category' },
@@ -29,7 +29,7 @@ const productDetailRender = async (req, res) => {
     });
 
     // return res.send(productInfo)
-    return res.render('products/productDetail', { productInfo, uploadsPath })
+    return res.render('products/productDetail', { product, uploadsPath })
 }
 
 
@@ -283,7 +283,9 @@ const productDelete = async (req, res) => {
 
 const addToCart = async (req, res) => {
 
-    let invoice = localStorage.setItem('invoice', 5)
+    res.locals.invoice = 5
+    invoice = res.locals.invoice
+    return res.send(invoice)
 }
 
 module.exports = {
