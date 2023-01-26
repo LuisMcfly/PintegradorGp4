@@ -159,7 +159,7 @@ const productEditRender = async (req, res) => {
 const productEdit = async (req, res) => {
 
     const { id } = req.params;
-    // return res.send(req.body)
+    return res.send(req.body)
 
     // Validacion de que el producto si existe
     const product = await Product.findByPk(id);
