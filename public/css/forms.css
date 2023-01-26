@@ -66,23 +66,39 @@ select > option {
 
 label[for=uploadImage] {
   position: relative;
+  width: 250px;
+  height: 250px;
   border: 5px white;
   border-style: solid;
   border-radius: 50%;
-  place-items: center;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 label[for=uploadImage]:hover,
+label[for=uploadImage]:hover ~ .add-image-icon,
 label[for=uploadImage]:hover ~ .fa-file-image,
 label[for=uploadImage]:hover ~ .fa-circle-plus {
   border-color: var(--colorAzul);
+}
+
+.image-edit-area {
+  height: 100%;
+}
+.image-edit-area > img {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 125px;
 }
 #uploadImage {
   display: none;
 }
 .add-image-icon {
   position: absolute;
-  left: 108px;
-  top: 105px;
+  transform: translate(15%, 5%);
+  /* left: 108px;
+  top: 105px; */
 }
 .add-image-icon > .fa-file-image {
   font-size: 50px;

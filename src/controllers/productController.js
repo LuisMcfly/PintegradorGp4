@@ -95,20 +95,21 @@ const productCreate = async (req, res) => {
     };
 
 
-    const { productName,
-        manufacturer: manufacturer_id,
-        model,
-        features: features_id,
-        category: category_id,
-        description,
-        price,
-        discount,
-        stock
+    const { 
+        name, 
+        manufacturer: manufacturer_id, 
+        model, 
+        variations: features_id, 
+        category: category_id, 
+        description, 
+        price, 
+        discount, 
+        stock 
     } = req.body
 
     try {
         const productSave = await Product.create({
-            name: productName,
+            name,
             manufacturer_id,
             model,
             features_id,
@@ -129,6 +130,7 @@ const productCreate = async (req, res) => {
 const productEditRender = async (req, res) => {
 
     const productId = req.params.id;
+
     const product = await Product.findByPk(productId, {
         include: [
             { model: Manufacturer, as: 'manufacturer' },
@@ -159,7 +161,6 @@ const productEditRender = async (req, res) => {
 const productEdit = async (req, res) => {
 
     const { id } = req.params;
-    return res.send(req.body)
 
     // Validacion de que el producto si existe
     const product = await Product.findByPk(id);
@@ -168,14 +169,16 @@ const productEdit = async (req, res) => {
     }
 
     let image = []
+    let images
     if (req.files[0] != undefined) {
         for (let i = 0; i < req.files.length; i++) {
             image.push(req.files[i].filename)
         }
+        images = image.toString();
     } else {
-        image = ['noImage.png'];
+        images = product.images;
     }
-    let images = image.toString();
+    
 
     // Validaciones
     await check('name').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)

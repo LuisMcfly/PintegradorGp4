@@ -1,37 +1,37 @@
 const { check, validationResult } = require('express-validator');
-const { Product, Category, Manofacturers, Features } = require('../../models/index');
+
+const { Product, Category, Manufacturer, Features } = require('../../models/index');
 //'products/productShop'
 const productShopRender = async (req, res) => {
-    /* const [products] = await Promise.all([Product.findAll()], {
+    
+    /* const products = await Product.findAll( {
         include: [
-            {model: Category, as: 'category'}
-        ]
-    }) */
+        { model: Manufacturer, as: 'manufacturer'},
+        { model: Category, as: 'category'},
+        { model: Features, as: 'feature'}
+    ]}); */
 
-
-    /* const products = await Product.findAll({
-        include: [
-            {
-                model: Category, as: 'category'
-            }
-        ]
-    }) */
-
-    const [categorys, manofacturers, features, products] = await Promise.all([
+     const [categorys, manufacturers, features, products] = await Promise.all([
         Category.findAll(),
-        Manofacturers.findAll(),
+        Manufacturer.findAll(),
         Features.findAll(),
         Product.findAll()
-    ])
-
+    ]) 
+ 
     return await res.status(200).json({
         total: products.length,
         categorys,
         data: products,
         status: 200
-    })
-    
-}  
+    }) 
+
+   /*  return await res.status(200).json({
+        total: products.length,
+        data: products,
+        status: 200
+    }) */
+
+}  //fin
 
 /* const product = await Product.findByPk(id, {
     include: [
