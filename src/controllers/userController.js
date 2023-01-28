@@ -112,7 +112,7 @@ const userEdit = async (req, res) => {
             images.push(req.files[i].filename)
         }
     } else {
-        images = ['noImage.png'];
+        images = ['defaultUserImage.png'];
     }
     image = images.toString();
 

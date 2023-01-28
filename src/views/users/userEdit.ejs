@@ -6,7 +6,7 @@
   <form action="/users/edit" method="POST" id="saveEditForm" enctype="multipart/form-data" multiple></form>
 </head>
 
-<body>
+<body class="form-background">
   <%- include('../partials/header') %>
   <main class="form-container user-edit-grid">    
 
@@ -16,10 +16,8 @@
         <div class="image-edit-area">
           <img src="/img/uploads/users/<%= userInfo.image %>" class="darken"/>
         </div>
-
         <div class="add-image-icon">
           <i class="fa-regular fa-file-image"></i>
-          <i class="fa-solid fa-circle-plus"></i>
         </div>
 
       </label>
@@ -43,8 +41,13 @@
 
       <div class="form-field">
         <label for="email"><p>Correo electrónico</p></label>
-        <input type="email" name="email" id="email" class="text-input"
+        <% if(userInfo.userType == 'Admin') { %> 
+          <input type="email" name="email" id="email" class="text-input"
+          form="saveEditForm" value="<%= userInfo ? userInfo.email : '' %>" readonly>
+        <% } else { %>
+          <input type="email" name="email" id="email" class="text-input"
           form="saveEditForm" value="<%= userInfo ? userInfo.email : '' %>">
+        <% } %>
         <% if(locals.errors && errors.email) {%> 
           <div class="error-message">
             <p> <%= errors.email.msg %> </p>
@@ -73,20 +76,35 @@
           </div>
         <% }; %>
       </div>
-      <% console.log(userInfo) %> 
+
       <div class="form-field">
         <label><p>Género</p></label>
         <div class="check-container">
-          <input type="radio" name="gender" id="genderOpt1" 
-          class="with-font" form="saveEditForm" value="Masculino">
+          <% if (userInfo.gender == 'Masculino') { %>
+            <input type="radio" name="gender" id="genderOpt1" 
+            class="with-font" form="saveEditForm" value="Masculino" checked>
+          <% } else { %> 
+            <input type="radio" name="gender" id="genderOpt1" 
+            class="with-font" form="saveEditForm" value="Masculino">
+          <% } %>
           <label for="genderOpt1" class="icon paragraph"> Masculino </label>
 
-          <input type="radio" name="gender" id="genderOpt2" 
+          <% if (userInfo.gender == 'Femenino') { %>
+            <input type="radio" name="gender" id="genderOpt2" 
           class="with-font" form="saveEditForm" value="Femenino">
+          <% } else { %> 
+            <input type="radio" name="gender" id="genderOpt2" 
+          class="with-font" form="saveEditForm" value="Femenino">
+          <% } %>
           <label for="genderOpt2" class="icon paragraph"> Femenino </label>
 
-          <input type="radio" name="gender" id="genderOpt3" 
-          class="with-font" form="saveEditForm" value="Otro">
+          <% if (userInfo.gender == 'Otro') { %>
+            <input type="radio" name="gender" id="genderOpt3" 
+            class="with-font" form="saveEditForm" value="Otro" checked>
+          <% } else { %> 
+            <input type="radio" name="gender" id="genderOpt3" 
+            class="with-font" form="saveEditForm" value="Otro">
+          <% } %>
           <label for="genderOpt3" class="icon paragraph"> Otro </label>
         </div>
       </div>

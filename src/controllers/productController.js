@@ -157,6 +157,7 @@ const productEditRender = async (req, res) => {
         categories,
         manufacturers,
         features,
+        uploadsPath
     });
 };
 
