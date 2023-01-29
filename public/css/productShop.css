@@ -1,19 +1,13 @@
-main{
+main {
   padding: 5px;
-  display: flex;
-  flex-direction: column;
-
+  display: grid;
+  grid-template-columns: 25% 75%;
 }
 
-main .shop-producto {
-  padding: 10px 5px;
-  border-bottom: 1px solid gray;
-  /* margin: 5px 0px; */
-
-  display: flex;
-  flex-direction: row;
-  /* justify-content: space-between; */
-  gap: 10px;
+main > .products-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .shop-producto > .producto-img {
@@ -59,9 +53,6 @@ main .shop-producto {
   } 
   .shop-producto .info-de-producto {
     flex: 3;
-  }
-  .info-de-producto * {
-    /* margin: 3px; */
   }
 }
 

@@ -1,48 +1,50 @@
 header {
-  background-color: black;
+  background-color: var(--colorPetroleo);
   width: 100%;
-  height: 100px;
+  height: 100%;
+  max-height: 100px;
   margin-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
-  height: 18rem;
-  object-fit: contain;
-}
-.mini-logo {
-  display: none;
-  height: 5.5rem;
-  object-fit: contain;
-}
-
-#search {
-  display: none;
-}
-#search:checked .logo {
-  display: none;
-}
-#search:checked .mini-logo {
+.logo-container {
   display: block;
+  width: 100px;
+  min-height: 100%;
+  padding: 10px;
 }
 
-.bar-container .nav-search-input {
+.logo-desktop {
   display: none;
-  height: 30px;
-  border-radius: 5px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
-.bar-container button{
-  display: none;
-  background-color: rgba(0, 0, 0, 1);
-  border: rgba(0, 0, 0, 1);
+
+.logo-mobile {
+  display: block;
+  object-fit: contain;
+}
+
+.bar-container {
+  flex: 1;
+  padding: 20px;
+}
+.bar-container .nav-search-input {
+  width: 85%;
+  border-color: white;
+}
+.bar-container button {
+  /* display: none; */
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
   width: 3rem;
   height: 3rem;
 }
 
-.bar-container .fa-search {
-  background-color: black;
+.bar-container i {
   color: white;
   font-size: 2.1rem;
 }
@@ -57,6 +59,7 @@ header {
   animation-duration: 0.1s;
   animation-fill-mode: forwards;
 }
+
 
 .bar-btn.open .top-line {
   animation-name: top-line-animation;
@@ -100,15 +103,17 @@ header {
 }
 
 .nav-menu {
-  background: rgba(0, 0, 0, 1);
+  background: var(--colorPetroleo);
   list-style: none;
   text-align: center;
   position: absolute;
-  top: 100px;
+  top: 95px;
   right: -40rem;
   width: 0px;
-  height: 40rem;
-  padding: 0px 20px;
+  height: 30rem;
+  padding: 0px 15px;
+  border-radius: var(--borderRadiusPopUp) 
+    0 0 var(--borderRadiusPopUp);
   z-index: 5;
 
   display: flex;
@@ -116,29 +121,39 @@ header {
   justify-content: space-evenly;
 }
 .nav-menu li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
   color: white;
   font-size: 1.6rem;
   font-weight: 600;
   margin-right: 0.5rem;
 }
-
 .nav-menu li a.active,
 .nav-menu li a:hover {
-  color: var(--primario);
+  color: var(--colorAzulNeon);
   transition: 0.3s;
 }
+.nav-menu li a > img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
 
-.nav-menu .nav-carrito {
-  color: var(--primario) !important;
-}
-.nav-menu .nav-carrito:hover {
-  color: var(--secundario) !important;
-}
 .nav-menu li a .fa-user {
   border: solid 1px;
   padding: 5px;
   border-radius: 50%;
   margin: 5px;
+}
+
+.nav-menu .fa-cart-shopping {
+  color: var(--colorAzulNeon)
+}
+.nav-menu .fa-cart-shopping:hover {
+  color: var(--colorMagenta)
 }
 
 #check {
@@ -150,30 +165,21 @@ header {
   transition-duration: 0.5s;
 }
 
-.button1 {
-  padding: 1rem 3rem;
-  background-color: var(--primario);
-  color: #fff;
-  border-radius: 0.5rem;
-}
-.button1:hover {
-  background-color: var(--fsecundario);
-  color: #fff;
-  transition: 0.5s;
-}
-.button2 {
-  padding: 1rem 3rem;
-  background-color: var(--secundario);
-  color: #fff;
-  border-radius: 0.5rem;
-}
-.button2:hover {
-  background-color: var(--fprimario);
-  color: #fff;
-  transition: 0.5s;
-}
-
 @media (min-width: 900px){ /* PC Small */
+  .logo-container {
+    width: 250px;
+    padding: 0;
+  }
+  .logo-desktop {
+    display: block;
+  }
+  .logo-mobile {
+    display: none;
+  }
+
+  .bar-container input {
+    width: 90%;
+  }
 
   .bar-btn {
     display: none;
@@ -202,6 +208,7 @@ header {
   }
 
   .nav-menu {
+    background: rgba(0, 0, 0, 0);
     position: relative;
     align-self: flex-end;
     top: 0px;
@@ -237,13 +244,4 @@ header {
 }
 
 @media (min-width: 1280px) { /* PC Big */
-  .nav-menu li a {
-    font-size: 1.8rem;
-    font-weight: 600;
-    /* margin-right: 2rem; */
-  }
-  .bar-container .nav-search-input {
-    display: block;
-    width: 430px;
-  }
 }

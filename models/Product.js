@@ -1,34 +1,39 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db.js');
 
-const Propiedad = db.define('Propiedades', {
-    id: {
-        type: DataTypes.UUID(5),
-        defaultValue: DataTypes.UUIDV4(5),
-        allowNull: false,
-        primaryKey: true
-    },
-    titulo: {
-        type: DataTypes.STRING(100),
-        allowNull: false
-    },
-    descripcion: {
-        type: DataTypes.TEXT,
-        allowNull: false
-    },
-    habitaciones: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    imagen: {
+const Product = db.define('products', {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    publicado: {
-        type: DataTypes.BOOLEAN,
+    model: {
+        type: DataTypes.STRING,
+        
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    price: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: false
-    }
+        defaultValue: 0
+    },
+    discount: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    stock: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    images: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'defaultProductImage.png'
+    }   
 });
 
-module.exports = Propiedad;
+module.exports = Product;

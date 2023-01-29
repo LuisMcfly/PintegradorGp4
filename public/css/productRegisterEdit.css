@@ -1,0 +1,21 @@
+.product-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 95%;
+  max-width: 1000px;
+  margin: 0px auto 5px;
+}
+
+.product-image {
+  align-items: center;
+}
+.product-image img {
+  width: 250px;
+}
+
+@media (min-width: 430px) { /* For Tablets */
+}
+
+@media (min-width: 769px) { /* For PC */
+}

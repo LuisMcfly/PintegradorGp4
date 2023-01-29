@@ -1,45 +1,63 @@
-const fs = require('fs');
-const { builtinModules } = require('module');
-const filename = './DB/users.json';
+const { DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
+const db = require('../config/db.js');
 
-const userWrite = (userInfo) => {
-    let userList = requestUserList();
-    let newUser = { id: idGenerator(), ...userInfo};
-
-    if(!userSearch('email', userInfo.email)) {
-        userList.push(newUser);
-        dataBaseWrite(userList);
+const User = db.define('users', {
+    fullName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    phone: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    address: {
+        type: DataTypes.STRING,
+        defaultValue: 'Sin Definir'
+    },
+    gender: {
+        type: DataTypes.STRING,
+        defaultValue: 'Sin Definir'
+    },
+    userType: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'User'
+    },
+    image: {
+        type: DataTypes.STRING,
+        defaultValue: 'defaultUserImage.png'
+    },
+    token: DataTypes.STRING,
+    confirmado: DataTypes.BOOLEAN
+}, 
+{
+    hooks: {
+        beforeCreate: async function(Usuario) {
+            const salt = await bcrypt.genSalt(10);
+            Usuario.password = await bcrypt.hash( Usuario.password, salt);
+        }
+    },
+    scopes: {
+        eliminarPassword:{
+            attributes: {
+                exclude: ['password', 'token', 'confirmado', 'createdAt', 'updatedAt']
+            }
+        }
     }
 }
+);
 
-const userSearch = (field, value) => {
-    let userList = requestUserList()
-    return userList.find(user => user[field] === value)
-}
+User.prototype.verificarPassword = function(password){
+    return bcrypt.compareSync(password, this.password)
+};
 
-const userErase = (userId) => {
-    let userList = requestUserList().filter(producto => producto.id != userId);
-    dataBaseWrite(userList);
-}
-
-const requestUserList = () => {
-    return JSON.parse(fs.readFileSync(filename, 'utf-8'));
-}
-
-const dataBaseWrite = (info) => {
-    fs.writeFileSync('DB/users.json', JSON.stringify(info, null, ' '));
-}
-
-const idGenerator = () => {
-    let userList = requestUserList();
-    let lastUser = userList.pop();
-
-    return lastUser ? lastUser.id + 1 : 1; // está vacía la tabla?
-}
-
-module.exports = {
-    requestUserList,
-    userSearch,
-    userWrite,
-    userErase
-}
+module.exports = User;

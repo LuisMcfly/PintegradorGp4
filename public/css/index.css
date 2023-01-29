@@ -1,3 +1,7 @@
+body {
+  display: block;
+}
+
 /* SLIDER */
 
 [class^="swiper-button-"] {
