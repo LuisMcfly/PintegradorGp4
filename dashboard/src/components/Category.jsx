@@ -4,14 +4,20 @@ import { useFetch } from '../hooks/useFetch';
 
 export const Category = ({info, category}) => {
   const {data} = useFetch("http://localhost:3000/api")
-  console.log(data)
+
   const notifySuccess = () => toast.success('🦄 Categoria modificada con exito!! 🦄', {
     position: "top-center",
     autoClose: 1000,
     theme: "dark",
-    })
+  })
 
-  const notifyDanger = () => toast.error("Le pedimos que se detenga un momento!", {
+  const notifyDeleteSuccess = () => toast.success('🦄 Categoria Eliminada con exito!! 🦄', {
+      position: "top-center",
+      autoClose: 1000,
+      theme: "dark",
+  })
+
+  const notifyDanger = () => toast.error("La categoría esta asociada a uno o varios productos por lo que no es posible eliminarla, puede actualizarla con el botón Modificar !", {
     position: "top-center",
     theme: "dark",
   })
@@ -33,33 +39,27 @@ export const Category = ({info, category}) => {
     //setCategory({name: ''})
   }
 
-  
-  //si se desea eliminar se puede poner una condición de que elimine todos los productos o que las categorias con productos solo se pueden editar
+
   const onDelete = (id) => {
-    /*   if(!category){
-          return
-      } */
-      const prodByCat = (id) => data.filter(prod => prod.category_id == id)
-      console.log('>>> ',prodByCat(id))
-      //const asignarCategoriaDefault = info.filter(cat => cat.arrXCat.map(prod => prod.category_id == id))
-      //console.log('length ', prodByCat)
-      if(prodByCat[0].legth >= 1){
+      if(!category) return//que no llegue un valor null
+      
+      const prodByCat = data.filter(prod => prod.category_id == id)
+
+      if(prodByCat.length >= 1){
         notifyDanger() 
         return
       }
-      //if(asignarCategoriaDefault)console.log('yea')
-      //coger los productos y cambiar la categoria
 
-          /* const requestInit = {
-              method: 'DELETE',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify(category)
-          }
-          fetch('http://localhost:3000/category/' + id, requestInit)
-              .then(res => res.json())
-              .then(console.log) */
-  
-      //notify()
+      const requestInit = {
+          method: 'DELETE',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(category)
+      }
+      fetch('http://localhost:3000/category/' + id, requestInit)
+          .then(res => res.json())
+          .then(console.log)
+
+          notifyDeleteSuccess()
       //setCategory({name: ''})
     }
 

@@ -113,9 +113,5 @@ const removeFromCart = (req, res) => {
 
 
 module.exports = {
-    cartRender,
-    addToCart,
-    add1ToCart,
-    subtract1FromCart,
-    removeFromCart
+    cartRender
 };

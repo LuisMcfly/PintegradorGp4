@@ -3,7 +3,7 @@
 
 ---------------------------------------------
 
-## 2. HACER MAS
+## 2. HACER MÁS
 * Mejorar el manejo de Git desde terminal
 * Repartir mejor el trabajo
 * Distribuir mejor la estructura de archivos

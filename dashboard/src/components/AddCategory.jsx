@@ -13,12 +13,20 @@ export const AddCategory = ({category, setCategory}) => {
         theme: "dark",
         })
 
+    const notifyAlert = () => toast.warning('El campo no puede estar vacio 🦄', {
+        position: "top-center",
+        autoClose: 1000,
+        theme: "dark",
+        })
+
+        //importante validar que la categoria no exista
     let {name} = category
 
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if(!name){
+        if(!name || name.trim().length == 0){
+            notifyAlert()
             return
         }
             const requestInit = {
@@ -47,7 +55,6 @@ export const AddCategory = ({category, setCategory}) => {
         <button
             className="btn btn-outline-primary mt-3"
             type='submit'
-            /* onClick={notify} */
             >
             Agregar
         </button>

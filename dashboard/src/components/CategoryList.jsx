@@ -3,11 +3,11 @@ import { AddCategory } from "./AddCategory"
 import { useState } from "react"
 
 export const CategoryList = (props) => {
-  //aca es donde deboo hacer el fecth a books para poder distribuir a los demas componentes
-  const [category, setCategory] = useState({//esto es lo que va mucho antes
+  
+  const [category, setCategory] = useState({
     name: ''
 })
-console.log('fff ', category)
+
     const prodByCat = (cat) => props.data.filter(prod=> prod.category_id == cat)
     
     const catProd = props.cat.map(ca => ({
@@ -22,7 +22,7 @@ console.log('fff ', category)
             <div className="row mt-3">
               <div className="col-7">
                 <div className="d-flex justify-content-between align-items-center">
-                  <h1 >Lista de Categorías</h1>
+                  <h1>Lista de Categorías</h1>
                   <span>Cantidad de categorías: {catProd.length}</span>
                 </div>
                 <hr />

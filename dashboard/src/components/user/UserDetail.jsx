@@ -10,7 +10,7 @@ export const UserDetail = () => {
     if(data){
       user = data.filter(user => user.id == id) 
     } 
-console.log(data)
+
     return (
         <>
             {

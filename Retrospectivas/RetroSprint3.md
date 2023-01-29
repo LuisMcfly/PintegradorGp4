@@ -3,7 +3,7 @@
 
 ---------------------------------------------
 
-## 2. HACER MAS
+## 2. HACER MÁS
 * Realizar un mejor seguimiento a las tareas pendientes y a los posibles obstáculos que se presenten
 * Si una tarea afecta el desarrollo de las tareas de otros integrantes se prioriza y se le hace un seguimiento más exhaustivo para no provocar retrasos en la respectiva programación.
 

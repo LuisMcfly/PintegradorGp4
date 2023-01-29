@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { useFetch } from "../../hooks/useFetch"
 import { Loading } from "../Loading"
 import { UserDetail } from "./UserDetail"
@@ -29,7 +29,7 @@ export const User = () => {
                                     <tr>
                                         <th  scope="row">{user.id}</th>
                                         <td className="d-flex justify-content-between">{user.fullName}
-                                            <NavLink to={{pathname:`/userDetail/${user.id}`}} className="text-decoration-none" >ver</NavLink>
+                                            <NavLink to={{pathname:`/userDetail/${user.id}`}} className="text-decoration-none" >ver detalle</NavLink>
                                         </td>        
                                     </tr>
                                 </tbody>
