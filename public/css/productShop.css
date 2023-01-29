@@ -1,13 +1,13 @@
 main {
   padding: 5px;
-  /* display: grid;
-  grid-template-columns: 25% 75%; */
+  display: grid;
+  grid-template-columns: 25% 75%;
 }
 
-.products-display {
+main > .products-display {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .shop-producto > .producto-img {
@@ -48,11 +48,6 @@ main {
     padding: 5px 20px;
   }
 
-  .products-display {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
   .shop-producto > .producto-img {
     flex: 2;
   } 
@@ -62,8 +57,5 @@ main {
 }
 
 @media (min-width: 769px) { /* For PC */
-  .products-display {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
+
 }

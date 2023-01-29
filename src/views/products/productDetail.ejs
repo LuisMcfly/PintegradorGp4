@@ -4,8 +4,7 @@
 <head>
   <link rel="stylesheet" href="/css/productDetail.css" />
   <title>Pegasus Tech | Producto</title>
-  <script src="/js/cartLocalStorage.js"></script>
-  <form action="/cart/addToCart/<%= product.id %> " id="addToCart" method="POST"></form>
+  <form action="" id="addToCart"></form>
 </head>
 
 <body> 
@@ -13,22 +12,20 @@
 
   <main class="product">
     <div class="img">
-      <img src="<%= uploadsPath + '/products/' + product.images %>" alt="product.name"/>
+      <img src="<%= uploadsPath + '/products/' + productInfo.images %>" alt="productInfo.name"/>
     </div>
     <div class="product-info">
 
-      <div class="product-category"><p>Categoría: <%= product.category.name ? product.category.name : null  %> </p></div>
-      <div class="product-name"><h1><%= product.name %> </h1></div>
-      <div class="product-price"><h3>$ <%= product.price %> </h3></div>
-      <div class="product-description"><p><%= product.description %> </p></div>
-      <div class="product-stock"><h5>Stock: <%= product.stock %> </h5></div>
+      <div class="product-category"><p>Categoría: <%= productInfo.category.name ? productInfo.category.name : null  %> </p></div>
+      <div class="product-name"><h1><%= productInfo.name %> </h1></div>
+      <div class="product-price"><h3>$ <%= productInfo.price %> </h3></div>
+      <div class="product-description"><p><%= productInfo.description %> </p></div>
+      <div class="product-stock"><h5>Stock: <%= productInfo.stock %> </h5></div>
       
       <div class="form-buttons">
-        <input type="hidden" name="price" form="addToCart" value="<%= product.price %>">
-        <input type="hidden" name="discount" form="addToCart" value="<%= product.discount %>">
-        <button type="submit" form="addToCart" class="btn main-button">Agregar al Carrito</button>
+        <button type="button" form="addToCart" class="btn main-button">Agregar al Carrito</button>
         <% if (locals.isLogged && locals.userType == "Admin") { %>
-          <a href="/products/productEdit/<%= product.id %>" class="btn">Editar Producto</a>
+          <a href="/products/productEdit/<%= productInfo.id %>" class="btn">Editar Producto</a>
         <% } %> 
       </div>
     </div>

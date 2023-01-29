@@ -4,42 +4,40 @@ const { Product, Category, Manufacturer, Features } = require('../../models/inde
 //'products/productShop'
 const productShopRender = async (req, res) => {
     
-    /* const products = await Product.findAll( {
-        include: [
-        { model: Manufacturer, as: 'manufacturer'},
-        { model: Category, as: 'category'},
-        { model: Features, as: 'feature'}
-    ]}); */
-
-     const [categorys, manufacturers, features, products] = await Promise.all([
+    
+     const [categorys, manufacturers, features] = await Promise.all([
         Category.findAll(),
         Manufacturer.findAll(),
         Features.findAll(),
         Product.findAll()
     ]) 
- 
-    return await res.status(200).json({
+    
+   /* return await res.status(200).json({
         total: products.length,
         categorys,
         data: products,
         status: 200
-    }) 
-
-   /*  return await res.status(200).json({
+    })  */
+    
+    /************** */
+    const products = await Product.findAll( {
+        include: [
+        { model: Manufacturer, as: 'manufacturer'},
+        { model: Category, as: 'category'},
+        { model: Features, as: 'feature'}
+    ]});
+    
+    return await res.status(200).json({
         total: products.length,
+        manufacturers,
+        features,
+        categorys,
         data: products,
         status: 200
-    }) */
+    })
 
 }  //fin
 
-/* const product = await Product.findByPk(id, {
-    include: [
-        {model: Manofacturers, as: 'manofacturer'},
-        {model: Category, as: 'category'},
-        {model: Features, as: 'feature'}
-    ]
-}); */
 
 /* const productDetailRender = async (req, res) => {
     

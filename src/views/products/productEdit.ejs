@@ -8,20 +8,17 @@
     id="saveEditForm" enctype="multipart/form-data"></form>
 </head>
     
-<body class="form-background">
+<body>
   <%- include('../partials/header.ejs') %> 
   <main class="form-container product-form-grid">
     <section class="form-section product-image">
       <label for="uploadImage">
         <div class="image-edit-area">
-          <% if(product.images == "noImage.png") { %>
-            <img src="" class="darken"/>
-          <% } else { %>
-            <img src="<%= uploadsPath + '/products/' + product.images %>" class="darken"/>
-          <% } %>
+          <img src="<%= product.image %>" class="darken"/>
         </div> 
         <div class="add-image-icon">
           <i class="fa-regular fa-file-image"></i>
+          <i class="fa-solid fa-circle-plus"></i>
         </div>
       </label>
       <input type="file" name="uploadImage" id="uploadImage" form="saveEditForm">

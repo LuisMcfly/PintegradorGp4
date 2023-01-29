@@ -10,7 +10,7 @@
   <%- include('../partials/header.ejs') %>
   
   <main>
-    <!-- <section class="shop-filters">
+    <section class="shop-filters">
       <div class="filter">
         <h3>Categoría</h3>
         <input type="checkbox" name="category" id="category" value="Procesadores" form="applyFilters">
@@ -20,9 +20,10 @@
         <h3>Marca</h3>
         <input type="checkbox" name="" form="applyFilters">
       </div>
-    </section> -->
+    </section>
     <section class="products-display">
       <% for (let i=0; i<products.length; i++) {%>
+        <!-- <% productName = products[i].manufacturer_id + products[i].line_id + products[i].variation %> -->
         <div class="product-preview">
           <div class="preview-img">
             <img src="/img/uploads/products/<%= products[i].images %>"/>

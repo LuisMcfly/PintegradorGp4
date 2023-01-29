@@ -36,6 +36,8 @@ const cartRouter = require('./routes/cart');
 const userRouter = require('./routes/user');
 const categoryRouter = require('./routes/category')
 const userApi = require('./routes/userApi')
+const featureRouter = require('./routes/features')
+const manufacturerRouter = require('./routes/manufacturer')
 const methodOverride =  require('method-override'); // Para poder usar los métodos PUT y DELETE
 
 // const http = require('http');
@@ -61,8 +63,10 @@ app.use('/cart/', cartRouter);
 app.use('/users/', userRouter);
 
 app.use('/category', categoryRouter);
-app.use('/api', productRouterApi);///xoxoxoxoxo
+app.use('/api', productRouterApi);
 app.use('/userApi', userApi)
+app.use('/features', featureRouter)
+app.use('/manufacturer', manufacturerRouter)
 
 app.get('/slide.js', (req,res) => res.sendFile(__dirname + '/controllers/sliderController.js')); // Ruta del slider funcionando ! 
 app.use((req, res, next) => {

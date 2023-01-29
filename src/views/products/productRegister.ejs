@@ -103,7 +103,7 @@
         <label for="description"><p>Descripción</p></label>
         <input type="texta" name="description" id="description" class="text-input" 
           form="productCreate" value="<%= product ? product.description : '' %>">
-        <% if(locals.errors && errors.name) {%> 
+        <% if(locals.errors && errors.description ) {%> 
           <div class="error-message">
             <p> <%= errors.description.msg %> </p>
           </div>
