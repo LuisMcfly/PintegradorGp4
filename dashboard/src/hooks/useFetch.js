@@ -2,20 +2,24 @@ import { useEffect, useState } from "react"
 
 export const useFetch = (url) => {
   const [state, setState] = useState({
-    categorys: null,
     data: null,
+    categorys: null,
+    features: null,
+    manufacturers: null,
      isLoading: true,
   })
 
   const getFetch = async () => {
 
     const resp = await fetch(url)
-    const {data, categorys} = await resp.json()
+    const { data, categorys, features, manufacturers } = await resp.json()
     //if(data)
 
     setState({
-      categorys,
       data,
+      categorys,
+      features,
+      manufacturers,
       isLoading: false,
     })
   }
@@ -26,8 +30,10 @@ export const useFetch = (url) => {
   }, [url])
 
     return {
-      categorys: state.categorys,
       data: state.data,
+      categorys: state.categorys,
+      features: state.features,
+      manufacturers: state.manufacturers,
       isLoading: state.isLoading,
     }
 }

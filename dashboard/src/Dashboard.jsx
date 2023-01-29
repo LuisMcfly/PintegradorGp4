@@ -1,14 +1,16 @@
 import { LastProductInList, ProductList, Categories } from "./components";
-import { Route, Link, Routes, NavLink } from "react-router-dom";
+import { Route, Link, Routes, NavLink, Navigate } from "react-router-dom";
 import { User } from "./components/user/User";
-//import { Test } from "./components/user/Test";
 import { UserDetail } from "./components/user/UserDetail";
+import { FeatureApp } from "./components/features/FeatureApp";
+import { ManufacturerApp } from "./components/manufacturers/ManufacturerApp";
+import { ManufacturerProvider } from "./components/context/ManufacturerProvider";
 
 export const Dashboard = () => {
 
   return (
-    <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <ManufacturerProvider>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-secondary fs-5">
         <div className="container-fluid">
           <Link className="navbar-brand" href="#">
             Dashboard
@@ -28,13 +30,6 @@ export const Dashboard = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               
               <NavLink 
-               to="/LastProductInList"
-               className={({isActive})=>`nav-link ${isActive ? 'active' : ''}`}
-              >
-                Último producto registrado
-              </NavLink>
-              
-              <NavLink 
                to="/productList"
                className={({isActive})=>`nav-link ${isActive ? 'active' : ''}`}
               >
@@ -42,26 +37,47 @@ export const Dashboard = () => {
               </NavLink>
               
               <NavLink 
+               to="/LastProductInList"
+               className={({isActive})=>`nav-link ${isActive ? 'active' : ''}`}
+              >
+                Último producto registrado
+              </NavLink>
+
+              <NavLink 
                to="/categories"
                className={({isActive})=>`nav-link ${isActive ? 'active' : ''}`}
               >
-                Categorias
+                Lista de Categorías
               </NavLink>
               
+              
+              <NavLink 
+               to="/variaciones"
+               className={({isActive})=>`nav-link ${isActive ? 'active' : ''}`}
+              >
+                Lista de Variaciones
+              </NavLink>
+              
+              <NavLink 
+               to="/fabricantes"
+               className={({isActive})=>`nav-link ${isActive ? 'active' : ''}`}
+              >
+                Lista de Fabricantes
+              </NavLink>
+
               <NavLink 
                to="/usuarios"
                className={({isActive})=>`nav-link ${isActive ? 'active' : ''}`}
               >
                 Lista de Usuarios
               </NavLink>
-
+              
             </ul>
-            
           </div>
         </div>
       </nav>
       <Routes>
-        {/* Panel de detalle de último producto o usuario creado. casi OK*/}
+        {/* Panel de detalle de último producto o usuario creado.*/}
         <Route
           path="/LastProductInList"
           element={<LastProductInList />}
@@ -77,8 +93,14 @@ export const Dashboard = () => {
         <Route path="/usuarios" element={<User />} />
 
         <Route path="/userDetail/:id" element={<UserDetail />} />
+
+        <Route path="/variaciones/" element={<FeatureApp />} />
+
+        <Route path="/fabricantes/" element={<ManufacturerApp />} />
+
+        <Route path="*" element={<Navigate to='/usuarios' />} /> 
       </Routes>
-    </>
+    </ManufacturerProvider>
   );
 };
 

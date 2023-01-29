@@ -1,7 +1,6 @@
 import { useFetch } from "../hooks/useFetch"
 import { Loading, Product } from "./"
 
-
 export const LastProductInList = () => {
     const {data, isLoading} = useFetch("http://localhost:3000/api")
     
@@ -14,6 +13,9 @@ export const LastProductInList = () => {
                 <th scope="col"></th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Modelo</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Variaciones</th>
+                <th scope="col">Fabricante</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Descuento</th>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<%- include('../partials/head') %> 
+<head>
+  <link rel="stylesheet" href="/css/searchProducts.css">
+  <title>Document</title>
+  <form action="" id="applyFilters" method="POST"></form>
+</head>
+
+<body>
+  <%- include('../partials/header.ejs') %>
+  
+  <main>
+    <section class="products-display">
+      <% for (let i=0; i < productSearch.length; i++) {%>
+        <!-- <% productName = productSearch[i].manufacturer_id + productSearch[i].line_id + productSearch[i].variation %> -->
+        <div class="product-preview">
+          <div class="preview-img">
+            <img src="/img/uploads/products/<%= productSearch[i].images %>"/>
+          </div>
+          <div class="product-name">
+            <a href="../products/productDetail/<%= productSearch[i].id %>"><h3><%= productSearch[i].name %></h3></a>
+          </div>
+          <div class="price"><h2>$ <%= productSearch[i].price %></h2></div>
+        </div>
+      <% } %> 
+    </section>
+  </main>
+  <%- include('../partials/footer') %> 
+</body>
+</html>
