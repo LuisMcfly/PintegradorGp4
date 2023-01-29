@@ -1,14 +1,1 @@
-[
-    {
-        "userId": null,
-        "productId": 1,
-        "quantity": 2,
-        "netPrice": 6175000
-    },
-    {
-        "userId": null,
-        "productId": 2,
-        "quantity": 1,
-        "netPrice": 3060000
-    }
-]
+[]

@@ -18,10 +18,24 @@
         <div class="product-in-cart-img">
           <img src="/img/uploads/products/defaultProductImage.png">
         </div>
-
-        <div class="product-in-cart-info">
-          <div class="product-in-cart-name">
-            <a href="productDetail.html"><h2>Nombre del Producto</h2></a>
+            <div class="product-in-cart-name">
+              <a href="../products/productDetail/<%= products[i].id %>"><h2><%= products[i].name %></h2></a>
+            </div>
+            
+            <div class="product-in-cart-options">
+              <input type="text" form="checkoutForm" class="cart-input-text" value="<%= invoiceQuantity[i] %>">
+              <form class="visible-form" method="POST" action="/cart/subtract1FromCart/<%= products[i].id %>">
+                <button type="submit" class="quantity-button icon-button"><i class="fa-solid fa-square-minus"></i></button>
+              </form>
+              <form class="visible-form" method="POST" action="/cart/add1ToCart/<%= products[i].id %>">
+                <button type="submit" class="quantity-button icon-button"><i class="fa-solid fa-square-plus"></i></button>
+              </form>
+              <form class="visible-form" method="POST" action="/cart/removeFromCart/<%= products[i].id %>">
+                <button type="submit" class="remove-product icon-button">
+                  <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+              </form>
+            </div>
           </div>
           <div class="product-in-cart-options">
             <input type="text" form="checkoutForm" class="cart-input-text" value="1">
