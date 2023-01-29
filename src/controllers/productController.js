@@ -1,4 +1,6 @@
 const { check, validationResult } = require('express-validator');
+const Jwt = require('jsonwebtoken');
+// const { uuid } = require('uuidv4') // libreria para ids
 
 const { Op } = require("sequelize");
 const { Product, Category, Manufacturer, Features } = require('../../models/index');
@@ -18,7 +20,7 @@ const productDetailRender = async (req, res) => {
     const { id } = req.params;
 
     // Validacion de que el producto si existe
-    const productInfo = await Product.findByPk(id, {
+    const product = await Product.findByPk(id, {
         include: [
             { model: Manufacturer, as: 'manufacturer' },
             { model: Category, as: 'category' },
@@ -29,7 +31,7 @@ const productDetailRender = async (req, res) => {
     });
 
     // return res.send(productInfo)
-    return res.render('products/productDetail', { productInfo, uploadsPath })
+    return res.render('products/productDetail', { product, uploadsPath })
 }
 
 
@@ -155,13 +157,13 @@ const productEditRender = async (req, res) => {
         categories,
         manufacturers,
         features,
+        uploadsPath
     });
 };
 
 const productEdit = async (req, res) => {
 
     const { id } = req.params;
-    // return res.send(req.body)
 
     // Validacion de que el producto si existe
     const product = await Product.findByPk(id);
@@ -170,14 +172,16 @@ const productEdit = async (req, res) => {
     }
 
     let image = []
+    let images
     if (req.files[0] != undefined) {
         for (let i = 0; i < req.files.length; i++) {
             image.push(req.files[i].filename)
         }
+        images = image.toString();
     } else {
-        image = ['noImage.png'];
+        images = product.images;
     }
-    let images = image.toString();
+    
 
     // Validaciones
     await check('name').notEmpty().withMessage('El nombre del producto no puede estar vacio').run(req)
@@ -288,5 +292,5 @@ module.exports = {
     productDeleteRender,
     productCreate,
     productEdit,
-    productDelete,
+    productDelete
 }

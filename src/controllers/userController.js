@@ -5,6 +5,7 @@ const { generarId, generarJWT } = require('../../helpers/tokens.js');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const Jwt = require('jsonwebtoken');
+const fs = require('fs')
 const { uploadsPath } = require('../../helpers/filePaths')
 
 const registerRender = (req, res) => res.render('users/register', {
@@ -23,6 +24,7 @@ const editRender = async (req, res) => {
 }
 
 const logout = (req, res) => {
+    fs.writeFileSync('DB/invoice.json', JSON.stringify([], null, "    "));
     return res.clearCookie('_token').status(200).redirect('/');
 }
 
@@ -104,15 +106,15 @@ const userEdit = async (req, res) => {
     }
 
     let images = []
-
+    let image
     if (req.files[0] != undefined) {
         for (let i = 0; i < req.files.length; i++) {
             images.push(req.files[i].filename)
         }
     } else {
-        images = ['noImage.png'];
+        images = ['defaultUserImage.png'];
     }
-    let image = images.toString();
+    image = images.toString();
 
     const { _token } = req.cookies
 
