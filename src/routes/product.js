@@ -12,7 +12,6 @@ const {
     productCreate,
     productEdit,
     productDelete,
-    addToCart
 } = require('../controllers/productController');
 
 
@@ -37,6 +36,5 @@ router.get('/productDelete/:id', productDeleteRender)
 router.post('/productRegister', upload.array('uploadImage'), productCreate); //guarda los datos enviados en el form
 router.post('/productEdit/:id', upload.array('uploadImage'), productEdit);
 router.post('/productDelete/:id', productDelete);
-router.post('/addToCart/:id', addToCart)
 
 module.exports = router;

@@ -5,53 +5,66 @@
   <link rel="stylesheet" href="/css/productCart.css">
   <title>Pegasus Tech | Carrito de productos</title>
   <form action="" method="POST" id="checkoutForm"></form>
-  <form action="" method="POST" id="removeProductFromCart"></form>
 </head>
 <body>
   <%- include('../partials/header') %>
 
-  <main class="cart">
-    <h1 class="degradado">Carrito de productos</h1>
+  <% if(products) { %>
+    <main class="cart">
+      <h1 class="degradado">Carrito de productos</h1>
 
-    <% for(let i=0; i<5; i++) { %> 
-      <div class="product-in-cart">
-        <div class="product-in-cart-img">
-          <img src="/img/uploads/products/defaultProductImage.png">
-        </div>
-
-        <div class="product-in-cart-info">
-          <div class="product-in-cart-name">
-            <a href="productDetail.html"><h2>Nombre del Producto</h2></a>
+      <% for (let i=0; i<products.length; i++) { %> 
+        <div class="product-in-cart">
+          <div class="product-in-cart-img">
+            <img src="/img/uploads/products/<%= products[i].images %>">
           </div>
-          <div class="product-in-cart-options">
-            <input type="text" form="checkoutForm" class="cart-input-text" value="1">
-            <button class="quantity-button icon-button" onclick=""><i class="fa-solid fa-square-minus"></i></button>
-            <button class="quantity-button icon-button" onclick=""><i class="fa-solid fa-square-plus"></i></button>
-            <button type="submit" form="removeProductFromCart" class="remove-product icon-button">
-              <i class="fa-solid fa-circle-xmark"></i>
-            </button>
+
+          <div class="product-in-cart-info">
+            
+            <form method="POST" action="/cart/subtract1FromCart/<%= products[i].id %>" id="subtract1FromCart"></form>
+            <form method="POST" action="/cart/add1ToCart/<%= products[i].id %>" id="add1ToCart"></form>
+            <form method="POST" action="/cart/removeFromCart/<%= products[i].id %>" id="removeFromCart"></form>
+
+            <div class="product-in-cart-name">
+              <a href="../products/productDetail/<%= products[i].id %>"><h2><%= products[i].name %></h2></a>
+            </div>
+            
+            <div class="product-in-cart-options">
+              <input type="text" form="checkoutForm" class="cart-input-text" value="<%= invoiceQuantity[i] %>">
+              <button type="submit" form="subtract1FromCart" class="quantity-button icon-button"><i class="fa-solid fa-square-minus"></i></button>
+              <button type="submit" form="add1ToCart" class="quantity-button icon-button"><i class="fa-solid fa-square-plus"></i></button>
+              <button type="submit" form="removeFromCart" class="remove-product icon-button">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-in-cart-price">
+            <h3>$ <%= invoicePrices[i] %></h3>
           </div>
         </div>
+      <% } %> 
 
-        <div class="product-in-cart-price">
-          <h3>$500.000</h3>
-        </div>
+      <div class="cart-subtotal">
+        <h2>Total(<%= products.length %> items)</h2>
+        <h2>$ <%= totalPrice %> </h2>
       </div>
-    <% } %> 
 
-    <div class="cart-subtotal">
-      <h2>Total(# items)</h2>
-      <h2>$1'500.000</h2>
-    </div>
+      <div class="form-buttons">
+        <button class="btn main-button">Comprar!</button>
+      </div>
+    </main>
 
-    <div class="form-buttons">
-      <button class="btn main-button">Comprar!</button>
-    </div>
-  </main>
+  <% } else { %>
+    
+    <main class="empty-cart">
+      <div class="empty-cart-image">
+        <a href="../../products/" class="icon-button"><i class="fa-solid fa-cart-plus"></i></a>
+      </div>
+      <a href="../../products/" class="btn main-button">Anímate a llenar el carrito!</a>
+    </main>
 
-  <section class="recopilacion">
-      
-  </section>
+  <% } %>
 
   <%- include('../partials/footer') %>
 </body>

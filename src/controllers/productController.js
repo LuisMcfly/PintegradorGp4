@@ -1,12 +1,9 @@
 const { check, validationResult } = require('express-validator');
-const fs = require('fs')
 const Jwt = require('jsonwebtoken');
 // const { uuid } = require('uuidv4') // libreria para ids
 
 const { Op } = require("sequelize");
-const { User, Product, Category, Manufacturer, Features } = require('../../models/index');
-
-const invoiceObj = JSON.parse(fs.readFileSync('DB/invoice.json', { encoding: 'utf-8' }));
+const { Product, Category, Manufacturer, Features } = require('../../models/index');
 const { uploadsPath } = require('../../helpers/filePaths')
 
 const productShopRender = async (req, res) => {
@@ -160,6 +157,7 @@ const productEditRender = async (req, res) => {
         categories,
         manufacturers,
         features,
+        uploadsPath
     });
 };
 
@@ -286,40 +284,6 @@ const productDelete = async (req, res) => {
     res.redirect('/productShop');
 };
 
-const addToCart = async (req, res) => {
-    let userId
-
-    // busca si hay un usuario logeado
-    if(req.cookies._token) {
-        const decodedToken = Jwt.verify(req.cookies._token, process.env.JWT_SECRET)
-        const user = await User.scope('eliminarPassword').findByPk(decodedToken.id)
-        userId = user.id
-    } else {
-        userId = null;
-    }
-    
-    // let productId = parseInt(req.params.id, 10);
-    let productId = parseInt(req.params.id, 10);
-    let quantity = 1;
-    let netPrice = req.body.price * (1 - req.body.discount/100) // precio neto, calculando el descuento
-    let productToCart
-
-    // pregunta si existe
-    productToCart = invoiceObj.find(element => element.productId == productId)
-
-    if(productToCart) {
-        // por ser un objeto que se escribe en memoria como referencia, se actualiza al cambiar la propiedad desde la variable
-        productToCart.quantity += quantity 
-    } else {
-        // si no existe en el JSON, lo pushea
-        productToCart = {userId, productId, quantity, netPrice}
-        invoiceObj.push(productToCart)
-    }
-    
-    fs.writeFileSync('DB/invoice.json', JSON.stringify(invoiceObj, null, "    "));
-    return res.redirect('/products/')
-}
-
 module.exports = {
     productShopRender,
     productDetailRender,
@@ -328,6 +292,5 @@ module.exports = {
     productDeleteRender,
     productCreate,
     productEdit,
-    productDelete,
-    addToCart,
+    productDelete
 }

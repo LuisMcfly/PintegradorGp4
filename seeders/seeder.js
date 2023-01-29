@@ -1,8 +1,9 @@
 const { exit } = require('node:process');
-const { Category, Features, Manufacturer } = require('../models/Index');
+const { Category, Features, Manufacturer, User } = require('../models/Index');
 const category = require('./category');
 const features = require('./features');
 const manufacturers = require('./manufacturer');
+const users = require('./users');
 const db = require('../config/db');
 
 
@@ -18,7 +19,8 @@ const importData = async () => {
         await Promise.all([
             Category.bulkCreate(category),
             Features.bulkCreate(features),
-            Manufacturer.bulkCreate(manufacturers)
+            Manufacturer.bulkCreate(manufacturers),
+            User.bulkCreate(users)
         ]);
         
         console.log('Datos importados correctamente')

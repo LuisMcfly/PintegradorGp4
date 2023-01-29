@@ -25,7 +25,7 @@ html {
   --colorAzul: #5470DD;
   --colorAzulNeon: #07A5E3;
   --colorPetroleo: #0a141d;
-  --colorPetroleoOp: #0a141db3;
+  --colorPetroleoOp: rgba(10, 20, 29, 0.85);
 
   --borderRadius: 8%;
   --borderRadiusPopUp: 15px;
