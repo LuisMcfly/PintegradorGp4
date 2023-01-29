@@ -6,6 +6,9 @@
 form {
   display: none;
 }
+.visible-form {
+  display: block;
+}
 
 .form-container {
   padding: 0px;

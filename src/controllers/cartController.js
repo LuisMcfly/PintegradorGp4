@@ -90,10 +90,15 @@ const add1ToCart = (req, res) => {
 
 const subtract1FromCart = (req, res) => {
     let productId = parseInt(req.params.id, 10);
+    // let productId = req.params.id;
     let productToCart = invoiceObj.find(element => element.productId == productId)
 
-    productToCart.quantity -= 1;
-    // return res.send(invoiceObj)
+    if(productToCart.quantity == 1) {
+        invoiceObj = invoiceObj.filter(element => element.productId != productId)
+    } else {
+        productToCart.quantity -= 1;
+    }
+    
     fs.writeFileSync('DB/invoice.json', JSON.stringify(invoiceObj, null, "    "));
     return res.redirect('/cart/')
 }

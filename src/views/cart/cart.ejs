@@ -31,11 +31,17 @@
             
             <div class="product-in-cart-options">
               <input type="text" form="checkoutForm" class="cart-input-text" value="<%= invoiceQuantity[i] %>">
-              <button type="submit" form="subtract1FromCart" class="quantity-button icon-button"><i class="fa-solid fa-square-minus"></i></button>
-              <button type="submit" form="add1ToCart" class="quantity-button icon-button"><i class="fa-solid fa-square-plus"></i></button>
-              <button type="submit" form="removeFromCart" class="remove-product icon-button">
-                <i class="fa-solid fa-circle-xmark"></i>
-              </button>
+              <form class="visible-form" method="POST" action="/cart/subtract1FromCart/<%= products[i].id %>">
+                <button type="submit" class="quantity-button icon-button"><i class="fa-solid fa-square-minus"></i></button>
+              </form>
+              <form class="visible-form" method="POST" action="/cart/add1ToCart/<%= products[i].id %>">
+                <button type="submit" class="quantity-button icon-button"><i class="fa-solid fa-square-plus"></i></button>
+              </form>
+              <form class="visible-form" method="POST" action="/cart/removeFromCart/<%= products[i].id %>">
+                <button type="submit" class="remove-product icon-button">
+                  <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+              </form>
             </div>
           </div>
 
