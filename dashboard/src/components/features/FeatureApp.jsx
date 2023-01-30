@@ -7,13 +7,17 @@ import { FeatureList } from "./FeatureList";
 
 export const FeatureApp = () => {
 const {features, isLoading} = useFetch("http://localhost:3000/api")
+console.log('---> ',features)
+features && features.sort(function (a, b){
+    return a.name.localeCompare(b.name, 'en', { numeric: true })
+  });
 
 const [inputFeature, setInputFeature] = useState({
     name: ''
 })
     
     return (
-        <div className="container mt-3">
+        <div className=" container-fluid mt-5 p-5 bg-secondary">
             {
                 isLoading 
                 ?(
@@ -21,7 +25,10 @@ const [inputFeature, setInputFeature] = useState({
                     ):(
                         <div className="row  ">
                             <div className="col-7 ">
-                                <h1>Variaciones</h1>
+                                <div className="d-flex text-light justify-content-between align-items-center">
+                                    <h1>Variaciones</h1>
+                                    <span>Catidad de Variaciones: {features.length}</span>
+                                </div>
                                 <hr />
                                 <FeatureList
                                     features={ features } 
@@ -30,8 +37,8 @@ const [inputFeature, setInputFeature] = useState({
                                 />
                             </div>
 
-                            <div className="col-5">
-                                <h1>Agregar Variacion</h1>
+                            <div className="col-5 mt-2">
+                                <h1>Agregar Variación</h1>
                                 <hr />
                                 <FeatureAdd 
                                     features={ features } 

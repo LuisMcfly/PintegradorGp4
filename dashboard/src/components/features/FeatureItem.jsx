@@ -1,10 +1,14 @@
+import { useContext } from "react";
+import { ManufacturerContext } from "../context/ManufacturerContext";
+
 export const FeatureItem = (props) => {
+  const { updateSeccess, opDenied, deleteOption, inputEmpty} = useContext(ManufacturerContext);
 
 let name = props.feat.name
 
   const onUpdateFeature = (id) => {
       if(name.trim().length == 0){
-        alert('El campo no puede estar vacío')
+        inputEmpty()
           return
       }
           const requestInit = {
@@ -15,16 +19,14 @@ let name = props.feat.name
           fetch('http://localhost:3000/features/' + id, requestInit)
               .then(res => res.json())
               .then(console.log)
-  
-      //notifySuccess()
-      //setCategory({name: ''})
+          
+      updateSeccess()
     }
 
     const onDeleteFeature = (id) => {
 
       if(props.productLength >= 1){
-        //notifyDanger() 
-        alert('U can´t delete a feature if it is associate to one or more products, sry bb!')
+        opDenied()
         return
       }
     
@@ -36,12 +38,11 @@ let name = props.feat.name
           .then(res => res.json())
           .then(console.log)
     
-          //notifyDeleteSuccess()
-      //setCategory({name: ''})
+      deleteOption()
     }
   
   return (
-    <li className="list-group-item d-flex justify-content-between mt-2 align-items-center bg-warning">
+    <li className="list-group-item d-flex justify-content-between mt-2 align-items-center p-2 rounded bg-dark text-light fs-4">
       <span>{props.feature.name}</span>
       <div className="d-flex gap-2">
         <button 

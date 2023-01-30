@@ -7,6 +7,10 @@ import { CategoryList } from "./CategoryList"
 export const Categories = () => {
   const {categorys, data, isLoading} = useFetch("http://localhost:3000/api")
 
+  categorys && categorys.sort(function (a, b){
+    return a.name.localeCompare(b.name, 'en', { numeric: true })
+  });
+
   return (
     <>
       
@@ -16,7 +20,7 @@ export const Categories = () => {
             <Loading />
           )
           :(
-            <div className="container">
+            <div className="container-fluid mt-5 p-5 bg-secondary">
               {
                 <CategoryList data={data} cat={categorys} />
               }

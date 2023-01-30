@@ -16,6 +16,7 @@ export const useFetch = (url) => {
     //if(data)
 
     setState({
+      ...state,
       data,
       categorys,
       features,
@@ -26,7 +27,6 @@ export const useFetch = (url) => {
 
   useEffect(() => {
     getFetch()
-    
   }, [url])
 
     return {

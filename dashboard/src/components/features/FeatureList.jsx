@@ -14,7 +14,7 @@ export const FeatureList = ({ features, feat }) => {
     }))
 
   return (
-    <ul className="list-group bg-danger p-2">
+    <ul className="list-group bg-secondary p-2">
         {
             featureProduct.map( feature => (
               <div key={feature.id}>
@@ -24,7 +24,7 @@ export const FeatureList = ({ features, feat }) => {
                   feat={feat} 
                   productLength={data && feature.arrXFeat.length}
                 />
-                <div className="mt-2">
+                <div className="mt-2 text-light">
                     Numero de productos con esta Variación: {data && feature.arrXFeat.length}
                 </div>
               </div>

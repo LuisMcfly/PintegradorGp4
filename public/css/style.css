@@ -44,7 +44,8 @@ html {
 
 body {
   height: 100%;
-  background-color: var(--Grisfondo);
+  /* background-color: var(--Grisfondo); */
+  background-color: white;
   overflow-x: hidden;
 
   font-family: "Work Sans", sans-serif;
@@ -138,16 +139,25 @@ main .recopilacion {
   margin: 20px auto;
 }
 .product-preview {
+  height: 100%;
   padding: 0px 5px;
   /* border: 1px dotted gray; */
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr 0.2fr 0.1fr;
+  /* grid-template-rows: 0.7fr, 0.2fr, 0.1fr; */
+  /* display: flex;
+  flex-direction: column; */
+  justify-items: center;
+  align-items: stretch;
+  align-content: space-around;
 }
-.product-preview img {
+.preview-img {
+  width: 350px;
+}
+.product-img img {
   border-radius: 5px;
+  object-fit: contain;
 }
 
 @media (min-width: 900px){ /* PC Small */

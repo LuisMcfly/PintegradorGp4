@@ -20,12 +20,12 @@ export const ManufactureList = () => {
     <ul className="list-group ">
         {
             manufacturersProduct.map( (manufacturer) => (
-              <div className="bg-warning p-3" key={ manufacturer.id}>
+              <div className="bg-secondary p-2 rounded" key={ manufacturer.id}>
                 <ManufacturerItem 
                   manufacturer={manufacturer}
                   productLength={manufacturer.arrXMan.length}
                   />
-                  <div className="mt-2">
+                  <div className="mt-2 text-light">
                     Numero de productos por Fabricante: {manufacturer.arrXMan.length}
                   </div>
                   <hr/>

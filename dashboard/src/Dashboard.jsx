@@ -5,16 +5,18 @@ import { UserDetail } from "./components/user/UserDetail";
 import { FeatureApp } from "./components/features/FeatureApp";
 import { ManufacturerApp } from "./components/manufacturers/ManufacturerApp";
 import { ManufacturerProvider } from "./components/context/ManufacturerProvider";
-
+import { Footer } from "./Footer";
+//import './styles.css'
 export const Dashboard = () => {
 
   return (
     <ManufacturerProvider>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-secondary fs-5">
+      <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fs-5 border border-dark-subtle shadow p-3 bg-body-tertiary rounded">
         <div className="container-fluid">
-          <Link className="navbar-brand" href="#">
-            Dashboard
-          </Link>
+
+          <div className="navbar-brand" >
+            <h5>Dashboard</h5>
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -26,8 +28,14 @@ export const Dashboard = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="collapse  navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <a 
+               href="http://localhost:3000/"
+               className=' mx-2 text-secondary nav-link'
+              >
+                Regresar a Pegasus Tech
+              </a>
               
               <NavLink 
                to="/productList"
@@ -72,6 +80,13 @@ export const Dashboard = () => {
                 Lista de Usuarios
               </NavLink>
               
+              <a 
+               href="http://localhost:3000/products/productRegister"
+               className=' mx-2 text-secondary nav-link active'
+              >
+                Crear Producto
+              </a>
+              
             </ul>
           </div>
         </div>
@@ -100,6 +115,7 @@ export const Dashboard = () => {
 
         <Route path="*" element={<Navigate to='/usuarios' />} /> 
       </Routes>
+      <Footer />
     </ManufacturerProvider>
   );
 };
