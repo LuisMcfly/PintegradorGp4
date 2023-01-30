@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
-<body>
+<head>
+  <link rel="stylesheet" href="/css/userProfile.css" />
+  <form action="/users/logout" method="POST" id="logoutForm"></form>
+</head>
+
+<body class="form-background">
   <%- include('../partials/header') %>
-  
-  <h2>Bienvenido <%= us.fullName %> </h2>
-  <h3><%= us.email %> </h3>
-  <a href="/users/edit">Editar información</a>
+  <main class="profile-grid">
+    
+    <section class="form-section user-image">
+
+        <img src="/img/uploads/users/<%= userInfo.image %>"/>
+      </div>
+      <div>
+        <h2>Bienvenido</h2>
+        <h1><%= userInfo.fullName %></h1>
+      </div>
+    </section>
+
+    <section class="form-section user-info">
+      <div class="form-field">
+        <p> Correo </p>
+        <h3> <%= userInfo.email %> </h3>
+      </div>
+      <div class="form-field">
+        <p> Teléfono </p>
+        <h3> <%= userInfo.phone %> </h3>
+      </div>
+      <div class="form-field">
+        <p> Dirección </p>
+        <h3> <%= userInfo.address %> </h3>
+      </div>
+      <div class="form-field">
+        <p> Género </p>
+        <h3> <%= userInfo.gender %> </h3>
+      </div>
+    </section>
+
+    <section class="user-actions">
+      <div class="form-section">
+        <a href="../../users/edit" class="icon-button">
+          <i class="fa-solid fa-gear"></i>
+        </a>
+        <h3>Editar Información</h3>
+      </div>
+
+      <% if (userInfo.userType == "Admin") { %> 
+        <div class="form-section">
+          <a href="http://localhost:5173/LastProductInList" class="icon-button">
+            <i class="fa-solid fa-list"></i>
+          </a>
+          <h3>Funciones de Administrador</h3>
+        </div>
+      <% } %> 
+
+      <div class="form-section">
+        <button type="submit" form="logoutForm" class="icon-button">
+          <i class="fa-solid fa-power-off"></i>
+        </button>
+        <h3>Cerrar Sesión</h3>
+      </div>
+    </section>
+  </main>
   <%- include('../partials/footer') %>
 </body>
 </html>

@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:importar": "node ./seeders/seeder.js -i",
+    "db:eliminar": "node ./seeders/seeder.js -e"
   },
   "repository": {
     "type": "git",
@@ -18,17 +20,23 @@
   },
   "homepage": "https://github.com/LuisMcfly/PintegradorGp4#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "express-validator": "^6.14.2",
+    "jsonwebtoken": "^9.0.0",
     "method-override": "^3.0.0",
     "multer": "^1.4.5-lts.1",
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.19",
     "override": "^0.0.1",
-    "sweetalert2": "^11.6.3",
+    "sequelize": "^6.25.6",
+    "sweetalert2": "^11.4.8",
     "swiper": "^8.3.2",
     "uuidv4": "^6.2.13"
   }

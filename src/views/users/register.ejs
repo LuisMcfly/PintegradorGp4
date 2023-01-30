@@ -1,99 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head') %>
-<head>
-    
-    <link rel="stylesheet" href="/css/login&register.css" />
+<head> 
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <script>/*preguntar si el registro del usuario se hizo*/
+      function confirmar(){
+          Swal.fire({
+              title: 'Formulario enviado con exito!'
+          }).then(res=>{
+              window.location = '/'
+          })
+      }
+  </script>
+  <form action="/users/register" method="POST" id="registerForm"></form>
 </head>
 
-<body> 
-    <%- include('../partials/header') %>
+<body class="form-background"> 
+  <%- include('../partials/header') %>
 
-    <main class="login-register-container">
-        <section>
-            <div class="form-container">
-                <h1>register</h1>
-                <form action="/users/register" method="POST">
-                    <input type="hidden" value="id">
-                    <div class="control">
-                        <label for="fullName" >Nombre completo</label>
-                        <input type="text" name="fullName" id="fullName" value="<%= locals.oldData && oldData.fullName ? oldData.fullName : null%>">
-                        <% if(locals.errors && errors.fullName) { %>
-                            <div>
-                                <%= errors.fullName.msg %> 
-                            </div> 
-                        <% } %>
-                    </div>
+  <main class="form-container">
+    <section class="form-section">
+      
+      <h1>Crea tu cuenta</h1>
 
-                    <div class="control">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" name="email" id="email" value="<%= locals.oldData && oldData.email ? oldData.email : null%>">
-                        <% if(locals.errors && errors.email) { %>
-                            <div>
-                                <%= errors.email.msg %> 
-                            </div> 
-                        <% } %>
-                    </div>
+      <div class="form-field">
+        <label for="fullName"><p>Nombre completo</p></label>
+        <input type="text" name="fullName" id="fullName" class="text-input" 
+          form="registerForm" value="<%= userInfo ? userInfo.fullName : '' %>">
+        <% if(locals.errors && errors.fullName) {%> 
+          <div class="error-message">
+            <p> <%= errors.fullName.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
 
-                    <div class="control">
-                        <label for="password">Ingresa una contraseña</label>
-                        <input type="password" name="password" id="password" value="<%= locals.oldData && oldData.password ? oldData.password: null%>">
-                        <% if(locals.errors && errors.password) { %>
-                            <div>
-                                <%= errors.password.msg %> 
-                            </div> 
-                        <% } %>
-                    </div>
+      <div class="form-field">
+        <label for="email"><p>Correo electrónico</p></label>
+        <input type="email" name="email" id="email" class="text-input"
+          form="registerForm" value="<%= userInfo ? userInfo.email : '' %>">
+        <% if(locals.errors && errors.email) {%> 
+          <div class="error-message">
+            <p> <%= errors.email.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
 
-                    <div class="control">
-                        <label for="repassword">Repite la contraseña</label>
-                        <input type="password" name="repassword" id="repassword" value="<%= locals.oldData && oldData.repassword? oldData.repassword : null%>">
-                        <% if(locals.errors && errors.repassword) { %>
-                            <div>
-                                <%= errors.repassword.msg %> 
-                            </div> 
-                        <% } %>
-                    </div>
+      <div class="form-field">
+        <label for="password"><p>Ingresa una contraseña</p></label>
+        <input type="password" name="password" class="text-input"
+          form="registerForm" id="password">
+        <% if(locals.errors && errors.password) {%> 
+          <div class="error-message">
+            <p> <%= errors.password.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
 
-                    <div class="control">
-                        <label for="phone">Numero Celular</label>
-                        <input type="text" name="phone" id="phone" value="<%= locals.oldData && oldData.phone ? oldData.phone : null%>">
-                        <% if(locals.errors && errors.phone) { %>
-                            <div>
-                                <%= errors.phone.msg %>   
-                            </div> 
-                        <% } %>
-                    </div>
+      <div class="form-field">
+        <label for="repassword"><p>Repite la contraseña</p></label>
+        <input type="password" name="repassword" class="text-input" 
+          form="registerForm" id="repassword" >
+        <% if(locals.errors && errors.repassword) {%> 
+          <div class="error-message">
+            <p> <%= errors.repassword.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
 
-                    <input type="hidden" name="address" value="undefined">
-                    <input type="hidden" name="gender" value="undefined">
-                    <input type="hidden" name="title" value="User">
+      <div class="form-field">
+        <label for="phone"><p>Número Celular</p></label>
+        <input type="text" name="phone" id="phone" class="text-input" 
+          form="registerForm" value="<%= userInfo ? userInfo.phone : '' %>">
+        <% if(locals.errors && errors.phone) {%> 
+          <div class="error-message paragraph">
+            <p> <%= errors.phone.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
 
-                    <span class="Rememberme-login">
-                        <input type="checkbox">Aceptas los terminos y condiciones de nuestro servicio
-                    </span>
-                    <div class="control">
-                        <input onclick="confirmar()" id="btn" type="submit" value="Terminar el Registro">
-                    </div>
-                </form>
-                <div class="link-forgot-password">
-                    <a href="login.html">Ya tienes una cuenta?</a>
-                </div>
-            </div>
-        </section>
-    </main>
+      <input type="hidden" name="address" form="registerForm" value="undefined">
+      <input type="hidden" name="gender" form="registerForm" value="undefined">
+      <input type="hidden" name="title" form="registerForm" value="User">
 
-    <%- include('../partials/footer') %>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-    <script>/*preguntar si el registro del usuario se hizo*/
-        function confirmar(){
-                Swal.fire({
-                    title: 'Registro realizado con exito!'
-                }).then(res=>{
-                    window.location = '/users/register'
-                })
-        }
-    </script>
+      <div class="form-field">
+        <div class="check-container">
+          <input type="checkbox" name="termsAndConditions" id="termsAndConditions" 
+          class="with-font" form="registerForm">
+          <label for="termsAndConditions" class="icon paragraph"> Acepto los términos y condiciones de este servicio </label>
+        </div>
+        <% if(locals.errors && errors.termsAndConditions) {%> 
+          <div class="error-message parragraph">
+            <p> <%= errors.termsAndConditions.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+      <div class="form-buttons">
+        <!-- <input onclick="confirmar()" id="btn" type="submit" form="registerForm" value="Terminar el Registro"> -->
+        <button type="submit" form="registerForm" class="btn main-button">Continuar</button>
+      </div>
+      
+      <div class="form-footer">
+        <p>¿Ya tienes una cuenta? <a href="/users/login">Ingresa</a></p>
+      </div>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
 </body>
 </html>

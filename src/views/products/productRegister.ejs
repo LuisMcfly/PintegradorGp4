@@ -1,142 +1,151 @@
+<!DOCTYPE html>
+<html>
 <%- include('../partials/head.ejs') %>
-
 <head>
+  <link rel="stylesheet" href="/css/productRegisterEdit.css">
   <title>Pegasus Tech | Crear producto</title>
-  <link rel="stylesheet" href="/css/form/base/base.css">
-  <link rel="stylesheet" href="/css/form/registro.css">
-  <link rel="stylesheet" href="/css/form/componentes.css" />
-  <link rel="stylesheet" href="/css/login&register.css">
+
+  <form action="/products/productRegister" method="POST" 
+    id="productCreate" enctype="multipart/form-data"></form>
 </head>
 
 <body>
   <%- include('../partials/header.ejs') %>
 
-  <main class="container flex flex--column flex--center">
-    <section class="cartao">
-      <h2 class="card__title">Registrar producto</h2><!-- dice que si el controlador envio variables locales y so dentro de esas variables hay un mensaje de error se itere -->
-      <% if(locals.errors) { %> 
-        <% for(let error in errors) { %> 
-          <p><%= errors[error].msg %> </p>
-        <% } %> 
-      <% } %> 
-      <form action="/products/productRegister" method="post" enctype="multipart/form-data"
-        class="formulario flex flex--column" >
-        <fieldset>
-          <div class="input-container">
-            <input name="name" id="name" class="input" type="text" placeholder="Nombre" value="<%= locals.old && old.name ? old.name : '' %>" >
-            <label class="input-label" for="name">Nombre del producto <i class="fas fa-file-signature"></i></label>
-            <span class="input-message-error">Este campo no es valido</span>
-          </div>
-          
-          <div class="input-container">
-            <label class="input-label manufacturer">Nombre del fabricante <i class="fa-solid fa-check"></i></label>
-            <select name="manufacturer" class="input" id="">
-              <% for(let i=0;i<fabricantes.length; i++) {%>
-                <option class="option" value="<%= fabricantes[i].nombre %>" <%= locals.old && old.manufacturer ===  fabricantes[i].nombre ? 'selected' : ''%> >
-                  <%= fabricantes[i].nombre %>
-                </option>
-              <% } %>
-            </select>
-          </div> 
-          
-          <div class="input-container">
-            <input name="model" id="model" class="input" type="text" placeholder="Modelo" value="<%= locals.old && old.model ? old.model : ''%> ">
-            <label class="input-label" for="model">Modelo del producto 
-              <i class="fas fa-file-signature"></i></label>
-            <span class="input-message-error">Este campo no es valido</span>
-          </div>
-          
-          <div class="input-container">
-            <input name="variations" id="variaciones" class="input" type="text" placeholder="Variaciones" value="<%= locals.old && old.variations ? old.variations : '' %> ">
-            <label class="input-label" for="variaciones">Variaciones del producto 
-              <i class="fas fa-file-signature"></i></label>
-            <span class="input-message-error">Este campo no es valido</span>
-          </div>
+  <main class="form-container product-form-grid">
 
-          <div class="list-choice">
-            <div class="list-choice-title">Seleccione la Categoria <i class="fa-solid fa-layer-group"></i></div>
-            <div class="list-choice-objects">
-              <label>
-                <input type="radio" name="category" value="portatiles" />
-                <span>Portatiles</span>
-              </label>
-              <label>
-                <input type="radio" name="category" value="pcEscritorio" />
-                <span>Computadores de escritorio</span>
-              </label>
-              <label>
-                <input type="radio" name="category" value="perifericos" />
-                <span>Periféricos</span>
-              </label>
-              <label>
-                <input type="radio" name="category" value="gamer" />
-                <span>Gamer</span>
-              </label>
-            </div>
+    <section class="form-section product-image">
+      <label for="uploadImage">
+        <div class="image-edit-area">
+
+        </div> 
+        <div class="add-image-icon">
+          <i class="fa-regular fa-file-image"></i>
+        </div>
+      </label>
+      <input type="file" name="uploadImage" id="uploadImage" form="productCreate" multiple>
+    </section>
+
+    <section class="form-section">
+
+      <div class="form-field">
+        <label for="name"><p>Nombre</p></label>
+        <input type="text" name="name" id="name" class="text-input" 
+          form="productCreate" value="<%= product ? product.name : '' %>">
+        <% if(locals.errors && errors.name) {%> 
+          <div class="error-message">
+            <p> <%= errors.name.msg %> </p>
           </div>
-          
-          <div class="textarea-container">
-            <textarea name="description" id="descripcion" class="textarea" type="text" placeholder="descripcion" 
-            value="<%= locals.old && old.description ? old.descripcion : '' %> "  ></textarea>
-            <label class="textarea-label" for="descripcion">Descripcion del producto 
-              <i class="fas fa-file-signature"></i></label>
-            <span class="input-message-error">Este campo no es valido</span>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="manufacturer"><p>Fabricante</p></label>
+        <select name="manufacturer" id="manufacturer" form="productCreate">
+          <% manufacturers.forEach(manufacturer => {%>
+            <option value="<%= manufacturer.dataValues.id %>">
+              <%= manufacturer.dataValues.name %> 
+            </option>
+          <% }) %>
+        </select>
+        <% if(locals.errors && errors.manufacturers) {%> 
+          <div class="error-message">
+            <p> <%= errors.manufacturer.msg %> </p>
           </div>
-          
-          <div class="input-container">
-            <input name="price" id="precio" class="input" type="text" placeholder="Precio" value="<%= locals.old && old.price ? old.price : '' %> ">
-            <label class="input-label" for="precio">Precio del producto <i class="fas fa-dollar-sign"></i></label>
-            <span class="input-message-error">Este campo no es valido</span>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label for="model"><p>Modelo</p></label>
+        <input type="text" name="model" id="model" class="text-input" 
+          form="productCreate" value="<%= product ? product.model : '' %>">
+        <% if(locals.errors && errors.model) {%> 
+          <div class="error-message">
+            <p> <%= errors.model.msg %> </p>
           </div>
+        <% }; %>
+      </div>
 
-          <div class="input-container">
-            <input name="discount" id="descuento" class="input" type="text" placeholder="Descuento" value="<%= locals.discount && old.Discount ? old.discount : '' %> ">
-            <label class="input-label" for="descuento">Descuento del producto <i class="fas fa-percent"></i></label>
-            <span class="input-message-error">Este campo no es valido</span>
+      <div class="form-field">
+        <label for="features"><p>Variaciones</p></label>
+        <select name="features" id="features" form="productCreate">
+          <% features.forEach(feature => {%>
+            <option value="<%= feature.dataValues.id %>">
+              <%= feature.dataValues.name %> 
+            </option>
+          <% }) %>
+        </select>
+        <% if(locals.errors && errors.features) {%> 
+          <div class="error-message">
+            <p> <%= errors.features.msg %> </p>
           </div>
+        <% }; %>
+      </div>
 
-          <div class="input-container">
-            <input name="stock" id="stock" class="input" type="text" placeholder="Descuento" value="<%= locals.old && old.stock ? old.stock : '' %> ">
-            <label class="input-label" for="stock">Stock del producto <i class="fab fa-stack-overflow"></i></label>
-            <span class="input-message-error">Este campo no es valido</span>
+      <div class="form-field">
+        <label for="category"><p>Categoría</p></label>
+        <select name="category" id="category" form="productCreate">
+          <% categories.forEach(category => {%>
+            <option value="<%= category.dataValues.id %>">
+              <%= category.dataValues.name %> 
+            </option>
+          <% }) %>
+        </select>
+        <% if(locals.errors && errors.categories) {%> 
+          <div class="error-message">
+            <p> <%= errors.category.msg %> </p>
           </div>
+        <% }; %>
+      </div>
 
-          <div class="input-container">
-            <section class="app">
-              <h3>Colores <i class="fas fa-palette"></i></h3>
-              <article class="feature1">
-                <input type="checkbox" id="feature1" name="colors[]" value="blanco"/>
-                <div><span>BLANCO</span></div>
-              </article>
-
-              <article class="feature2">
-                <input type="checkbox" id="feature2" name="colors[]" value="azul" />
-                <div><span>AZUL</span></div>
-              </article>
-
-              <article class="feature3">
-                <input type="checkbox" id="feature3" name="colors[]" value="rojo" />
-                <div><span>ROJO</span></div>
-              </article>
-
-              <article class="feature4">
-                <input type="checkbox" id="feature4" name="colors[]" value="fucsia" checked />
-                <div><span>FUCSIA</span></div>
-              </article> 
-            </section>
+      <div class="form-field">
+        <label for="description"><p>Descripción</p></label>
+        <input type="texta" name="description" id="description" class="text-input" 
+          form="productCreate" value="<%= product ? product.description : '' %>">
+        <% if(locals.errors && errors.name) {%> 
+          <div class="error-message">
+            <p> <%= errors.description.msg %> </p>
           </div>
+        <% }; %>
+      </div>
 
-          <div class="input-container">
-            <label class="input-label file" for="imagen">Seleccione la imágen del producto 
-              <i class="fa-solid fa-camera"></i></label>
-            <input name="imagen" id="imagen" class="input-file" type="file" multiple placeholder="Imágen" >
-            <span class="input-message-error">Este campo no es valido</span>
+      <div class="form-field">
+        <label for="price"><p>Precio ($ COP)</p></label>
+        <input type="text" name="price" id="price" class="text-input" 
+          form="productCreate" value="<%= product ? product.price : '' %>">
+        <% if(locals.errors && errors.price) {%> 
+          <div class="error-message">
+            <p> <%= errors.price.msg %> </p>
           </div>
-        </fieldset>
+        <% }; %>
+      </div>
 
-        <button class="button">Registrar</a>
-      </form>
+      <div class="form-field">
+        <label for="discount"><p>Descuento (%)</p></label>
+        <input type="text" name="discount" id="discount" class="text-input" 
+          form="productCreate" value="<%= product ? product.discount : '' %>">
+        <% if(locals.errors && errors.discount) {%> 
+          <div class="error-message">
+            <p> <%= errors.discount.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
 
+      <div class="form-field">
+        <label for="stock"><p>Stock</p></label>
+        <input type="text" name="stock" id="stock" class="text-input" 
+          form="productCreate" value="<%= product ? product.stock : '' %>">
+        <% if(locals.errors && errors.stock) {%> 
+          <div class="error-message">
+            <p> <%= errors.stock.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" form="productCreate" class="btn main-button">Guardar</button>
+        <a href="../../products/" class="btn">Cancelar</a>
+      </div>
     </section>
   </main>
 

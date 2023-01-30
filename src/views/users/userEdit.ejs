@@ -1,34 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
-<body>
+<head>
+  <link rel="stylesheet" href="/css/userProfile.css" />
+  <form action="/users/edit" method="POST" id="saveEditForm" enctype="multipart/form-data" multiple></form>
+</head>
+
+<body class="form-background">
   <%- include('../partials/header') %>
-  
-  <form action="../users/userEdit/<%= us.id %> ?_method=PUT" 
-    method="POST" enctype="multipart/form-data">
-    <label for="fullName">fullName</label>
-    <input type="text" name="fullName" id="fullName" value="<%= us.fullName %> ">
+  <main class="form-container user-edit-grid">    
 
-    <label for="email">email</label>
-    <input type="email" name="email" id="email" value="<%= us.email %> ">
+    <section class="form-section user-image">
+      
+      <label for="uploadImage">
+        <div class="image-edit-area">
+          <img src="/img/uploads/users/<%= userInfo.image %>" class="darken"/>
+        </div>
+        <div class="add-image-icon">
+          <i class="fa-regular fa-file-image"></i>
+        </div>
 
-    <label for="phone">phone</label>
-    <input type="text" name="phone" id="phone" value="<%= us.phone %> ">
+      </label>
+      <input type="file" name="uploadImage" id="uploadImage" form="saveEditForm">
+      
+      <h1><%= userInfo.fullName %></h1>
+      <h3><%= userInfo.email %></h3>
+    </section>
 
-    <label for="address">address</label>
-    <input type="text" name="address" id="address" value="<%= us.address %> ">
+    <section class="form-section">
+      <div class="form-field">
+        <label for="fullName"><p>Nombre</p></label>
+        <input type="text" name="fullName" id="fullName" class="text-input" 
+          form="saveEditForm" value="<%= userInfo ? userInfo.fullName : '' %>">
+        <% if(locals.errors && errors.fullName) {%> 
+          <div class="error-message">
+            <p> <%= errors.fullName.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
 
-    <select name="gender" value=" ">
-      <option value="Hombre">Hombre</option>
-      <option value="Mujer">Mujer</option>
-      <option value="Otro">Otro</option>
-    </select>
-    <label for="profileImage">profileImage</label>
-    <input type="file" name="profileImage" id="profileImage">
+      <div class="form-field">
+        <label for="email"><p>Correo electrónico</p></label>
+        <% if(userInfo.userType == 'Admin') { %> 
+          <input type="email" name="email" id="email" class="text-input"
+          form="saveEditForm" value="<%= userInfo ? userInfo.email : '' %>" readonly>
+        <% } else { %>
+          <input type="email" name="email" id="email" class="text-input"
+          form="saveEditForm" value="<%= userInfo ? userInfo.email : '' %>">
+        <% } %>
+        <% if(locals.errors && errors.email) {%> 
+          <div class="error-message">
+            <p> <%= errors.email.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
 
-    
-  </form>
+      <div class="form-field">
+        <label for="phone"><p>Teléfono</p></label>
+        <input type="text" name="phone" id="phone" class="text-input" 
+          form="saveEditForm" value="<%= userInfo ? userInfo.phone : '' %>">
+        <% if(locals.errors && errors.phone) {%> 
+          <div class="error-message paragraph">
+            <p> <%= errors.phone.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
 
+      <div class="form-field">
+        <label for="address"><p>Dirección</p></label>
+        <input type="text" name="address" id="address" class="text-input" 
+          form="saveEditForm" value="<%= userInfo.address ? userInfo.address : "Sin definir" %>">
+        <% if(locals.errors && errors.address) {%> 
+          <div class="error-message paragraph">
+            <p> <%= errors.address.msg %> </p>
+          </div>
+        <% }; %>
+      </div>
+
+      <div class="form-field">
+        <label><p>Género</p></label>
+        <div class="check-container">
+          <% if (userInfo.gender == 'Masculino') { %>
+            <input type="radio" name="gender" id="genderOpt1" 
+            class="with-font" form="saveEditForm" value="Masculino" checked>
+          <% } else { %> 
+            <input type="radio" name="gender" id="genderOpt1" 
+            class="with-font" form="saveEditForm" value="Masculino">
+          <% } %>
+          <label for="genderOpt1" class="icon paragraph"> Masculino </label>
+
+          <% if (userInfo.gender == 'Femenino') { %>
+            <input type="radio" name="gender" id="genderOpt2" 
+          class="with-font" form="saveEditForm" value="Femenino">
+          <% } else { %> 
+            <input type="radio" name="gender" id="genderOpt2" 
+          class="with-font" form="saveEditForm" value="Femenino">
+          <% } %>
+          <label for="genderOpt2" class="icon paragraph"> Femenino </label>
+
+          <% if (userInfo.gender == 'Otro') { %>
+            <input type="radio" name="gender" id="genderOpt3" 
+            class="with-font" form="saveEditForm" value="Otro" checked>
+          <% } else { %> 
+            <input type="radio" name="gender" id="genderOpt3" 
+            class="with-font" form="saveEditForm" value="Otro">
+          <% } %>
+          <label for="genderOpt3" class="icon paragraph"> Otro </label>
+        </div>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" form="saveEditForm" class="btn main-button">Guardar</button>
+        <a href="../../users/profile" class="btn">Cancelar</a>
+      </div>
+    </section>
+  </main>
   <%- include('../partials/footer') %>
 </body>
 </html>

@@ -4,101 +4,50 @@
 <head>
   <link rel="stylesheet" href="/css/productDetail.css" />
   <title>Pegasus Tech | Producto</title>
+  <script src="/js/cartLocalStorage.js"></script>
+  <form action="/cart/addToCart/<%= product.id %> " id="addToCart" method="POST"></form>
 </head>
 
 <body> 
   <%- include('../partials/header') %>
 
-  <section class="producto-detail">
-    <div class="producto-header">
-      <h2><%= producto.name +' '+ producto.model %></h2>
-      <a class="fabricante" href="#">más productos de la marca <%= producto.manufacturer %> </a>
-      <div class="calificacion">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
+  <main class="product">
+    <div class="img">
+      <img src="<%= uploadsPath + '/products/' + product.images %>" alt="product.name"/>
+    </div>
+    <div class="product-info">
+
+      <div class="product-category"><p>Categoría: <%= product.category.name ? product.category.name : null  %> </p></div>
+      <div class="product-name"><h1><%= product.name %> </h1></div>
+      <div class="product-price"><h3>$ <%= product.price %> </h3></div>
+      <div class="product-description"><p><%= product.description %> </p></div>
+      <div class="product-stock"><h5>Stock: <%= product.stock %> </h5></div>
+      
+      <div class="form-buttons">
+        <input type="hidden" name="price" form="addToCart" value="<%= product.price %>">
+        <input type="hidden" name="discount" form="addToCart" value="<%= product.discount %>">
+        <button type="submit" form="addToCart" class="btn main-button">Agregar al Carrito</button>
+        <% if (locals.isLogged && locals.userType == "Admin") { %>
+          <a href="/products/productEdit/<%= product.id %>" class="btn">Editar Producto</a>
+        <% } %> 
       </div>
     </div>
-    
-    <div class="producto-elementos">
-      <div class="producto-imagenes">                       
-        <div class="img-main"><img src="/img/uploads/<%= producto.images[0] %> " alt="imagen de producto"></div>
-        <ul class="img-alt">
-          <% for(let i=1; i<producto.images.length; i++){ %>
-            <li>
-              <button>
-                <i class="fa-regular fa-circle-dot"></i>
-                <img src="/img/uploads/<%= producto.images[i] %> " alt="view">
-              </button>
-            </li>
-          <% } %>  
-        </ul>
-      </div>
+  </main>
 
-      <div class="producto-info"> 
-        <div class="producto-opciones">
-          <% for(let i=0; i<producto.colors.length; i++){ %>
-            <button> <%= producto.colors[i] %> </button>
-          <% } %>  
-        </div>
-        <p class="stock"><%= producto.stock %>  Unidades restantes</p>
-        <p class="descripcion"><%= producto.description %> </p>
-      </div>
-
-      <div class="producto-precio">
-        <div class="precio-numero">
-          <h2>$ <%= producto.price %></h2><h4>.900</h4>
-        </div>
-        
-        <div class="btns-producto">
-          <form action="/cart">
-            <button class="btn anadir-carrito degradado-btn">Añadir al Carrito<i class="carrito"></i></button>
-            <button class="btn anadir-deseados">Añadir a Deseados</button>
-          </form>
-        </div>
-      </div>
-
-    </div>
+  <!-- <h2 class="section-title degradado">Recomendados</h2>
+  <section class="recopilacion">
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
   </section>
 
-  <main class="contenedor-principal">
-    <h2 class="section-title degradado">Recomendados</h2>
-    <section class="recopilacion">
-      <div class="producto-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-      <div class="producto-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-      <div class="producto-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-      <div class="producto-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-    </section>
-
-    <section class="recopilacion historial" style="display: none">
-      <div class="producto-preview"></div>
-      <div class="producto-preview"></div>
-      <div class="producto-preview"></div>
-      <div class="producto-preview"></div>
-    </section>
-  </main>
+  <section class="recopilacion historial" style="display: none">
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+    <div class="producto-preview"></div>
+  </section>-->
   
   <%- include('../partials/footer') %>
 </body>

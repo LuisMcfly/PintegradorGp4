@@ -1,0 +1,30 @@
+body {
+    background-color: aquamarine;
+}
+
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    color: darkcyan;
+    font-size: 2rem;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cats {
+    background-color: lightcoral;
+}
+.cats-item {
+    flex-direction: row;
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 0.5rem;
+    height: 370px;
+    width: 250px;
+    box-sizing: content-box;
+}
+

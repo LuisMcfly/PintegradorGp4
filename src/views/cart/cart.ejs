@@ -3,170 +3,74 @@
 <%- include('../partials/head') %>
 <head>
   <link rel="stylesheet" href="/css/productCart.css">
-  <title>Carrito de productos</title>
+  <title>Pegasus Tech | Carrito de productos</title>
+  <form action="" method="POST" id="checkoutForm"></form>
 </head>
 <body>
   <%- include('../partials/header') %>
 
-  <main class="contenedor-principal">
-    <section class="carrito">
-      <div class="carrito-title">
-        <h2 class="section-title degradado">Carrito de Productos</h2>
-      </div>
-      
-      <div class="carrito-producto">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <div class="carrito-producto-info">
-          <a href="productDetail.html"><h3>Nombre de Producto</h3></a>
-          <div class="carrito-producto-options">
-            <select name="cantidad">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button>Eliminar</button>
+  <% if(products) { %>
+    <main class="cart">
+      <h1 class="degradado">Carrito de productos</h1>
+
+      <% for (let i=0; i<products.length; i++) { %> 
+        <div class="product-in-cart">
+          <div class="product-in-cart-img">
+            <img src="/img/uploads/products/<%= products[i].images %>">
+          </div>
+
+          <div class="product-in-cart-info">
+            
+            <form method="POST" action="/cart/subtract1FromCart/<%= products[i].id %>" id="subtract1FromCart"></form>
+            <form method="POST" action="/cart/add1ToCart/<%= products[i].id %>" id="add1ToCart"></form>
+            <form method="POST" action="/cart/removeFromCart/<%= products[i].id %>" id="removeFromCart"></form>
+
+            <div class="product-in-cart-name">
+              <a href="../products/productDetail/<%= products[i].id %>"><h2><%= products[i].name %></h2></a>
+            </div>
+            
+            <div class="product-in-cart-options">
+              <input type="text" form="checkoutForm" class="cart-input-text" value="<%= invoiceQuantity[i] %>">
+              <form class="visible-form" method="POST" action="/cart/subtract1FromCart/<%= products[i].id %>">
+                <button type="submit" class="quantity-button icon-button"><i class="fa-solid fa-square-minus"></i></button>
+              </form>
+              <form class="visible-form" method="POST" action="/cart/add1ToCart/<%= products[i].id %>">
+                <button type="submit" class="quantity-button icon-button"><i class="fa-solid fa-square-plus"></i></button>
+              </form>
+              <form class="visible-form" method="POST" action="/cart/removeFromCart/<%= products[i].id %>">
+                <button type="submit" class="remove-product icon-button">
+                  <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="product-in-cart-price">
+            <h3>$ <%= invoicePrices[i] %></h3>
           </div>
         </div>
-        <h4 class="precio">$500.000</h4>
+      <% } %> 
+
+      <div class="cart-subtotal">
+        <h2>Total(<%= products.length %> items)</h2>
+        <h2>$ <%= totalPrice %> </h2>
       </div>
 
-      <div class="carrito-producto">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <div class="carrito-producto-info">
-          <a href="productDetail.html"><h3>Nombre de Producto</h3></a>
-          <div class="carrito-producto-options">
-            <select name="cantidad">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button>Eliminar</button>
-          </div>
-        </div>
-        <h4 class="precio">$500.000</h4>
+      <div class="form-buttons">
+        <button class="btn main-button">Comprar!</button>
       </div>
-      <div class="carrito-producto">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <div class="carrito-producto-info">
-          <a href="productDetail.html"><h3>Nombre de Producto</h3></a>
-          <div class="carrito-producto-options">
-            <select name="cantidad">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button>Eliminar</button>
-          </div>
-        </div>
-        <h4 class="precio">$500.000</h4>
-      </div>
-      <div class="carrito-subtotal">
-        <h3>Subtotal(3 items)</h3>
-        <h4 class="precio">$1'500.000</h4>
-      </div>
-      <button class="btn checkout">Comprar!</button>
-    </section>
+    </main>
 
-    <section class="carrito" style="display:none;">
-      <div class="carrito-title">
-        <h2 class="section-title degradado">Carrito de Productos</h2>
-      </div>
-      
-      <div class="carrito-producto">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <div class="carrito-producto-info">
-          <a href="productDetail.html"><h3>Nombre de Producto</h3></a>
-          <div class="carrito-producto-options">
-            <select name="cantidad">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button>Eliminar</button>
-          </div>
-        </div>
-        <div class="precio">
-          <h4>$500.000</h4>
-        </div>
-      </div>
-
-      <div class="carrito-producto">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <div class="carrito-producto-info">
-          <a href="productDetail.html"><h3>Nombre de Producto</h3></a>
-          <div class="carrito-producto-options">
-            <select name="cantidad">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button>Eliminar</button>
-          </div>
-        </div>
-        <h4 class="precio">$500.000</h4>
-      </div>
-      <div class="carrito-producto">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <div class="carrito-producto-info">
-          <a href="productDetail.html"><h3>Nombre de Producto</h3></a>
-          <div class="carrito-producto-options">
-            <select name="cantidad">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button>Eliminar</button>
-          </div>
-        </div>
-        <h4 class="precio">$500.000</h4>
-      </div>
-      <div class="carrito-subtotal">
-        <h3>Subtotal(3 items)</h3>
-        <h4 class="precio">$1'500.000</h4>
-      </div>
-      <button class="btn checkout">Comprar!</button>
-    </section>
+  <% } else { %>
     
-    <h2 class="section-title degradado">Recomendados</h2>
-    <section class="recopilacion">
-      <div class="producto-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
+    <main class="empty-cart">
+      <div class="empty-cart-image">
+        <a href="../../products/" class="icon-button"><i class="fa-solid fa-cart-plus"></i></a>
       </div>
-      <div class="producto-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-      <div class="producto-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-      <div class="producto-preview">
-        <img src="/img/productDetail/productoDemo.jpg">
-        <a href="productDetail.html"><h3>Nombre del Producto</h3></a>
-        <p class="precio">$500.000</p>
-        <button class="btn">Añadir al Carrito</button>
-      </div>
-    </section>
-  </main>
+      <a href="../../products/" class="btn main-button">Anímate a llenar el carrito!</a>
+    </main>
+
+  <% } %>
 
   <%- include('../partials/footer') %>
 </body>

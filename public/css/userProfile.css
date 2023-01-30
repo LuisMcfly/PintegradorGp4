@@ -1,0 +1,49 @@
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0px auto 5px;
+}
+
+.user-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 95%;
+  max-width: 1000px;
+  margin: 0px auto;
+}
+
+.user-image {
+  align-items: center;
+}
+.user-image img {
+  width: 250px;
+}
+
+.user-actions {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+.user-actions > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.user-actions > div > a,
+.user-actions > div > button {
+  font-size: 60px;
+}
+
+.form-field {
+  width: auto;
+}
+
+@media (min-width: 900px) {
+}

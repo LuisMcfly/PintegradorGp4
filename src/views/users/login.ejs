@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('../partials/head') %>   
-<head><link rel="stylesheet" href="/css/login&register.css" /></head>
+<%- include('../partials/head') %>
+<head>
+  <form action="/users/login" method="POST" id="loginForm"></form>
+</head>
 
-<body> 
-    <%- include('../partials/header') %>
+<body class="form-background"> 
+  <%- include('../partials/header') %>
 
-    <main class="login-register-container">
-        <section>
-            <div class="form-container">
-                <h1>Login</h1>
-                <form action="/users/login" method="POST">
-                    <div class="control">
-                        <label for="email">email</label>
-                        <input type="text" name="email" id="email">
-                        <% if(locals.errors && errors.email) { %>
-                            <div>
-                                <%= errors.email.msg %> 
-                            </div> 
-                        <% } %>
-                    </div>
-                    <div class="control">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password">
-                        <% if(locals.errors && errors.email) { %>
-                            <div>
-                                <%= errors.email.msg %> 
-                            </div> 
-                        <% } %>
-                    </div>
-                    <span class="Rememberme-login"><input type="checkbox" name="remember">Remember me.</span>
-                    <div class="control">
-                        <input type="submit" value="Ingresar">
-                    </div>
-                </form>
-                <div class="link-forgot-password">
-                    <a href="#">Forgot password ?</a>
-                </div>
-            </div>
-        </section>
-    </main>
+  <main class="form-container">
+    <section class="form-section">
+      
+      <h1>¡Bienvenido de nuevo!</h1>
 
-    <%- include('../partials/footer') %>
+      <div class="form-field">
+        <label for="email"><p>E-mail</p></label>
+        <input type="text" name="email" id="email" form="loginForm" class="text-input">
+        <% if(locals.errors && errors.email) {%> 
+          <div class="error-message">
+            <p> <%= errors.email.msg %> </p>
+          </div>
+        <% }; %> 
+      </div>
+      <div class="form-field">
+        <label for="password"><p>Contraseña</p></label>
+        <input type="password" name="password" id="password" form="loginForm"s class="text-input">
+        <% if(locals.errors && errors.password) { %>
+          <div class="error-message">
+            <p> <%= errors.password.msg %> </p>
+          </div> 
+        <% } %>
+      </div>
 
+      <div class="form-field">
+        <div class="check-container">
+          <input type="checkbox" name="rememberMe" id="rememberMe" 
+          class="with-font" form="loginForm">
+          <label for="rememberMe" class="icon paragraph"> Recuérdame </label>
+        </div>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" form="loginForm" class="btn main-button">Ingresar</button>
+      </div>
+      
+      <div class="form-footer">
+        <a href="#" class="olvide-contrasena"> Olvidé mi contraseña </a>
+        <p>¿Necesitas una cuenta? <a href="/users/register">Registrate</a></p>
+      </div>
+    </seciton>
+  </main>
+  <%- include('../partials/footer') %>
 </body>
 </html>

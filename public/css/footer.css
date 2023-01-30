@@ -1,7 +1,8 @@
 .pie-pagina {
   width: 100%;
   background-color: #0a141d;
-  bottom: 0px
+  bottom: 0px;
+  margin-top: 0.5rem;
 }
 
 .pie-pagina .grupo-1 {
