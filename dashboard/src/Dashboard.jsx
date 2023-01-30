@@ -30,12 +30,6 @@ export const Dashboard = () => {
           </button>
           <div className="collapse  navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <a 
-               href="http://localhost:3000/"
-               className=' mx-2 text-secondary nav-link'
-              >
-                Regresar a Pegasus Tech
-              </a>
               
               <NavLink 
                to="/productList"
@@ -85,6 +79,13 @@ export const Dashboard = () => {
                className=' mx-2 text-secondary nav-link active'
               >
                 Crear Producto
+              </a>
+
+              <a 
+               href="http://localhost:3000/"
+               className=' mx-2 text-secondary nav-link'
+              >
+                Regresar a Pegasus Tech
               </a>
               
             </ul>

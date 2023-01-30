@@ -1,5 +1,6 @@
 const { check, validationResult } = require('express-validator');
 const fs = require('fs')
+const Jwt = require('jsonwebtoken');
 
 const { Op } = require("sequelize");
 const { User, Product } = require('../../models/index');

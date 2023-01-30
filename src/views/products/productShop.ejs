@@ -14,7 +14,9 @@
       <% for (let i=0; i<products.length; i++) {%>
         <div class="product-preview">
           <div class="preview-img">
-            <img src="/img/uploads/products/<%= products[i].images %>"/>
+            <a href="../products/productDetail/<%= products[i].id %>">
+              <img src="/img/uploads/products/<%= products[i].images %>"/>
+            </a>
           </div>
           <div class="product-name">
             <a href="../products/productDetail/<%= products[i].id %>"><h3><%= products[i].name %></h3></a>
