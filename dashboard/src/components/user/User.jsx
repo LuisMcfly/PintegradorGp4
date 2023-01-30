@@ -31,7 +31,7 @@ export const User = () => {
                                             <tr>
                                                 <th scope="row">{user.id}</th>
                                                 <td className="d-flex text-white justify-content-between">{user.fullName}
-                                                    {/* <NavLink to={{ pathname: `/userDetail/${user.id}` }} className="text-decoration-none text-light" >ver detalle</NavLink> */}
+                                                    <NavLink to={{ pathname: `/userDetail/${user.id}` }} className="text-decoration-none text-light" >ver detalle</NavLink>
                                                 </td>
                                             </tr>
                                         </tbody>
