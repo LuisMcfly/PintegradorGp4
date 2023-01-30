@@ -11,7 +11,7 @@ const {
     productDeleteRender,
     productCreate,
     productEdit,
-    productDelete
+    productDelete,
 } = require('../controllers/productController');
 
 
